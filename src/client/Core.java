@@ -34,6 +34,7 @@ public class Core extends JPanel implements KeyListener, MouseListener, Runnable
 			{
 				gameStateUpdate=false;
 				updateContent();
+				validate();
 			}
 			else
 			{
@@ -44,7 +45,6 @@ public class Core extends JPanel implements KeyListener, MouseListener, Runnable
 	
 	private void updateContent()
 	{
-		System.out.println("AA");
 		switch(gameState)
 		{
 		case 0:
@@ -95,7 +95,7 @@ public class Core extends JPanel implements KeyListener, MouseListener, Runnable
 
 	public void keyPressed(KeyEvent arg0)
 	{
-		
+		System.out.println("Key");
 	}
 
 	public void keyReleased(KeyEvent arg0)
@@ -105,7 +105,7 @@ public class Core extends JPanel implements KeyListener, MouseListener, Runnable
 
 	public void keyTyped(KeyEvent arg0)
 	{
-		
+		System.out.println(arg0.getKeyChar());
 	}
 
 	public static void updateGameState(int i)

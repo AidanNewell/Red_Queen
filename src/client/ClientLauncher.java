@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 public class ClientLauncher {
 
 	private static JFrame ClientWindow;
-	private static boolean fullscreen = true;
+	private static boolean fullscreen = false;
 	private static Core core;
 	
 	public static void main(String [] args)
