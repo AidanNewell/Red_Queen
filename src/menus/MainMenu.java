@@ -1,6 +1,7 @@
 package menus;
 
 import java.awt.Component;
+import java.awt.event.*;
 
 import javax.swing.*;
 
@@ -13,6 +14,13 @@ public class MainMenu extends MainGUI{
 		add(new JLabel(new ImageIcon("assets/BasicTitle.png")));
 		add(new JButton("New Game"));
 		add(new JButton("Options"));
-		add(new JButton("Quit"));
+		JButton quit = new JButton("Quit");
+		quit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				System.exit(0);
+			}
+		});
+		add(quit);
 	}
 }

@@ -14,6 +14,7 @@ public class Core extends JPanel implements KeyListener, MouseListener, Runnable
 
 	private Thread thread;
 	private MainGUI display;
+	private static int gameState;
 	
 	public Core()
 	{
@@ -76,4 +77,8 @@ public class Core extends JPanel implements KeyListener, MouseListener, Runnable
 		
 	}
 
+	public void updateGameState(int i)
+	{
+		gameState = i;
+	}
 }
