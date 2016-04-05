@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 public class ClientLauncher {
 
-	private static JFrame ClientWindow;//
+	private static JFrame ClientWindow;
 	private static boolean fullscreen = true;
 	private static Core core;
 	

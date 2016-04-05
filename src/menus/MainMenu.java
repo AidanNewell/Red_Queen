@@ -12,7 +12,13 @@ public class MainMenu extends MainGUI{
 	{
 		setLayout(new BoxLayout( this, BoxLayout.Y_AXIS));
 		add(new JLabel(new ImageIcon("assets/BasicTitle.png")));
-		add(new JButton("New Game"));
+		JButton newGame = new JButton("New Game");
+		newGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				Core.updateGameState(Core.NEW_GAME_MENU);
+			}
+		});
 		add(new JButton("Options"));
 		JButton quit = new JButton("Quit");
 		quit.addActionListener(new ActionListener() {
