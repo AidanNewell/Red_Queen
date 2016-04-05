@@ -12,6 +12,8 @@ public class OrganismCard extends Card{
 		
 		resistance = res;
 		
+		CardType = ORGANISM;
+		
 	}
 	
 	public int getMaxSize(){
@@ -23,6 +25,12 @@ public class OrganismCard extends Card{
 	public int getResistance(){
 		
 		return resistance;
+		
+	}
+
+	int getCardType() {
+		
+		return ORGANISM;
 		
 	}
 
