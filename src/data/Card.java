@@ -8,4 +8,9 @@ abstract class Card {
 	private static final int CYTOPLASM = 2;
 	private static final int PETRI_DISH = 3;
 	
+	public int getCardType(){
+		
+		return CardType;
+	}
+	
 }
