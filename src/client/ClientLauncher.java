@@ -4,14 +4,18 @@ import javax.swing.JFrame;
 
 public class ClientLauncher {
 
-	private JFrame ClientWindow;
-	private boolean fullscreen = false;
+	private static JFrame ClientWindow;
+	private static boolean fullscreen = false;
+	private static Core core;
 	
-	
-	ClientLauncher()
+	public static void main(String [] args)
 	{
 		ClientWindow = new JFrame("Red Queen");
+		core = new Core();
+		ClientWindow.add(core);
+		ClientWindow.addMouseListener(core);
 		ClientWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ClientWindow.setResizable(false);
 		if(fullscreen)
 		{
 			ClientWindow.setUndecorated(true);
@@ -23,13 +27,6 @@ public class ClientLauncher {
 			ClientWindow.setSize(1024, 768);
 			ClientWindow.setLocationRelativeTo(null);
 		}
-		//ClientWindow.pack();
-		ClientWindow.setResizable(false);
 		ClientWindow.setVisible(true);
-	}
-	
-	public static void main(String [] args)
-	{
-		ClientLauncher Window = new ClientLauncher();
 	}
 }
