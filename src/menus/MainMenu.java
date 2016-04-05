@@ -1,5 +1,7 @@
 package menus;
 
+import client.Core;
+
 import java.awt.Component;
 import java.awt.event.*;
 
