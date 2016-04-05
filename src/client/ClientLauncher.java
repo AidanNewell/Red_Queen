@@ -28,5 +28,6 @@ public class ClientLauncher {
 			ClientWindow.setLocationRelativeTo(null);
 		}
 		ClientWindow.setVisible(true);
+		core.runGame();
 	}
 }

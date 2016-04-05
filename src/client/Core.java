@@ -16,6 +16,7 @@ public class Core extends JPanel implements KeyListener, MouseListener, Runnable
 	private MainGUI display;
 	public static final int MAIN_MENU = 0, NEW_GAME_MENU=1;
 	private static int gameState;
+	private static boolean gameStateUpdate = false;
 	
 	public Core()
 	{
@@ -23,6 +24,34 @@ public class Core extends JPanel implements KeyListener, MouseListener, Runnable
 		display = new MainMenu();
 		this.add(display);
 		start();
+	}
+	
+	public void runGame()
+	{
+		while(true)
+		{
+			if(gameStateUpdate)
+			{
+				gameStateUpdate=false;
+				updateContent();
+			}
+			else
+			{
+				
+			}
+		}
+	}
+	
+	private void updateContent()
+	{
+		System.out.println("AA");
+		switch(gameState)
+		{
+		case 0:
+			display = new MainMenu();
+		case 1:
+			display = new GameCreationMenu();
+		}
 	}
 	
 	private void start()
@@ -82,5 +111,6 @@ public class Core extends JPanel implements KeyListener, MouseListener, Runnable
 	public static void updateGameState(int i)
 	{
 		gameState = i;
+		gameStateUpdate = true;
 	}
 }

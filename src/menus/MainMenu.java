@@ -21,6 +21,7 @@ public class MainMenu extends MainGUI{
 				Core.updateGameState(Core.NEW_GAME_MENU);
 			}
 		});
+		add(newGame);
 		add(new JButton("Options"));
 		JButton quit = new JButton("Quit");
 		quit.addActionListener(new ActionListener() {
