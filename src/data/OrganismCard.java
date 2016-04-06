@@ -21,16 +21,41 @@ public class OrganismCard extends Card{
 		return maxSize;
 		
 	}
+
+	int getCardType() {
+		
+		return ORGANISM;
+		
+	}
 	
-	public int getResistance(){
+	int getATP() {
+		
+		return 0;
+	}
+
+	void setATP(int a) {
+		
+		
+	}
+	
+	int getResistance(){
 		
 		return resistance;
 		
 	}
 
-	int getCardType() {
+	void setResistance(int r) {
 		
-		return ORGANISM;
+		resistance = r;
+	}
+
+	int getToxin() {
+		
+		return 0;
+	}
+
+	void setToxin(int t) {
+		
 		
 	}
 

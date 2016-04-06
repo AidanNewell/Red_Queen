@@ -4,6 +4,8 @@ public class CytoplasmCard extends Card{
 	
 	public CytoplasmCard(){
 		
+		CardType = CYTOPLASM;
+		
 		int a = (int)(Math.random()*3);
 		
 		switch(a){
