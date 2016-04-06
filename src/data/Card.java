@@ -18,9 +18,9 @@ abstract class Card {
 	abstract void setATP(int a);
 	
 	abstract int getResistance();
-	abstract int setResistance(int r);
+	abstract void setResistance(int r);
 	
 	abstract int getToxin();
-	abstract int setToxin(int t);
+	abstract void setToxin(int t);
 	
 }
