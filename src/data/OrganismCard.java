@@ -1,62 +1,30 @@
 package data;
 
-public class OrganismCard extends Card{
+abstract class OrganismCard extends Card{
 	
-	private int maxSize;
+	protected int resistance;
 	
-	private int resistance;
+	protected int ATP;
 	
-	public OrganismCard(int ms, int res){
-		
-		maxSize = ms;
-		
-		resistance = res;
+	protected int toxin;
+	
+	public OrganismCard(){
 		
 		CardType = ORGANISM;
 		
 	}
 	
-	public int getMaxSize(){
-		
-		return maxSize;
-		
-	}
-
 	int getCardType() {
 		
 		return ORGANISM;
 		
 	}
 	
-	int getATP() {
-		
-		return 0;
-	}
-
-	void setATP(int a) {
-		
-		
-	}
-	
-	int getResistance(){
-		
-		return resistance;
-		
-	}
-
-	void setResistance(int r) {
-		
-		resistance = r;
-	}
-
-	int getToxin() {
-		
-		return 0;
-	}
-
-	void setToxin(int t) {
-		
-		
-	}
+	abstract int getATP();
+	abstract void setATP(int a);
+	abstract int getResistance();
+	abstract void setResistance(int r);
+	abstract int getToxin();
+	abstract void setToxin(int t);
 
 }
