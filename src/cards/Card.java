@@ -1,6 +1,6 @@
-package data;
+package cards;
 
-abstract class Card {
+public abstract class Card {
 
 	protected int CardType;
 	

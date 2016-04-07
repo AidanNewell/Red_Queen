@@ -2,6 +2,8 @@ package data;
 
 import java.util.ArrayList;
 
+import cards.*;
+
 public class Hand {
 
 	private ArrayList<Card> hand;

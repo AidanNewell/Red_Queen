@@ -1,4 +1,4 @@
-package data;
+package cards;
 
 abstract class OrganismCard extends Card{
 	
