@@ -62,7 +62,8 @@ public class Client extends Canvas implements Runnable{
 	{
 		while(true)
 		{
-			client.renderCycle();
+			if(renderTick)
+				client.renderCycle();
 		}
 	}
 	
