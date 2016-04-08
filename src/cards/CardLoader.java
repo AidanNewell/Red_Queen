@@ -1,4 +1,4 @@
-package Cards;
+package cards;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -6,11 +6,11 @@ import java.util.Scanner;
 
 public class CardLoader {
 
-	private ArrayList<String> organismStarter;
-	private ArrayList<String> cytoplasmCard;
-	private ArrayList<String> petriCard;	
+	private static ArrayList<String> organismStarter;
+	private static ArrayList<String> cytoplasmCard;
+	private static ArrayList<String> petriCard;	
 	
-	public CardLoader()
+	public static void init()
 	{
 		organismStarter = new ArrayList<String>();
 		cytoplasmCard = new ArrayList<String>();
@@ -25,21 +25,29 @@ public class CardLoader {
 			while(!inputString.equals("PETRI")){cytoplasmCard.add(inputString);inputString=fileReader.next();}
 			while(fileReader.hasNext()){inputString = fileReader.next();petriCard.add(inputString);}
 			fileReader.close();
-		} catch (Exception e){System.out.println("FATAL ERROR READING CARDS"); e.printStackTrace(); System.exit(1);}
+		} catch (Exception e){System.out.println("FATAL ERROR READING CARD LIST"); e.printStackTrace(); System.exit(1);}
 	}
 	
-	public Card getOrganismCard()
+	public static Card getOrganismCard()
 	{
 		try {
-			return (Card) Class.forName(organismStarter.get((int)(Math.random()*organismStarter.size()))).newInstance();
+			return (Card) Class.forName("cards."+organismStarter.get((int)(Math.random()*organismStarter.size()))).newInstance();
 		} catch (Exception e){e.printStackTrace();System.exit(1);}
 		return null;
 	}
 	
-	public Card getCytoplasmCard()
+	public static Card getCytoplasmCard()
 	{
 		try{
-			return (Card) Class.forName(cytoplasmCard.get((int)(Math.random()*cytoplasmCard.size()))).newInstance();
+			return (Card) Class.forName("cards."+cytoplasmCard.get((int)(Math.random()*cytoplasmCard.size()))).newInstance();
+		}catch(Exception e){e.printStackTrace();System.exit(1);}
+		return null;
+	}
+	
+	public static Card getPetriCard()
+	{
+		try{
+			return (Card) Class.forName("cards."+petriCard.get((int)(Math.random()*petriCard.size()))).newInstance();
 		}catch(Exception e){e.printStackTrace();System.exit(1);}
 		return null;
 	}
