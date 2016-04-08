@@ -1,5 +1,14 @@
+Think of this as the deck -- The number of times a card appears in the deck in proportion to others affects the likelihood of drawing it
+The name MUST be the name of the class VERBATIM
+
+
 STARTERS
 
 CYTOPLASM
+
+CytosolCard
+CytosolCard
+CytosolCard
+EctoplasmCard
 
 PETRI

@@ -1,5 +1,7 @@
 package cards;
 
+import data.Organism;
+
 public abstract class BuilderCard extends Card{
 
 	protected int toxin;
@@ -18,5 +20,7 @@ public abstract class BuilderCard extends Card{
 		this.ATP=ATP;
 		this.res=res;
 	}
+	
+	abstract void modifyOrganism(Organism o);
 
 }
