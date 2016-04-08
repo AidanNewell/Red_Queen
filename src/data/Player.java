@@ -1,6 +1,7 @@
 package data;
 
 import java.util.ArrayList;
+import cards.*;
 
 public class Player {
 	private Hand hand;
@@ -9,11 +10,29 @@ public class Player {
 	
 	public Player(){
 		
+		hand = new Hand();
+		
+		organisms = new ArrayList<Organism>();
+		
 	}
 	
 	
-	public void takeTurn(){
-		
+	public void drawCards(int a, int  b, int c){
+		for(int x=0; x<a; x++){
+			
+			hand.addCard(CardLoader.getOrganismCard());
+			
+		}
+		for(int x=0; x<b; x++){
+			
+			hand.addCard(CardLoader.getCytoplasmCard());
+			
+		}
+		for(int x=0; x<c; x++){
+			
+			hand.addCard(CardLoader.getPetriCard());
+			
+		}
 		
 	}
 	

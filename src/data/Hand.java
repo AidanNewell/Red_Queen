@@ -20,4 +20,9 @@ public class Hand {
 		
 	}
 	
+	public void addCard(Card c){
+		
+		hand.add(c);
+	}
+	
 }
