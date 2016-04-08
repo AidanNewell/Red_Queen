@@ -1,6 +1,6 @@
 package cards;
 
-public class OrganismBodyCard extends OrganismCard{
+public class OrganismBodyCard extends ActionCard{
 
 	protected final static int DEFAULT_RESISTANCE = 2;
 	

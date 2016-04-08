@@ -1,6 +1,6 @@
 package cards;
 
-abstract class OrganismCard extends Card{
+abstract class ActionCard extends Card{
 	
 	protected int resistance;
 	
@@ -8,7 +8,7 @@ abstract class OrganismCard extends Card{
 	
 	protected int toxin;
 	
-	public OrganismCard(){
+	public ActionCard(){
 		
 		CardType = ORGANISM;
 		
