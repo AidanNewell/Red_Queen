@@ -4,6 +4,9 @@ The name MUST be the name of the class VERBATIM
 
 STARTERS
 
+SmallSquareOrganismCard
+MediumSquareOrganismCard
+
 CYTOPLASM
 
 CytosolCard
@@ -14,5 +17,6 @@ CytosolCard
 EctoplasmCard
 CytoskeletonCard
 CytoSkeletonCard
+
 
 PETRI
