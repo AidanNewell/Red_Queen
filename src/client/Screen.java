@@ -6,8 +6,12 @@ import javax.swing.JFrame;
 
 public class Screen extends Canvas{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private JFrame window;
-	private Thread thread;
 	
 	public Screen(int height, int width, boolean fullScreen, String gameName, Client client)
 	{

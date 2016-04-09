@@ -1,27 +1,34 @@
 package client;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import data.*;
 
 public class Client extends Canvas implements Runnable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private static Client client;
 	private Screen coreScreen;
 	private static final int WIDTH = 1024, HEIGHT = 768;
 	private Thread thread;
 	private boolean renderTick = false;
+	private int gameState;
+	private static Player player;
 	
 	public Client()
 	{
 		coreScreen = new Screen(HEIGHT,WIDTH,false,"Red Queen", this);
-
 	}
 	
 	public static void main(String [] args)
 	{
 		client = new Client();
+		player = new Player();
 		client.runGame();
 	}
 

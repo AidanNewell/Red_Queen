@@ -11,4 +11,6 @@ public class Organism {
 	{
 		organismBody = new BuilderCard[height][width];
 	}
+	
+	
 }
