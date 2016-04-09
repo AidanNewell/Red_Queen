@@ -7,13 +7,13 @@ public class Player {
 	private Hand hand;
 	private ArrayList<Organism> organisms; 
 	private int numCards;
+	private int numOrganisms;
 	
 	public Player(){
 		
 		hand = new Hand();
-		
 		organisms = new ArrayList<Organism>();
-		
+		numOrganisms=4;
 	}
 	
 	
@@ -46,5 +46,20 @@ public class Player {
 		
 		numCards+=n;
 		
+	}
+	
+	public int getNumOrganisms()
+	{
+		return organisms.size();
+	}
+	
+	public void newOrganism(Organism o)
+	{
+		organisms.add(o);
+	}
+	
+	public boolean isNewOrgValid()
+	{
+		return numOrganisms>organisms.size();
 	}
 }

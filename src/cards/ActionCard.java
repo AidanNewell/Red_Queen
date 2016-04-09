@@ -1,30 +1,11 @@
 package cards;
 
+import data.Alert;
+import data.Organism;
+import data.Player;
+
 abstract class ActionCard extends Card{
 	
-	protected int resistance;
-	
-	protected int ATP;
-	
-	protected int toxin;
-	
-	public ActionCard(){
-		
-		CardType = ORGANISM;
-		
-	}
-	
-	int getCardType() {
-		
-		return ORGANISM;
-		
-	}
-	
-	abstract int getATP();
-	abstract void setATP(int a);
-	abstract int getResistance();
-	abstract void setResistance(int r);
-	abstract int getToxin();
-	abstract void setToxin(int t);
+	abstract Alert performAction(Organism o, Player p);
 
 }
