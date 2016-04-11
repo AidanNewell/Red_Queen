@@ -12,12 +12,12 @@ public class ChloroplastCard extends BuilderCard{
 	}
 
 	
-	void modifyOrganism(Organism o) {
+	public void modifyOrganism(Organism o, int x, int y) {
 		
 	}
 
 
-	int getCardType() {
+	public int getCardType() {
 		return Card.PETRI_DISH;
 	}
 	

@@ -26,6 +26,6 @@ public abstract class BuilderCard extends Card{
 		this.cooldown=cooldown;
 	}
 	
-	abstract void modifyOrganism(Organism o);
+	abstract void modifyOrganism(Organism o, int x, int y);
 
 }

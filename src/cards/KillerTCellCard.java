@@ -8,11 +8,11 @@ public class KillerTCellCard extends BuilderCard{
 		super(4, 0, 0, 5, 3);
 	}
 
-	void modifyOrganism(Organism o) {
+	public void modifyOrganism(Organism o,int x,int y) {
 
 	}
 
-	int getCardType() {
+	public int getCardType() {
 		return Card.PETRI_DISH;
 	}
 

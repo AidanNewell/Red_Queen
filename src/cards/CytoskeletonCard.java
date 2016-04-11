@@ -14,7 +14,7 @@ public class CytoskeletonCard extends BuilderCard{
 		return Card.CYTOPLASM;
 	}
 	
-	public void modifyOrganism(Organism o){
+	public void modifyOrganism(Organism o, int x, int y){
 		
 	}
 

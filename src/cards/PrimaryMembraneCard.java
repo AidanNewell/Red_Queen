@@ -14,7 +14,7 @@ public class PrimaryMembraneCard extends BuilderCard{
 		return Card.PETRI_DISH;
 	}
 	
-	public void modifyOrganism(Organism o){
+	public void modifyOrganism(Organism o, int x, int y){
 		
 	}
 
