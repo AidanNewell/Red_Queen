@@ -2,39 +2,40 @@ package cards;
 
 import data.Organism;
 
-public class LymphocyteCard extends BuilderCard{
+public class HelperTCellCard extends BuilderCard{
 
-	public LymphocyteCard() {
+	public HelperTCellCard() {
 		super(0, 0, 0, 5, 0);
 	}
-	
+
+
 	void modifyOrganism(Organism o, int x, int y) {
 		
-		int resCounter=0;
+		
+		int toxCounter=0;
 		
 		for(int a=0; a<x; a++){
 			for(int b=0; b<y; b++){
 				
-				if(o.getCardAt(a, b).getCooldown()==0){
-					resCounter++;
+				if(o.getCardAt(a, b).getToxin()>1){
+					toxCounter++;
 				}
 				
 			}
 			
 		}
 		
-		modifyResistance(resCounter);
+		modifyToxin(toxCounter);
 		
 	}
-
 
 	int getCardType() {
 		return Card.PETRI_DISH;
 	}
 	
-	void modifyResistance(int n){
+	void modifyToxin(int n){
 		
-		res+=(n-res);
+		toxin+=(n-toxin);
 	}
 
 }
