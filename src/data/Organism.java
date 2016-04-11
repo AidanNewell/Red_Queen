@@ -60,4 +60,14 @@ public class Organism {
 		return organismBody[x][y]!=null;
 	}
 	
+	public BuilderCard getCardAt(int a, int b){
+		
+		if(a<organismBody.length && b<organismBody[0].length){
+			return organismBody[a][b];
+		}else{
+			return null;
+		}
+		
+	}
+	
 }
