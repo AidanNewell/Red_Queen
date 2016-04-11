@@ -17,7 +17,7 @@ public abstract class BuilderCard extends Card{
 	
 	public int getToxin(){return toxin;}
 	
-	public BuilderCard(int toxin, int ATP, int res,int cost, int cooldown)
+	public BuilderCard(int toxin, int ATP, int res, int cost, int cooldown)
 	{
 		this.toxin = toxin;
 		this.ATP=ATP;
