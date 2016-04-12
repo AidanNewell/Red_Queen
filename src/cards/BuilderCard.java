@@ -12,6 +12,7 @@ public abstract class BuilderCard extends Card{
 	protected int bufferRes=0;
 	protected int bufferATP=0;
 	protected int bufferToxin=0;
+	protected int bufferCooldown=0;
 	
 	
 	public int getRes(){return res;}
@@ -52,6 +53,11 @@ public abstract class BuilderCard extends Card{
 		bufferToxin+=x;
 	}
 	
+	public void modifyBufferCooldown(int x)
+	{
+		bufferCooldown+=x;
+	}
+	
 	public int getBufferRes()
 	{
 		return bufferRes;
@@ -65,6 +71,11 @@ public abstract class BuilderCard extends Card{
 	public int getBufferToxin()
 	{
 		return bufferToxin;
+	}
+	
+	public int getBufferCooldown()
+	{
+		return bufferCooldown;
 	}
 
 }

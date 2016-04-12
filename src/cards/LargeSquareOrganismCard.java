@@ -8,8 +8,8 @@ public class LargeSquareOrganismCard extends OrganismStarter{
 
 	public LargeSquareOrganismCard()
 	{
-		this.height=7;
-		this.width=7;
+		this.height=5;
+		this.width=5;
 	}
 	
 	public Alert performAction(Organism o, Player p){
