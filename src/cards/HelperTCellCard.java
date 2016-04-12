@@ -15,10 +15,12 @@ public class HelperTCellCard extends BuilderCard{
 		{
 			for(int j=-1;j<1;j++)
 			{
-				if(i != 0 && j != 0 && o.isOccupied(x, y) && o.getCardAt(x, y).getToxin()>1)
-				{
-					o.getCardAt(x, y).modifyBufferToxin(1);
-				}
+				try{
+					if(i != 0 && j != 0 && o.isOccupied(x, y) && o.getCardAt(x, y).getToxin()>1)
+					{
+						o.getCardAt(x, y).modifyBufferToxin(1);
+					}
+				}catch(Exception e){}
 			}
 		}
 	}
