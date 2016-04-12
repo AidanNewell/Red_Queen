@@ -20,4 +20,10 @@ public class MitochondriaCard extends BuilderCard{
 		return Card.PETRI_DISH;
 	}
 
+
+	public void killCard(Organism o, int x, int y)
+	{
+		
+	}
+
 }

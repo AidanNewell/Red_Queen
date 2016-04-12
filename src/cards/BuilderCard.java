@@ -4,11 +4,14 @@ import data.Organism;
 
 public abstract class BuilderCard extends Card{
 
-	protected int toxin;
-	protected int ATP;
-	protected int res;
-	protected int cost;
-	protected int cooldown;
+	protected int toxin=0;
+	protected int ATP=0;
+	protected int res=0;
+	protected int cost=0;
+	protected int cooldown=0;
+	protected int bufferRes=0;
+	protected int bufferATP=0;
+	protected int bufferToxin=0;
 	
 	
 	public int getRes(){return res;}
@@ -30,6 +33,38 @@ public abstract class BuilderCard extends Card{
 		this.cooldown=cooldown;
 	}
 	
-	abstract void modifyOrganism(Organism o, int x, int y);
+	abstract public void modifyOrganism(Organism o, int x, int y);
+	
+	abstract public void killCard(Organism o, int x, int y);
+	
+	public void modifyBufferRes(int x)
+	{
+		bufferRes+=x;
+	}
+	
+	public void modifyBufferATP(int x)
+	{
+		bufferATP+=x;
+	}
+	
+	public void modifyBufferToxin(int x)
+	{
+		bufferToxin+=x;
+	}
+	
+	public int getBufferRes()
+	{
+		return bufferRes;
+	}
+	
+	public int getBufferATP()
+	{
+		return bufferATP;
+	}
+	
+	public int getBufferToxin()
+	{
+		return bufferToxin;
+	}
 
 }

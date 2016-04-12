@@ -20,6 +20,11 @@ public class ChloroplastCard extends BuilderCard{
 	public int getCardType() {
 		return Card.PETRI_DISH;
 	}
+
+
+	public void killCard(Organism o, int x, int y) {
+		
+	}
 	
 	
 }

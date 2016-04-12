@@ -18,4 +18,9 @@ public class PrimaryMembraneCard extends BuilderCard{
 		
 	}
 
+	public void killCard(Organism o, int x, int y)
+	{
+		
+	}
+
 }

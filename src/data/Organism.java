@@ -31,7 +31,7 @@ public class Organism {
 		return totalRes;
 	}
 	
-	private void updateOrganism()
+	public void updateOrganism()
 	{
 		totalToxin=0;
 		totalATP=0;
@@ -40,11 +40,18 @@ public class Organism {
 		{
 			for(int y=0; y<organismBody[0].length;y++)
 			{
-				if(organismBody!=null)
+				if(organismBody[x][y]!=null)
 				{
-					totalToxin+=organismBody[x][y].getToxin();
-					totalATP+=organismBody[x][y].getATP();
-					totalRes+=organismBody[x][y].getRes();
+					BuilderCard current = organismBody[x][y];
+					int modifier = current.getToxin() - current.getBufferToxin();
+					if(modifier > 0)
+						totalToxin+=modifier;
+					modifier = current.getATP() - current.getBufferATP();
+					if(modifier > 0)
+						totalATP+=modifier;
+					modifier=current.getRes()-current.getBufferRes();
+					if(modifier > 0)
+						totalRes+=modifier;
 				}
 			}
 		}
@@ -55,19 +62,19 @@ public class Organism {
 		organismBody[x][y] = c;
 	}
 	
-	public boolean isOccupied(int x, int y)
+	public boolean isOccupied(int x, int y) throws IndexOutOfBoundsException
 	{
 		return organismBody[x][y]!=null;
 	}
 	
 	public BuilderCard getCardAt(int a, int b){
 		
-		if(a<organismBody.length && b<organismBody[0].length){
-			return organismBody[a][b];
-		}else{
-			return null;
-		}
-		
+		return organismBody[a][b];
+	}
+	
+	public void killOrganelle(int x, int y)
+	{
+		organismBody[x][y].killCard(this, x, y);
 	}
 	
 }

@@ -9,33 +9,38 @@ public class HelperTCellCard extends BuilderCard{
 	}
 
 
-	void modifyOrganism(Organism o, int x, int y) {
-		
-		
-		int toxCounter=0;
-		
-		for(int a=0; a<x; a++){
-			for(int b=0; b<y; b++){
-				
-				if(o.getCardAt(a, b).getToxin()>1){
-					toxCounter++;
+	public void modifyOrganism(Organism o, int x, int y) {
+		o.addCard(x, y, this);
+		for(int i=-1;i<1;i++)
+		{
+			for(int j=-1;j<1;j++)
+			{
+				if(i != 0 && j != 0 && o.isOccupied(x, y) && o.getCardAt(x, y).getToxin()>1)
+				{
+					o.getCardAt(x, y).modifyBufferToxin(1);
 				}
-				
 			}
-			
 		}
-		
-		modifyToxin(toxCounter);
-		
 	}
 
-	int getCardType() {
+	public int getCardType() {
 		return Card.PETRI_DISH;
 	}
-	
-	void modifyToxin(int n){
-		
-		toxin+=(n-toxin);
+
+
+	public void killCard(Organism o, int x, int y)
+	{
+
+		for(int i=-1;i<1;i++)
+		{
+			for(int j=-1;j<1;j++)
+			{
+				if(i != 0 && j != 0 && o.isOccupied(x, y) && o.getCardAt(x, y).getToxin()>1)
+				{
+					o.getCardAt(x, y).modifyBufferToxin(-1);
+				}
+			}
+		}
 	}
 
 }

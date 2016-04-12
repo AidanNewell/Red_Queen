@@ -18,4 +18,8 @@ public class CytoskeletonCard extends BuilderCard{
 		
 	}
 
+	public void killCard(Organism o, int x, int y) {
+		
+	}
+
 }

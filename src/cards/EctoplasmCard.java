@@ -8,12 +8,16 @@ public class EctoplasmCard extends BuilderCard{
 		super(2,2,1,0,1);
 	}
 
-	int getCardType() {
+	public int getCardType() {
 		return Card.CYTOPLASM;
 	}
 	
 	public void modifyOrganism(Organism o, int x, int y)
 	{
+		
+	}
+
+	public void killCard(Organism o, int x, int y) {
 		
 	}
 
