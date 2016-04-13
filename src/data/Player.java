@@ -37,7 +37,7 @@ public class Player {
 		
 	}
 	
-	public int updatePlayer()
+	public voidint updatePlayer()
 	{
 		for(Organism o : organisms)
 		{
