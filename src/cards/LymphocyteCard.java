@@ -17,7 +17,7 @@ public class LymphocyteCard extends BuilderCard{
 				try{
 					if(x != 0 && y != 0 && o.isOccupied(xIndex, y))
 					{
-						o.getCardAt(x,y).modifyBufferRes(1);
+						o.getCardAt(x+xIndex,y+yIndex).modifyBufferRes(1);
 					}
 				}catch(Exception e){}
 			}

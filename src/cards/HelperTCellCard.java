@@ -39,7 +39,7 @@ public class HelperTCellCard extends BuilderCard{
 			{
 				if(i != 0 && j != 0 && o.isOccupied(x, y) && o.getCardAt(x, y).getToxin()>1)
 				{
-					o.getCardAt(x, y).modifyBufferToxin(-1);
+					o.getCardAt(x+i, y+j).modifyBufferToxin(-1);
 				}
 			}
 		}

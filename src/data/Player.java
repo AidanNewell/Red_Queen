@@ -6,7 +6,7 @@ import cards.*;
 public class Player {
 	private Hand hand;
 	private ArrayList<Organism> organisms; 
-	private int numCards;
+	private int numCardsToDraw;
 	private int numOrganisms;
 	
 	public Player(){
@@ -14,6 +14,7 @@ public class Player {
 		hand = new Hand();
 		organisms = new ArrayList<Organism>();
 		numOrganisms=4;
+		numCardsToDraw = 3;
 	}
 	
 	
@@ -36,16 +37,12 @@ public class Player {
 		
 	}
 	
-	public int getNumCards(){
-		
-		return numCards;
-		
-	}
-	
-	public void modifyNumCards(int n){
-		
-		numCards+=n;
-		
+	public int updatePlayer()
+	{
+		for(Organism o : organisms)
+		{
+			
+		}
 	}
 	
 	public int getNumOrganisms()
