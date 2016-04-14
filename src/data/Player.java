@@ -37,7 +37,7 @@ public class Player {
 		
 	}
 	
-	public voidint updatePlayer()
+	public void updatePlayer()
 	{
 		for(Organism o : organisms)
 		{
@@ -58,5 +58,15 @@ public class Player {
 	public boolean isNewOrgValid()
 	{
 		return numOrganisms>organisms.size();
+	}
+	
+	public void clearHand(){
+		
+		for(int x=0; x<hand.getHand().size()-1; x++){
+			
+			hand.getHand().remove(0);
+			
+		}
+		
 	}
 }
