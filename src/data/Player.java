@@ -60,13 +60,8 @@ public class Player {
 		return numOrganisms>organisms.size();
 	}
 	
-	public void clearHand(){
-		
-		for(int x=0; x<hand.getHand().size()-1; x++){
-			
-			hand.getHand().remove(0);
-			
-		}
-		
+	public void clearHand()
+	{
+		hand.getHand().clear();
 	}
 }

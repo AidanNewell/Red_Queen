@@ -7,10 +7,10 @@ import data.Player;
 public class DiscardCard extends ActionCard{
 
 
-	Alert performAction(Organism o, Player p) {
+	public Alert performAction(Organism o, Player p) {
 		
 		p.clearHand();
-		
+		return null;
 	}
 
 	@Override
