@@ -22,7 +22,7 @@ public class Client extends Canvas implements Runnable{
 	
 	public Client()
 	{
-		coreScreen = new Screen(HEIGHT,WIDTH,false,"Red Queen", this);
+		coreScreen = new Screen(HEIGHT,WIDTH,true,"Red Queen", this);
 	}
 	
 	public static void main(String [] args)

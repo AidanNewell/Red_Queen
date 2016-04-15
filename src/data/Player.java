@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import cards.*;
 
 public class Player {
+	
 	private Hand hand;
 	private ArrayList<Organism> organisms; 
 	private int numCardsToDraw;
@@ -39,9 +40,12 @@ public class Player {
 	
 	public void updatePlayer()
 	{
+		numCardsToDraw=2;
 		for(Organism o : organisms)
 		{
-			
+			int x = o.getCardsToDraw();
+			if(x > 0)
+				numCardsToDraw+=x;
 		}
 	}
 	

@@ -9,11 +9,12 @@ public class Organism {
 	private int totalToxin;
 	private int totalATP;
 	private int totalRes;
-	
+	private int bufferDrawCards;
 	
 	public Organism(int height, int width)
 	{
 		organismBody = new BuilderCard[height][width];
+		bufferDrawCards=1;
 	}
 	
 	public int getToxin()
@@ -75,6 +76,11 @@ public class Organism {
 	public void killOrganelle(int x, int y)
 	{
 		organismBody[x][y].killCard(this, x, y);
+	}
+	
+	public int getCardsToDraw()
+	{
+		return bufferDrawCards;
 	}
 	
 }
