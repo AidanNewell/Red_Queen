@@ -7,13 +7,15 @@ public class ConsoleGameEw extends Game{
 	
 	public ConsoleGameEw(){
 		
-		
+		setUpGame();
 		
 		
 	}
 	
 	
 	public void setUpGame(){
+		
+		new ConsolePlayerEw();
 		
 		
 	}
