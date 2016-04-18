@@ -61,7 +61,7 @@ public class Player {
 	
 	public boolean isNewOrgValid()
 	{
-		return numOrganisms>organisms.size();
+		return numOrganisms>=organisms.size();
 	}
 	
 	public void clearHand()
