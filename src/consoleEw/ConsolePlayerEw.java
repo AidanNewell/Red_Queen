@@ -81,6 +81,11 @@ public class ConsolePlayerEw extends Player{
 		hand.getHand().clear();
 	}
 	
+	
+	public String getPlayerName(){
+		
+		return playerName;
+	}
 	public void takeTurn(){
 		
 		
