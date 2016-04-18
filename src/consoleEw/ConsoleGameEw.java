@@ -1,5 +1,7 @@
 package consoleEw;
 
-public class ConsoleGameEw {
+import data.Game;
+
+public class ConsoleGameEw extends Game{
 
 }
