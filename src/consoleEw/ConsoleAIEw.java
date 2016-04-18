@@ -79,4 +79,9 @@ public class ConsoleAIEw extends Player{
 			hand.getHand().clear();
 		}
 		
+		public void takeTurn(){
+			
+			
+		}
+		
 }

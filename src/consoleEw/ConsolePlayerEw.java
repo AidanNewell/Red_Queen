@@ -81,4 +81,9 @@ public class ConsolePlayerEw extends Player{
 		hand.getHand().clear();
 	}
 	
+	public void takeTurn(){
+		
+		
+	}
+	
 }
