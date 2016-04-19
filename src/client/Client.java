@@ -1,11 +1,15 @@
 package client;
 
 import java.awt.Canvas;
+import java.awt.CardLayout;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+
+import javax.swing.JPanel;
+
 import data.*;
 
-public class Client extends Canvas implements Runnable{
+public class Client extends JPanel implements Runnable{
 
 	/**
 	 * 
@@ -22,6 +26,10 @@ public class Client extends Canvas implements Runnable{
 	
 	public Client()
 	{
+		setLayout(new CardLayout());
+		add(new MainMenu(), "MAIN_MENU");
+		add(new GameCreationScreen(),"GAME_CREATION");
+		add(new GameScreen(), "GAME_SCREEN");
 		coreScreen = new Screen(HEIGHT,WIDTH,true,"Red Queen", this);
 	}
 	
@@ -76,15 +84,13 @@ public class Client extends Canvas implements Runnable{
 	
 	private void renderCycle()
 	{
-		BufferStrategy buffer = this.getBufferStrategy();
-		if(buffer == null)
-		{
-			this.createBufferStrategy(2);
-			return;
-		}
-		Graphics graphics = buffer.getDrawGraphics();
-		graphics.dispose();
-		buffer.show();
-		renderTick=false;
+		client.repaint();
+		client.revalidate();
+	}
+	
+	public static void setCard(String s)
+	{
+		((CardLayout)(client.getLayout())).show(client,s);
+		client.revalidate();
 	}
 }

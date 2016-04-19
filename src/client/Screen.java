@@ -31,5 +31,6 @@ public class Screen extends Canvas{
 		}
 		window.add(client);
 		window.setVisible(true);
+
 	}
 }
