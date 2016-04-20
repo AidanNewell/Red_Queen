@@ -21,7 +21,6 @@ public class Client extends JPanel implements Runnable{
 	private static final int WIDTH = 1024, HEIGHT = 768;
 	private Thread thread;
 	private boolean renderTick = false;
-	private int gameState;
 	private static Player player;
 	
 	public Client()
@@ -97,5 +96,10 @@ public class Client extends JPanel implements Runnable{
 	public static void quitGame()
 	{
 		System.exit(0);
+	}
+	
+	public static void startGame()
+	{
+		player = new Player();
 	}
 }
