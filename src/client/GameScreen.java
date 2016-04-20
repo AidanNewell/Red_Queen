@@ -30,8 +30,6 @@ public class GameScreen extends JPanel{
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		g.setColor(Color.MAGENTA);
-		g.fillRect(0, 0, 500, 500);
 	}
 
 }
