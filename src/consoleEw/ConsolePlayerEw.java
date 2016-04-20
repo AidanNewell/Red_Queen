@@ -88,10 +88,16 @@ public class ConsolePlayerEw extends Player{
 		return playerName;
 	}
 	public void takeTurn(){
-		int e,f,g;
-		System.out.println("Enter the number of Organism Cards to draw: ");
-		e = s.nextInt();
-		
+		int e=0,f=0,g = 5;
+		while((e+f+g)!=3){
+			System.out.println("Enter the number of Organism Cards to draw: ");
+			e = s.nextInt();
+			System.out.println("Enter the number of Cytoplasm Cards to draw: ");
+			f = s.nextInt();
+			System.out.println("Enter the number of Petri Dish Cards to draw: ");
+			g = s.nextInt();
+		}
+		drawCards(e,f,g);
 	}
 	
 }
