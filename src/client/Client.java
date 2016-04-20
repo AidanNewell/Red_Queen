@@ -93,4 +93,9 @@ public class Client extends JPanel implements Runnable{
 		((CardLayout)(client.getLayout())).show(client,s);
 		client.revalidate();
 	}
+	
+	public static void quitGame()
+	{
+		System.exit(0);
+	}
 }
