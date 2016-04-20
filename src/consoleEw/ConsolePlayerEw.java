@@ -15,6 +15,7 @@ public class ConsolePlayerEw extends Player{
 	private int numCardsToDraw;
 	private int numOrganisms;
 	private String playerName;
+	Scanner s;
 	
 	
 	public ConsolePlayerEw(){
@@ -23,7 +24,7 @@ public class ConsolePlayerEw extends Player{
 		organisms = new ArrayList<Organism>();
 		numOrganisms=4;
 		numCardsToDraw = 3;
-		Scanner s = new Scanner(System.in);
+		 s = new Scanner(System.in);
 		System.out.println("What is your name?");
 		String w = s.nextLine();
 		playerName = w;
@@ -87,7 +88,9 @@ public class ConsolePlayerEw extends Player{
 		return playerName;
 	}
 	public void takeTurn(){
-		
+		int e,f,g;
+		System.out.println("Enter the number of Organism Cards to draw: ");
+		e = s.nextInt();
 		
 	}
 	
