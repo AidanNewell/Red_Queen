@@ -31,7 +31,7 @@ public class CardLoader {
 	public static Card getOrganismCard()
 	{
 		try {
-			return (Card) Class.forName("cards."+organismStarter.get((int)(Math.random()*organismStarter.size()))).newInstance();
+			return (Card) (Class.forName("cards."+organismStarter.get((int)(Math.random()*organismStarter.size())))).newInstance();
 		} catch (Exception e){e.printStackTrace();System.exit(1);}
 		return null;
 	}

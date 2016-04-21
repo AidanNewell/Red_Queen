@@ -3,6 +3,7 @@ package consoleEw;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import cards.Card;
 import cards.CardLoader;
 import data.Hand;
 import data.Organism;
@@ -98,6 +99,21 @@ public class ConsolePlayerEw extends Player{
 			g = s.nextInt();
 		}
 		drawCards(e,f,g);
+		displayHand();
+		
+	}
+	
+	public void displayHand(){
+		
+		System.out.print("Your hand: ");
+		
+		for(Card c : hand.getHand()){
+			
+			System.out.print(c.getClass() +", ");
+			
+		}
+		
+		
 	}
 	
 }

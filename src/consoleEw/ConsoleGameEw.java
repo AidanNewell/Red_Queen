@@ -11,6 +11,7 @@ public class ConsoleGameEw extends Game{
 	public ConsoleGameEw(){
 		
 		setUpGame();
+		startGame();
 		
 		
 	}
