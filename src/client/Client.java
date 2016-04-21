@@ -101,5 +101,6 @@ public class Client extends JPanel implements Runnable{
 	public static void startGame()
 	{
 		player = new Player();
+		setCard("GAME_SCREEN");
 	}
 }

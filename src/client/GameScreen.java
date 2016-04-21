@@ -11,25 +11,24 @@ import javax.swing.JPanel;
 
 public class GameScreen extends JPanel{
 
-	private int gameState;
+	
+	public static final int DRAW_CARDS=0, BUILD_ORG=1, PLAY_CARDS=2;
+			
+	private int gameState=DRAW_CARDS;
 
 	
 	private static final long serialVersionUID = 1L;
 	public GameScreen()
 	{
-		JButton toMain = new JButton("MainTest");
-		toMain.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e)
-			{
-				Client.setCard("MAIN_MENU");
-			}
-		});
-		add(toMain);
+		
 	}
 	
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
+		//Paint base game
+		
+		//DrawCards
 	}
 
 }

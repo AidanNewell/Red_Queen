@@ -12,6 +12,7 @@ public class CardLoader {
 	
 	public static void init()
 	{
+		//Sahil run this before you try to use it god damn
 		organismStarter = new ArrayList<String>();
 		cytoplasmCard = new ArrayList<String>();
 		petriCard = new ArrayList<String>();
@@ -19,6 +20,7 @@ public class CardLoader {
 			Scanner fileReader = new Scanner(new File("assets/CardList"));
 			String inputString = fileReader.next();
 			while(!inputString.equals("STARTERS")){inputString = fileReader.next();}
+			inputString = fileReader.next();
 			inputString = fileReader.next();
 			while(!inputString.equals("CYTOPLASM")){organismStarter.add(inputString);inputString=fileReader.next();}
 			inputString = fileReader.next();
@@ -30,14 +32,16 @@ public class CardLoader {
 	
 	public static Card getOrganismCard()
 	{
+		//DID YOU INIT
 		try {
-			return (Card) (Class.forName("cards."+organismStarter.get((int)(Math.random()*organismStarter.size())))).newInstance();
+			return (Card) (Class.forName("cards."+ organismStarter.get((int)(Math.random()*organismStarter.size()))).newInstance());
 		} catch (Exception e){e.printStackTrace();System.exit(1);}
 		return null;
 	}
 	
 	public static Card getCytoplasmCard()
 	{
+		//DID YOU INIT
 		try{
 			return (Card) Class.forName("cards."+cytoplasmCard.get((int)(Math.random()*cytoplasmCard.size()))).newInstance();
 		}catch(Exception e){e.printStackTrace();System.exit(1);}
@@ -46,6 +50,7 @@ public class CardLoader {
 	
 	public static Card getPetriCard()
 	{
+		//DID YOU INIT
 		try{
 			return (Card) Class.forName("cards."+petriCard.get((int)(Math.random()*petriCard.size()))).newInstance();
 		}catch(Exception e){e.printStackTrace();System.exit(1);}
