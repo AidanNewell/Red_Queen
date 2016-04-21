@@ -34,6 +34,9 @@ public class ConsolePlayerEw extends Player{
 	
 	
 	public void drawCards(int a, int  b, int c){
+		
+		CardLoader.init();
+		
 		for(int x=0; x<a; x++){
 			
 			hand.addCard(CardLoader.getOrganismCard());
