@@ -27,8 +27,6 @@ public class GameScreen extends JPanel{
 	{
 		super.paintComponent(g);
 		//Paint base game
-		
-		//DrawCards
 	}
 
 }
