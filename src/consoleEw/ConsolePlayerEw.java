@@ -29,13 +29,14 @@ public class ConsolePlayerEw extends Player{
 		System.out.println("What is your name?");
 		String w = s.nextLine();
 		playerName = w;
+		CardLoader.init();
 		
 	}
 	
 	
 	public void drawCards(int a, int  b, int c){
 		
-		CardLoader.init();
+		
 		
 		for(int x=0; x<a; x++){
 			
@@ -103,7 +104,32 @@ public class ConsolePlayerEw extends Player{
 		}
 		drawCards(e,f,g);
 		displayHand();
+		System.out.println("Enter the number of the card you want to use: ");
+		int v = s.nextInt();
+		Card card = hand.getHand().get(v-1);
+		switch(card.getCardType()){
 		
+		case 1 :
+			
+			((OrganismStarter)card).performAction(null,this);
+			
+			break;
+			
+		case 2 :
+			
+			
+			
+			
+			break;
+			
+		case 3 :
+			
+			
+			
+			
+			break;
+			
+		}
 	}
 	
 	public void displayHand(){
@@ -113,7 +139,7 @@ public class ConsolePlayerEw extends Player{
 		for(Card c : hand.getHand()){
 			
 			System.out.print(c.getClass() +", ");
-			
+			System.out.println("");
 		}
 		
 		
