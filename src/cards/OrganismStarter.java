@@ -4,7 +4,7 @@ import data.Alert;
 import data.Organism;
 import data.Player;
 
-abstract class OrganismStarter extends ActionCard{
+public abstract class OrganismStarter extends ActionCard{
 
 	int height;
 	int width;

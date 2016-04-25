@@ -8,6 +8,7 @@ import cards.CardLoader;
 import data.Hand;
 import data.Organism;
 import data.Player;
+import cards.*;
 
 public class ConsolePlayerEw extends Player{
 
@@ -111,7 +112,7 @@ public class ConsolePlayerEw extends Player{
 		
 		case 1 :
 			
-			((OrganismStarter)card).performAction(null,this);
+			((OrganismStarter) card).performAction(null,this);
 			
 			break;
 			
