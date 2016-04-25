@@ -33,12 +33,12 @@ public class ConsoleGameEw extends Game{
 			p.takeTurn();
 			c.takeTurn();
 			
-			if(p.getNumOrganisms()==0){
+			if(p.getNumOrganisms()<=0){
 				
 				gameOver = true;
 				System.out.println("Computer Wins!");
 				
-			}else if(c.getNumOrganisms()==0){
+			}else if(c.getNumOrganisms()<=0){
 				
 				gameOver = true;
 				System.out.println(p.getPlayerName() +" Wins!");

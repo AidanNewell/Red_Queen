@@ -14,6 +14,7 @@ public class MediumSquareOrganismCard extends OrganismStarter{
 	
 	public Alert performAction(Organism o, Player p) {
 		return super.performAction(o, p, height, width);
+		
 	}
 
 }
