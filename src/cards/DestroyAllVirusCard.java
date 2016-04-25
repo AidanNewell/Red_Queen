@@ -7,7 +7,7 @@ import data.Player;
 public class DestroyAllVirusCard extends ActionCard{
 
 
-	Alert performAction(Organism o, Player p) {
+	public Alert performAction(Organism o, Player p) {
 		
 		
 		
@@ -15,7 +15,7 @@ public class DestroyAllVirusCard extends ActionCard{
 	}
 
 	
-	int getCardType() {
+	public int getCardType() {
 		
 		return Card.PETRI_DISH;
 	}

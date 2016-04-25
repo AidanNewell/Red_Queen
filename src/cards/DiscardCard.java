@@ -14,7 +14,7 @@ public class DiscardCard extends ActionCard{
 	}
 
 	@Override
-	int getCardType() {
+	public int getCardType() {
 
 		return Card.PETRI_DISH;
 	}

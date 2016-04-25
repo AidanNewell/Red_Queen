@@ -7,13 +7,13 @@ import data.Player;
 public class TileDestroyerCard extends ActionCard{
 
 
-	Alert performAction(Organism o, Player p) {
+	public Alert performAction(Organism o, Player p) {
 		
 		return null;
 	}
 
 
-	int getCardType() {
+	public int getCardType() {
 
 		return Card.PETRI_DISH;
 	}
