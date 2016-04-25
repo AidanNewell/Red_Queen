@@ -9,7 +9,7 @@ public class Alert {
 		this.s = s;
 	}
 	
-	public String getAlert(String s)
+	public String toString()
 	{
 		return s;
 	}

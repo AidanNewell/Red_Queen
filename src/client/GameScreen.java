@@ -26,7 +26,14 @@ public class GameScreen extends JPanel{
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
+		//Background
+		setBackground(new Color(161,218,142));
 		//Paint base game
+		
+		//Paint background
+		//Paint overlay
+		//Paint accessories
+		//Paint hand
 	}
 
 }
