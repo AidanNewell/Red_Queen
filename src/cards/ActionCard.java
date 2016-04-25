@@ -6,6 +6,6 @@ import data.Player;
 
 abstract class ActionCard extends Card{
 	
-	abstract Alert performAction(Organism o, Player p);
+	public abstract Alert performAction(Organism o, Player p);
 
 }
