@@ -111,9 +111,10 @@ public class ConsolePlayerEw extends Player{
 		switch(card.getCardType()){
 		
 		case 1 :
-			
+
+			System.out.println(organisms.size());
 			((OrganismStarter) card).performAction(null,this);
-			
+			System.out.println(organisms.size());
 			break;
 			
 		case 2 :

@@ -36,7 +36,7 @@ public class ConsoleGameEw extends Game{
 			if(p.getNumOrganisms()<=0){
 				
 				gameOver = true;
-				System.out.println("Computer Wins!");
+				System.out.println("Computer Wins! " + p.getNumOrganisms());
 				
 			}else if(c.getNumOrganisms()<=0){
 				
