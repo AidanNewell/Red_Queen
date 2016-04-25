@@ -135,7 +135,7 @@ public class ConsolePlayerEw extends Player{
 	
 	public void displayHand(){
 		
-		System.out.print("Your hand: ");
+		System.out.println("Your hand: ");
 		
 		for(Card c : hand.getHand()){
 			
