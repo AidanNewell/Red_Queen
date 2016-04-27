@@ -112,14 +112,17 @@ public class ConsolePlayerEw extends Player{
 		
 		case 1 :
 
-			System.out.println(organisms.size());
+			//System.out.println(organisms.size());
 			((OrganismStarter) card).performAction(null,this);
-			System.out.println(organisms.size());
+			//System.out.println(organisms.size());
 			break;
 			
 		case 2 :
 			
-			
+			System.out.println("You have to pick an organism to add this card to");
+			displayOrganisms();
+			System.out.println("Select the organism to add the card to: ");
+			organisms.get(s.nextInt()-1).addCard(0, 0, (BuilderCard) card); 
 			
 			
 			break;
@@ -144,6 +147,18 @@ public class ConsolePlayerEw extends Player{
 			System.out.println("");
 		}
 		
+		
+	}
+	
+	public void displayOrganisms(){
+		
+	System.out.println("Your organisms: ");
+		
+		for(Organism o : organisms){
+			
+			System.out.print(o.getClass() +", ");
+			System.out.println("");
+		}
 		
 	}
 	

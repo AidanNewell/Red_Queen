@@ -3,7 +3,7 @@ package consoleEw;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import cards.CardLoader;
+import cards.*;
 import data.Hand;
 import data.Organism;
 import data.Player;
@@ -80,7 +80,9 @@ public class ConsoleAIEw extends Player{
 		}
 		
 		public void takeTurn(){
-			
+			drawCards(1,1,1);
+			Card q = hand.getHand().get(0);
+			((OrganismStarter) q).performAction(null, this);
 			
 		}
 		
