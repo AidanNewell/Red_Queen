@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import data.ImagePath;
+
 
 public class GameScreen extends JPanel{
 
@@ -27,10 +29,9 @@ public class GameScreen extends JPanel{
 	{
 		super.paintComponent(g);
 		//Background
-		setBackground(new Color(161,218,142));
-		//Paint base game
-		
-		//Paint background
+		setBackground(new Color(117,212,116));
+		g.drawImage(ImagePath.HUD,0,0,null);
+		g.drawImage(ImagePath, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 		//Paint overlay
 		//Paint accessories
 		//Paint hand

@@ -2,8 +2,13 @@ package data;
 
 public class ImagePath
 {
-    public static void main(String[] args)
-    {	
+    public void init()
+    {
+    	scale();
+    }
+    
+    private void scale()
+    {
     	
     }
 }
