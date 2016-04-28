@@ -25,4 +25,9 @@ public class Hand {
 		hand.add(c);
 	}
 	
+	public Alert playCardAt(PlayerDataComplex c)
+	{
+		hand.get(c.getIndex()).performAction(c.getPlayer(),);
+	}
+	
 }

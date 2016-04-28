@@ -8,4 +8,8 @@ abstract class ActionCard extends Card{
 	
 	public abstract Alert performAction(Organism o, Player p);
 
+	public int getCardType()
+	{
+		return Card.ACTION;
+	}
 }

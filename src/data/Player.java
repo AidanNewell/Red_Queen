@@ -68,4 +68,9 @@ public class Player {
 	{
 		hand.getHand().clear();
 	}
+	
+	public Alert playCard(PlayerDataComplex c)
+	{
+		return hand.playCardAt(c);
+	}
 }

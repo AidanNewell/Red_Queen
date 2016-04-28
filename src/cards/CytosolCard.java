@@ -8,10 +8,6 @@ public class CytosolCard extends BuilderCard{
 		super(1,1,1,0,1);
 	}
 
-	public int getCardType() {
-		return Card.CYTOPLASM;
-	}
-
 	public void modifyOrganism(Organism o, int x, int y){
 		
 	}

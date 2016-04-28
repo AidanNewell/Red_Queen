@@ -12,10 +12,4 @@ public class TileDestroyerCard extends ActionCard{
 		return null;
 	}
 
-
-	public int getCardType() {
-
-		return Card.PETRI_DISH;
-	}
-
 }

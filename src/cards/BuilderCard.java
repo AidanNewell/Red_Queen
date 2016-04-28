@@ -1,6 +1,7 @@
 package cards;
 
 import data.Organism;
+import data.Player;
 
 public abstract class BuilderCard extends Card{
 
@@ -78,4 +79,8 @@ public abstract class BuilderCard extends Card{
 		return bufferCooldown;
 	}
 
+	public int getCardType()
+	{
+		return Card.BUILDER;
+	}
 }

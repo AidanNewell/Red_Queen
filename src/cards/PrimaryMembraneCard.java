@@ -9,10 +9,6 @@ public class PrimaryMembraneCard extends BuilderCard{
 		super(0,0,3,4,0);
 	}
 	
-	public int getCardType()
-	{
-		return Card.PETRI_DISH;
-	}
 	
 	public void modifyOrganism(Organism o, int x, int y){
 		

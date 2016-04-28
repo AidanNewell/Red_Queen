@@ -16,8 +16,4 @@ public class Draw3Card extends ActionCard{
 	}
 
 
-	public int getCardType() {
-		return Card.PETRI_DISH;
-	}
-
 }

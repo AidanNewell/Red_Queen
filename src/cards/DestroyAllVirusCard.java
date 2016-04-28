@@ -14,10 +14,4 @@ public class DestroyAllVirusCard extends ActionCard{
 		return null;
 	}
 
-	
-	public int getCardType() {
-		
-		return Card.PETRI_DISH;
-	}
-
 }

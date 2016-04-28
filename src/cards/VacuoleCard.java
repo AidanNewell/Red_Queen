@@ -10,9 +10,6 @@ public class VacuoleCard extends BuilderCard{
 	public void modifyOrganism(Organism o, int x, int y) {
 		
 	}
-	public int getCardType() {
-		return Card.PETRI_DISH;
-	}
 	
 	public void killCard(Organism o, int x, int y)
 	{
