@@ -1,9 +1,6 @@
 package client;
 
-import java.awt.Canvas;
 import java.awt.CardLayout;
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
 
 import javax.swing.JPanel;
 

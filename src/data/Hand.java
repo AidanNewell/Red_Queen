@@ -27,7 +27,7 @@ public class Hand {
 	
 	public Alert playCardAt(PlayerDataComplex c)
 	{
-		hand.get(c.getIndex()).performAction(c.getPlayer(),);
+		return null;
 	}
 	
 }
