@@ -7,6 +7,7 @@ import java.awt.image.BufferStrategy;
 
 import javax.swing.JPanel;
 
+import cards.CardLoader;
 import data.*;
 
 public class Client extends JPanel implements Runnable{
@@ -35,6 +36,8 @@ public class Client extends JPanel implements Runnable{
 	public static void main(String [] args)
 	{
 		client = new Client();
+		ImagePath.init();
+		CardLoader.init();
 		player = new Player();
 		client.runGame();
 	}
