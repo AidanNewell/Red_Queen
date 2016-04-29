@@ -1,7 +1,6 @@
 package cards;
 
 import data.Organism;
-import data.Player;
 
 public abstract class BuilderCard extends Card{
 
