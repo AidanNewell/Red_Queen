@@ -1,5 +1,7 @@
 package data;
 
+import java.awt.Image;
+
 import cards.*;
 
 
@@ -10,6 +12,8 @@ public class Organism {
 	private int totalATP;
 	private int totalRes;
 	private int bufferDrawCards;
+	private Image organismDisplay;
+	
 	
 	public Organism(int height, int width)
 	{
