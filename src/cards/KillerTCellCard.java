@@ -1,5 +1,8 @@
 package cards;
 
+import java.awt.Image;
+
+import data.ImagePath;
 import data.Organism;
 
 public class KillerTCellCard extends BuilderCard{
@@ -16,4 +19,8 @@ public class KillerTCellCard extends BuilderCard{
 		
 	}
 
+	public Image getCardArt()
+	{
+		return ImagePath.KILLERT_CARD;
+	}
 }

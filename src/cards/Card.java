@@ -1,5 +1,7 @@
 package cards;
 
+import java.awt.Image;
+
 public abstract class Card {
 
 	protected int CardType;
@@ -8,6 +10,7 @@ public abstract class Card {
 	protected static final int ACTION =1;
 	
 	public abstract int getCardType();
-
+	
+	public abstract Image getCardArt();
 	
 }

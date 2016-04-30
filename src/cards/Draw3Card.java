@@ -1,6 +1,9 @@
 package cards;
 
+import java.awt.Image;
+
 import data.Alert;
+import data.ImagePath;
 import data.Organism;
 import data.Player;
 
@@ -13,6 +16,11 @@ public class Draw3Card extends ActionCard{
 		
 		
 		return null;
+	}
+	
+	public Image getCardArt()
+	{
+		return ImagePath.DRAW_3;
 	}
 
 

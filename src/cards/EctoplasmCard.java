@@ -1,5 +1,8 @@
 package cards;
 
+import java.awt.Image;
+
+import data.ImagePath;
 import data.Organism;
 
 public class EctoplasmCard extends BuilderCard{
@@ -17,4 +20,8 @@ public class EctoplasmCard extends BuilderCard{
 		
 	}
 
+	public Image getCardArt()
+	{
+		return ImagePath.ECTOPLASM_CARD;
+	}
 }

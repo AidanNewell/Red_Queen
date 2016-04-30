@@ -1,5 +1,8 @@
 package cards;
 
+import java.awt.Image;
+
+import data.ImagePath;
 import data.Organism;
 
 public class MitochondriaCard extends BuilderCard{
@@ -19,6 +22,11 @@ public class MitochondriaCard extends BuilderCard{
 	public void killCard(Organism o, int x, int y)
 	{
 		
+	}
+	
+	public Image getCardArt()
+	{
+		return ImagePath.MITO_CARD;
 	}
 
 }

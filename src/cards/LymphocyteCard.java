@@ -1,5 +1,8 @@
 package cards;
 
+import java.awt.Image;
+
+import data.ImagePath;
 import data.Organism;
 
 public class LymphocyteCard extends BuilderCard{
@@ -42,6 +45,11 @@ public class LymphocyteCard extends BuilderCard{
 				}catch(Exception e){}
 			}
 		}
+	}
+	
+	public Image getCardArt()
+	{
+		return ImagePath.LYMPH_CARD;
 	}
 
 }

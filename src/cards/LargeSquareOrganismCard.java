@@ -1,6 +1,9 @@
 package cards;
 
+import java.awt.Image;
+
 import data.Alert;
+import data.ImagePath;
 import data.Organism;
 import data.Player;
 
@@ -16,4 +19,8 @@ public class LargeSquareOrganismCard extends OrganismStarter{
 		return super.performAction(o, p, height, width);
 	}
 
+	public Image getCardArt()
+	{
+		return ImagePath.LARGE_S_ORG_CARD;
+	}
 }

@@ -19,7 +19,7 @@ public class Client extends JPanel implements Runnable{
 	private static final int WIDTH = 1024, HEIGHT = 768;
 	private Thread thread;
 	private boolean renderTick = false;
-	private static Player player;
+	public static Player player;
 	
 	public Client()
 	{

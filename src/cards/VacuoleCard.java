@@ -1,5 +1,8 @@
 package cards;
 
+import java.awt.Image;
+
+import data.ImagePath;
 import data.Organism;
 
 public class VacuoleCard extends BuilderCard{
@@ -14,5 +17,10 @@ public class VacuoleCard extends BuilderCard{
 	public void killCard(Organism o, int x, int y)
 	{
 		
+	}
+	
+	public Image getCardArt()
+	{
+		return ImagePath.VAC_CARD;
 	}
 }

@@ -1,5 +1,8 @@
 package cards;
 
+import java.awt.Image;
+
+import data.ImagePath;
 import data.Organism;
 
 public class PrimaryMembraneCard extends BuilderCard{
@@ -17,6 +20,11 @@ public class PrimaryMembraneCard extends BuilderCard{
 	public void killCard(Organism o, int x, int y)
 	{
 		
+	}
+	
+	public Image getCardArt()
+	{
+		return ImagePath.PRIMARYMEM_CARD;
 	}
 
 }

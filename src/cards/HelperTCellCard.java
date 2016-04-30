@@ -1,5 +1,8 @@
 package cards;
 
+import java.awt.Image;
+
+import data.ImagePath;
 import data.Organism;
 
 public class HelperTCellCard extends BuilderCard{
@@ -39,6 +42,11 @@ public class HelperTCellCard extends BuilderCard{
 				}
 			}
 		}
+	}
+	
+	public Image getCardArt()
+	{
+		return ImagePath.HELPERT_CARD;
 	}
 
 }

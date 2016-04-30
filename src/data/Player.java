@@ -73,4 +73,9 @@ public class Player {
 	{
 		return hand.playCardAt(c);
 	}
+	
+	public Hand getHand()
+	{
+		return hand;
+	}
 }
