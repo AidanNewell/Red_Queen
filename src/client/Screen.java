@@ -4,7 +4,7 @@ import java.awt.Canvas;
 
 import javax.swing.JFrame;
 
-public class Screen extends Canvas{
+public class Screen{
 
 	/**
 	 * 
