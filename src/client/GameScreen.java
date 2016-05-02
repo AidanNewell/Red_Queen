@@ -52,6 +52,7 @@ public class GameScreen extends JPanel{
 			
 		//Paint accessories
 		//Paint hand
+		int numCards = mainPlayer.getHand().getHand().size();
 		for( Card c : mainPlayer.getHand().getHand())
 		{
 			

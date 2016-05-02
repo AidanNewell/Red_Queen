@@ -27,7 +27,7 @@ public class Hand {
 	
 	public Alert playCardAt(PlayerDataComplex c)
 	{
-		hand.remove(c.cardIndex());
+		hand.remove(c.getCardIndex());
 		return null;
 	}
 	
