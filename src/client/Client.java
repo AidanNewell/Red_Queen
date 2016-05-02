@@ -1,8 +1,11 @@
 package client;
 
 import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import cards.CardLoader;
 import data.*;
@@ -74,17 +77,15 @@ public class Client extends JPanel implements Runnable{
 	
 	private void renderGame()
 	{
-		while(true)
-		{
-			if(renderTick)
-				client.renderCycle();
-		}
-	}
-	
-	private void renderCycle()
-	{
-		client.repaint();
-		client.revalidate();
+		int delay = 10;
+		ActionListener painter = new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				client.repaint();
+				client.revalidate();
+			}
+		};
+		new Timer(delay,painter).start();
 	}
 	
 	public static void setCard(String s)

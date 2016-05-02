@@ -32,8 +32,8 @@ public class GameCreationScreen extends JPanel{
 		} catch (Exception e){}
 		title.setAlignmentX(CENTER_ALIGNMENT);
 		add(title);
-		JButton game = null;
 		add(Box.createRigidArea(new Dimension(0,50)));
+		JButton game = null;
 		try{
 			Image gameImage = ImageIO.read(new File("assets/SinglePlayerButton.png"));
 			game = new JButton(new ImageIcon(gameImage));

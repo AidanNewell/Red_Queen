@@ -47,6 +47,7 @@ public class ImagePath
     	}catch(Exception e){e.printStackTrace(); System.exit(1);}
     	
     	scale();
+    	
     }
     
     private static void scale()

@@ -49,8 +49,6 @@ public class GameScreen extends JPanel{
 		//Background
 		setBackground(new Color(117,212,116));
 		//Paint overlay
-		
-			g.drawImage(ImagePath.HUD_BANNER,0,0,null); 
 			
 		//Paint accessories
 		//Paint hand
