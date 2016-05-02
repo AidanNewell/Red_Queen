@@ -31,6 +31,5 @@ public class Screen{
 		}
 		window.add(client);
 		window.setVisible(true);
-
 	}
 }

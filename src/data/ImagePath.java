@@ -34,6 +34,16 @@ public class ImagePath
     		LARGE_S_ORG_CARD = ImageIO.read(new File(path + "OrganismFront5.png"));
     		MED_S_ORG_CARD = ImageIO.read(new File(path + "OrganismFront4.png"));
     		SMALL_S_ORG_CARD = ImageIO.read(new File(path + "OrganismFront3.png"));
+    		//CYTOSOL_CARD = ImageIO.read(new File(path + {cardName}));
+    		//ECTOPLASM_CARD = ImageIO.read(new File(path + {cardName}));
+    		//CYTOSKELETON_CARD = ImageIO.read(new File(path + {cardName}));
+    		//CHLOROPLAST_CARD = ImageIO.read(new File(path + {cardName}));
+    		//HELPERT_CARD = ImageIO.read(new File(path + {cardName}));
+    		//KILLERT_CARD = ImageIO.read(new File(path + {cardName}));
+    		//LYMPH_CARD = ImageIO.read(new File(path + {cardName}));
+    		//MITO_CARD = ImageIO.read(new File(path + {cardName}));
+    		//PRIMARYMEM_CARD = ImageIO.read(new File(path + {cardName}));
+    		//VAC_CARD = ImageIO.read(new File(path + {cardName}));
     	}catch(Exception e){e.printStackTrace(); System.exit(1);}
     	
     	scale();
