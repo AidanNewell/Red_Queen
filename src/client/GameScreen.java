@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.io.File;
 
 import javax.imageio.ImageIO;
@@ -22,7 +23,7 @@ import data.ImagePath;
 import data.Player;
 
 
-public class GameScreen extends JPanel implements MouseListener{
+public class GameScreen extends JPanel implements MouseListener, MouseMotionListener{
 
 	
 	public static final int DRAW_CARDS=0, BUILD_ORG=1, PLAY_CARDS=2, DISCARD =3;
@@ -37,12 +38,17 @@ public class GameScreen extends JPanel implements MouseListener{
 	
 	private static Rectangle Cyto_draw, Org_draw, Petri_draw;
 	
+	private static Rectangle Hand_Box, OrganismBox, EnemyBox;
+	
 	private static int playerCardDrawsRemaining=0;
 	private static int cardYPlacement;
+	private static int halfCard;
+	private static MouseImageBox mouse;
 	
 	private static final long serialVersionUID = 1L;
 	public GameScreen()
 	{
+		mouse = new MouseImageBox();
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		screenWidth = screen.width;
 		screenHeight = screen.height;
@@ -51,6 +57,7 @@ public class GameScreen extends JPanel implements MouseListener{
 			right_button = new JButton(new ImageIcon(ImageIO.read(new File("assets/Right_Arrow.png"))));
 		}catch(Exception e){e.printStackTrace();System.exit(1);}
 		addMouseListener(this);
+		addMouseMotionListener(this);
 	}
 	
 	public void paintComponent(Graphics g)
@@ -80,6 +87,8 @@ public class GameScreen extends JPanel implements MouseListener{
 			paintCardDraw(g);
 			break;
 		}
+		//Paint mouse
+		g.drawImage(mouse.mouseImage,mouse.X - halfCard, mouse.Y - halfCard,null);
 	}
 	
 	private void paintCardDraw(Graphics g)
@@ -96,20 +105,23 @@ public class GameScreen extends JPanel implements MouseListener{
 	public static void initData()
 	{
 		mainPlayer= Client.player;
+		halfCard = ImagePath.CYTO_BACK.getWidth(null) / 2;
+		cardYPlacement = (15 * (screenHeight /16)) - ImagePath.CYTO_BACK.getHeight(null);
 		int spacing = (screenWidth - 600)/4;
 		Cyto_draw = new Rectangle(300, screenHeight/2 - 70,ImagePath.CYTO_BACK.getWidth(null),ImagePath.CYTO_BACK.getHeight(null));
 		Org_draw = new Rectangle(300 + spacing, screenHeight/2 -70, ImagePath.ORG_BACK.getWidth(null),ImagePath.ORG_BACK.getHeight(null));
 		Petri_draw = new Rectangle(300 + (2*spacing),screenHeight/2- 70, ImagePath.PETRI_BACK.getWidth(null), ImagePath.PETRI_BACK.getHeight(null));
+		Hand_Box = new Rectangle(0,cardYPlacement,screenWidth,screenHeight);
 		playerCardDrawsRemaining = mainPlayer.getCardsToDraw();
-		cardYPlacement = (15 * (screenHeight /16)) - ImagePath.CYTO_BACK.getHeight(null);
+		mouse.setImage(null);
 	}
 
 	public void mouseClicked(MouseEvent arg0)
 	{
+		Point clicked = arg0.getPoint();
 		switch(gameState)
 		{
 		case DRAW_CARDS:
-			Point clicked = arg0.getPoint();
 			if(Cyto_draw.contains(clicked))
 			{
 				mainPlayer.drawCards(Card.CYTOPLASM_CARD);
@@ -129,6 +141,19 @@ public class GameScreen extends JPanel implements MouseListener{
 				nextGameState();
 			break;
 		case BUILD_ORG:
+			if(Hand_Box.contains(clicked))
+			{
+				if(mouse.mouseImage == null)
+				{
+					mainPlayer.getHand().addCard(mouse.getCard());
+				}
+				else
+				{
+					
+				}
+			}else if(){
+				
+			}
 			break;
 		case PLAY_CARDS:
 			break;
@@ -175,6 +200,18 @@ public class GameScreen extends JPanel implements MouseListener{
 	public void mouseReleased(MouseEvent arg0)
 	{
 		
+	}
+
+	public void mouseDragged(MouseEvent m)
+	{
+		mouse.X = m.getX();
+		mouse.Y = m.getY();
+	}
+
+	public void mouseMoved(MouseEvent m)
+	{
+		mouse.X = m.getX();
+		mouse.Y = m.getY();
 	}
 
 }
