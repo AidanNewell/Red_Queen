@@ -12,7 +12,9 @@ public class Draw3Card extends ActionCard{
 	
 	public Alert performAction(Organism o, Player p) {
 		
-		p.drawCards(0,0,3);
+		p.drawCards(Card.PETRI_DISH_CARD);
+		p.drawCards(Card.PETRI_DISH_CARD);
+		p.drawCards(Card.PETRI_DISH_CARD);
 		
 		
 		return null;

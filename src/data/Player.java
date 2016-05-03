@@ -10,6 +10,7 @@ public class Player {
 	private int numCardsToDraw;
 	private int numOrganisms;
 	
+	
 	public Player(){
 		
 		hand = new Hand();
@@ -19,23 +20,19 @@ public class Player {
 	}
 	
 	
-	public void drawCards(int a, int  b, int c){
-		for(int x=0; x<a; x++){
-			
-			hand.addCard(CardLoader.getOrganismCard());
-			
-		}
-		for(int x=0; x<b; x++){
-			
+	public void drawCards(int index){
+		if(index == Card.CYTOPLASM_CARD)
+		{
 			hand.addCard(CardLoader.getCytoplasmCard());
-			
 		}
-		for(int x=0; x<c; x++){
-			
+		if(index == Card.ORGANISM_CARD)
+		{
+			hand.addCard(CardLoader.getOrganismCard());
+		}
+		if(index == Card.PETRI_DISH_CARD)
+		{
 			hand.addCard(CardLoader.getPetriCard());
-			
 		}
-		
 	}
 	
 	public void updatePlayer()
@@ -77,5 +74,10 @@ public class Player {
 	public Hand getHand()
 	{
 		return hand;
+	}
+	
+	public int getCardsToDraw()
+	{
+		return numCardsToDraw;
 	}
 }
