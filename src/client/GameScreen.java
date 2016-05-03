@@ -38,6 +38,7 @@ public class GameScreen extends JPanel implements MouseListener{
 	private static Rectangle Cyto_draw, Org_draw, Petri_draw;
 	
 	private static int playerCardDrawsRemaining=0;
+	private static int cardYPlacement;
 	
 	private static final long serialVersionUID = 1L;
 	public GameScreen()
@@ -66,7 +67,7 @@ public class GameScreen extends JPanel implements MouseListener{
 			for(int x=0; x<numCards; x++)
 			{
 				Card c = mainPlayer.getHand().getHand().get(x);
-				g.drawImage(c.getCardArt(),50 + (x*spacing),500,null);
+				g.drawImage(c.getCardArt(),50 + (x*spacing),cardYPlacement,null);
 			}
 		}
 		
@@ -100,6 +101,7 @@ public class GameScreen extends JPanel implements MouseListener{
 		Org_draw = new Rectangle(300 + spacing, screenHeight/2 -70, ImagePath.ORG_BACK.getWidth(null),ImagePath.ORG_BACK.getHeight(null));
 		Petri_draw = new Rectangle(300 + (2*spacing),screenHeight/2- 70, ImagePath.PETRI_BACK.getWidth(null), ImagePath.PETRI_BACK.getHeight(null));
 		playerCardDrawsRemaining = mainPlayer.getCardsToDraw();
+		cardYPlacement = (15 * (screenHeight /16)) - ImagePath.CYTO_BACK.getHeight(null);
 	}
 
 	public void mouseClicked(MouseEvent arg0)
@@ -126,12 +128,33 @@ public class GameScreen extends JPanel implements MouseListener{
 			if(playerCardDrawsRemaining <= 0)
 				nextGameState();
 			break;
+		case BUILD_ORG:
+			break;
+		case PLAY_CARDS:
+			break;
+		case DISCARD:
+			break;
 		}
 	}
 	
 	private void nextGameState()
 	{
-		//gameState = BUILD_ORG;
+		switch(gameState)
+		{
+		case DRAW_CARDS:
+			gameState = BUILD_ORG;
+			break;
+		case BUILD_ORG:
+			gameState = PLAY_CARDS;
+			break;
+		case PLAY_CARDS:
+			gameState = DISCARD;
+			break;
+		case DISCARD:
+			gameState = DRAW_CARDS;
+			playerCardDrawsRemaining = mainPlayer.getCardsToDraw();
+			break;
+		}
 	}
 
 	@Override
