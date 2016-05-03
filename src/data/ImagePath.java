@@ -36,7 +36,7 @@ public class ImagePath
     		SMALL_S_ORG_CARD = ImageIO.read(new File(path + "OrganismFront3.png"));
     		CYTOSOL_CARD = ImageIO.read(new File(path + "Cytoplasm.png"));
     		ECTOPLASM_CARD = ImageIO.read(new File(path + "Ectoplasm.png"));
-    		//CYTOSKELETON_CARD = ImageIO.read(new File(path + {cardName}));
+    		CYTOSKELETON_CARD = ImageIO.read(new File(path + "Cytoskeleton.png"));
     		CHLOROPLAST_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
     		HELPERT_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
     		KILLERT_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
