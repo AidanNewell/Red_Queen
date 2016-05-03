@@ -37,13 +37,13 @@ public class ImagePath
     		//CYTOSOL_CARD = ImageIO.read(new File(path + {cardName}));
     		//ECTOPLASM_CARD = ImageIO.read(new File(path + {cardName}));
     		//CYTOSKELETON_CARD = ImageIO.read(new File(path + {cardName}));
-    		//CHLOROPLAST_CARD = ImageIO.read(new File(path + {cardName}));
-    		//HELPERT_CARD = ImageIO.read(new File(path + {cardName}));
-    		//KILLERT_CARD = ImageIO.read(new File(path + {cardName}));
-    		//LYMPH_CARD = ImageIO.read(new File(path + {cardName}));
-    		//MITO_CARD = ImageIO.read(new File(path + {cardName}));
-    		//PRIMARYMEM_CARD = ImageIO.read(new File(path + {cardName}));
-    		//VAC_CARD = ImageIO.read(new File(path + {cardName}));
+    		CHLOROPLAST_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
+    		HELPERT_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
+    		KILLERT_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
+    		LYMPH_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
+    		MITO_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
+    		PRIMARYMEM_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
+    		VAC_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
     	}catch(Exception e){e.printStackTrace(); System.exit(1);}
     	
     	scale();
