@@ -6,21 +6,21 @@ import data.Alert;
 import data.Organism;
 import data.Player;
 
-public class SmallpoxCard extends VirusCard{
+public class EbolaCard extends VirusCard{
+
 	
-	
-	public SmallpoxCard(){
+	public EbolaCard(){
 		
-		cost=6;
-		immunity=7;
+		cost=10;
+		immunity=8;
+		
 		
 	}
 	
-
+	
 	@Override
 	public Alert performAction(Organism o, Player p) {
-		
-		//delete one card on organism per turn 
+		//remove three cards from organism immediately 
 		return null;
 	}
 
