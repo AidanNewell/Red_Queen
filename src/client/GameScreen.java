@@ -68,14 +68,10 @@ public class GameScreen extends JPanel implements MouseListener, MouseMotionList
 		
 		//Paint hand
 		int numCards = mainPlayer.getHand().getHand().size();
-		int spacing = (screenWidth -100 )/ (numCards+1);
-		if(numCards != 0)
+		for(int x=0; x<numCards; x++)
 		{
-			for(int x=0; x<numCards; x++)
-			{
-				Card c = mainPlayer.getHand().getHand().get(x);
-				g.drawImage(c.getCardArt(),50 + (x*spacing),cardYPlacement,null);
-			}
+			Card c = mainPlayer.getHand().getHand().get(x);
+			g.drawImage(c.getCardArt(),50 + ( x * ((2 * halfCard) +20)),cardYPlacement,null);
 		}
 		
 		//Paint overlay
@@ -138,12 +134,12 @@ public class GameScreen extends JPanel implements MouseListener, MouseMotionList
 				playerCardDrawsRemaining--;
 			}
 			if(playerCardDrawsRemaining <= 0)
-				nextGameState();
+				//nextGameState();
 			break;
 		case BUILD_ORG:
 			if(Hand_Box.contains(clicked))
 			{
-				if(mouse.mouseImage == null)
+				if(mouse.containsCard())
 				{
 					mainPlayer.getHand().addCard(mouse.getCard());
 				}
@@ -151,8 +147,8 @@ public class GameScreen extends JPanel implements MouseListener, MouseMotionList
 				{
 					
 				}
-			}else if(){
-				
+			//}else if(){
+			//	
 			}
 			break;
 		case PLAY_CARDS:

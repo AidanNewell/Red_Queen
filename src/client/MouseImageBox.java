@@ -34,4 +34,9 @@ public class MouseImageBox {
 		c = null;
 		return returned;
 	}
+	
+	public boolean containsCard()
+	{
+		return c != null;
+	}
 }
