@@ -41,9 +41,9 @@ public class ImagePath
     		HELPERT_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
     		KILLERT_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
     		LYMPH_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
-    		MITO_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
+    		MITO_CARD = ImageIO.read(new File(path + "Powerhouse.png"));
     		PRIMARYMEM_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
-    		VAC_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
+    		VAC_CARD = ImageIO.read(new File(path + "Vacuole.png"));
     	}catch(Exception e){e.printStackTrace(); System.exit(1);}
     	
     	scale();
