@@ -45,7 +45,7 @@ public class GameCreationScreen extends JPanel{
 		game.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				Client.startGame();
+				Client.setCard("GAME_SCREEN");
 			}
 		});
 		game.setAlignmentX(CENTER_ALIGNMENT);

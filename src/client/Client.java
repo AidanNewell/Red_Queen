@@ -10,7 +10,7 @@ import javax.swing.Timer;
 import cards.CardLoader;
 import data.*;
 
-public class Client extends JPanel implements Runnable{
+public class Client extends JPanel{
 
 	/**
 	 * 
@@ -20,7 +20,6 @@ public class Client extends JPanel implements Runnable{
 	private static Client client;
 	private Screen coreScreen;
 	private static final int WIDTH = 1024, HEIGHT = 768;
-	private Thread thread;
 	private boolean renderTick = false;
 	public static Player player;
 	
@@ -44,35 +43,7 @@ public class Client extends JPanel implements Runnable{
 
 	public void runGame()
 	{
-		thread = new Thread(this);
-		thread.start();
 		renderGame();
-	}
-	
-	public void run()
-	{
-		long time1 = System.nanoTime();
-		double tickNum = 60;
-		double delay = 100000000/tickNum;
-		double timeDiff =0;
-		long time2;
-		while(true)
-		{
-			time2 = System.nanoTime();
-			timeDiff+=(time2-time1)/delay;
-			time1=time2;
-			if(timeDiff >= 1)
-			{
-				renderTick=true;
-				gameTick();
-				timeDiff--;
-			}
-		}
-	}
-	
-	private void gameTick()
-	{
-		
 	}
 	
 	private void renderGame()
@@ -97,12 +68,5 @@ public class Client extends JPanel implements Runnable{
 	public static void quitGame()
 	{
 		System.exit(0);
-	}
-	
-	public static void startGame()
-	{
-		player = new Player();
-		GameScreen.initData();
-		setCard("GAME_SCREEN");
 	}
 }
