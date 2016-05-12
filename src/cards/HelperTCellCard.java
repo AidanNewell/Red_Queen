@@ -13,6 +13,9 @@ public class HelperTCellCard extends BuilderCard{
 
 
 	public void modifyOrganism(Organism o, int x, int y) {
+		
+		super.modifyOrganism(o, x, y);
+		
 		o.addCard(x, y, this);
 		for(int i=-1;i<1;i++)
 		{

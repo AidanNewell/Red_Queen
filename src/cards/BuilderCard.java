@@ -35,10 +35,29 @@ public abstract class BuilderCard extends Card{
 		this.res=res;
 		this.cost = cost;
 		this.cooldown=cooldown;
+		this.cooldownRemaining = 0;
 	}
 	
-	abstract public void modifyOrganism(Organism o, int x, int y);
+	public void modifyOrganism(Organism o, int x, int y){
+		startCooldown();
+		
+		
+		
+	}
 	
+	public void startCooldown() {
+		cooldownRemaining = (cooldown+bufferCooldown);
+		
+	}
+	
+	
+	public void turnTaken(){
+		
+		if(cooldownRemaining>0)
+			cooldownRemaining--;
+		
+	}
+
 	abstract public void killCard(Organism o, int x, int y);
 	
 	public void modifyBufferRes(int x)
