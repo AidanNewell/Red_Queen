@@ -38,11 +38,11 @@ public class ImagePath
     		ECTOPLASM_CARD = ImageIO.read(new File(path + "Ectoplasm.png"));
     		CYTOSKELETON_CARD = ImageIO.read(new File(path + "Cytoskeleton.png"));
     		CHLOROPLAST_CARD = ImageIO.read(new File(path + "Chloroplast.png"));
-    		HELPERT_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
-    		KILLERT_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
+    		HELPERT_CARD = ImageIO.read(new File(path + "help.png"));
+    		KILLERT_CARD = ImageIO.read(new File(path + "angryFire.png"));
     		LYMPH_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
     		MITO_CARD = ImageIO.read(new File(path + "Powerhouse.png"));
-    		PRIMARYMEM_CARD = ImageIO.read(new File(path + "PrimaryMembrane.png"));
+    		PRIMARYMEM_CARD = ImageIO.read(new File(path + "prim.png"));
     		VAC_CARD = ImageIO.read(new File(path + "Vacuole.png"));
     	}catch(Exception e){e.printStackTrace(); System.exit(1);}
     	
