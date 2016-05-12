@@ -57,7 +57,9 @@ public class Organism {
 					modifier=current.getRes()-current.getBufferRes();
 					if(modifier > 0)
 						totalRes+=modifier;
+					current.turnTaken();
 				}
+				
 			}
 		}
 	}
