@@ -16,15 +16,15 @@ public class BirdFluCard extends VirusCard{
 		
 	}
 
-	@Override
+	
 	public Alert performAction(Organism o, Player p) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
-	@Override
+
 	public Image getCardArt() {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 

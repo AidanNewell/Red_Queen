@@ -16,7 +16,7 @@ public class NasopharyngitisCard extends VirusCard{
 		
 	}
 	
-	@Override
+	
 	public Alert performAction(Organism o, Player p) {
 		
 		//reduce number of cards player can draw by one
@@ -24,9 +24,8 @@ public class NasopharyngitisCard extends VirusCard{
 		return null;
 	}
 
-	@Override
+
 	public Image getCardArt() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

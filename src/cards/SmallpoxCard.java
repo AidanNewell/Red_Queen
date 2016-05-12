@@ -17,16 +17,15 @@ public class SmallpoxCard extends VirusCard{
 	}
 	
 
-	@Override
+
 	public Alert performAction(Organism o, Player p) {
 		
 		//delete one card on organism per turn 
 		return null;
 	}
 
-	@Override
+
 	public Image getCardArt() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
