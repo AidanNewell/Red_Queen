@@ -1,0 +1,45 @@
+package client;
+
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+import cards.BuilderCard;
+import data.Organism;
+
+public class OrganismPane extends JPanel{
+
+	private Organism organism;
+	
+	private static final int SPACE_AVAILABLE = 600;
+	
+	public OrganismPane(Organism o)
+	{
+		organism = o;
+		int width = organism.getWidth();
+		int height = organism.getHeight();
+		int cardXSize = SPACE_AVAILABLE / width;
+		int cardYSize = SPACE_AVAILABLE / height;
+		for(int a=0; a<width;a++)
+		{
+			for(int b=0; b<height;b++)
+			{
+				BuilderCard current = organism.getCardAt(a,b);
+				if(current != null)
+				{
+					JButton cardButton = null;
+					try{
+						Image buttonImage = current.getCardArt();
+						cardButton = new JButton(new ImageIcon(buttonImage));
+						cardButton.setOpaque(false);
+						cardButton.setContentAreaFilled(false);
+						cardButton.setFocusPainted(false);
+						cardButton.setBorderPainted(false);
+					}catch(Exception e){System.out.println("FATAL ERROR"); e.printStackTrace(); System.exit(Integer.MAX_VALUE);}
+				}
+			}
+		}
+	}
+}

@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -26,12 +27,16 @@ public class GameScreen extends JPanel
 	
 	private int drawCardsRemaining;
 	
-	private Dimension screenDim;
+	private int screenWidth, screenHeight;
 	private JPanel organismPanel;
+	
+	private ArrayList<OrganismPane> playerOrganisms;
 	
 	public GameScreen()
 	{
-		screenDim = Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
+		screenWidth = (int) screenDim.getWidth();
+		screenHeight = (int) screenDim.getHeight();
 		setLayout(null);
 		JButton quitButton = null;
 		try{
@@ -43,7 +48,7 @@ public class GameScreen extends JPanel
 			quitButton.setFocusPainted(false);
 		}catch(Exception e){}
 		add(quitButton);
-		quitButton.setBounds((int)screenDim.getWidth() - 50, 0, 50, 50);
+		quitButton.setBounds(screenWidth - 50, 0, 50, 50);
 		quitButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{

@@ -84,9 +84,24 @@ public class Organism {
 		organismBody[x][y].killCard(this, x, y);
 	}
 	
+	public void modifyBufferDraw(int a)
+	{
+		bufferDrawCards += a;
+	}
+	
 	public int getCardsToDraw()
 	{
 		return bufferDrawCards;
+	}
+	
+	public int getHeight()
+	{
+		return organismBody.length;
+	}
+	
+	public int getWidth()
+	{
+		return organismBody[0].length;
 	}
 	
 }
