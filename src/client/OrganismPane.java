@@ -37,7 +37,7 @@ public class OrganismPane extends JPanel{
 					JButton cardButton = null;
 					try{
 						Image buttonImage = current.getCardArt();
-						cardButton = new JButton(new ImageIcon(buttonImage));
+						cardButton = new CardButton(new ImageIcon(buttonImage),a,b);
 						cardButton.setOpaque(false);
 						cardButton.setContentAreaFilled(false);
 						cardButton.setFocusPainted(false);
@@ -45,7 +45,7 @@ public class OrganismPane extends JPanel{
 						cardButton.addActionListener(new ActionListener(){
 							public void actionPerformed(ActionEvent e)
 							{
-								organism.getCardAt(a, b).activateCard();
+								organism.getCardAt(getX(), getY()).activateCard();
 							}
 						});
 					}catch(Exception e){System.out.println("FATAL ERROR"); e.printStackTrace(); System.exit(Integer.MAX_VALUE);}
