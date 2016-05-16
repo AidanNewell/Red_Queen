@@ -34,9 +34,9 @@ public class Client extends JPanel{
 	
 	public static void main(String [] args)
 	{
-		client = new Client();
 		ImagePath.init();
 		CardLoader.init();
+		client = new Client();
 		player = new Player();
 		client.runGame();
 	}

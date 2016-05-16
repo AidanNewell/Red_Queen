@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import cards.BuilderCard;
+import data.ImagePath;
 import data.Organism;
 
 public class OrganismPane extends JPanel{
@@ -53,7 +54,21 @@ public class OrganismPane extends JPanel{
 				}
 				else
 				{
-					this.add(new JLabel());
+					JButton emptyButton =  null;
+					try{
+						Image nullImage = ImagePath.NULL_BUILD_SLOT;
+						emptyButton = new CardButton(new ImageIcon(nullImage), a,b);
+						emptyButton.setOpaque(false);
+						emptyButton.setContentAreaFilled(false);
+						emptyButton.setFocusPainted(false);
+						emptyButton.setBorderPainted(false);
+						emptyButton.addActionListener(new ActionListener(){
+							public void actionPerformed(ActionEvent e)
+							{
+								organism.attemptAddCard(getX(),getY());
+							}
+						});
+					}catch(Exception e){};
 				}
 			}
 		}

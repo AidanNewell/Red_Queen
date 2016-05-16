@@ -2,6 +2,7 @@ package data;
 
 import java.awt.Image;
 
+import client.GameScreen;
 import cards.*;
 
 
@@ -102,6 +103,19 @@ public class Organism {
 	public int getWidth()
 	{
 		return organismBody[0].length;
+	}
+	
+	public void attemptAddCard(int x, int y)
+	{
+		Card c = GameScreen.MOUSE.getCard();
+		if( c == null)
+		{
+			
+		}
+		else if(c.getCardType() == Card.BUILDER)
+		{
+			organismBody[x][y] = (BuilderCard)GameScreen.MOUSE.getCard();
+		}
 	}
 	
 }

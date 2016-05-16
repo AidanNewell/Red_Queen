@@ -1,42 +1,31 @@
 package client;
 
+import java.awt.Cursor;
 import java.awt.Image;
 
 import cards.Card;
 
 public class MouseImageBox {
 
-	
 	private Card c;
-	public Image mouseImage;
-	
-	public int X = 0,Y = 0;
-	
-	public MouseImageBox()
-	{
-		
-	}
-	
-	public void setImage(Image i)
-	{
-		mouseImage = i;
-	}
+	private Image i;
 	
 	public void setCard(Card c)
 	{
 		this.c = c;
-		mouseImage = c.getCardArt();
+		i = c.getCardArt();
 	}
 	
 	public Card getCard()
 	{
 		Card returned = c;
-		c = null;
+		c= null;
+		i = null;
 		return returned;
 	}
 	
-	public boolean containsCard()
+	public Image getImage()
 	{
-		return c != null;
+		return i;
 	}
 }
