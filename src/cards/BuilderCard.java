@@ -50,6 +50,12 @@ public abstract class BuilderCard extends Card{
 		
 	}
 	
+	public void activateCard(){
+		
+		
+		
+	}
+	
 	
 	public void turnTaken(){
 		
