@@ -1,5 +1,5 @@
 package SahilAndAllisonsExcellentAdventure;
 
-public class Player {
+public class AdventurePlayer {
 
 }
