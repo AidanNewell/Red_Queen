@@ -50,6 +50,9 @@ public class AdventureGame {
 		c.gridwidth=3;
 		gameFrame.add(actionPanel);
 		
+		gameFrame.pack();
+		gameFrame.setVisible(true);
+		
 		startGame();
 		
 	}
