@@ -27,7 +27,7 @@ public class GameScreen extends JPanel implements MouseListener
 {
 	private static Player mainPlayer;
 	
-	private static final int DRAW_CARDS = 1, BUILD_ORG =2, PLAY_CARDS =3, DISCARD = 4;
+	public static final int DRAW_CARDS = 1, BUILD_ORG =2, PLAY_CARDS =3, DISCARD = 4;
 	
 	public static int gameState = DRAW_CARDS;
 	
@@ -45,7 +45,7 @@ public class GameScreen extends JPanel implements MouseListener
 	public GameScreen()
 	{
 		drawPiles = new DrawPanel(this);
-		handPanel = new HandPanel();
+		handPanel = new HandPanel(this);
 		MOUSE = new MouseImageBox();
 		Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
 		screenWidth = (int) screenDim.getWidth();
