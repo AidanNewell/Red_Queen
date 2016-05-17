@@ -81,14 +81,12 @@ public class Player {
 		return numCardsToDraw;
 	}
 	
-	public void updateAllOrganisms(){
-		
-	for(Organism o: organisms){
-		
-		o.updateOrganism();
-		
-		
-	}
+	public void updateAllOrganisms()
+	{
+		for(Organism o: organisms)
+		{
+			o.updateOrganism();
+		}
 		
 	}
 }

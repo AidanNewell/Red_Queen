@@ -58,7 +58,7 @@ public class ImagePath
     	int height = screen.height;
     	int width = screen.width;
     	HUD_BANNER = HUD_BANNER.getScaledInstance(width,height/7, Image.SCALE_SMOOTH);
-    	LEFT_ARROW = LEFT_ARROW.getScaledInstance(width/8, 3*height/4, Image.SCALE_SMOOTH);
-    	RIGHT_ARROW = RIGHT_ARROW.getScaledInstance(width/8, 3*height/4, Image.SCALE_SMOOTH);
+    	LEFT_ARROW = LEFT_ARROW.getScaledInstance(40, 120, Image.SCALE_SMOOTH);
+    	RIGHT_ARROW = RIGHT_ARROW.getScaledInstance(40, 120, Image.SCALE_SMOOTH);
     }
 }
