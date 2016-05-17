@@ -1,6 +1,8 @@
 package SahilAndAllisonsExcellentAdventure;
 
-public class AdventureActionPanel {
+import javax.swing.JPanel;
+
+public class AdventureActionPanel extends JPanel{
 
 	
 	private AdventureGame g;
