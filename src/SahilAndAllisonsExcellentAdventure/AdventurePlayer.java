@@ -25,7 +25,6 @@ public class AdventurePlayer {
 	
 	public void drawCard(Card c){
 		
-		
 		Cards.add(c);
 	}
 	
