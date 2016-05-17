@@ -6,7 +6,7 @@ public class AdventureGame {
 	
 	private JFrame gameFrame;
 	private AdventureOrganismPanel playerPanel;
-	private AdventureOrganismPanelC computerPanel;
+	private AdventureOrganismPanel computerPanel;
 	private AdventureActionPanel actionPanel;
 	private static final int HUMAN = 0;
 	private static final int AI = 1;
