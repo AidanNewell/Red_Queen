@@ -3,13 +3,18 @@ package client;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+import cards.Card;
+
 public class CardButton extends JButton{
 	
 	private int organismX, organismY;
 	
-	public CardButton(ImageIcon i, int x, int y)
+	private Card  c;
+	
+	public CardButton(Card c,ImageIcon i, int x, int y)
 	{
 		super(i);
+		this.c = c;
 		organismX = x;
 		organismY = y;
 	}
@@ -22,6 +27,11 @@ public class CardButton extends JButton{
 	public int getY()
 	{
 		return organismY;
+	}
+	
+	public Card getCard()
+	{
+		return c;
 	}
 	
 }

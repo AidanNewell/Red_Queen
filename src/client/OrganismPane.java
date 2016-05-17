@@ -38,7 +38,7 @@ public class OrganismPane extends JPanel{
 					JButton cardButton = null;
 					try{
 						Image buttonImage = current.getCardArt();
-						cardButton = new CardButton(new ImageIcon(buttonImage),a,b);
+						cardButton = new CardButton(current,new ImageIcon(buttonImage),a,b);
 						cardButton.setOpaque(false);
 						cardButton.setContentAreaFilled(false);
 						cardButton.setFocusPainted(false);
@@ -57,7 +57,7 @@ public class OrganismPane extends JPanel{
 					JButton emptyButton =  null;
 					try{
 						Image nullImage = ImagePath.NULL_BUILD_SLOT;
-						emptyButton = new CardButton(new ImageIcon(nullImage), a,b);
+						emptyButton = new CardButton(null,new ImageIcon(nullImage), a,b);
 						emptyButton.setOpaque(false);
 						emptyButton.setContentAreaFilled(false);
 						emptyButton.setFocusPainted(false);

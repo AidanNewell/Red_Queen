@@ -38,12 +38,14 @@ public class GameScreen extends JPanel implements MouseListener
 	private int screenWidth, screenHeight;
 	private OrganismPane organismPanel;
 	private static DrawPanel drawPiles;
+	private static HandPanel handPanel;
 	
 	private ArrayList<OrganismPane> playerOrganisms;
 	
 	public GameScreen()
 	{
 		drawPiles = new DrawPanel(this);
+		handPanel = new HandPanel();
 		MOUSE = new MouseImageBox();
 		Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
 		screenWidth = (int) screenDim.getWidth();
@@ -68,7 +70,9 @@ public class GameScreen extends JPanel implements MouseListener
 		});
 		drawPiles.setPreferredSize(new Dimension(screenWidth,screenHeight));
 		add(drawPiles);
-		drawPiles.setBounds(0,0,screenWidth,screenHeight);
+		drawPiles.setBounds(0,0,screenWidth,screenHeight-160);
+		add(handPanel);
+		handPanel.setBounds(0,screenHeight - 160, screenWidth,160);
 		addMouseListener(this);
 	}
 	
@@ -91,6 +95,17 @@ public class GameScreen extends JPanel implements MouseListener
 				repaint();
 			}
 			drawPiles.updateLabelText(drawPiles.cardsRemaining);
+			break;
+		case BUILD_ORG:
+			break;
+		case PLAY_CARDS:
+			break;
+		case DISCARD:
+			drawPiles.cardsRemaining = mainPlayer.getCardsToDraw();
+			gameState = DRAW_CARDS;
+			add(drawPiles);
+			revalidate();
+			repaint();
 			break;
 		}
 	}
