@@ -15,8 +15,12 @@ public class AllisonsScrubTester {
 		JFrame yo = new JFrame();
 		AdventureGame g = new AdventureGame();
 		AdventureOrganismPanel testPanel = new AdventureOrganismPanel(g);
+		MitochondriaCard mito = new MitochondriaCard();
 		testPanel.addCard(new CytosolCard());
-		testPanel.addCard(new MitochondriaCard());
+		testPanel.addCard(mito);
+		testPanel.addCard(new PrimaryMembraneCard());
+		testPanel.removeCard(mito);
+		
 		yo.setContentPane(testPanel);
 		yo.pack();
 		yo.setVisible(true);
@@ -41,6 +45,6 @@ public class AllisonsScrubTester {
 	public static void main(String args[]){
 		ImagePath.init();
 		CardLoader.init();
-		haha();
+		lol();
 	}
 }
