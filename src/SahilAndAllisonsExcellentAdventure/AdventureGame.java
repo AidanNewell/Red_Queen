@@ -11,6 +11,7 @@ public class AdventureGame {
 	private AdventureOrganismPanel playerPanel;
 	private AdventureOrganismPanel computerPanel;
 	private AdventureActionPanel actionPanel;
+	private AdventureMiddlePanel midPanel;
 	private static final int HUMAN = 0;
 	private static final int AI = 1;
 	private int turn;
@@ -22,6 +23,9 @@ public class AdventureGame {
 		gameFrame.setLayout(new GridLayout(0,3));
 		
 		playerPanel = new AdventureOrganismPanel(this);
+		computerPanel = new AdventureOrganismPanel(this);
+		actionPanel = new AdventureActionPanel(this);
+		midPanel = new AdventureMiddlePanel(this);
 		
 	}
 	
