@@ -25,23 +25,25 @@ import data.Player;
 
 public class GameScreen extends JPanel implements MouseListener
 {
-	private Player mainPlayer;
-	
-	public int gameState;
+	private static Player mainPlayer;
 	
 	private static final int DRAW_CARDS = 1, BUILD_ORG =2, PLAY_CARDS =3, DISCARD = 4;
 	
-	private int drawCardsRemaining;
+	public static int gameState = DRAW_CARDS;
+	
+	private static int drawCardsRemaining;
 	
 	public static MouseImageBox MOUSE;
 	
 	private int screenWidth, screenHeight;
-	private JPanel organismPanel;
+	private OrganismPane organismPanel;
+	private static DrawPanel drawPiles;
 	
 	private ArrayList<OrganismPane> playerOrganisms;
 	
 	public GameScreen()
 	{
+		drawPiles = new DrawPanel(this);
 		MOUSE = new MouseImageBox();
 		Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
 		screenWidth = (int) screenDim.getWidth();
@@ -64,7 +66,9 @@ public class GameScreen extends JPanel implements MouseListener
 				Client.quitGame();
 			}
 		});
-		MOUSE.setCard(new MitochondriaCard());
+		drawPiles.setPreferredSize(new Dimension(screenWidth,screenHeight));
+		add(drawPiles);
+		drawPiles.setBounds(0,0,screenWidth,screenHeight);
 		addMouseListener(this);
 	}
 	
@@ -73,10 +77,26 @@ public class GameScreen extends JPanel implements MouseListener
 		super.paintComponent(g);
 		setBackground(new Color(161,244,136));
 	}
+	
+	public void nextGameState()
+	{
+		switch(gameState)
+		{
+		case DRAW_CARDS:
+			if(drawPiles.cardsRemaining <= 0)
+			{
+				gameState = BUILD_ORG;
+				remove(drawPiles);
+				revalidate();
+				repaint();
+			}
+			drawPiles.updateLabelText(drawPiles.cardsRemaining);
+			break;
+		}
+	}
 
 	public void mouseClicked(MouseEvent arg0)
 	{
-		System.out.println("AALALALA");
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Image cursorImage = MOUSE.getImage();
 		if(cursorImage != null)
@@ -103,6 +123,19 @@ public class GameScreen extends JPanel implements MouseListener
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public static Player getPlayer()
+	{
+		return mainPlayer;
+	}
+	
+	public static void init()
+	{
+		mainPlayer = new Player();
+		drawCardsRemaining = mainPlayer.getCardsToDraw();
+		drawPiles.cardsRemaining = drawCardsRemaining;
+		drawPiles.updateLabelText(drawPiles.cardsRemaining);
 	}
 
 }

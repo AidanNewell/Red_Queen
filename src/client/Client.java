@@ -21,7 +21,6 @@ public class Client extends JPanel{
 	private Screen coreScreen;
 	private static final int WIDTH = 1024, HEIGHT = 768;
 	private boolean renderTick = false;
-	public static Player player;
 	
 	public Client()
 	{
@@ -37,7 +36,7 @@ public class Client extends JPanel{
 		ImagePath.init();
 		CardLoader.init();
 		client = new Client();
-		player = new Player();
+		GameScreen.init();
 		client.runGame();
 	}
 
