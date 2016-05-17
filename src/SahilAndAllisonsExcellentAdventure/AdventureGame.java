@@ -1,6 +1,8 @@
 package SahilAndAllisonsExcellentAdventure;
 
 
+import java.awt.GridLayout;
+
 import javax.swing.JFrame;
 
 public class AdventureGame {
@@ -16,7 +18,10 @@ public class AdventureGame {
 	
 	public AdventureGame(){
 		
+		gameFrame = new JFrame();
+		gameFrame.setLayout(new GridLayout(0,3));
 		
+		playerPanel = new AdventureOrganismPanel(this);
 		
 	}
 	

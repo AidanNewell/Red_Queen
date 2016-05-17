@@ -10,7 +10,11 @@ public class AdventureOrganismPanel extends JPanel{
 	private ArrayList<JButton> cardButtons = new ArrayList<JButton>();
 	private ImageIcon test = new ImageIcon("assets/Cytoplasm.png");
 	private int place = 0;
-	AdventureOrganismPanel(){
+	private AdventureGame g;
+	AdventureOrganismPanel(AdventureGame G){
+		
+		g=G;
+		
 		this.setLayout(new GridLayout(4,3));
 		for(int col=0;col<3;col++){
 			for(int row=0;row<4;row++){
