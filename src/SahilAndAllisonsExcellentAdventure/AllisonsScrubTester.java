@@ -1,5 +1,6 @@
 package SahilAndAllisonsExcellentAdventure;
 
+import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -40,9 +41,22 @@ public class AllisonsScrubTester {
 		yo.pack();
 		yo.setVisible(true);
 	}
+	public static void lmao(){
+		JFrame yo = new JFrame();
+		AdventureGame g = new AdventureGame();
+		JPanel contentPane = new JPanel();
+		AdventureOrganismPanel me = new AdventureOrganismPanel(g);
+		AdventureMiddlePanel testPanel = new AdventureMiddlePanel(g,me);
+		yo.setContentPane(contentPane);
+		yo.setLayout(new BoxLayout(contentPane,BoxLayout.LINE_AXIS));
+		yo.add(testPanel);
+		yo.add(me);
+		yo.pack();
+		yo.setVisible(true);
+	}
 	public static void main(String args[]){
 		ImagePath.init();
 		CardLoader.init();
-		lol();
+		lmao();
 	}
 }

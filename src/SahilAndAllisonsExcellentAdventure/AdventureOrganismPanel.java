@@ -29,15 +29,13 @@ public class AdventureOrganismPanel extends JPanel{
 			for(int row=0;row<4;row++){
 				final adventureCardButton button = new adventureCardButton(count);
 				count++;
-				button.setPreferredSize(new Dimension(170,170));
 				cardButtons.add(button);
 				button.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e)
 					{
 						selectedIndex = button.getIndex();
 					}
-				});
-				
+				});	
 				this.add(button);
 			}
 		}

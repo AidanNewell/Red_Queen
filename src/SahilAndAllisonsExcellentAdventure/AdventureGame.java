@@ -34,7 +34,7 @@ public class AdventureGame {
 		c.gridy=0;
 		gameFrame.add(playerPanel);
 		
-		midPanel = new AdventureMiddlePanel(this);
+		midPanel = new AdventureMiddlePanel(this,playerPanel);
 		c.gridx=1;
 		c.gridy=0;
 		gameFrame.add(midPanel);
