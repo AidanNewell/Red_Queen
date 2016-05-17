@@ -19,8 +19,11 @@ public class DrawPanel extends JPanel{
 	public int cardsRemaining;
 	public JLabel remainingCardCount;
 	
+	private GameScreen referenceScreen;
+	
 	public DrawPanel(GameScreen g)
 	{
+		referenceScreen = g;
 		setOpaque(false);
 		JButton CytoStack = null;
 		JButton OrgStack = null;
@@ -38,7 +41,7 @@ public class DrawPanel extends JPanel{
 					GameScreen.getPlayer().drawCards(Card.CYTOPLASM_CARD);
 					cardsRemaining--;
 					revalidate();
-					g.nextGameState();
+					referenceScreen.nextGameState();
 				}
 			});
 			buttonImg = ImagePath.ORG_BACK;
@@ -53,7 +56,7 @@ public class DrawPanel extends JPanel{
 					GameScreen.getPlayer().drawCards(Card.ORGANISM_CARD);
 					cardsRemaining--;
 					revalidate();
-					g.nextGameState();
+					referenceScreen.nextGameState();
 				}
 			});
 			buttonImg = ImagePath.PETRI_BACK;
@@ -68,7 +71,7 @@ public class DrawPanel extends JPanel{
 					GameScreen.getPlayer().drawCards(Card.PETRI_DISH_CARD);
 					cardsRemaining--;
 					revalidate();
-					g.nextGameState();
+					referenceScreen.nextGameState();
 				}
 			});
 			remainingCardCount = new JLabel("Remaining: " + cardsRemaining);
