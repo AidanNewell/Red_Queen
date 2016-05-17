@@ -11,4 +11,17 @@ public class AdventureGame {
 	private static final int HUMAN = 0;
 	private static final int AI = 1;
 	private int turn;
+	
+	
+	public AdventureGame(){
+		
+		
+		
+	}
+	
+	public void turn(int who){
+		
+		
+		
+	}
 }
