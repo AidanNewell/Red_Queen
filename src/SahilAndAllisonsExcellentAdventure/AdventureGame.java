@@ -79,8 +79,11 @@ public class AdventureGame {
 			gameState=AI;
 		else if(gameState==AI)
 			gameState=HUMAN_DRAW;
+	}
+	
+	public int getGameState(){
 		
-		
+		return gameState;
 		
 	}
 	
