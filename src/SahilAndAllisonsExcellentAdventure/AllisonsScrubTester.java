@@ -30,9 +30,7 @@ public class AllisonsScrubTester {
 		JPanel hello = new JPanel();
 		JButton plz = new JButton();
 		CytosolCard crd = new CytosolCard();
-		System.out.println(crd);
 		Image i = crd.getCardArt();
-		System.out.println(i);
 		//ImageIcon icon = new ImageIcon("assets/Cytoplasm.png");
 		//Icon icon = (Icon) crd.getCardArt();
 		//plz.setIcon((Icon)crd.getCardArt());
