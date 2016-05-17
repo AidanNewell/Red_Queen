@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import java.awt.Image;
 
 import cards.*;
+import data.ImagePath;
 public class AllisonsScrubTester {
 	public static void lol(){
 		JFrame yo = new JFrame();
@@ -38,6 +39,8 @@ public class AllisonsScrubTester {
 		yo.setVisible(true);
 	}
 	public static void main(String args[]){
+		ImagePath.init();
+		CardLoader.init();
 		haha();
 	}
 }
