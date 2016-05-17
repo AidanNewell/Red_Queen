@@ -7,6 +7,9 @@ import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 
+import cards.CardLoader;
+import data.ImagePath;
+
 public class AdventureGame {
 	
 	private JFrame gameFrame;
@@ -14,9 +17,10 @@ public class AdventureGame {
 	private AdventureOrganismPanel computerPanel;
 	private AdventureActionPanel actionPanel;
 	private AdventureMiddlePanel midPanel;
-	private static final int HUMAN = 0;
-	private static final int AI = 1;
-	private int turn;
+	private static final int HUMAN_DRAW = 0;
+	private static final int HUMAN_PLAY = 1;
+	private static final int AI = 2;
+	private int gameState;
 	
 	
 	public AdventureGame(){
@@ -49,13 +53,28 @@ public class AdventureGame {
 		
 	}
 	
-	public void turn(int who){
+	public void turn(int who){ //allison what were you actually thinking here
 		
 		
 		
 	}
 	
 	public void startGame(){
+		CardLoader.init();
+		ImagePath.init();
+		gameState = HUMAN_DRAW;
+		
+	}
+	
+	public void nextPhase(){
+		
+		if(gameState==HUMAN_DRAW)
+			gameState=HUMAN_PLAY;
+		else if(gameState==HUMAN_PLAY)
+			gameState=AI;
+		else if(gameState==AI)
+			gameState=HUMAN_DRAW;
+		
 		
 		
 	}
