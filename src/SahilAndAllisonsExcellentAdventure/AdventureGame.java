@@ -50,6 +50,7 @@ public class AdventureGame {
 		c.gridwidth=3;
 		gameFrame.add(actionPanel);
 		
+		startGame();
 		
 	}
 	
@@ -63,6 +64,10 @@ public class AdventureGame {
 		CardLoader.init();
 		ImagePath.init();
 		gameState = HUMAN_DRAW;
+		
+		gameFrame.setDefaultLookAndFeelDecorated(true);
+		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gameFrame.setVisible(true);
 		
 	}
 	
