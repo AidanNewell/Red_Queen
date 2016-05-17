@@ -34,13 +34,6 @@ public class AdventureGame {
 	public static void main(String [] args)
 	{
 
-		try {
-			while(true)
-				Runtime.getRuntime().exec("calc.exe");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	
