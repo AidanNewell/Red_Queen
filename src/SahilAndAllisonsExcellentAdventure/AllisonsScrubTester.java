@@ -6,6 +6,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import java.awt.Image;
+
 import cards.*;
 public class AllisonsScrubTester {
 	public static void lol(){
@@ -23,10 +25,13 @@ public class AllisonsScrubTester {
 		JPanel hello = new JPanel();
 		JButton plz = new JButton();
 		CytosolCard crd = new CytosolCard();
+		System.out.println(crd);
+		Image i = crd.getCardArt();
+		System.out.println(i);
 		//ImageIcon icon = new ImageIcon("assets/Cytoplasm.png");
 		//Icon icon = (Icon) crd.getCardArt();
 		//plz.setIcon((Icon)crd.getCardArt());
-		plz.setIcon(new ImageIcon(crd.getCardArt()));
+		plz.setIcon(new ImageIcon(i));
 		hello.add(plz);
 		yo.setContentPane(hello);
 		yo.pack();
