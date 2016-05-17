@@ -24,4 +24,9 @@ public class AdventureGame {
 		
 		
 	}
+	
+	public void startGame(){
+		
+		
+	}
 }
