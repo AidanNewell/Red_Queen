@@ -1,7 +1,9 @@
 package SahilAndAllisonsExcellentAdventure;
 
+import java.awt.Dimension;
 import java.awt.event.*;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -41,9 +43,13 @@ public class AdventureActionPanel extends JPanel{
 			}
 		});
 		computerAction = new JLabel("Help");
+		this.add(Box.createRigidArea(new Dimension(40,0)));
 		this.add(selectedCard);
+		this.add(Box.createRigidArea(new Dimension(70,0)));
 		this.add(playCard);
+		this.add(Box.createRigidArea(new Dimension(90,0)));
 		this.add(endTurn);
+		this.add(Box.createRigidArea(new Dimension(220,0)));
 		this.add(computerAction);
 	}
 	

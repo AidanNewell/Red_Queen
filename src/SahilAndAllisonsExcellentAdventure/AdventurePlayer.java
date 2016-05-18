@@ -33,6 +33,10 @@ public class AdventurePlayer {
 		health+=change;
 		
 	}
+	public void changeATP(int change){
+		
+		atp+=change;
+	}
 	
 	public void drawCard(Card c){
 		

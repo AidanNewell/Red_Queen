@@ -20,14 +20,15 @@ public class AdventureOrganismPanel extends JPanel{
 	
 	private ArrayList<adventureCardButton> cardButtons;
 	private ArrayList<Card> cards;
+	private AdventurePlayer player;
 	private AdventureGame g;
 	private int selectedIndex;
 	private String name;
 	
-	AdventureOrganismPanel(AdventureGame G, String s){
+	AdventureOrganismPanel(AdventureGame G, String s, AdventurePlayer p){
 		
 		name=s;
-		
+		player = p;
 		cardButtons = new ArrayList<adventureCardButton>();
 		cards = new ArrayList<Card>();
 		g=G;
@@ -86,6 +87,8 @@ public class AdventureOrganismPanel extends JPanel{
 		
 	}
 	public Card getSelectedCard(){
-		return cards.get(selectedIndex);
+		if(cards.get(selectedIndex)!=null)
+			return cards.get(selectedIndex);
+		return null;
 	}
 }
