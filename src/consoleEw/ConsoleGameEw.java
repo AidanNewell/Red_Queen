@@ -1,6 +1,9 @@
 package consoleEw;
 
+import cards.BirdFluCard;
 import cards.Card;
+import cards.CytosolCard;
+import cards.KillerTCellCard;
 import cards.SmallSquareOrganismCard;
 import data.Game;
 
@@ -59,7 +62,7 @@ public class ConsoleGameEw extends Game{
 
 	public static void main(String[] args){
 	/*
-		Card c = new SmallSquareOrganismCard();
+		Card c = new BirdFluCard();
 		String s = ""+c.getClass();
 		s = s.substring(12, s.length()-4);
 		
@@ -80,6 +83,7 @@ public class ConsoleGameEw extends Game{
 		}
 		System.out.print(s+", ");
 		*/
+		
 		
 		new ConsoleGameEw();
 	
