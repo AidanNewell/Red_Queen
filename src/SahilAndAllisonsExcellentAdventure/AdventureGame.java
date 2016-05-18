@@ -15,7 +15,7 @@ public class AdventureGame {
 	private JFrame gameFrame;
 	private AdventureInfoPanel infoPanel;
 	private AdventureOrganismPanel playerPanel;
-	private AdventureOrganismPanel computerPanel;
+	private AdventureOrganismPanelC computerPanel;
 	private AdventureActionPanel actionPanel;
 	private AdventureMiddlePanel midPanel;
 	protected final int HUMAN_DRAW = 0;
@@ -50,7 +50,7 @@ public class AdventureGame {
 		c.gridy=1;
 		gameFrame.add(midPanel,c);
 		
-		computerPanel = new AdventureOrganismPanel(this, "Computer");
+		computerPanel = new AdventureOrganismPanelC(this, "Computer");
 		c.gridx=2;
 		c.gridy=1;
 		gameFrame.add(computerPanel,c);
@@ -102,7 +102,7 @@ public class AdventureGame {
 		return playerPanel;
 		
 	}
-	public AdventureOrganismPanel getComputerPanel(){
+	public AdventureOrganismPanelC getComputerPanel(){
 		
 		return computerPanel;
 		
