@@ -144,8 +144,18 @@ public class ConsolePlayerEw extends Player{
 		for(Card c : hand.getHand()){
 			
 			String s = ""+c.getClass();
-			s = s.substring(12);
+			s = s.substring(12, s.length()-4);
 			
+
+			for(int x=0; x<s.length(); x++){
+				
+				if(x!=0 && Character.isUpperCase(s.charAt(x))){
+					
+					s = s.substring(0,x) + " " + s.substring(x);
+					
+				}
+				
+			}
 			System.out.print(s+", ");
 			System.out.println("");
 		}

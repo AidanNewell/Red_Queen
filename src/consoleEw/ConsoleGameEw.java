@@ -1,5 +1,7 @@
 package consoleEw;
 
+import cards.Card;
+import cards.SmallSquareOrganismCard;
 import data.Game;
 
 public class ConsoleGameEw extends Game{
@@ -56,7 +58,29 @@ public class ConsoleGameEw extends Game{
 
 
 	public static void main(String[] args){
-	
+	/*
+		Card c = new SmallSquareOrganismCard();
+		String s = ""+c.getClass();
+		s = s.substring(12, s.length()-4);
+		
+
+		for(int x=0; x<s.length(); x++){
+			
+			if((x!=0) && (Character.isUpperCase(s.charAt(x)))){
+				System.out.println("a");
+				
+				s = s.substring(0,x) + " " + s.substring(x);
+				x++;
+				
+			}else{
+				
+				System.out.println("b");
+			}
+			
+		}
+		System.out.print(s+", ");
+		*/
+		
 		new ConsoleGameEw();
 	
 	}
