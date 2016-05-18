@@ -1,5 +1,8 @@
 package SahilAndAllisonsExcellentAdventure;
 
+import java.awt.event.*;
+
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,9 +25,26 @@ public class AdventureActionPanel extends JPanel{
 		
 		g=G;
 		p=P;
-		
-		
-		
+		this.setLayout(new BoxLayout(this,BoxLayout.LINE_AXIS));
+		selectedCard = new JLabel("where am I");
+		playCard = new JButton("Play Card");
+		playCard.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				//oh crap what goes here??? player stuff changes. what r cards fam? 
+				p.removeCard(p.getSelectedCard());
+			}
+		});
+		endTurn = new JButton("End Turn");
+		endTurn.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				g.nextPhase();
+			}
+		});
+		computerAction = new JLabel("Help");
+		this.add(selectedCard);
+		this.add(playCard);
+		this.add(endTurn);
+		this.add(computerAction);
 	}
 	
 	public String makeThisCardAString(Card c){
