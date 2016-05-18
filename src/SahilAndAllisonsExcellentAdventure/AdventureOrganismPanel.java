@@ -26,6 +26,7 @@ public class AdventureOrganismPanel extends JPanel{
 	private String name;
 	private int health;
 	private int ATP;
+	private int drawnCount;
 	
 	
 	AdventureOrganismPanel(AdventureGame G, String s){
@@ -48,12 +49,9 @@ public class AdventureOrganismPanel extends JPanel{
 				button.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e)
 					{
-						
-						if(g.getGameState() == g.HUMAN_PLAY){
-							
-						selectedIndex = button.getIndex();
-						g.getActionPanel().setSelectedCard();
-						
+						if(g.getGameState() == g.HUMAN_PLAY&& button.getIcon()!=null){
+							selectedIndex = button.getIndex();
+							g.getActionPanel().setSelectedCard();
 						}
 					}
 				});	
@@ -110,5 +108,14 @@ public class AdventureOrganismPanel extends JPanel{
 	}
 	public ArrayList<Card> getCards(){
 		return cards;
+	}
+	public void addDrawn(){
+		drawnCount++;
+	}
+	public void resetDrawn(){
+		drawnCount = 0;
+	}
+	public int getDrawn(){
+		return drawnCount;
 	}
 }

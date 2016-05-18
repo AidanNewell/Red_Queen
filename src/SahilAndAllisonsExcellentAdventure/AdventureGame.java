@@ -82,8 +82,10 @@ public class AdventureGame {
 	
 	public void nextPhase(){
 		
-		if(gameState==HUMAN_DRAW)
+		if(gameState==HUMAN_DRAW){
 			gameState=HUMAN_PLAY;
+			playerPanel.resetDrawn();
+		}
 		else if(gameState==HUMAN_PLAY)
 			gameState=AI;
 		else if(gameState==AI)
