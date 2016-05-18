@@ -143,7 +143,10 @@ public class ConsolePlayerEw extends Player{
 		
 		for(Card c : hand.getHand()){
 			
-			System.out.print(c.getClass() +", ");
+			String s = ""+c.getClass();
+			s = s.substring(12);
+			
+			System.out.print(s+", ");
 			System.out.println("");
 		}
 		

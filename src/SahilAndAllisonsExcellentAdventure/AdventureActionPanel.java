@@ -4,6 +4,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import cards.Card;
+
 public class AdventureActionPanel extends JPanel{
 
 	
@@ -23,5 +25,13 @@ public class AdventureActionPanel extends JPanel{
 		
 		
 		
+	}
+	
+	public String makeThisCardAString(Card c){
+		
+		String s = ""+c.getClass();
+		s = s.substring(12);
+		
+		return null;
 	}
 }
