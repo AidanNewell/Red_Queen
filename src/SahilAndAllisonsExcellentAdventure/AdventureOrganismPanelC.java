@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import cards.BuilderCard;
 import cards.Card;
 import cards.CardLoader;
 
@@ -76,7 +77,19 @@ public class AdventureOrganismPanelC extends JPanel{
 		
 		repaintGrid();
 		
-		x = (int) Math.random()*(cards.size());
+		String cardsDrawn = "Computer drew"
+		
+		selectedIndex = (int) Math.random()*(cards.size());
+		
+		BuilderCard card = (BuilderCard) getSelectedCard();
+		g.getComputerPanel().changeHealth(card.getRes());
+		g.getComputerPanel().changeATP(card.getATP());
+		g.getComputerPanel().changeATP(-1*card.getCost());
+		g.getPlayerPanel().changeHealth(-1*card.getToxin());
+		g.getInfoPanel().updateLabels();
+		removeCard(getSelectedCard());
+		g.getActionPanel().setComputerAction();
+		g.nextPhase();
 		
 		
 	}

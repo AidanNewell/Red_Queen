@@ -45,10 +45,11 @@ public class AdventureActionPanel extends JPanel{
 		endTurn = new JButton("End Turn");
 		endTurn.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
+				g.nextPhase();
 				g.computerTurn();
 			}
 		});
-		computerAction = new JLabel("Help");
+		computerAction = new JLabel("");
 		this.add(Box.createRigidArea(new Dimension(40,0)));
 		this.add(selectedCard);
 		this.add(Box.createRigidArea(new Dimension(70,0)));
@@ -85,5 +86,10 @@ public class AdventureActionPanel extends JPanel{
 		String w = makeThisCardAString(g.getPlayerPanel().getSelectedCard());
 		selectedCard.setText(g.getPlayerPanel().getName()+" selected "+w);
 		
+	}
+	public void setComputerAction(String s){
+		
+		
+		computerAction.setText(s);
 	}
 }
