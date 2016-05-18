@@ -5,10 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JPanel;
+
 import cards.Card;
 import cards.CardLoader;
 
-public class AdventureOrganismPanelC extends AdventureOrganismPanel{
+public class AdventureOrganismPanelC extends JPanel{
 
 	private ArrayList<adventureCardButton> cardButtons;
 	private ArrayList<Card> cards;
@@ -21,7 +23,6 @@ public class AdventureOrganismPanelC extends AdventureOrganismPanel{
 	
 	
 	AdventureOrganismPanelC(AdventureGame G, String s) {
-		super(G, s);
 		
 		name=s;
 		cardButtons = new ArrayList<adventureCardButton>();
