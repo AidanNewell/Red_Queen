@@ -56,18 +56,22 @@ public class AdventureOrganismPanelC extends JPanel{
 	
 	public void takeTurn(){
 		
-		int x = (int) Math.random()*2;
+		int x = (int) Math.random()*3;
 		
 		if(x==0){
-			
-			Card cytoCard = CardLoader.getCytoplasmCard();
-			addCard(cytoCard);
+		
+			addCard(CardLoader.getCytoplasmCard());
+			addCard(CardLoader.getCytoplasmCard());
 			
 		}else if(x==1){
 			
-			Card petriCard = CardLoader.getPetriCard();
-			addCard(petriCard);
+			addCard(CardLoader.getPetriCard());
+			addCard(CardLoader.getPetriCard());
 			
+		}else if (x==2){
+			
+			addCard(CardLoader.getCytoplasmCard());
+			addCard(CardLoader.getPetriCard());
 		}
 		
 		repaintGrid();
