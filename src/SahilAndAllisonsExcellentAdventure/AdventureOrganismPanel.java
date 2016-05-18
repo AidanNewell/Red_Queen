@@ -43,7 +43,13 @@ public class AdventureOrganismPanel extends JPanel{
 				button.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e)
 					{
+						
+						if(g.getGameState() == g.HUMAN_PLAY){
+							
 						selectedIndex = button.getIndex();
+						g.getActionPanel().setSelectedCard();
+						
+						}
 					}
 				});	
 				this.add(button);

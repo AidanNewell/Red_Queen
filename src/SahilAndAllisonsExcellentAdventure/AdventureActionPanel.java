@@ -26,7 +26,7 @@ public class AdventureActionPanel extends JPanel{
 		g=G;
 		p=P;
 		this.setLayout(new BoxLayout(this,BoxLayout.LINE_AXIS));
-		selectedCard = new JLabel("where am I");
+		selectedCard = new JLabel("No card selected");
 		playCard = new JButton("Play Card");
 		playCard.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -66,5 +66,12 @@ public class AdventureActionPanel extends JPanel{
 		}
 		
 		return s;
+	}
+	
+	public void setSelectedCard(){
+		
+		String w = makeThisCardAString(g.getPlayerPanel().getSelectedCard());
+		selectedCard.setText(g.getPlayerPanel().getName()+" selected "+w);
+		
 	}
 }
