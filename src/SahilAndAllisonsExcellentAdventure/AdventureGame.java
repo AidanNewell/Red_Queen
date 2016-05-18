@@ -28,27 +28,29 @@ public class AdventureGame {
 		gameFrame = new JFrame();
 		gameFrame.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
 		
 		playerPanel = new AdventureOrganismPanel(this, "User");
 		c.gridx=0;
 		c.gridy=0;
-		gameFrame.add(playerPanel);
+		gameFrame.add(playerPanel,c);
 		
 		midPanel = new AdventureMiddlePanel(this,playerPanel);
 		c.gridx=1;
 		c.gridy=0;
-		gameFrame.add(midPanel);
+		gameFrame.add(midPanel,c);
 		
 		computerPanel = new AdventureOrganismPanel(this, "Computer");
 		c.gridx=2;
 		c.gridy=0;
-		gameFrame.add(computerPanel);
+		gameFrame.add(computerPanel,c);
 		
 		actionPanel = new AdventureActionPanel(this,playerPanel);
 		c.gridx=0;
 		c.gridy=1;
+		c.weightx = 0.0;
 		c.gridwidth=3;
-		gameFrame.add(actionPanel);
+		gameFrame.add(actionPanel,c);
 		
 		gameFrame.pack();
 		gameFrame.setVisible(true);
