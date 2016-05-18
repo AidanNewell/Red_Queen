@@ -51,5 +51,10 @@ public class HelperTCellCard extends BuilderCard{
 	{
 		return ImagePath.HELPERT_CARD;
 	}
+	
+	public int getSpecialType()
+	{
+		return Card.PETRI_DISH_CARD;
+	}
 
 }

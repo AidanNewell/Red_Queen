@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,7 +17,7 @@ import data.Organism;
 
 public class OrganismPane extends JPanel{
 
-	private Organism organism;
+	private ArrayList<Organism> organisms;
 	
 	private static final int SPACE_AVAILABLE = 600;
 	

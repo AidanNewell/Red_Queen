@@ -12,4 +12,9 @@ abstract class ActionCard extends Card{
 	{
 		return Card.ACTION;
 	}
+	
+	public int getSpecialType()
+	{
+		return Card.ACTION;
+	}
 }

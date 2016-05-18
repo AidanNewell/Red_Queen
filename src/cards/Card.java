@@ -15,5 +15,5 @@ public abstract class Card {
 	
 	public abstract Image getCardArt();
 	
-	
+	public abstract int getSpecialType();
 }

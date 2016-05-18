@@ -109,4 +109,6 @@ public abstract class BuilderCard extends Card{
 	{
 		return Card.BUILDER;
 	}
+	
+	public abstract int getSpecialType();
 }

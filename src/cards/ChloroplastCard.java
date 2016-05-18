@@ -29,6 +29,9 @@ public class ChloroplastCard extends BuilderCard{
 		return ImagePath.CHLOROPLAST_CARD;
 	}
 	
-	
+	public int getSpecialType()
+	{
+		return Card.PETRI_DISH_CARD;
+	}
 	
 }

@@ -24,4 +24,9 @@ public class VacuoleCard extends BuilderCard{
 	{
 		return ImagePath.VAC_CARD;
 	}
+	
+	public int getSpecialType()
+	{
+		return Card.PETRI_DISH_CARD;
+	}
 }
