@@ -16,9 +16,9 @@ public class Organism {
 	private Image organismDisplay;
 	
 	
-	public Organism(int height, int width)
+	public Organism(int[] HW)
 	{
-		organismBody = new BuilderCard[height][width];
+		organismBody = new BuilderCard[HW[0]][HW[1]];
 		bufferDrawCards=1;
 	}
 	

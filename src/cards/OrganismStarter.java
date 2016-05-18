@@ -16,6 +16,11 @@ public abstract class OrganismStarter extends ActionCard{
 		return null;
 	}
 	
+	public int[] getHW()
+	{
+		return new int[]{height,width};
+	}
+	
 	public int getSpecialType()
 	{
 		return Card.ORGANISM_CARD;

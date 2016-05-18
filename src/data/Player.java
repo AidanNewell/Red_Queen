@@ -89,4 +89,9 @@ public class Player {
 		}
 		
 	}
+	
+	public ArrayList<Organism> getOrganisms()
+	{
+		return organisms;
+	}
 }

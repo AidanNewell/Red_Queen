@@ -43,11 +43,13 @@ public class GameScreen extends JPanel implements MouseListener
 	private static HandPanel handPanel;
 	private static OrganismPane focusedOrganism;	
 	private Rectangle HandRectangle;
+	private Rectangle OrganismRectangle;
 	
 	public GameScreen()
 	{
 		drawPiles = new DrawPanel(this);
 		handPanel = new HandPanel(this);
+		focusedOrganism = new OrganismPane(this);
 		MOUSE = new MouseImageBox();
 		Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
 		screenWidth = (int) screenDim.getWidth();
@@ -76,7 +78,10 @@ public class GameScreen extends JPanel implements MouseListener
 		handPanel.setPreferredSize(new Dimension(screenWidth, 180));
 		add(handPanel);
 		HandRectangle = new Rectangle(0,screenHeight-180, screenWidth, 180);
+		OrganismRectangle = new Rectangle(100,100,600,600);
 		handPanel.setBounds(HandRectangle);
+		add(focusedOrganism);
+		focusedOrganism.setBounds(0,0,800,800);
 		addMouseListener(this);
 	}
 	
@@ -126,14 +131,25 @@ public class GameScreen extends JPanel implements MouseListener
 	}
 	public void mouseClicked(MouseEvent arg0)
 	{
+		Point clicked = arg0.getPoint();
 		Card cardHeld = MOUSE.getCard();
-		if(cardHeld != null && HandRectangle.contains(arg0.getPoint()))
+		if(cardHeld!= null)
 		{
-			mainPlayer.getHand().getHand().add(MOUSE.getCard());
-			MOUSE.setCardNull();
-			revalidateHand();
+			if(HandRectangle.contains(clicked))
+			{
+				mainPlayer.getHand().getHand().add(MOUSE.getCard());
+				MOUSE.setCardNull();
+				revalidateHand();
+				return;
+			}
+			if(cardHeld.getSpecialType() == Card.ORGANISM_CARD && gameState == BUILD_ORG && OrganismRectangle.contains(clicked))
+			{
+				mainPlayer.newOrganism(new Organism(((OrganismStarter)cardHeld).getHW()));
+				MOUSE.setCardNull();
+				revalidateOrganism();
+			}
 		}
-		if(cardHeld.getCardType()
+		updateCursor();
 	}
 
 	public void mouseEntered(MouseEvent arg0) {
@@ -172,6 +188,11 @@ public class GameScreen extends JPanel implements MouseListener
 	public static void revalidateHand()
 	{
 		handPanel.resetCardButtons();
+	}
+	
+	public static void revalidateOrganism()
+	{
+		focusedOrganism.updateVars();
 	}
 	
 	public static void addOrganism(Organism o)
