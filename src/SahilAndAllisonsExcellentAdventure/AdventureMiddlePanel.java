@@ -33,12 +33,10 @@ public class AdventureMiddlePanel extends JPanel implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("HELLO");
 		if(g.getGameState()==g.HUMAN_DRAW){
 			Card drawnCard = null;
 			if(e.getSource() == cyto){
 				drawnCard = CardLoader.getCytoplasmCard();
-				System.out.println("please");
 			}
 			else if(e.getSource() == petri)
 				drawnCard = CardLoader.getPetriCard();
