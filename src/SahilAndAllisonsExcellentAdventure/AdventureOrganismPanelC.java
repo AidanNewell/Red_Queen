@@ -107,10 +107,10 @@ public class AdventureOrganismPanelC extends JPanel{
 		g.getComputerPanel().changeATP(card.getATP());
 		g.getComputerPanel().changeATP(-1*card.getCost());
 		g.getPlayerPanel().changeHealth(-1*card.getToxin());
-		g.getInfoPanel().updateLabels();
 		g.getActionPanel().setComputerAction(cardsDrawn +" and played " + g.getActionPanel().makeThisCardAString(getSelectedCard()) +" - Take your turn now");
 		removeCard(getSelectedCard());
 		g.nextPhase();
+		g.getInfoPanel().updateLabels();
 		
 		
 	}

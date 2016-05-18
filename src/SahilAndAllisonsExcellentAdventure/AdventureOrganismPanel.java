@@ -27,7 +27,7 @@ public class AdventureOrganismPanel extends JPanel{
 	private int health;
 	private int ATP;
 	private int drawnCount;
-	private boolean selectCard = false;
+	private boolean selectCard;
 	
 	
 	AdventureOrganismPanel(AdventureGame G, String s){
@@ -52,6 +52,7 @@ public class AdventureOrganismPanel extends JPanel{
 					{
 						if(g.getGameState() == g.HUMAN_PLAY&& button.getIcon()!=null){
 							selectedIndex = button.getIndex();
+							selectCard = true;
 							g.getActionPanel().setSelectedCard();
 						}
 					}
