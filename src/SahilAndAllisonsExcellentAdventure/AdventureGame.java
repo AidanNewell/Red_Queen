@@ -18,8 +18,6 @@ public class AdventureGame {
 	private AdventureOrganismPanel computerPanel;
 	private AdventureActionPanel actionPanel;
 	private AdventureMiddlePanel midPanel;
-	private AdventurePlayer player;
-	private AdventurePlayerC comp;
 	protected final int HUMAN_DRAW = 0;
 	protected final int HUMAN_PLAY = 1;
 	protected final int AI = 2;
@@ -33,17 +31,14 @@ public class AdventureGame {
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		
-		player = new AdventurePlayer("User");
-		comp = new AdventurePlayerC("Comp");
-		
-		infoPanel = new AdventureInfoPanel(this,player,comp);
+		infoPanel = new AdventureInfoPanel(this);
 		c.gridx=0;
 		c.gridy=0;
 		c.gridwidth = 3;
 		gameFrame.add(infoPanel,c);
 		
 		
-		playerPanel = new AdventureOrganismPanel(this, "User", player);
+		playerPanel = new AdventureOrganismPanel(this,"player");
 		c.gridx=0;
 		c.gridy=1;
 		c.gridwidth=1;
@@ -54,7 +49,7 @@ public class AdventureGame {
 		c.gridy=1;
 		gameFrame.add(midPanel,c);
 		
-		computerPanel = new AdventureOrganismPanel(this, "Computer",comp);
+		computerPanel = new AdventureOrganismPanel(this, "Computer");
 		c.gridx=2;
 		c.gridy=1;
 		gameFrame.add(computerPanel,c);

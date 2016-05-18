@@ -24,11 +24,13 @@ public class AdventureOrganismPanel extends JPanel{
 	private AdventureGame g;
 	private int selectedIndex;
 	private String name;
+	private int health;
+	private int ATP;
 	
-	AdventureOrganismPanel(AdventureGame G, String s, AdventurePlayer p){
+	
+	AdventureOrganismPanel(AdventureGame G, String s){
 		
 		name=s;
-		player = p;
 		cardButtons = new ArrayList<adventureCardButton>();
 		cards = new ArrayList<Card>();
 		g=G;
@@ -90,5 +92,17 @@ public class AdventureOrganismPanel extends JPanel{
 		if(cards.get(selectedIndex)!=null)
 			return cards.get(selectedIndex);
 		return null;
+	}
+	public int getHealth(){
+		return health;
+	}
+	public void changeHealth(int change){
+		health+=change;
+	}
+	public int getATP(){
+		return ATP;
+	}
+	public void changeATP(int change){
+		ATP+=change;
 	}
 }
