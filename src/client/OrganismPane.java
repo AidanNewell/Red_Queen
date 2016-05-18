@@ -20,57 +20,42 @@ public class OrganismPane extends JPanel{
 	
 	private static final int SPACE_AVAILABLE = 600;
 	
+	private GameScreen referenceScreen;
+	
+	private int index;
+	
 	public OrganismPane(Organism o)
 	{
-		organism = o;
-		int width = organism.getWidth();
-		int height = organism.getHeight();
-		setLayout(new GridLayout(height,width));
-		int cardXSize = SPACE_AVAILABLE / width;
-		int cardYSize = SPACE_AVAILABLE / height;
-		for(int a=0; a<width;a++)
-		{
-			for(int b=0; b<height;b++)
-			{
-				BuilderCard current = organism.getCardAt(a,b);
-				if(current != null)
+		setLayout(null);
+		JButton upArrow = null;
+		JButton downArrow = null;
+		try{
+			Image buttonImg = ImagePath.UP_ARROW;
+			upArrow = new JButton(new ImageIcon(buttonImg));
+			upArrow.setOpaque(false);;
+			upArrow.setContentAreaFilled(false);
+			upArrow.setFocusPainted(false);
+			upArrow.setBorderPainted(false);
+			upArrow.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e)
 				{
-					JButton cardButton = null;
-					try{
-						Image buttonImage = current.getCardArt();
-						cardButton = new CardButton(current,new ImageIcon(buttonImage),a,b);
-						cardButton.setOpaque(false);
-						cardButton.setContentAreaFilled(false);
-						cardButton.setFocusPainted(false);
-						cardButton.setBorderPainted(false);
-						cardButton.addActionListener(new ActionListener(){
-							public void actionPerformed(ActionEvent e)
-							{
-								organism.getCardAt(getX(), getY()).activateCard();
-							}
-						});
-					}catch(Exception e){System.out.println("FATAL ERROR"); e.printStackTrace(); System.exit(Integer.MAX_VALUE);}
-					add(cardButton);
+					
 				}
-				else
+			});
+			buttonImg = ImagePath.DOWN_ARROW;
+			downArrow = new JButton(new ImageIcon(buttonImg));
+			downArrow.setOpaque(false);
+			downArrow.setContentAreaFilled(false);
+			downArrow.setFocusPainted(false);
+			downArrow.setBorderPainted(false);
+			downArrow.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e)
 				{
-					JButton emptyButton =  null;
-					try{
-						Image nullImage = ImagePath.NULL_BUILD_SLOT;
-						emptyButton = new CardButton(null,new ImageIcon(nullImage), a,b);
-						emptyButton.setOpaque(false);
-						emptyButton.setContentAreaFilled(false);
-						emptyButton.setFocusPainted(false);
-						emptyButton.setBorderPainted(false);
-						emptyButton.addActionListener(new ActionListener(){
-							public void actionPerformed(ActionEvent e)
-							{
-								organism.attemptAddCard(getX(),getY());
-							}
-						});
-					}catch(Exception e){};
+					
 				}
-			}
-		}
+			});
+			add(upArrow);
+			add(downArrow);
+		}catch(Exception e){}
 	}
 }

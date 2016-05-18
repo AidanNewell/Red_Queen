@@ -22,6 +22,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import data.Organism;
 import data.Player;
 
 public class GameScreen extends JPanel implements MouseListener
@@ -40,17 +41,13 @@ public class GameScreen extends JPanel implements MouseListener
 	private OrganismPane organismPanel;
 	private static DrawPanel drawPiles;
 	private static HandPanel handPanel;
-	private static OrganismPane focusedOrganism;
-	
-	private ArrayList<OrganismPane> playerOrganisms;
-	
+	private static OrganismPane focusedOrganism;	
 	private Rectangle HandRectangle;
 	
 	public GameScreen()
 	{
 		drawPiles = new DrawPanel(this);
 		handPanel = new HandPanel(this);
-		focusedOrganism = new OrganismPane(null);
 		MOUSE = new MouseImageBox();
 		Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
 		screenWidth = (int) screenDim.getWidth();
@@ -173,6 +170,11 @@ public class GameScreen extends JPanel implements MouseListener
 	public static void revalidateHand()
 	{
 		handPanel.resetCardButtons();
+	}
+	
+	public static void addOrganism(Organism o)
+	{
+		mainPlayer.newOrganism(o);
 	}
 
 }
