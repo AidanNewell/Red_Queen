@@ -103,7 +103,7 @@ public class AdventureOrganismPanelC extends JPanel{
 		selectedIndex = (int) Math.random()*(cards.size());
 		
 		BuilderCard card = (BuilderCard) getSelectedCard();
-		g.getComputerPanel().changeHealth(card.getRes());
+		g.getComputerPanel().changeHealth(card.getRes()+1);
 		g.getComputerPanel().changeATP(card.getATP());
 		g.getComputerPanel().changeATP(-1*card.getCost());
 		g.getPlayerPanel().changeHealth(-1*card.getToxin());
