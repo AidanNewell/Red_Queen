@@ -118,6 +118,12 @@ public class AdventureGame {
 		
 	}
 	
+	public AdventureInfoPanel getInfoPanel(){
+		
+		return infoPanel;
+		
+	}
+	
 	public static void main(String [] args)
 	{
 		
