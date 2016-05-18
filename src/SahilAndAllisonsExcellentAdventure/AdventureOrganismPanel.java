@@ -36,6 +36,8 @@ public class AdventureOrganismPanel extends JPanel{
 		g=G;
 		int count = 0;
 		this.setLayout(new GridLayout(4,3));
+		health = 20;
+		ATP = 20;
 		
 		for(int col=0;col<3;col++){
 			for(int row=0;row<4;row++){

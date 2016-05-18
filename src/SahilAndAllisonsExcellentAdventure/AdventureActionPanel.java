@@ -32,18 +32,14 @@ public class AdventureActionPanel extends JPanel{
 		playCard = new JButton("Play Card");
 		playCard.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				//oh crap what goes here??? player stuff changes. what r cards fam? 
-				
-				p.removeCard(p.getSelectedCard());
-				System.out.println("first:" + p.getCards().size());
 				BuilderCard card = (BuilderCard) p.getSelectedCard();
-				System.out.println("Second:" + p.getCards().size());
 				g.getPlayerPanel().changeHealth(card.getRes());
 				g.getPlayerPanel().changeATP(card.getATP());
-				g.getPlayerPanel().changeATP(-card.getCost());
-				g.getComputerPanel().changeHealth(card.getToxin());
+				g.getPlayerPanel().changeATP(-1*card.getCost());
+				g.getComputerPanel().changeHealth(-1*card.getToxin());
 				selectedCard.setText("No card Selected");
 				g.getInfoPanel().updateLabels();
+				p.removeCard(p.getSelectedCard());
 			}
 		});
 		endTurn = new JButton("End Turn");
