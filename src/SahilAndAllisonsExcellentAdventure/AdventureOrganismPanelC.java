@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import cards.Card;
@@ -41,12 +42,8 @@ public class AdventureOrganismPanelC extends JPanel{
 					public void actionPerformed(ActionEvent e)
 					{
 						
-						if(g.getGameState() == g.HUMAN_PLAY){
-							
-						selectedIndex = button.getIndex();
-						g.getActionPanel().setSelectedCard();
 						
-						}
+					
 					}
 				});	
 				this.add(button);
@@ -76,6 +73,47 @@ public class AdventureOrganismPanelC extends JPanel{
 		x = (int) Math.random()*(cards.size());
 		
 		
+	}
+	
+	public void addCard(Card c){
+		if(cards.size()<12){
+			cards.add(c);
+		}
+		repaintGrid();
+	}
+	public void removeCard(Card c){
+		if(cards.contains(c))
+			cards.remove(c);
+		repaintGrid();
+	}
+	public void repaintGrid(){
+		
+		for(int i=0;i<cards.size();i++){ 
+			ImageIcon cardArt = new ImageIcon(cards.get(i).getCardArt());
+			cardButtons.get(i).setIcon(cardArt);
+		}
+		
+		for(int i=cards.size();i<12;i++){
+			cardButtons.get(i).setIcon(null);
+		}
+		
+	}
+	public Card getSelectedCard(){
+		if(cards.get(selectedIndex)!=null)
+			return cards.get(selectedIndex);
+		return null;
+	}
+	public int getHealth(){
+		return health;
+	}
+	public void changeHealth(int change){
+		health+=change;
+	}
+	public int getATP(){
+		return ATP;
+	}
+	public void changeATP(int change){
+		ATP+=change;
 	}
 
 }
