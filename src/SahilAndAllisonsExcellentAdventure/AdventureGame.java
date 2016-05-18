@@ -101,6 +101,12 @@ public class AdventureGame {
 		
 	}
 	
+	public void gameOver(){
+		
+		gameState = OVER;
+		
+	}
+	
 	
 	public AdventureOrganismPanel getPlayerPanel(){
 		
