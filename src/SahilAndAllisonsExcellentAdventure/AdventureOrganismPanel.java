@@ -1,6 +1,7 @@
 package SahilAndAllisonsExcellentAdventure;
 
 import java.awt.Dimension;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,17 +15,22 @@ import client.*;
 import data.*;
 import cards.*;
 import data.ImagePath;
+
 public class AdventureOrganismPanel extends JPanel{
+	
 	private ArrayList<adventureCardButton> cardButtons;
 	private ArrayList<Card> cards;
 	private AdventureGame g;
 	private int selectedIndex;
+	
 	AdventureOrganismPanel(AdventureGame G){
+		
 		cardButtons = new ArrayList<adventureCardButton>();
 		cards = new ArrayList<Card>();
 		g=G;
 		int count = 0;
 		this.setLayout(new GridLayout(4,3));
+		
 		for(int col=0;col<3;col++){
 			for(int row=0;row<4;row++){
 				final adventureCardButton button = new adventureCardButton(count);
@@ -40,6 +46,7 @@ public class AdventureOrganismPanel extends JPanel{
 			}
 		}
 	}
+	
 	public void addCard(Card c){
 		if(cards.size()<12){
 			cards.add(c);
