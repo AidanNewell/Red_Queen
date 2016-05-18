@@ -12,7 +12,7 @@ public abstract class OrganismStarter extends ActionCard{
 	public Alert performAction(Organism o, Player p, int h, int w) {
 		if(!(p.isNewOrgValid()))
 			return new Alert("You cannot support another organism!");
-		p.newOrganism(new Organism(h,w));
+		p.newOrganism(new Organism(new int[]{h,w}));
 		return null;
 	}
 	
