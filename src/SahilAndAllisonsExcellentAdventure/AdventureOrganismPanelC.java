@@ -59,25 +59,46 @@ public class AdventureOrganismPanelC extends JPanel{
 		
 		int x = (int) Math.random()*3;
 		
+		Card card1, card2;
+		
+		String cardsDrawn = "";
+		
 		if(x==0){
 		
-			addCard(CardLoader.getCytoplasmCard());
-			addCard(CardLoader.getCytoplasmCard());
+			card1 = CardLoader.getCytoplasmCard();
+			card2 = CardLoader.getCytoplasmCard();
+			
+			addCard(card1);
+			addCard(card2);
+			
+			cardsDrawn = "Computer drew " + g.getActionPanel().makeThisCardAString(card1) +" and " + g.getActionPanel().makeThisCardAString(card2);
 			
 		}else if(x==1){
 			
-			addCard(CardLoader.getPetriCard());
-			addCard(CardLoader.getPetriCard());
+			card1 = CardLoader.getPetriCard();
+			card2 = CardLoader.getPetriCard();
+			
+			addCard(card1);
+			addCard(card2);
+			
+			cardsDrawn = "Computer drew " + g.getActionPanel().makeThisCardAString(card1) +" and " + g.getActionPanel().makeThisCardAString(card2);
+			
 			
 		}else if (x==2){
 			
-			addCard(CardLoader.getCytoplasmCard());
-			addCard(CardLoader.getPetriCard());
+			card1 = CardLoader.getCytoplasmCard();
+			card2 = CardLoader.getPetriCard();
+			
+			addCard(card1);
+			addCard(card2);
+			
+			cardsDrawn = "Computer drew " + g.getActionPanel().makeThisCardAString(card1) +" and " + g.getActionPanel().makeThisCardAString(card2);
+			
 		}
 		
 		repaintGrid();
 		
-		String cardsDrawn = "Computer drew"
+		
 		
 		selectedIndex = (int) Math.random()*(cards.size());
 		
@@ -87,8 +108,8 @@ public class AdventureOrganismPanelC extends JPanel{
 		g.getComputerPanel().changeATP(-1*card.getCost());
 		g.getPlayerPanel().changeHealth(-1*card.getToxin());
 		g.getInfoPanel().updateLabels();
+		g.getActionPanel().setComputerAction(cardsDrawn +" and played " + g.getActionPanel().makeThisCardAString(getSelectedCard()) +" - Take your turn now");
 		removeCard(getSelectedCard());
-		g.getActionPanel().setComputerAction();
 		g.nextPhase();
 		
 		
