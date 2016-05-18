@@ -25,8 +25,12 @@ public class AdventureMiddlePanel extends JPanel{
 		
 		cyto.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				Card cytoCard = CardLoader.getCytoplasmCard();
-				p.addCard(cytoCard);
+				
+				if(g.getGameState()==g.HUMAN_DRAW){
+					Card cytoCard = CardLoader.getCytoplasmCard();
+					p.addCard(cytoCard);
+					g.nextPhase();
+				}
 			}
 		});
 		
@@ -35,8 +39,12 @@ public class AdventureMiddlePanel extends JPanel{
 		
 		petri.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				Card petriCard = CardLoader.getPetriCard();
-				p.addCard(petriCard);
+				
+				if(g.getGameState()==g.HUMAN_DRAW){
+					Card petriCard = CardLoader.getPetriCard();
+					p.addCard(petriCard);
+					g.nextPhase();
+				}
 			}
 		});
 		

@@ -17,9 +17,9 @@ public class AdventureGame {
 	private AdventureOrganismPanel computerPanel;
 	private AdventureActionPanel actionPanel;
 	private AdventureMiddlePanel midPanel;
-	private static final int HUMAN_DRAW = 0;
-	private static final int HUMAN_PLAY = 1;
-	private static final int AI = 2;
+	protected final int HUMAN_DRAW = 0;
+	protected final int HUMAN_PLAY = 1;
+	protected final int AI = 2;
 	private int gameState;
 	
 	
