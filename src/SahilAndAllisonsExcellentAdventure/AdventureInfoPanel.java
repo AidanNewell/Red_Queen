@@ -30,5 +30,9 @@ public class AdventureInfoPanel extends JPanel{
 	}
 	public void updateLabels(){
 		playerHealth.setText("Health:"  + game.getPlayerPanel().getHealth());
+		playerATP.setText("ATP: "+ game.getPlayerPanel().getATP());
+		gamePhase.setText(game.getStateString());
+		compHealth.setText("Health:" + game.getComputerPanel().getHealth());
+		compATP.setText("ATP:" + game.getComputerPanel().getATP());
 	}
 }

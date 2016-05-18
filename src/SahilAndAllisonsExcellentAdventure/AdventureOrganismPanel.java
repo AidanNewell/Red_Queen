@@ -89,6 +89,7 @@ public class AdventureOrganismPanel extends JPanel{
 		
 	}
 	public Card getSelectedCard(){
+		System.out.println(selectedIndex);
 		if(cards.get(selectedIndex)!=null)
 			return cards.get(selectedIndex);
 		return null;
@@ -104,5 +105,8 @@ public class AdventureOrganismPanel extends JPanel{
 	}
 	public void changeATP(int change){
 		ATP+=change;
+	}
+	public ArrayList<Card> getCards(){
+		return cards;
 	}
 }

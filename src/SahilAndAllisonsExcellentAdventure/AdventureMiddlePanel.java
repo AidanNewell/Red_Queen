@@ -9,16 +9,14 @@ import cards.*;
 public class AdventureMiddlePanel extends JPanel{
 	
 	private AdventureGame g;
-	private AdventureOrganismPanel p;
 	private final int CYTOPLASM = 0;
 	private final int ORGANELLE = 1;
 	private adventureCardButton cyto;
 	private adventureCardButton petri;
 	
-	public AdventureMiddlePanel(AdventureGame G, AdventureOrganismPanel P){
+	public AdventureMiddlePanel(AdventureGame G){
 		
 		g=G;
-		p=P;
 		
 		cyto = new adventureCardButton(0);
 		cyto.setIcon(new ImageIcon("assets/CytoplasmBack.png"));
@@ -28,7 +26,7 @@ public class AdventureMiddlePanel extends JPanel{
 				
 				if(g.getGameState()==g.HUMAN_DRAW){
 					Card cytoCard = CardLoader.getCytoplasmCard();
-					p.addCard(cytoCard);
+					g.getPlayerPanel().addCard(cytoCard);
 					g.nextPhase();
 				}
 			}
@@ -42,7 +40,7 @@ public class AdventureMiddlePanel extends JPanel{
 				
 				if(g.getGameState()==g.HUMAN_DRAW){
 					Card petriCard = CardLoader.getPetriCard();
-					p.addCard(petriCard);
+					g.getPlayerPanel().addCard(petriCard);
 					g.nextPhase();
 				}
 			}

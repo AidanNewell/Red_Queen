@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import cards.Card;
-
+import cards.*;
 public class AdventureActionPanel extends JPanel{
 
 	
@@ -33,14 +33,23 @@ public class AdventureActionPanel extends JPanel{
 		playCard.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//oh crap what goes here??? player stuff changes. what r cards fam? 
+				
 				p.removeCard(p.getSelectedCard());
+				System.out.println("first:" + p.getCards().size());
+				BuilderCard card = (BuilderCard) p.getSelectedCard();
+				System.out.println("Second:" + p.getCards().size());
+				g.getPlayerPanel().changeHealth(card.getRes());
+				g.getPlayerPanel().changeATP(card.getATP());
+				g.getPlayerPanel().changeATP(-card.getCost());
+				g.getComputerPanel().changeHealth(card.getToxin());
 				selectedCard.setText("No card Selected");
+				g.getInfoPanel().updateLabels();
 			}
 		});
 		endTurn = new JButton("End Turn");
 		endTurn.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				g.nextPhase();
+				//g.computerTurn();
 			}
 		});
 		computerAction = new JLabel("Help");
