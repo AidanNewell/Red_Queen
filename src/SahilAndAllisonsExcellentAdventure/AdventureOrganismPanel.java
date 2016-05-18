@@ -22,8 +22,11 @@ public class AdventureOrganismPanel extends JPanel{
 	private ArrayList<Card> cards;
 	private AdventureGame g;
 	private int selectedIndex;
+	private String name;
 	
-	AdventureOrganismPanel(AdventureGame G){
+	AdventureOrganismPanel(AdventureGame G, String s){
+		
+		name=s;
 		
 		cardButtons = new ArrayList<adventureCardButton>();
 		cards = new ArrayList<Card>();
@@ -46,6 +49,11 @@ public class AdventureOrganismPanel extends JPanel{
 				this.add(button);
 			}
 		}
+	}
+	
+	public String getName(){
+		
+		return name;
 	}
 	
 	public void addCard(Card c){

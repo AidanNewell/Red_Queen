@@ -29,7 +29,7 @@ public class AdventureGame {
 		gameFrame.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		
-		playerPanel = new AdventureOrganismPanel(this);
+		playerPanel = new AdventureOrganismPanel(this, "User");
 		c.gridx=0;
 		c.gridy=0;
 		gameFrame.add(playerPanel);
@@ -39,7 +39,7 @@ public class AdventureGame {
 		c.gridy=0;
 		gameFrame.add(midPanel);
 		
-		computerPanel = new AdventureOrganismPanel(this);
+		computerPanel = new AdventureOrganismPanel(this, "Computer");
 		c.gridx=2;
 		c.gridy=0;
 		gameFrame.add(computerPanel);

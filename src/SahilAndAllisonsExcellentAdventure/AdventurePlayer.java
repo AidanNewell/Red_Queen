@@ -10,6 +10,17 @@ public class AdventurePlayer {
 	private int atp;
 	private ArrayList<Card>Cards; 
 	private Card selectedCard;
+	private String name;
+	
+	public AdventurePlayer(String s){
+		
+		name = s;
+	}
+	
+	public String getName(){
+		
+		return name;
+	}
 	
 	
 	public Card getSelectedCard(){

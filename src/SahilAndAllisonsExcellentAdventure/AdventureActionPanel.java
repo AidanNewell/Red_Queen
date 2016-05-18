@@ -45,6 +45,6 @@ public class AdventureActionPanel extends JPanel{
 			
 		}
 		
-		return null;
+		return s;
 	}
 }
