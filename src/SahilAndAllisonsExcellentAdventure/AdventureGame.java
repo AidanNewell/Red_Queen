@@ -126,6 +126,11 @@ public class AdventureGame {
 		
 	}
 	
+	public void computerTurn(){
+		
+		
+	}
+	
 	public static void main(String [] args)
 	{
 		
