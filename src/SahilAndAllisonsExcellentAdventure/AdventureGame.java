@@ -92,6 +92,24 @@ public class AdventureGame {
 		
 	}
 	
+	
+	public AdventureOrganismPanel getPlayerPanel(){
+		
+		return playerPanel;
+		
+	}
+	public AdventureOrganismPanel getComputerPanel(){
+		
+		return computerPanel;
+		
+	}
+	
+	public AdventureActionPanel getActionPanel(){
+		
+		return actionPanel;
+		
+	}
+	
 	public static void main(String [] args)
 	{
 		
