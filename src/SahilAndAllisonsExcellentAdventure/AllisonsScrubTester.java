@@ -16,7 +16,7 @@ public class AllisonsScrubTester {
 		JFrame yo = new JFrame();
 		AdventureGame g = new AdventureGame();
 		AdventurePlayer p = new AdventurePlayer("why");
-		AdventureOrganismPanel testPanel = new AdventureOrganismPanel(g, "User",p);
+		AdventureOrganismPanel testPanel = new AdventureOrganismPanel(g, "User");
 		MitochondriaCard mito = new MitochondriaCard();
 		testPanel.addCard(new CytosolCard());
 		testPanel.addCard(mito);
@@ -47,8 +47,8 @@ public class AllisonsScrubTester {
 		AdventureGame g = new AdventureGame();
 		JPanel contentPane = new JPanel();
 		AdventurePlayer player = new AdventurePlayer("player");
-		AdventureOrganismPanel me = new AdventureOrganismPanel(g, "User",player);
-		AdventureMiddlePanel testPanel = new AdventureMiddlePanel(g,me);
+		AdventureOrganismPanel me = new AdventureOrganismPanel(g, "User");
+		AdventureMiddlePanel testPanel = new AdventureMiddlePanel(g);
 		yo.setContentPane(contentPane);
 		yo.setLayout(new BoxLayout(contentPane,BoxLayout.LINE_AXIS));
 		yo.add(testPanel);
