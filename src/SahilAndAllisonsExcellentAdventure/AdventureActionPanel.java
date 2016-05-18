@@ -13,7 +13,7 @@ import cards.Card;
 import cards.*;
 public class AdventureActionPanel extends JPanel{
 
-	
+
 	private AdventureGame g;
 	private AdventureOrganismPanel p;
 	private JLabel selectedCard;
@@ -21,10 +21,10 @@ public class AdventureActionPanel extends JPanel{
 	private JButton endTurn;
 	private JLabel computerAction;
 
-	
-	
+
+
 	public AdventureActionPanel(AdventureGame G, AdventureOrganismPanel P){
-		
+
 		g=G;
 		p=P;
 		this.setLayout(new BoxLayout(this,BoxLayout.LINE_AXIS));
@@ -32,16 +32,18 @@ public class AdventureActionPanel extends JPanel{
 		playCard = new JButton("Play Card");
 		playCard.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				BuilderCard card = (BuilderCard) p.getSelectedCard();
-				g.getPlayerPanel().changeHealth(card.getRes()+1);
-				g.getPlayerPanel().changeATP(card.getATP());
-				g.getPlayerPanel().changeATP(-1*card.getCost());
-				g.getComputerPanel().changeHealth(-1*card.getToxin());
 				selectedCard.setText("No card Selected");
-				g.getInfoPanel().updateLabels();
-				p.removeCard(p.getSelectedCard());
-			}
-		});
+				if(g.getPlayerPanel().isSelected()){
+					BuilderCard card = (BuilderCard) p.getSelectedCard();
+					g.getPlayerPanel().changeHealth(card.getRes()+1);
+					g.getPlayerPanel().changeATP(card.getATP());
+					g.getPlayerPanel().changeATP(-1*card.getCost());
+					g.getComputerPanel().changeHealth(-1*card.getToxin());
+					g.getInfoPanel().updateLabels();
+					p.removeCard(p.getSelectedCard());
+					g.getPlayerPanel().unSelect();
+				}
+			}});
 		endTurn = new JButton("End Turn");
 		endTurn.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -58,38 +60,38 @@ public class AdventureActionPanel extends JPanel{
 		this.add(endTurn);
 		this.add(Box.createRigidArea(new Dimension(220,0)));
 		this.add(computerAction);
-	}
-	
-	public String makeThisCardAString(Card c){
-		
-		//this is essentially the card.toString() you asked for
-		
-		String s = ""+c.getClass();
-		s = s.substring(12, s.length()-4);
-		
-		for(int x=0; x<s.length(); x++){
-			
-			if(x!=0 && Character.isUpperCase(s.charAt(x))){
-				
-				s = s.substring(0,x) + " " + s.substring(x);
-				x++;
-				
-			}
-			
 		}
-		
-		return s;
+
+		public String makeThisCardAString(Card c){
+
+			//this is essentially the card.toString() you asked for
+
+			String s = ""+c.getClass();
+			s = s.substring(12, s.length()-4);
+
+			for(int x=0; x<s.length(); x++){
+
+				if(x!=0 && Character.isUpperCase(s.charAt(x))){
+
+					s = s.substring(0,x) + " " + s.substring(x);
+					x++;
+
+				}
+
+			}
+
+			return s;
+		}
+
+		public void setSelectedCard(){
+
+			String w = makeThisCardAString(g.getPlayerPanel().getSelectedCard());
+			selectedCard.setText(g.getPlayerPanel().getName()+" selected "+w);
+
+		}
+		public void setComputerAction(String s){
+
+
+			computerAction.setText(s);
+		}
 	}
-	
-	public void setSelectedCard(){
-		
-		String w = makeThisCardAString(g.getPlayerPanel().getSelectedCard());
-		selectedCard.setText(g.getPlayerPanel().getName()+" selected "+w);
-		
-	}
-	public void setComputerAction(String s){
-		
-		
-		computerAction.setText(s);
-	}
-}

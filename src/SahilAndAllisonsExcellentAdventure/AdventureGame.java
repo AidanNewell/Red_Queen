@@ -89,8 +89,10 @@ public class AdventureGame {
 		}
 		else if(gameState==HUMAN_PLAY)
 			gameState=AI;
-		else if(gameState==AI)
+		else if(gameState==AI){
 			gameState=HUMAN_DRAW;
+			playerPanel.unSelect();
+		}
 	}
 	
 	public int getGameState(){

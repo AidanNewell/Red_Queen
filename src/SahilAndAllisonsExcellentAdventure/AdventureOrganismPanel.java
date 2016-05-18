@@ -27,6 +27,7 @@ public class AdventureOrganismPanel extends JPanel{
 	private int health;
 	private int ATP;
 	private int drawnCount;
+	private boolean selectCard = false;
 	
 	
 	AdventureOrganismPanel(AdventureGame G, String s){
@@ -116,5 +117,11 @@ public class AdventureOrganismPanel extends JPanel{
 	}
 	public int getDrawn(){
 		return drawnCount;
+	}
+	public boolean isSelected(){
+		return selectCard;
+	}
+	public void unSelect(){
+		selectCard = false;
 	}
 }
