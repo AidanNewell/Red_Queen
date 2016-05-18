@@ -120,9 +120,9 @@ public class AdventureGame {
 		
 	}
 	
-	public String getStateString(int n){
+	public String getStateString(){
 		
-		return states[n];
+		return states[gameState];
 		
 	}
 	
