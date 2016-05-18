@@ -36,6 +36,7 @@ public class AdventureOrganismPanel extends JPanel{
 				final adventureCardButton button = new adventureCardButton(count);
 				count++;
 				cardButtons.add(button);
+				
 				button.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e)
 					{
@@ -59,13 +60,16 @@ public class AdventureOrganismPanel extends JPanel{
 		repaintGrid();
 	}
 	public void repaintGrid(){
+		
 		for(int i=0;i<cards.size();i++){ 
 			ImageIcon cardArt = new ImageIcon(cards.get(i).getCardArt());
 			cardButtons.get(i).setIcon(cardArt);
 		}
+		
 		for(int i=cards.size();i<12;i++){
 			cardButtons.get(i).setIcon(null);
 		}
+		
 	}
 	public Card getSelectedCard(){
 		return cards.get(selectedIndex);
