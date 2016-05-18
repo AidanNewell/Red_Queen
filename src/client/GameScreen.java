@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,8 +40,11 @@ public class GameScreen extends JPanel implements MouseListener
 	private OrganismPane organismPanel;
 	private static DrawPanel drawPiles;
 	private static HandPanel handPanel;
+	private static OrganismPane focusedOrganism;
 	
 	private ArrayList<OrganismPane> playerOrganisms;
+	
+	private Rectangle HandRectangle;
 	
 	public GameScreen()
 	{
@@ -70,9 +74,11 @@ public class GameScreen extends JPanel implements MouseListener
 		});
 		drawPiles.setPreferredSize(new Dimension(screenWidth,screenHeight));
 		add(drawPiles);
-		drawPiles.setBounds(0,0,screenWidth,screenHeight-160);
+		drawPiles.setBounds(0,0,screenWidth,screenHeight-180);
+		handPanel.setPreferredSize(new Dimension(screenWidth, 180));
 		add(handPanel);
-		handPanel.setBounds(0,screenHeight - 160, screenWidth,160);
+		HandRectangle = new Rectangle(0,screenHeight-180, screenWidth, 180);
+		handPanel.setBounds(HandRectangle);
 		addMouseListener(this);
 	}
 	
@@ -95,6 +101,7 @@ public class GameScreen extends JPanel implements MouseListener
 				repaint();
 			}
 			drawPiles.updateLabelText(drawPiles.cardsRemaining);
+			handPanel.resetCardButtons();
 			break;
 		case BUILD_ORG:
 			break;
@@ -110,7 +117,7 @@ public class GameScreen extends JPanel implements MouseListener
 		}
 	}
 
-	public void mouseClicked(MouseEvent arg0)
+	public void updateCursor()
 	{
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Image cursorImage = MOUSE.getImage();
@@ -118,6 +125,15 @@ public class GameScreen extends JPanel implements MouseListener
 			setCursor(toolkit.createCustomCursor(cursorImage, new Point(getX(),getY()), "help"));
 		else
 			setCursor(Cursor.getDefaultCursor());
+	}
+	public void mouseClicked(MouseEvent arg0)
+	{
+		if(MOUSE.getCard() != null && HandRectangle.contains(arg0.getPoint()))
+		{
+			mainPlayer.getHand().getHand().add(MOUSE.getCard());
+			MOUSE.setCardNull();
+			revalidateHand();
+		}
 	}
 
 	public void mouseEntered(MouseEvent arg0) {
@@ -151,6 +167,11 @@ public class GameScreen extends JPanel implements MouseListener
 		drawCardsRemaining = mainPlayer.getCardsToDraw();
 		drawPiles.cardsRemaining = drawCardsRemaining;
 		drawPiles.updateLabelText(drawPiles.cardsRemaining);
+	}
+	
+	public static void revalidateHand()
+	{
+		handPanel.resetCardButtons();
 	}
 
 }

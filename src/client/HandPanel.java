@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import data.ImagePath;
-
+import data.Player;
 import cards.*;
 
 public class HandPanel extends JPanel{
@@ -70,20 +70,39 @@ public class HandPanel extends JPanel{
 			});
 			Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
 			add(leftArrow);
-			leftArrow.setBounds(20,0,40,120);
+			leftArrow.setBounds(20,30,40,120);
 			add(rightArrow);
-			rightArrow.setBounds((int) screenDim.getWidth() - 60,0, 40 ,120);
+			rightArrow.setBounds((int) screenDim.getWidth() - 60,30, 40 ,120);
 		}catch(Exception e){e.printStackTrace(); System.exit(2);}
 	}
 	
-	private void resetCardButtons()
+	public void resetCardButtons()
 	{
+		cards = GameScreen.getPlayer().getHand().getHand();
 		for(int x=0; x<cardButtons.length;x++)
 		{
-			Card current = cards.get(index+x);
-			cardButtons[x] = new CardButton(current, new ImageIcon(current.getCardArt()),0,0);
+			try{
+				remove(cardButtons[x]);
+			}catch(Exception e){}
+			Card current = null;
+			try{
+				current = cards.get(index+x);
+			}catch(Exception e){}
+			cardButtons[x] = null;
+			if(current != null)
+			{
+				cardButtons[x] = new CardButton(current, new ImageIcon(current.getCardArt()),0,0);
+				cardButtons[x].setOpaque(false);
+				cardButtons[x].setContentAreaFilled(false);
+				cardButtons[x].setBorderPainted(false);
+				cardButtons[x].setFocusPainted(false);
+				cardButtons[x].setupHandListener();
+				(cardButtons[x]).setBounds(150 + (x*184),8,164,164);
+				add(cardButtons[x]);
+			}
 		}
 		revalidate();
 		repaint();
+		referenceScreen.updateCursor();
 	}
 }

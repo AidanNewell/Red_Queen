@@ -1,5 +1,8 @@
 package client;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -11,6 +14,8 @@ public class CardButton extends JButton{
 	
 	private Card  c;
 	
+	
+	
 	public CardButton(Card c,ImageIcon i, int x, int y)
 	{
 		super(i);
@@ -19,12 +24,12 @@ public class CardButton extends JButton{
 		organismY = y;
 	}
 	
-	public int getX()
+	public int getOrganismX()
 	{
 		return organismX;
 	}
 	
-	public int getY()
+	public int getOrganismY()
 	{
 		return organismY;
 	}
@@ -32,6 +37,21 @@ public class CardButton extends JButton{
 	public Card getCard()
 	{
 		return c;
+	}
+	
+	public void setupHandListener()
+	{
+		addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				if(GameScreen.gameState != GameScreen.DRAW_CARDS && GameScreen.MOUSE.getCard() == null)
+				{
+					GameScreen.getPlayer().getHand().getHand().remove(c);
+					GameScreen.MOUSE.setCard(c);
+					GameScreen.revalidateHand();
+				}
+			}
+		});
 	}
 	
 }

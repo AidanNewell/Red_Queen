@@ -18,10 +18,13 @@ public class MouseImageBox {
 	
 	public Card getCard()
 	{
-		Card returned = c;
-		c= null;
+		return c;
+	}
+	
+	public void setCardNull()
+	{
+		c = null;
 		i = null;
-		return returned;
 	}
 	
 	public Image getImage()
