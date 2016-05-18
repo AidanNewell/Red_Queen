@@ -45,7 +45,7 @@ public class AdventureActionPanel extends JPanel{
 		endTurn = new JButton("End Turn");
 		endTurn.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				//g.computerTurn();
+				g.computerTurn();
 			}
 		});
 		computerAction = new JLabel("Help");
