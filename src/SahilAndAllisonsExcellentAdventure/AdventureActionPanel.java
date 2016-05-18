@@ -33,7 +33,7 @@ public class AdventureActionPanel extends JPanel{
 		playCard.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				BuilderCard card = (BuilderCard) p.getSelectedCard();
-				g.getPlayerPanel().changeHealth(card.getRes());
+				g.getPlayerPanel().changeHealth(card.getRes()+1);
 				g.getPlayerPanel().changeATP(card.getATP());
 				g.getPlayerPanel().changeATP(-1*card.getCost());
 				g.getComputerPanel().changeHealth(-1*card.getToxin());
