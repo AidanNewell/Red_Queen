@@ -21,6 +21,7 @@ public class AdventureGame {
 	protected final int HUMAN_DRAW = 0;
 	protected final int HUMAN_PLAY = 1;
 	protected final int AI = 2;
+	private final String[] states = {"Draw a card", "Play a card", "Computer's turn"};
 	private int gameState;
 	
 	
@@ -116,6 +117,12 @@ public class AdventureGame {
 	public AdventureInfoPanel getInfoPanel(){
 		
 		return infoPanel;
+		
+	}
+	
+	public String getStateString(int n){
+		
+		return states[n];
 		
 	}
 	
