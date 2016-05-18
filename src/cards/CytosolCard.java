@@ -23,5 +23,10 @@ public class CytosolCard extends BuilderCard{
 	{
 		return ImagePath.CYTOSOL_CARD;
 	}
+	
+	public int getSpecialType()
+	{
+		return Card.CYTOPLASM_CARD;
+	}
 
 }

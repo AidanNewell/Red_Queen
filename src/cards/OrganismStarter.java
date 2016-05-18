@@ -15,4 +15,9 @@ public abstract class OrganismStarter extends ActionCard{
 		p.newOrganism(new Organism(h,w));
 		return null;
 	}
+	
+	public int getSpecialType()
+	{
+		return Card.ORGANISM_CARD;
+	}
 }

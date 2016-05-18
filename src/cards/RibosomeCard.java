@@ -25,5 +25,10 @@ public class RibosomeCard extends BuilderCard{
 	{
 		return null;
 	}
+	
+	public int getSpecialType()
+	{
+		return Card.PETRI_DISH_CARD;
+	}
 
 }

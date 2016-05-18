@@ -34,6 +34,7 @@ public class AdventureActionPanel extends JPanel{
 			public void actionPerformed(ActionEvent e){
 				//oh crap what goes here??? player stuff changes. what r cards fam? 
 				p.removeCard(p.getSelectedCard());
+				selectedCard.setText("No card Selected");
 			}
 		});
 		endTurn = new JButton("End Turn");

@@ -68,12 +68,6 @@ public class AdventureGame {
 		
 	}
 	
-	public void turn(int who){ //allison what were you actually thinking here
-		
-		
-		
-	}
-	
 	public void startGame(){
 		CardLoader.init();
 		ImagePath.init();

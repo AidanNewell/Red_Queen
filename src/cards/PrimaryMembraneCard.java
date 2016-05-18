@@ -27,5 +27,10 @@ public class PrimaryMembraneCard extends BuilderCard{
 	{
 		return ImagePath.PRIMARYMEM_CARD;
 	}
+	
+	public int getSpecialType()
+	{
+		return Card.PETRI_DISH_CARD;
+	}
 
 }

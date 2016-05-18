@@ -23,4 +23,9 @@ public class KillerTCellCard extends BuilderCard{
 	{
 		return ImagePath.KILLERT_CARD;
 	}
+	
+	public int getSpecialType()
+	{
+		return Card.PETRI_DISH_CARD;
+	}
 }

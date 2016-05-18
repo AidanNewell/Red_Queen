@@ -24,5 +24,10 @@ public class CytoskeletonCard extends BuilderCard{
 	{
 		return ImagePath.CYTOSKELETON_CARD;
 	}
+	
+	public int getSpecialType()
+	{
+		return Card.CYTOPLASM_CARD;
+	}
 
 }
