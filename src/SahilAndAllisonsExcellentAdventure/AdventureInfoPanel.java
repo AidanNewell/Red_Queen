@@ -9,12 +9,8 @@ public class AdventureInfoPanel extends JPanel{
 	private JLabel compHealth;
 	private JLabel compATP;
 	private AdventureGame game;
-	private AdventurePlayer player;
-	private AdventurePlayer comp;
-	public AdventureInfoPanel(AdventureGame game, AdventurePlayer player, AdventurePlayerC comp){
+	public AdventureInfoPanel(AdventureGame game){
 		this.game = game;
-		this.player = player;
-		this.comp = comp;
 		playerHealth = new JLabel("Health: " + 20);
 		playerATP = new JLabel("ATP: " + 20);
 		gamePhase = new JLabel("Draw a Card");
@@ -33,6 +29,6 @@ public class AdventureInfoPanel extends JPanel{
 		this.add(compATP);
 	}
 	public void updateLabels(){
-		
+		playerHealth.setText("Health:"  + game.getPlayerPanel().getHealth());
 	}
 }

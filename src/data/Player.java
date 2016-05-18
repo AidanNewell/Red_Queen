@@ -16,7 +16,7 @@ public class Player {
 		hand = new Hand();
 		organisms = new ArrayList<Organism>();
 		numOrganisms=4;
-		numCardsToDraw = 30;
+		numCardsToDraw = 3;
 	}
 	
 	

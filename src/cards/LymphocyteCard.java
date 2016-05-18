@@ -54,5 +54,10 @@ public class LymphocyteCard extends BuilderCard{
 	{
 		return ImagePath.LYMPH_CARD;
 	}
+	
+	public int getSpecialType()
+	{
+		return Card.PETRI_DISH_CARD;
+	}
 
 }

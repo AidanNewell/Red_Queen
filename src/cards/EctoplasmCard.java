@@ -24,4 +24,9 @@ public class EctoplasmCard extends BuilderCard{
 	{
 		return ImagePath.ECTOPLASM_CARD;
 	}
+	
+	public int getSpecialType()
+	{
+		return Card.CYTOPLASM_CARD;
+	}
 }

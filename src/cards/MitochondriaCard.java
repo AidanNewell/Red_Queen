@@ -28,5 +28,10 @@ public class MitochondriaCard extends BuilderCard{
 	{
 		return ImagePath.MITO_CARD;
 	}
+	
+	public int getSpecialType()
+	{
+		return Card.PETRI_DISH_CARD;
+	}
 
 }

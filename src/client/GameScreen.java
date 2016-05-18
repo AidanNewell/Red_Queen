@@ -126,12 +126,14 @@ public class GameScreen extends JPanel implements MouseListener
 	}
 	public void mouseClicked(MouseEvent arg0)
 	{
-		if(MOUSE.getCard() != null && HandRectangle.contains(arg0.getPoint()))
+		Card cardHeld = MOUSE.getCard();
+		if(cardHeld != null && HandRectangle.contains(arg0.getPoint()))
 		{
 			mainPlayer.getHand().getHand().add(MOUSE.getCard());
 			MOUSE.setCardNull();
 			revalidateHand();
 		}
+		if(cardHeld.getCardType()
 	}
 
 	public void mouseEntered(MouseEvent arg0) {
