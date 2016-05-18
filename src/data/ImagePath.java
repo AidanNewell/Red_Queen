@@ -48,8 +48,8 @@ public class ImagePath
     		PRIMARYMEM_CARD = ImageIO.read(new File(path + "prim.png"));
     		VAC_CARD = ImageIO.read(new File(path + "Vacuole.png"));
     		NULL_BUILD_SLOT = ImageIO.read(new File(path + "emptySpace.png"));
-    		DOWN_ARROW = ImageIO.read(new File(path + "Down_Arrow.png"));
-    		UP_ARROW = ImageIO.read(new File(path + "Up_Arrow.png"));
+    		//DOWN_ARROW = ImageIO.read(new File(path + "Down_Arrow.png"));
+    		//UP_ARROW = ImageIO.read(new File(path + "Up_Arrow.png"));
     	}catch(Exception e){e.printStackTrace(); System.exit(1);}
     	
     	scale();
