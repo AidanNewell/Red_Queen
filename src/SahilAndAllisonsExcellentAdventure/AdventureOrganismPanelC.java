@@ -57,7 +57,7 @@ public class AdventureOrganismPanelC extends JPanel{
 	
 	public void takeTurn(){
 		
-		int x = (int) Math.random()*3;
+		int x = (int) (Math.random()*3);
 		
 		Card card1, card2;
 		
