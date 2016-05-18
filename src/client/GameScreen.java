@@ -50,6 +50,7 @@ public class GameScreen extends JPanel implements MouseListener
 	{
 		drawPiles = new DrawPanel(this);
 		handPanel = new HandPanel(this);
+		focusedOrganism = new OrganismPane(null);
 		MOUSE = new MouseImageBox();
 		Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
 		screenWidth = (int) screenDim.getWidth();

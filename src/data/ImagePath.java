@@ -15,6 +15,8 @@ public class ImagePath
 	public static Image HUD_BANNER;
 	public static Image RIGHT_ARROW;
 	public static Image LEFT_ARROW;
+	public static Image UP_ARROW;
+	public static Image DOWN_ARROW;
 		
 	public static Image CYTO_BACK, PETRI_BACK, ORG_BACK;
 	public static Image CYTOSOL_CARD, ECTOPLASM_CARD, CYTOSKELETON_CARD, LARGE_S_ORG_CARD, MED_S_ORG_CARD, SMALL_S_ORG_CARD;
@@ -46,6 +48,8 @@ public class ImagePath
     		PRIMARYMEM_CARD = ImageIO.read(new File(path + "prim.png"));
     		VAC_CARD = ImageIO.read(new File(path + "Vacuole.png"));
     		NULL_BUILD_SLOT = ImageIO.read(new File(path + "emptySpace.png"));
+    		DOWN_ARROW = ImageIO.read(new File(path + "Down_Arrow.png"));
+    		UP_ARROW = ImageIO.read(new File(path + "Up_Arrow.png"));
     	}catch(Exception e){e.printStackTrace(); System.exit(1);}
     	
     	scale();
