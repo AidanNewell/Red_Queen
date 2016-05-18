@@ -28,6 +28,7 @@ public class AdventureMiddlePanel extends JPanel{
 					Card cytoCard = CardLoader.getCytoplasmCard();
 					g.getPlayerPanel().addCard(cytoCard);
 					g.nextPhase();
+					g.getInfoPanel().updateLabels();
 				}
 			}
 		});
@@ -42,6 +43,7 @@ public class AdventureMiddlePanel extends JPanel{
 					Card petriCard = CardLoader.getPetriCard();
 					g.getPlayerPanel().addCard(petriCard);
 					g.nextPhase();
+					g.getInfoPanel().updateLabels();
 				}
 			}
 		});
