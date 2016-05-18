@@ -128,6 +128,7 @@ public class AdventureGame {
 	
 	public void computerTurn(){
 		
+		computerPanel.takeTurn();
 		
 	}
 	
