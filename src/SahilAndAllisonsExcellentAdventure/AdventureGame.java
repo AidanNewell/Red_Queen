@@ -21,7 +21,8 @@ public class AdventureGame {
 	protected final int HUMAN_DRAW = 0;
 	protected final int HUMAN_PLAY = 1;
 	protected final int AI = 2;
-	private final String[] states = {"Draw a card", "Play a card", "Computer's turn"};
+	protected final int OVER = 3;
+	private final String[] states = {"Draw a card", "Play a card", "Computer's turn", "Game is over goodbye"};
 	private int gameState;
 	
 	
