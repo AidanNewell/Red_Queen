@@ -66,6 +66,6 @@ public class Client extends JPanel{
 	
 	public static void quitGame()
 	{
-		System.exit(0);
+		System.exit(0);//
 	}
 }
