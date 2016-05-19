@@ -7,9 +7,9 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import cards.Card;
 import cards.*;
 public class AdventureActionPanel extends JPanel{
 
@@ -19,6 +19,7 @@ public class AdventureActionPanel extends JPanel{
 	private JLabel selectedCard;
 	private JButton playCard;
 	private JButton endTurn;
+	private JButton discardCard;
 	private JLabel computerAction;
 
 
@@ -37,7 +38,7 @@ public class AdventureActionPanel extends JPanel{
 					int playerATP = g.getPlayerPanel().getATP();
 					if(g.getPlayerPanel().isSelected()){
 						BuilderCard card = (BuilderCard) p.getSelectedCard();
-						if(playerATP>card.getCost()){
+						if(playerATP>=card.getCost()){
 							String cardString = makeThisCardAString(card);
 							int handSize = g.getPlayerPanel().numCards();
 							if(cardString.equals("Helper T Cell")){
@@ -59,11 +60,20 @@ public class AdventureActionPanel extends JPanel{
 							g.getPlayerPanel().unSelect();
 						}
 						else{
-							g.getInfoPanel().displayError("Not enough ATP:");
+							g.getInfoPanel().displayError("Not enough ATP: choose another card or end turn");
 						}
 					}
 				}
 			}});
+		discardCard = new JButton("Discard");
+		discardCard.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				if(g.getGameState()==g.HUMAN_PLAY){
+					Card selected = g.getPlayerPanel().getSelectedCard();
+					g.getPlayerPanel().removeCard(selected);
+				}
+			}
+		});
 		endTurn = new JButton("End Turn");
 		endTurn.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -83,13 +93,18 @@ public class AdventureActionPanel extends JPanel{
 			}
 		});
 		computerAction = new JLabel("");
-		this.add(Box.createRigidArea(new Dimension(40,0)));
+		//this.add(Box.createRigidArea(new Dimension(0,0)));//40
 		this.add(selectedCard);
-		this.add(Box.createRigidArea(new Dimension(70,0)));
+		//this.add(Box.createHorizontalGlue());
+		//this.add(Box.createRigidArea(new Dimension(70,0)));//70
 		this.add(playCard);
-		this.add(Box.createRigidArea(new Dimension(90,0)));
+		//this.add(Box.createHorizontalGlue());
+		//this.add(Box.createRigidArea(new Dimension(10,0)));//90
+		this.add(discardCard);
+		//this.add(Box.createHorizontalGlue());
 		this.add(endTurn);
-		this.add(Box.createRigidArea(new Dimension(220,0)));
+		this.add(Box.createHorizontalGlue());
+		//this.add(Box.createRigidArea(new Dimension(40,0)));//220
 		this.add(computerAction);
 	}
 

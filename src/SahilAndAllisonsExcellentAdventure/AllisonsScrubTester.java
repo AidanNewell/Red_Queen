@@ -61,7 +61,8 @@ public class AllisonsScrubTester {
 		AdventureActionPanel pls = new AdventureActionPanel(null, null);
 		System.out.println(pls.makeThisCardAString(help));
 		PrimaryMembraneCard lol = new PrimaryMembraneCard();
-		System.out.println(lol.getCost());
+		CytosolCard what = new CytosolCard();
+		System.out.println(what.getCost());
 		
 	}
 	public static void main(String args[]){

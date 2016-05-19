@@ -1,4 +1,5 @@
 package SahilAndAllisonsExcellentAdventure;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,11 +20,21 @@ public class AdventureMiddlePanel extends JPanel implements ActionListener{
 		g=G;
 
 		cyto = new adventureCardButton(0);
-		cyto.setIcon(new ImageIcon("assets/CytoplasmBack.png"));
+		ImageIcon cytoArt = new ImageIcon("assets/CytoplasmBack.png");
+		cyto.setIcon(cytoArt);
+//		Image img = cytoArt.getImage();
+//		Image newimg = img.getScaledInstance(114, 114,  java.awt.Image.SCALE_SMOOTH);
+//		ImageIcon small = new ImageIcon(newimg);
+//		cyto.setIcon(small);
 		cyto.addActionListener(this);
 
 		petri = new adventureCardButton(1);
-		petri.setIcon(new ImageIcon("assets/PetriDishBack.png"));
+		ImageIcon petriArt = new ImageIcon("assets/PetriDishBack.png");
+//		Image img2 = petriArt.getImage();
+//		Image newimg2 = img2.getScaledInstance(114, 114,  java.awt.Image.SCALE_SMOOTH);
+//		ImageIcon small2 = new ImageIcon(newimg2);
+		petri.setIcon(petriArt);
+	//	petri.setIcon(small2);
 		petri.addActionListener(this);
 
 		this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));

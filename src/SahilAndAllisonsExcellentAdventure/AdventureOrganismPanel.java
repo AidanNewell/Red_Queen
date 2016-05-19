@@ -82,11 +82,11 @@ public class AdventureOrganismPanel extends JPanel{
 	public void repaintGrid(){
 		for(int i=0;i<cards.size();i++){ 
 			ImageIcon cardArt = new ImageIcon(cards.get(i).getCardArt());
-			Image img = cardArt.getImage();
-			Image newimg = img.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
-			ImageIcon small = new ImageIcon(newimg);
-			//cardButtons.get(i).setIcon(cardArt);
-			cardButtons.get(i).setIcon(small);
+//			Image img = cardArt.getImage();
+//			Image newimg = img.getScaledInstance(114, 114,  java.awt.Image.SCALE_SMOOTH);
+//			ImageIcon small = new ImageIcon(newimg);
+			cardButtons.get(i).setIcon(cardArt);
+			//cardButtons.get(i).setIcon(small);
 		}
 		
 		for(int i=cards.size();i<12;i++){

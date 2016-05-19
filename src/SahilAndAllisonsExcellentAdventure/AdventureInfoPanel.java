@@ -21,9 +21,9 @@ public class AdventureInfoPanel extends JPanel{
 		this.add(playerHealth);
 		this.add(Box.createRigidArea(new Dimension(40,0)));
 		this.add(playerATP);
-		this.add(Box.createRigidArea(new Dimension(380,0)));
+		this.add(Box.createRigidArea(new Dimension(380,0)));//this was also 380
 		this.add(gamePhase);
-		this.add(Box.createRigidArea(new Dimension(380,0)));
+		this.add(Box.createRigidArea(new Dimension(380,0)));//this was 380
 		this.add(compHealth);
 		this.add(Box.createRigidArea(new Dimension(40,0)));
 		this.add(compATP);
@@ -36,6 +36,6 @@ public class AdventureInfoPanel extends JPanel{
 		compATP.setText("ATP: " + game.getComputerPanel().getATP());
 	}
 	public void displayError(String s){
-		gamePhase.setText(s+ " " + game.getStateString());
+		gamePhase.setText(s);
 	}
 }

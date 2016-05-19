@@ -1,11 +1,13 @@
 package SahilAndAllisonsExcellentAdventure;
 
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import cards.CardLoader;
 import data.ImagePath;
@@ -92,6 +94,9 @@ public class AdventureGame {
 			gameState=AI;
 		else if(gameState==AI){
 			gameState=HUMAN_DRAW;
+			if(playerPanel.numCards()==12){
+				gameState=HUMAN_PLAY;
+			}
 			playerPanel.unSelect();
 		}
 	}
@@ -105,7 +110,8 @@ public class AdventureGame {
 	public void gameOver(){
 		
 		gameState = OVER;
-		
+		JFrame overFrame = new JFrame();
+		JOptionPane.showMessageDialog(overFrame,"Game Over");
 	}
 	
 	
