@@ -50,8 +50,14 @@ public class AdventureActionPanel extends JPanel{
 		endTurn.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if(g.getGameState()==g.HUMAN_PLAY){
+					if(g.getComputerPanel().getHealth()==0){
+						
+						g.gameOver();
+					}else{
+					
 					g.nextPhase();
 					g.computerTurn();
+					}
 				}
 			}
 		});
