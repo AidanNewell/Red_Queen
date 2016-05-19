@@ -109,14 +109,14 @@ public class EnemyPane extends JPanel{
 							Image labelImg = ImagePath.CYTO_BACK.getScaledInstance(horizSpace,vertSpace,Image.SCALE_SMOOTH);
 							displayLabel = new JLabel(new ImageIcon(labelImg));
 							add(displayLabel);
-							displayLabel.setBounds(y*horizSpace,x*vertSpace,horizSpace,vertSpace);
+							displayLabel.setBounds(y*horizSpace,x*vertSpace+60,horizSpace,vertSpace);
 						}
 						else
 						{
 							Image labelImg = ImagePath.PETRI_BACK.getScaledInstance(horizSpace,vertSpace,Image.SCALE_SMOOTH);
 							displayLabel = new JLabel(new ImageIcon(labelImg));
 							add(displayLabel);
-							displayLabel.setBounds(y*horizSpace,x*vertSpace,horizSpace,vertSpace);
+							displayLabel.setBounds(y*horizSpace,x*vertSpace+60,horizSpace,vertSpace);
 						}
 					}
 					else
@@ -124,7 +124,7 @@ public class EnemyPane extends JPanel{
 						Image labelImg = b.getCardArt().getScaledInstance(horizSpace, vertSpace, Image.SCALE_SMOOTH);
 						displayLabel = new JLabel(new ImageIcon(labelImg));
 						add(displayLabel);
-						displayLabel.setBounds(y*horizSpace,x*vertSpace,horizSpace,vertSpace);
+						displayLabel.setBounds(y*horizSpace,x*vertSpace+60,horizSpace,vertSpace);
 					}
 				}
 				else
@@ -132,7 +132,7 @@ public class EnemyPane extends JPanel{
 					Image labelImg = ImagePath.NULL_BUILD_SLOT;
 					displayLabel = new JLabel(new ImageIcon(labelImg.getScaledInstance(horizSpace, vertSpace, Image.SCALE_SMOOTH)));
 					add(displayLabel);
-					displayLabel.setBounds(y*horizSpace,x*vertSpace,horizSpace,vertSpace);
+					displayLabel.setBounds(y*horizSpace,x*vertSpace+60,horizSpace,vertSpace);
 				}
 			}
 		}
@@ -141,13 +141,15 @@ public class EnemyPane extends JPanel{
 	public void takeTurn()
 	{
 		boolean cytoPlayed = false;
+		int AvailATP=0;
+		int AvailTox=0;
 		for(int x=0; x<3; x++)
 		{
 			if(organisms.size() == 0 && x==0)
 			{
 				AIHand.addCard(CardLoader.getOrganismCard());
 			}
-			else
+			else if(x==0)
 			{
 				AIHand.addCard(CardLoader.getPetriCard());
 			}
@@ -168,8 +170,46 @@ public class EnemyPane extends JPanel{
 				{
 					organisms.add(new Organism(((OrganismStarter)AIHand.getHand().get(x)).getHW()));
 					AIHand.getHand().remove(x);
-					index--;
+					x--;
 				}
+			}
+		}
+		Organism construct = organisms.get(0);
+		//Activate all tiles
+		for(int x=0; x<construct.getHeight();x++)
+		{
+			for(int y=0; y<construct.getWidth(); y++)
+			{
+				BuilderCard b = construct.getCardAt(x,y);
+				if(b!=null)
+					b.activateCard();
+				if(construct.isOccupied(x,y) && (b.getATP() + b.getBufferATP() > 0 || b.getToxin() + b.getBufferToxin() > 0) && !b.active())
+				{
+					b.setActive();
+					construct.modifyOrgRes(-b.getRes()+b.getBufferRes());
+					AvailATP += (b.getATP() + b.getBufferATP());
+					AvailTox += (b.getToxin() + b.getBufferToxin());
+				}
+			}
+		}
+		for(int x=0; x<AIHand.getHand().size();x++)
+		{
+			if(AIHand.getHand().get(x).getSpecialType() == Card.CYTOPLASM_CARD && !cytoPlayed)
+			{
+				int xPos=0, yPos=0;
+				while(construct.isOccupied(xPos, yPos)){xPos = (int)(Math.random()*construct.getHeight()); yPos=(int)(Math.random()*construct.getWidth());}
+				construct.addCard(xPos,yPos,(BuilderCard)AIHand.getHand().get(x));
+				AIHand.getHand().remove(x);
+				x--;
+				cytoPlayed=true;
+			}else if(AIHand.getHand().get(x).getSpecialType() == Card.PETRI_DISH_CARD && ((BuilderCard)AIHand.getHand().get(x)).getCost() <= AvailATP)
+			{
+				int xPos=0,yPos=0;
+				while(construct.isOccupied(xPos, yPos)){xPos = (int)(Math.random()*construct.getHeight()); yPos=(int)(Math.random()*construct.getWidth());}
+				construct.addCard(xPos, yPos, (BuilderCard)AIHand.getHand().get(x));
+				AvailATP -= ((BuilderCard)AIHand.getHand().get(x)).getCost();
+				AIHand.getHand().remove(x);
+				x--;
 			}
 		}
 	}
