@@ -6,7 +6,10 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+import cards.BuilderCard;
 import cards.Card;
+import data.ImagePath;
+import data.Organism;
 
 public class CardButton extends JButton{
 	
@@ -14,11 +17,12 @@ public class CardButton extends JButton{
 	
 	private Card  c;
 	
+	private Organism referenceOrg;
 	
-	
-	public CardButton(Card c,ImageIcon i, int x, int y)
+	public CardButton(Organism o,Card c,ImageIcon i, int x, int y)
 	{
 		super(i);
+		referenceOrg = o;
 		this.c = c;
 		organismX = x;
 		organismY = y;
@@ -49,6 +53,65 @@ public class CardButton extends JButton{
 					GameScreen.getPlayer().getHand().getHand().remove(c);
 					GameScreen.MOUSE.setCard(c);
 					GameScreen.revalidateHand();
+				}
+			}
+		});
+	}
+	
+	public void establishActivateableSlot()
+	{
+		addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				if(GameScreen.MOUSE.getCard() == null && ! (((BuilderCard)c).active()))
+				{
+					BuilderCard b = (BuilderCard)c;
+					b.setActive();
+					switch(c.getSpecialType())
+					{
+					case 0:
+						b.modifyBufferRes(-b.getRes());
+						referenceOrg.modifyOrgATP(b.getATP() + b.getBufferATP());
+						referenceOrg.modifyOrgTox(b.getToxin() + b.getBufferToxin());
+						setIcon(new ImageIcon(ImagePath.CYTO_BACK));
+						break;
+					case 2:
+						b.modifyBufferRes(-b.getRes());
+						referenceOrg.modifyOrgRes(-(b.getRes()+b.getBufferRes()));
+						referenceOrg.modifyOrgATP(b.getATP() + b.getBufferATP());
+						referenceOrg.modifyOrgTox(b.getToxin() + b.getBufferToxin());
+						setIcon(new ImageIcon(ImagePath.PETRI_BACK));
+						break;
+					}
+					GameScreen.updateResources();
+				}
+			}
+		});
+	}
+	
+	public void establishFillableSlot()
+	{
+		addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				if(GameScreen.gameState == GameScreen.BUILD_ORG && GameScreen.MOUSE.getCard()!= null && GameScreen.MOUSE.getCard().getSpecialType() != Card.ORGANISM_CARD)
+				{
+					if(GameScreen.MOUSE.getCard().getSpecialType() == Card.CYTOPLASM_CARD)
+					{
+						if(GameScreen.CytoValid())
+						{
+							GameScreen.cytoAdded();
+							referenceOrg.addCard(organismX, organismY, (BuilderCard)GameScreen.MOUSE.getCard());
+							GameScreen.MOUSE.setCardNull();
+							GameScreen.revalidateOrganism();
+						}
+						return;
+					}
+					BuilderCard b = (BuilderCard)GameScreen.MOUSE.getCard();
+					referenceOrg.addCard(organismX, organismY, b);
+					b.modifyOrganism(referenceOrg,organismX,organismY);
+					GameScreen.MOUSE.setCardNull();
+					GameScreen.revalidateOrganism();
 				}
 			}
 		});

@@ -39,30 +39,30 @@ public class Organism {
 	
 	public void updateOrganism()
 	{
-		totalToxin=0;
-		totalATP=0;
 		totalRes=0;
 		for(int x=0; x<organismBody.length;x++)
 		{
 			for(int y=0; y<organismBody[0].length;y++)
 			{
 				if(organismBody[x][y]!=null)
-				{
-					BuilderCard current = organismBody[x][y];
-					int modifier = current.getToxin() - current.getBufferToxin();
-					if(modifier > 0)
-						totalToxin+=modifier;
-					modifier = current.getATP() - current.getBufferATP();
-					if(modifier > 0)
-						totalATP+=modifier;
-					modifier=current.getRes()-current.getBufferRes();
-					if(modifier > 0)
-						totalRes+=modifier;
-					current.turnTaken();
-				}
-				
+					totalRes+=organismBody[x][y].getRes();
 			}
 		}
+	}
+	
+	public void modifyOrgRes(int x)
+	{
+		totalRes+=x;
+	}
+	
+	public void modifyOrgTox(int x)
+	{
+		totalToxin +=x;
+	}
+	
+	public void modifyOrgATP(int x)
+	{
+		totalATP +=x;
 	}
 	
 	public void addCard(int x, int y, BuilderCard c)

@@ -25,6 +25,10 @@ public class ImagePath
 	
 	public static Image DESTROY_VIRUS_ALL, TILE_DESTROYER, DRAW_3, DISCARD_ALL;
 	
+	public static Image TOXIN_VIAL, ATP_VIAL;
+	
+	public static Image DONE;
+	
     public static void init()
     {
     	try{
@@ -50,6 +54,9 @@ public class ImagePath
     		NULL_BUILD_SLOT = ImageIO.read(new File(path + "emptySpace.png"));
     		DOWN_ARROW = ImageIO.read(new File(path + "Down_Arrow.png"));
     		UP_ARROW = ImageIO.read(new File(path + "Up_Arrow.png"));
+    		TOXIN_VIAL = ImageIO.read(new File(path + "toxin.png"));
+    		ATP_VIAL = ImageIO.read(new File(path + "theGreenOne.png"));
+    		DONE = ImageIO.read(new File(path +"Done.png"));
     	}catch(Exception e){e.printStackTrace(); System.exit(1);}
     	
     	scale();
@@ -66,5 +73,7 @@ public class ImagePath
     	RIGHT_ARROW = RIGHT_ARROW.getScaledInstance(40, 120, Image.SCALE_SMOOTH);
     	UP_ARROW = UP_ARROW.getScaledInstance(240, 40, Image.SCALE_SMOOTH);
     	DOWN_ARROW = DOWN_ARROW.getScaledInstance(240,40,Image.SCALE_SMOOTH);
+    	TOXIN_VIAL = TOXIN_VIAL.getScaledInstance(40,40,Image.SCALE_SMOOTH);
+    	ATP_VIAL = ATP_VIAL.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
     }
 }

@@ -91,7 +91,7 @@ public class HandPanel extends JPanel{
 			cardButtons[x] = null;
 			if(current != null)
 			{
-				cardButtons[x] = new CardButton(current, new ImageIcon(current.getCardArt()),0,0);
+				cardButtons[x] = new CardButton(null,current, new ImageIcon(current.getCardArt()),0,0);
 				cardButtons[x].setOpaque(false);
 				cardButtons[x].setContentAreaFilled(false);
 				cardButtons[x].setBorderPainted(false);

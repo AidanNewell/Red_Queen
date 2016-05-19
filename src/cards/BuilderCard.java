@@ -15,6 +15,8 @@ public abstract class BuilderCard extends Card{
 	protected int bufferCooldown=0;
 	protected int cooldownRemaining=0;
 	
+	protected boolean active=false;
+	
 	
 	public int getRes(){return res;}
 	
@@ -27,6 +29,16 @@ public abstract class BuilderCard extends Card{
 	public int getCooldown(){return cooldown;}
 	
 	public int getCooldownRemaining(){return cooldownRemaining;}
+	
+	public boolean active()
+	{
+		return active;
+	}
+	
+	public void setActive()
+	{
+		active=true;
+	}
 	
 	public BuilderCard(int toxin, int ATP, int res, int cost, int cooldown)
 	{
