@@ -10,7 +10,8 @@ public class adventureCardButton extends JButton{
 	private int index;
 	public adventureCardButton(int i){
 		index = i;
-		this.setPreferredSize(new Dimension(170,170));
+		//this.setPreferredSize(new Dimension(170,170));
+		this.setPreferredSize(new Dimension(106,106));
 	}
 	
 	public int getIndex(){

@@ -34,27 +34,33 @@ public class AdventureActionPanel extends JPanel{
 			public void actionPerformed(ActionEvent e){
 				selectedCard.setText("No card Selected");
 				if(g.getGameState()==g.HUMAN_PLAY){
+					int playerATP = g.getPlayerPanel().getATP();
 					if(g.getPlayerPanel().isSelected()){
 						BuilderCard card = (BuilderCard) p.getSelectedCard();
-						String cardString = makeThisCardAString(card);
-						int handSize = g.getPlayerPanel().numCards();
-						if(cardString.equals("Helper T Cell")){
-							g.getComputerPanel().changeHealth(-1*handSize);
-							g.getPlayerPanel().changeHealth(card.getRes()+1);
-						}
-						else if(cardString.equals("Lymphoctye")){
-							g.getPlayerPanel().changeHealth(handSize);
-							g.getComputerPanel().changeHealth(-1*card.getToxin());
+						if(playerATP>card.getCost()){
+							String cardString = makeThisCardAString(card);
+							int handSize = g.getPlayerPanel().numCards();
+							if(cardString.equals("Helper T Cell")){
+								g.getComputerPanel().changeHealth(-1*handSize);
+								g.getPlayerPanel().changeHealth(card.getRes()+1);
+							}
+							else if(cardString.equals("Lymphoctye")){
+								g.getPlayerPanel().changeHealth(handSize);
+								g.getComputerPanel().changeHealth(-1*card.getToxin());
+							}
+							else{
+								g.getComputerPanel().changeHealth(-1*card.getToxin());
+								g.getPlayerPanel().changeHealth(card.getRes()+1);
+							}
+							g.getPlayerPanel().changeATP(card.getATP());
+							g.getPlayerPanel().changeATP(-1*card.getCost());
+							g.getInfoPanel().updateLabels();
+							p.removeCard(p.getSelectedCard());
+							g.getPlayerPanel().unSelect();
 						}
 						else{
-							g.getComputerPanel().changeHealth(-1*card.getToxin());
-							g.getPlayerPanel().changeHealth(card.getRes()+1);
+							g.getInfoPanel().displayError("Not enough ATP:");
 						}
-						g.getPlayerPanel().changeATP(card.getATP());
-						g.getPlayerPanel().changeATP(-1*card.getCost());
-						g.getInfoPanel().updateLabels();
-						p.removeCard(p.getSelectedCard());
-						g.getPlayerPanel().unSelect();
 					}
 				}
 			}});
@@ -63,15 +69,15 @@ public class AdventureActionPanel extends JPanel{
 			public void actionPerformed(ActionEvent e){
 				if(g.getGameState()==g.HUMAN_PLAY){
 					if(g.getComputerPanel().getHealth()<=0){
-						
+
 						g.gameOver();
 						g.getInfoPanel().updateLabels();
 					}else{
-					
-					g.nextPhase();
-					g.getInfoPanel().updateLabels();
-					g.computerTurn();
-					
+
+						g.nextPhase();
+						g.getInfoPanel().updateLabels();
+						g.computerTurn();
+
 					}
 				}
 			}
@@ -85,38 +91,38 @@ public class AdventureActionPanel extends JPanel{
 		this.add(endTurn);
 		this.add(Box.createRigidArea(new Dimension(220,0)));
 		this.add(computerAction);
-		}
+	}
 
-		public String makeThisCardAString(Card c){
+	public String makeThisCardAString(Card c){
 
-			//this is essentially the card.toString() you asked for
+		//this is essentially the card.toString() you asked for
 
-			String s = ""+c.getClass();
-			s = s.substring(12, s.length()-4);
+		String s = ""+c.getClass();
+		s = s.substring(12, s.length()-4);
 
-			for(int x=0; x<s.length(); x++){
+		for(int x=0; x<s.length(); x++){
 
-				if(x!=0 && Character.isUpperCase(s.charAt(x))){
+			if(x!=0 && Character.isUpperCase(s.charAt(x))){
 
-					s = s.substring(0,x) + " " + s.substring(x);
-					x++;
-
-				}
+				s = s.substring(0,x) + " " + s.substring(x);
+				x++;
 
 			}
 
-			return s;
 		}
 
-		public void setSelectedCard(){
-
-			String w = makeThisCardAString(g.getPlayerPanel().getSelectedCard());
-			selectedCard.setText(g.getPlayerPanel().getName()+" selected "+w);
-
-		}
-		public void setComputerAction(String s){
-
-
-			computerAction.setText(s);
-		}
+		return s;
 	}
+
+	public void setSelectedCard(){
+
+		String w = makeThisCardAString(g.getPlayerPanel().getSelectedCard());
+		selectedCard.setText(g.getPlayerPanel().getName()+" selected "+w);
+
+	}
+	public void setComputerAction(String s){
+
+
+		computerAction.setText(s);
+	}
+}

@@ -1,7 +1,6 @@
 package SahilAndAllisonsExcellentAdventure;
 
 import java.awt.Dimension;
-
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +9,8 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
+
+import java.awt.*;
 
 import client.*;
 import data.*;
@@ -81,7 +82,11 @@ public class AdventureOrganismPanel extends JPanel{
 	public void repaintGrid(){
 		for(int i=0;i<cards.size();i++){ 
 			ImageIcon cardArt = new ImageIcon(cards.get(i).getCardArt());
-			cardButtons.get(i).setIcon(cardArt);
+			Image img = cardArt.getImage();
+			Image newimg = img.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
+			ImageIcon small = new ImageIcon(newimg);
+			//cardButtons.get(i).setIcon(cardArt);
+			cardButtons.get(i).setIcon(small);
 		}
 		
 		for(int i=cards.size();i<12;i++){

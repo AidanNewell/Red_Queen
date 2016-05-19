@@ -35,4 +35,7 @@ public class AdventureInfoPanel extends JPanel{
 		compHealth.setText("Health: " + game.getComputerPanel().getHealth());
 		compATP.setText("ATP: " + game.getComputerPanel().getATP());
 	}
+	public void displayError(String s){
+		gamePhase.setText(s+ " " + game.getStateString());
+	}
 }
