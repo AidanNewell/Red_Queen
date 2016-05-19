@@ -20,7 +20,7 @@ public class Player {
 		hand = new Hand();
 		organisms = new ArrayList<Organism>();
 		numOrganisms=4;
-		numCardsToDraw = 13;
+		numCardsToDraw = 3;
 		numCytoplasm=1;
 	}
 	
@@ -129,5 +129,10 @@ public class Player {
 	{
 		bufferATP =0;
 		bufferTox=0;
+	}
+	
+	public void spendATP(int x)
+	{
+		bufferATP-=x;
 	}
 }

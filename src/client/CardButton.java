@@ -108,10 +108,15 @@ public class CardButton extends JButton{
 						return;
 					}
 					BuilderCard b = (BuilderCard)GameScreen.MOUSE.getCard();
-					referenceOrg.addCard(organismX, organismY, b);
-					b.modifyOrganism(referenceOrg,organismX,organismY);
-					GameScreen.MOUSE.setCardNull();
-					GameScreen.revalidateOrganism();
+					if(GameScreen.getPlayer().getTotalATP() >= b.getCost())
+					{
+						referenceOrg.addCard(organismX, organismY, b);
+						b.modifyOrganism(referenceOrg,organismX,organismY);
+						GameScreen.MOUSE.setCardNull();
+						GameScreen.revalidateOrganism();
+						GameScreen.getPlayer().spendATP(b.getCost());
+						GameScreen.updateResources();
+					}
 				}
 			}
 		});

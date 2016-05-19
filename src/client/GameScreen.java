@@ -20,12 +20,12 @@ import cards.*;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.JLayeredPane;
 
 import data.Organism;
 import data.Player;
 
-public class GameScreen extends JPanel implements MouseListener
+public class GameScreen extends JLayeredPane implements MouseListener
 {
 	private static Player mainPlayer;
 	
@@ -77,9 +77,6 @@ public class GameScreen extends JPanel implements MouseListener
 				Client.quitGame();
 			}
 		});
-		drawPiles.setPreferredSize(new Dimension(screenWidth,screenHeight));
-		add(drawPiles);
-		drawPiles.setBounds(0,0,screenWidth,screenHeight-180);
 		handPanel.setPreferredSize(new Dimension(screenWidth, 180));
 		add(handPanel);
 		HandRectangle = new Rectangle(0,screenHeight-180, screenWidth, 180);
@@ -89,13 +86,17 @@ public class GameScreen extends JPanel implements MouseListener
 		focusedOrganism.setBounds(0,0,600,700);
 		add(resources);
 		resources.setBounds(screenWidth/2 -30,screenHeight/2,60,120);
+		drawPiles.setPreferredSize(new Dimension(screenWidth,screenHeight));
+		add(drawPiles);
+		drawPiles.setBounds(0,0,screenWidth,screenHeight-180);
 		addMouseListener(this);
 	}
 	
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		setBackground(new Color(161,244,136));
+		g.setColor(new Color(161,244,136));
+		g.fillRect(0, 0, getWidth(), getHeight());
 	}
 	
 	public void nextGameState()
@@ -116,6 +117,7 @@ public class GameScreen extends JPanel implements MouseListener
 		case BUILD_ORG:
 			System.out.println("CC");
 			gameState = DISCARD;
+			nextGameState();
 			break;
 		case PLAY_CARDS:
 			break;
@@ -123,6 +125,7 @@ public class GameScreen extends JPanel implements MouseListener
 			drawPiles.cardsRemaining = mainPlayer.getCardsToDraw();
 			gameState = DRAW_CARDS;
 			add(drawPiles);
+			moveToFront(drawPiles);
 			CytoAvailable = mainPlayer.getCytoToPlay();
 			revalidate();
 			repaint();

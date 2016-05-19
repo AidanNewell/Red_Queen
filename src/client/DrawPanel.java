@@ -1,6 +1,8 @@
 package client;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -20,6 +22,9 @@ public class DrawPanel extends JPanel{
 	public JLabel remainingCardCount;
 	
 	private GameScreen referenceScreen;
+	Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
+	int screenWidth = (int) screenDim.getWidth();
+	int screenHeight = (int) screenDim.getHeight();
 	
 	public DrawPanel(GameScreen g)
 	{
@@ -76,9 +81,6 @@ public class DrawPanel extends JPanel{
 			});
 			remainingCardCount = new JLabel("Remaining: " + cardsRemaining);
 			setLayout(null);
-			Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
-			int screenWidth = (int) screenDim.getWidth();
-			int screenHeight = (int) screenDim.getHeight();
 			add(CytoStack);
 			CytoStack.setBounds(screenWidth/5 - 60, screenHeight/2 - 60, 120,120);
 			add(OrgStack);
@@ -88,6 +90,14 @@ public class DrawPanel extends JPanel{
 			add(remainingCardCount);
 			remainingCardCount.setBounds(4*screenWidth/5,screenHeight/2,120,120);
 		}catch(Exception e){System.out.println("FATAL ERROR"); e.printStackTrace(); System.exit(2);}
+		repaint();
+	}
+	
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		g.setColor(new Color(100,100,100));
+		g.fillRect( 0,screenHeight/2-80, screenWidth, 160);
 	}
 	
 	public void updateLabelText(int x)
