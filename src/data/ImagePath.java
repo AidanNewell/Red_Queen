@@ -27,6 +27,8 @@ public class ImagePath
 	
 	public static Image TOXIN_VIAL, ATP_VIAL;
 	
+	public static Image DONE;
+	
     public static void init()
     {
     	try{
@@ -54,6 +56,7 @@ public class ImagePath
     		UP_ARROW = ImageIO.read(new File(path + "Up_Arrow.png"));
     		TOXIN_VIAL = ImageIO.read(new File(path + "toxin.png"));
     		ATP_VIAL = ImageIO.read(new File(path + "theGreenOne.png"));
+    		DONE = ImageIO.read(new File(path +"Done.png"));
     	}catch(Exception e){e.printStackTrace(); System.exit(1);}
     	
     	scale();

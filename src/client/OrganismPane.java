@@ -28,7 +28,7 @@ public class OrganismPane extends JPanel{
 	
 	private int index;
 	
-	private JButton upArrow, downArrow;
+	private JButton upArrow, downArrow, done;
 	
 	public OrganismPane(GameScreen g)
 	{
@@ -37,6 +37,7 @@ public class OrganismPane extends JPanel{
 		referenceScreen = g;
 		upArrow = null;
 		downArrow = null;
+		done=null;
 		index =0;
 		try{
 			Image buttonImg = ImagePath.UP_ARROW;
@@ -71,10 +72,25 @@ public class OrganismPane extends JPanel{
 					}
 				}
 			});
+			buttonImg = ImagePath.DONE;
+			done = new JButton(new ImageIcon(buttonImg));
+			done.setOpaque(false);
+			done.setContentAreaFilled(false);
+			done.setFocusPainted(false);
+			done.setBorderPainted(false);
+			done.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e)
+				{
+					if(GameScreen.MOUSE.getCard() == null)
+						referenceScreen.nextGameState();
+				}
+			});
 			add(upArrow);
 			upArrow.setBounds(180,0,240,40);
 			add(downArrow);
 			downArrow.setBounds(180,660,240,40);
+			add(done);
+			done.setBounds(480,640,120,60);
 		}catch(Exception e){}
 	}
 	
@@ -89,6 +105,7 @@ public class OrganismPane extends JPanel{
 		removeAll();
 		add(upArrow);
 		add(downArrow);
+		add(done);
 		Organism construct = organisms.get(i);
 		vertSpace = SPACE_AVAILABLE / construct.getHeight();
 		horizSpace = SPACE_AVAILABLE / construct.getWidth();
@@ -149,6 +166,6 @@ public class OrganismPane extends JPanel{
 		}
 		revalidate();
 		referenceScreen.updateCursor();
-		construct.updateOrganism();
+		//construct.updateOrganism();
 	}
 }

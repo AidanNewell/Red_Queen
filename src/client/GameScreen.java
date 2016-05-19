@@ -41,7 +41,8 @@ public class GameScreen extends JPanel implements MouseListener
 	private OrganismPane organismPanel;
 	private static DrawPanel drawPiles;
 	private static HandPanel handPanel;
-	private static OrganismPane focusedOrganism;	
+	private static OrganismPane focusedOrganism;
+	private static resourcePane resources;
 	private Rectangle HandRectangle;
 	private Rectangle OrganismRectangle;
 	
@@ -52,6 +53,7 @@ public class GameScreen extends JPanel implements MouseListener
 		drawPiles = new DrawPanel(this);
 		handPanel = new HandPanel(this);
 		focusedOrganism = new OrganismPane(this);
+		resources = new resourcePane();
 		CytoAvailable = 1;
 		MOUSE = new MouseImageBox();
 		Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -85,6 +87,8 @@ public class GameScreen extends JPanel implements MouseListener
 		handPanel.setBounds(HandRectangle);
 		add(focusedOrganism);
 		focusedOrganism.setBounds(0,0,600,700);
+		add(resources);
+		resources.setBounds(screenWidth/2 -30,screenHeight/2,60,120);
 		addMouseListener(this);
 	}
 	
@@ -110,6 +114,8 @@ public class GameScreen extends JPanel implements MouseListener
 			handPanel.resetCardButtons();
 			break;
 		case BUILD_ORG:
+			System.out.println("CC");
+			gameState = DISCARD;
 			break;
 		case PLAY_CARDS:
 			break;
@@ -214,6 +220,12 @@ public class GameScreen extends JPanel implements MouseListener
 	public static void cytoAdded()
 	{
 		CytoAvailable--;
+	}
+	
+	public static void updateResources()
+	{
+		resources.updateATP(mainPlayer.getTotalATP());
+		resources.updateTox(mainPlayer.getTotalToxin());
 	}
 
 }

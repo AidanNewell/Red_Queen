@@ -10,13 +10,17 @@ public class Player {
 	private int numCardsToDraw;
 	private int numOrganisms;
 	private int numCytoplasm;
+	private int totalATP;
+	private int totalTox;
+	private int bufferATP=0;
+	private int bufferTox=0;
 	
 	public Player(){
 		
 		hand = new Hand();
 		organisms = new ArrayList<Organism>();
 		numOrganisms=4;
-		numCardsToDraw = 3;
+		numCardsToDraw = 13;
 		numCytoplasm=1;
 	}
 	
@@ -99,5 +103,31 @@ public class Player {
 	public int getCytoToPlay()
 	{
 		return numCytoplasm;
+	}
+	
+	public int getTotalATP()
+	{
+		totalATP =0;
+		for(Organism o :organisms)
+		{
+			totalATP +=o.getATP();
+		}
+		return totalATP + bufferATP;
+	}
+	
+	public int getTotalToxin()
+	{
+		totalTox=0;
+		for(Organism o : organisms)
+		{
+			totalTox += o.getToxin();
+		}
+		return totalTox + bufferTox;
+	}
+	
+	public void resetBuffers()
+	{
+		bufferATP =0;
+		bufferTox=0;
 	}
 }

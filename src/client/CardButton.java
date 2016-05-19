@@ -70,18 +70,20 @@ public class CardButton extends JButton{
 					switch(c.getSpecialType())
 					{
 					case 0:
-						referenceOrg.modifyOrgRes(-(b.getRes()+b.getBufferRes()));
+						b.modifyBufferRes(-b.getRes());
 						referenceOrg.modifyOrgATP(b.getATP() + b.getBufferATP());
 						referenceOrg.modifyOrgTox(b.getToxin() + b.getBufferToxin());
 						setIcon(new ImageIcon(ImagePath.CYTO_BACK));
 						break;
 					case 2:
-						referenceOrg.modifyOrgRes(1-(b.getRes()+b.getBufferRes()));
+						b.modifyBufferRes(-b.getRes());
+						referenceOrg.modifyOrgRes(-(b.getRes()+b.getBufferRes()));
 						referenceOrg.modifyOrgATP(b.getATP() + b.getBufferATP());
 						referenceOrg.modifyOrgTox(b.getToxin() + b.getBufferToxin());
 						setIcon(new ImageIcon(ImagePath.PETRI_BACK));
 						break;
 					}
+					GameScreen.updateResources();
 				}
 			}
 		});
@@ -100,13 +102,14 @@ public class CardButton extends JButton{
 						{
 							GameScreen.cytoAdded();
 							referenceOrg.addCard(organismX, organismY, (BuilderCard)GameScreen.MOUSE.getCard());
-							System.out.println("AA");
 							GameScreen.MOUSE.setCardNull();
 							GameScreen.revalidateOrganism();
 						}
 						return;
 					}
-					referenceOrg.addCard(organismX, organismY, (BuilderCard)GameScreen.MOUSE.getCard());
+					BuilderCard b = (BuilderCard)GameScreen.MOUSE.getCard();
+					referenceOrg.addCard(organismX, organismY, b);
+					b.modifyOrganism(referenceOrg,organismX,organismY);
 					GameScreen.MOUSE.setCardNull();
 					GameScreen.revalidateOrganism();
 				}
