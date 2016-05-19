@@ -79,7 +79,6 @@ public class AdventureOrganismPanel extends JPanel{
 		repaintGrid();
 	}
 	public void repaintGrid(){
-		
 		for(int i=0;i<cards.size();i++){ 
 			ImageIcon cardArt = new ImageIcon(cards.get(i).getCardArt());
 			cardButtons.get(i).setIcon(cardArt);
@@ -109,6 +108,9 @@ public class AdventureOrganismPanel extends JPanel{
 	}
 	public ArrayList<Card> getCards(){
 		return cards;
+	}
+	public int numCards(){
+		return cards.size();
 	}
 	public void addDrawn(){
 		drawnCount++;

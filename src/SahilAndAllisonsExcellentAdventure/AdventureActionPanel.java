@@ -36,10 +36,22 @@ public class AdventureActionPanel extends JPanel{
 				if(g.getGameState()==g.HUMAN_PLAY){
 					if(g.getPlayerPanel().isSelected()){
 						BuilderCard card = (BuilderCard) p.getSelectedCard();
-						g.getPlayerPanel().changeHealth(card.getRes()+1);
+						String cardString = makeThisCardAString(card);
+						int handSize = g.getPlayerPanel().numCards();
+						if(cardString.equals("Helper T Cell")){
+							g.getComputerPanel().changeHealth(-1*handSize);
+							g.getPlayerPanel().changeHealth(card.getRes()+1);
+						}
+						else if(cardString.equals("Lymphoctye")){
+							g.getPlayerPanel().changeHealth(handSize);
+							g.getComputerPanel().changeHealth(-1*card.getToxin());
+						}
+						else{
+							g.getComputerPanel().changeHealth(-1*card.getToxin());
+							g.getPlayerPanel().changeHealth(card.getRes()+1);
+						}
 						g.getPlayerPanel().changeATP(card.getATP());
 						g.getPlayerPanel().changeATP(-1*card.getCost());
-						g.getComputerPanel().changeHealth(-1*card.getToxin());
 						g.getInfoPanel().updateLabels();
 						p.removeCard(p.getSelectedCard());
 						g.getPlayerPanel().unSelect();

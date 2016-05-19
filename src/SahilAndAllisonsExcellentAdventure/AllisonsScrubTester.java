@@ -56,9 +56,14 @@ public class AllisonsScrubTester {
 		yo.pack();
 		yo.setVisible(true);
 	}
+	public static void strings(){
+		HelperTCellCard help = new HelperTCellCard();
+		AdventureActionPanel pls = new AdventureActionPanel(null, null);
+		System.out.println(pls.makeThisCardAString(help));
+	}
 	public static void main(String args[]){
 		ImagePath.init();
 		CardLoader.init();
-		lmao();
+		strings();
 	}
 }

@@ -9,7 +9,8 @@ import javax.swing.JFrame;
 
 import cards.CardLoader;
 import data.ImagePath;
-
+//HELPER T: toxin = number of Cards
+//Lymph: health +=numCards
 public class AdventureGame {
 	
 	private JFrame gameFrame;
