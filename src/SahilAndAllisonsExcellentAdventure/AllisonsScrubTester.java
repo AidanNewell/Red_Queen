@@ -60,6 +60,9 @@ public class AllisonsScrubTester {
 		HelperTCellCard help = new HelperTCellCard();
 		AdventureActionPanel pls = new AdventureActionPanel(null, null);
 		System.out.println(pls.makeThisCardAString(help));
+		PrimaryMembraneCard lol = new PrimaryMembraneCard();
+		System.out.println(lol.getCost());
+		
 	}
 	public static void main(String args[]){
 		ImagePath.init();
