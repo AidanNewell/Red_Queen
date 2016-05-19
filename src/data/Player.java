@@ -9,7 +9,7 @@ public class Player {
 	private ArrayList<Organism> organisms; 
 	private int numCardsToDraw;
 	private int numOrganisms;
-	
+	private int numCytoplasm;
 	
 	public Player(){
 		
@@ -17,6 +17,7 @@ public class Player {
 		organisms = new ArrayList<Organism>();
 		numOrganisms=4;
 		numCardsToDraw = 3;
+		numCytoplasm=1;
 	}
 	
 	
@@ -93,5 +94,10 @@ public class Player {
 	public ArrayList<Organism> getOrganisms()
 	{
 		return organisms;
+	}
+	
+	public int getCytoToPlay()
+	{
+		return numCytoplasm;
 	}
 }
