@@ -170,6 +170,7 @@ public class Player {
 			if(allOrgsDead())
 			{
 				System.out.println("YOU LOSE, ALL ORGANELLES KILLED");
+				System.exit(0);
 			}
 			Organism target = organisms.get((int)(Math.random()*organisms.size()));
 			while(target.isEmpty()){target = organisms.get((int)(Math.random()*organisms.size()));}
@@ -192,5 +193,25 @@ public class Player {
 				return false;
 		}
 		return true;
+	}
+	
+	public int getTotalRes()
+	{
+		int res=0;
+		for(Organism o: organisms)
+		{
+			for(int x=0; x<o.getHeight();x++)
+			{
+				for(int y=0; y<o.getWidth();y++)
+				{
+					BuilderCard b = o.getCardAt(x,y);
+					if(b != null)
+					{
+						res+=b.getRes()+b.getBufferRes();
+					}
+				}
+			}
+		}
+		return res;
 	}
 }

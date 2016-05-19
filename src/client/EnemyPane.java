@@ -235,8 +235,49 @@ public class EnemyPane extends JPanel{
 		return true;
 	}
 	
-	public void pruneOrg()
+	public void pruneOrg(int x)
 	{
-		
+		int totalResistance =0;
+		for(Organism o:organisms)
+		{
+			for(int i=0; i<o.getHeight();i++)
+			{
+				for(int j=0; j<o.getWidth();j++)
+				{
+					BuilderCard b = o.getCardAt(i, j);
+					if(b != null)
+						totalResistance+=b.getRes()+b.getBufferRes();
+				}
+			}
+		}
+		x-= totalResistance;
+		if(x>=0)
+		{
+			if(allOrgsDead())
+			{
+				System.out.println("YOU WIN, ALL ENEMY ORGANELLES KILLED!");
+				System.exit(0);
+			}
+			Organism target = organisms.get((int)(Math.random()*organisms.size()));
+			while(target.isEmpty()){target = organisms.get((int)(Math.random()*organisms.size()));}
+			int targetX = (int)(Math.random()*target.getHeight());
+			int targetY = (int)(Math.random()*target.getWidth());
+			while(target.getCardAt(targetX, targetY) == null)
+			{
+				targetX = (int)(Math.random()*target.getHeight());
+				targetY = (int)(Math.random()*target.getWidth());
+			}
+			target.killOrganelle(targetX,targetY);
+		}
+	}
+	
+	public boolean allOrgsDead()
+	{
+		for(Organism o:organisms)
+		{
+			if(!o.isEmpty())
+				return false;
+		}
+		return true;
 	}
 }
