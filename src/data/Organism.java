@@ -154,4 +154,17 @@ public class Organism {
 		totalToxin=0;
 	}
 	
+	public boolean isFull()
+	{
+		for(int x=0; x<getHeight();x++)
+		{
+			for(int y=0; y<getWidth();y++)
+			{
+				if(organismBody[x][y] == null)
+					return false;
+			}
+		}
+		return true;
+	}
+	
 }

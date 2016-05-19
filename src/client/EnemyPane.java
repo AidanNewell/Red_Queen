@@ -25,6 +25,8 @@ public class EnemyPane extends JPanel{
 	private static final int SPACE_AVAILABLE = 600;
 	
 	private int index;
+	private int masterIndex=0;
+	private int AvailTox;
 	
 	private ArrayList<Organism> organisms;
 	
@@ -142,10 +144,10 @@ public class EnemyPane extends JPanel{
 	{
 		boolean cytoPlayed = false;
 		int AvailATP=0;
-		int AvailTox=0;
+		AvailTox=0;
 		for(int x=0; x<3; x++)
 		{
-			if(organisms.size() == 0 && x==0)
+			if(organisms.size() == 0 || allOrgsFull() && x==0)
 			{
 				AIHand.addCard(CardLoader.getOrganismCard());
 			}
@@ -162,7 +164,7 @@ public class EnemyPane extends JPanel{
 				AIHand.addCard(CardLoader.getPetriCard());
 			}
 		}
-		if(organisms.size() == 0)
+		if(organisms.size() == 0 || allOrgsFull())
 		{
 			for(int x=0; x <AIHand.getHand().size(); x++)
 			{
@@ -174,7 +176,7 @@ public class EnemyPane extends JPanel{
 				}
 			}
 		}
-		Organism construct = organisms.get(0);
+		Organism construct = organisms.get(masterIndex);
 		//Activate all tiles
 		for(int x=0; x<construct.getHeight();x++)
 		{
@@ -193,7 +195,7 @@ public class EnemyPane extends JPanel{
 		}
 		for(int x=0; x<AIHand.getHand().size();x++)
 		{
-			if(AIHand.getHand().get(x).getSpecialType() == Card.CYTOPLASM_CARD && !cytoPlayed)
+			if(AIHand.getHand().get(x).getSpecialType() == Card.CYTOPLASM_CARD && !cytoPlayed && !construct.isFull())
 			{
 				int xPos=0, yPos=0;
 				while(construct.isOccupied(xPos, yPos)){xPos = (int)(Math.random()*construct.getHeight()); yPos=(int)(Math.random()*construct.getWidth());}
@@ -201,7 +203,7 @@ public class EnemyPane extends JPanel{
 				AIHand.getHand().remove(x);
 				x--;
 				cytoPlayed=true;
-			}else if(AIHand.getHand().get(x).getSpecialType() == Card.PETRI_DISH_CARD && ((BuilderCard)AIHand.getHand().get(x)).getCost() <= AvailATP)
+			}else if(AIHand.getHand().get(x).getSpecialType() == Card.PETRI_DISH_CARD && ((BuilderCard)AIHand.getHand().get(x)).getCost() <= AvailATP && !construct.isFull())
 			{
 				int xPos=0,yPos=0;
 				while(construct.isOccupied(xPos, yPos)){xPos = (int)(Math.random()*construct.getHeight()); yPos=(int)(Math.random()*construct.getWidth());}
@@ -216,6 +218,21 @@ public class EnemyPane extends JPanel{
 	public void displayUpdate()
 	{
 		displayOrgAt(index);
+	}
+	
+	public int getToxin()
+	{
+		return AvailTox;
+	}
+	
+	private boolean allOrgsFull()
+	{
+		for(Organism o : organisms)
+		{
+			if(!o.isFull())
+				return false;
+		}
+		return true;
 	}
 	
 }
