@@ -90,8 +90,9 @@ public class AdventureGame {
 			gameState=HUMAN_PLAY;
 			playerPanel.resetDrawn();
 		}
-		else if(gameState==HUMAN_PLAY)
+		else if(gameState==HUMAN_PLAY){
 			gameState=AI;
+		}
 		else if(gameState==AI){
 			gameState=HUMAN_DRAW;
 			if(playerPanel.numCards()==12){

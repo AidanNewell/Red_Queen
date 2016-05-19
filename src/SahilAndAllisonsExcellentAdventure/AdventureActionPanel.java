@@ -83,7 +83,7 @@ public class AdventureActionPanel extends JPanel{
 						g.gameOver();
 						g.getInfoPanel().updateLabels();
 					}else{
-
+						g.getComputerPanel().noCard();
 						g.nextPhase();
 						g.getInfoPanel().updateLabels();
 						g.computerTurn();

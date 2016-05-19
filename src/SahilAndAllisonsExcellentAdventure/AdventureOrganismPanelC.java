@@ -24,10 +24,12 @@ public class AdventureOrganismPanelC extends JPanel{
 	private String name;
 	private int health;
 	private int ATP;
+	private int numTries;
+	private boolean playedCard;
 
 
 	AdventureOrganismPanelC(AdventureGame G, String s) {
-
+		
 		name=s;
 		cardButtons = new ArrayList<adventureCardButton>();
 		cards = new ArrayList<Card>();
@@ -36,6 +38,7 @@ public class AdventureOrganismPanelC extends JPanel{
 		this.setLayout(new GridLayout(4,3));
 		health =5;
 		ATP =5;
+		playedCard = false;
 
 		for(int col=0;col<3;col++){
 			for(int row=0;row<4;row++){
@@ -91,12 +94,9 @@ public class AdventureOrganismPanelC extends JPanel{
 		}
 
 		repaintGrid();
-
-
-		int numTries = 0;
-		boolean playedCard = false;
+		
 		while (numTries<=50){		
-			selectedIndex = (int) Math.random()*(cards.size());
+			selectedIndex = (int) (Math.random()*(cards.size()));
 			BuilderCard card = (BuilderCard) getSelectedCard();
 			int cost = card.getCost();
 			if(g.getComputerPanel().getATP()>= cost){
@@ -111,7 +111,6 @@ public class AdventureOrganismPanelC extends JPanel{
 			}
 			numTries++;
 		}
-
 		if(g.getPlayerPanel().getHealth()<=0){
 			g.gameOver();
 			g.getInfoPanel().updateLabels();
@@ -123,6 +122,13 @@ public class AdventureOrganismPanelC extends JPanel{
 			g.getActionPanel().setComputerAction("The Computer did not have enough ATP");
 
 
+	}
+	public void playCard(){
+		playedCard = true;
+	}
+	public void noCard(){
+		playedCard = false;
+		numTries = 0;
 	}
 
 	public void addCard(Card c){
