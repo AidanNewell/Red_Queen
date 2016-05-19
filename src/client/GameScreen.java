@@ -131,13 +131,14 @@ public class GameScreen extends JLayeredPane implements MouseListener
 			AI.displayUpdate();
 			gameState = DRAW_CARDS;
 			add(drawPiles);
+			drawPiles.cardsRemaining = mainPlayer.getCardsToDraw();
 			moveToFront(drawPiles);
 			CytoAvailable = mainPlayer.getCytoToPlay();
 			mainPlayer.awakenAll();
 			mainPlayer.resetBuffers();
-			focusedOrganism.updateVars();
 			mainPlayer.pruneOrg(AI.getToxin() - mainPlayer.getTotalRes());
 			AI.pruneOrg(mainPlayer.getTotalToxin());
+			focusedOrganism.updateVars();
 			updateResources();
 			revalidate();
 			repaint();

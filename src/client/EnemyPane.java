@@ -213,6 +213,10 @@ public class EnemyPane extends JPanel{
 				x--;
 			}
 		}
+		for(Organism o : organisms)
+		{
+			o.updateOrganism();
+		}
 	}
 	
 	public void displayUpdate()
