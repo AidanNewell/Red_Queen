@@ -136,6 +136,7 @@ public class GameScreen extends JLayeredPane implements MouseListener
 			mainPlayer.awakenAll();
 			mainPlayer.resetBuffers();
 			focusedOrganism.updateVars();
+			mainPlayer.pruneOrg(AI.getToxin() - mainPlayer.getTotalToxin());
 			updateResources();
 			revalidate();
 			repaint();

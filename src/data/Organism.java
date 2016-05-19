@@ -112,7 +112,7 @@ public class Organism {
 	
 	public void killOrganelle(int x, int y)
 	{
-		organismBody[x][y].killCard(this, x, y);
+		organismBody[x][y] = null;
 	}
 	
 	public void modifyBufferDraw(int a)
@@ -167,4 +167,16 @@ public class Organism {
 		return true;
 	}
 	
+	public boolean isEmpty()
+	{
+		for(int x=0; x<getHeight(); x++)
+		{
+			for(int y=0; y<getWidth();y++)
+			{
+				if(organismBody[x][y] != null)
+					return false;
+			}
+		}
+		return true;
+	}
 }

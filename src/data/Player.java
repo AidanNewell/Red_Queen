@@ -162,4 +162,35 @@ public class Player {
 			o.updateOrganism();
 		}
 	}
+	
+	public void pruneOrg(int x)
+	{
+		for(int a=0; a<x;a++)
+		{
+			if(allOrgsDead())
+			{
+				System.out.println("YOU LOSE, ALL ORGANELLES KILLED");
+			}
+			Organism target = organisms.get((int)(Math.random()*organisms.size()));
+			while(target.isEmpty()){target = organisms.get((int)(Math.random()*organisms.size()));}
+			int targetX = (int)(Math.random()*target.getHeight());
+			int targetY = (int)(Math.random()*target.getWidth());
+			while(target.getCardAt(targetX, targetY) == null)
+			{
+				targetX = (int)(Math.random()*target.getHeight());
+				targetY = (int)(Math.random()*target.getWidth());
+			}
+			target.killOrganelle(targetX,targetY);
+		}
+	}
+	
+	public boolean allOrgsDead()
+	{
+		for(Organism o: organisms)
+		{
+			if(!o.isEmpty())
+				return false;
+		}
+		return true;
+	}
 }

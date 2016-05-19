@@ -235,4 +235,8 @@ public class EnemyPane extends JPanel{
 		return true;
 	}
 	
+	public void pruneOrg()
+	{
+		
+	}
 }
