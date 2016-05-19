@@ -257,21 +257,25 @@ public class EnemyPane extends JPanel{
 		x-= totalResistance;
 		if(x>=0)
 		{
-			if(allOrgsDead())
+			System.out.println(x);
+			for(int a=0; a<x;a++)
 			{
-				System.out.println("YOU WIN, ALL ENEMY ORGANELLES KILLED!");
-				System.exit(0);
+				if(allOrgsDead())
+				{
+					System.out.println("YOU WIN, ALL ENEMY ORGANELLES KILLED!");
+					System.exit(0);
+				}
+				Organism target = organisms.get((int)(Math.random()*organisms.size()));
+				while(target.isEmpty()){target = organisms.get((int)(Math.random()*organisms.size()));}
+				int targetX = (int)(Math.random()*target.getHeight());
+				int targetY = (int)(Math.random()*target.getWidth());
+				while(target.getCardAt(targetX, targetY) == null)
+				{
+					targetX = (int)(Math.random()*target.getHeight());
+					targetY = (int)(Math.random()*target.getWidth());
+				}
+				target.killOrganelle(targetX,targetY);
 			}
-			Organism target = organisms.get((int)(Math.random()*organisms.size()));
-			while(target.isEmpty()){target = organisms.get((int)(Math.random()*organisms.size()));}
-			int targetX = (int)(Math.random()*target.getHeight());
-			int targetY = (int)(Math.random()*target.getWidth());
-			while(target.getCardAt(targetX, targetY) == null)
-			{
-				targetX = (int)(Math.random()*target.getHeight());
-				targetY = (int)(Math.random()*target.getWidth());
-			}
-			target.killOrganelle(targetX,targetY);
 		}
 	}
 	

@@ -14,21 +14,19 @@ public class LymphocyteCard extends BuilderCard{
 	public void modifyOrganism(Organism o, int x, int y) {
 		
 		super.modifyOrganism(o, x, y);
-		
-		o.addCard(x, y, this);
-		for(int xIndex=-1; xIndex<1;xIndex++)
+
+		for(int xIndex=-1; xIndex<=1;xIndex++)
 		{
-			for(int yIndex=-1;yIndex<1;yIndex++)
+			for(int yIndex=-1;yIndex<=1;yIndex++)
 			{
 				try{
-					if(x != 0 && y != 0 && o.isOccupied(xIndex, y))
+					if(!(xIndex ==0 && yIndex ==0) && o.isOccupied(x+xIndex,y+yIndex))
 					{
 						o.getCardAt(x+xIndex,y+yIndex).modifyBufferRes(1);
 					}
 				}catch(Exception e){}
 			}
 		}
-		o.updateOrganism();
 	}
 
 
