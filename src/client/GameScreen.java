@@ -43,6 +43,7 @@ public class GameScreen extends JLayeredPane implements MouseListener
 	private static HandPanel handPanel;
 	private static OrganismPane focusedOrganism;
 	private static resourcePane resources;
+	private static EnemyPane AI;
 	private Rectangle HandRectangle;
 	private Rectangle OrganismRectangle;
 	
@@ -53,6 +54,7 @@ public class GameScreen extends JLayeredPane implements MouseListener
 		drawPiles = new DrawPanel(this);
 		handPanel = new HandPanel(this);
 		focusedOrganism = new OrganismPane(this);
+		AI = new EnemyPane(this);
 		resources = new resourcePane();
 		CytoAvailable = 1;
 		MOUSE = new MouseImageBox();
@@ -87,7 +89,10 @@ public class GameScreen extends JLayeredPane implements MouseListener
 		add(resources);
 		resources.setBounds(screenWidth/2 -30,screenHeight/2,60,120);
 		drawPiles.setPreferredSize(new Dimension(screenWidth,screenHeight));
+		add(AI);
+		AI.setBounds(900,0,600,700);
 		add(drawPiles);
+		moveToFront(drawPiles);
 		drawPiles.setBounds(0,0,screenWidth,screenHeight-180);
 		addMouseListener(this);
 	}
@@ -123,10 +128,16 @@ public class GameScreen extends JLayeredPane implements MouseListener
 			break;
 		case DISCARD:
 			drawPiles.cardsRemaining = mainPlayer.getCardsToDraw();
+			AI.takeTurn();
+			AI.displayUpdate();
 			gameState = DRAW_CARDS;
 			add(drawPiles);
 			moveToFront(drawPiles);
 			CytoAvailable = mainPlayer.getCytoToPlay();
+			mainPlayer.awakenAll();
+			mainPlayer.resetBuffers();
+			focusedOrganism.updateVars();
+			updateResources();
 			revalidate();
 			repaint();
 			break;

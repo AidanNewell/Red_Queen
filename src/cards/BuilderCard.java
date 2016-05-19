@@ -64,6 +64,9 @@ public abstract class BuilderCard extends Card{
 	
 	public void activateCard(){
 		
+		if(active == true)
+			modifyBufferRes(res);
+		active = false;
 		
 		
 	}

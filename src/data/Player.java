@@ -135,4 +135,23 @@ public class Player {
 	{
 		bufferATP-=x;
 	}
+	
+	public void awakenAll()
+	{
+		for(Organism o : organisms)
+		{
+			for(int x=0; x<o.getHeight();x++)
+			{
+				for(int y=0; y<o.getWidth();y++)
+				{
+					BuilderCard b = o.getCardAt(x, y);
+					if(b != null)
+					{
+						b.activateCard();
+					}
+				}
+			}
+			o.resetATPToxin();
+		}
+	}
 }

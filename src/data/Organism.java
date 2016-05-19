@@ -1,6 +1,5 @@
 package data;
 
-import java.awt.Image;
 
 import client.GameScreen;
 import cards.*;
@@ -13,7 +12,6 @@ public class Organism {
 	private int totalATP;
 	private int totalRes;
 	private int bufferDrawCards;
-	private Image organismDisplay;
 	
 	
 	public Organism(int[] HW)
@@ -116,6 +114,12 @@ public class Organism {
 		{
 			organismBody[x][y] = (BuilderCard)GameScreen.MOUSE.getCard();
 		}
+	}
+	
+	public void resetATPToxin()
+	{
+		totalATP =0;
+		totalToxin=0;
 	}
 	
 }
