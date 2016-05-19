@@ -120,7 +120,6 @@ public class GameScreen extends JLayeredPane implements MouseListener
 			handPanel.resetCardButtons();
 			break;
 		case BUILD_ORG:
-			System.out.println("CC");
 			gameState = DISCARD;
 			nextGameState();
 			break;
@@ -240,6 +239,11 @@ public class GameScreen extends JLayeredPane implements MouseListener
 	{
 		resources.updateATP(mainPlayer.getTotalATP());
 		resources.updateTox(mainPlayer.getTotalToxin());
+	}
+	
+	public static void refreshOrganisms()
+	{
+		mainPlayer.refreshOrgs();
 	}
 
 }

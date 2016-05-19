@@ -154,4 +154,12 @@ public class Player {
 			o.resetATPToxin();
 		}
 	}
+	
+	public void refreshOrgs()
+	{
+		for(Organism o: organisms)
+		{
+			o.updateOrganism();
+		}
+	}
 }

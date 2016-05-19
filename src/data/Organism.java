@@ -37,13 +37,45 @@ public class Organism {
 	
 	public void updateOrganism()
 	{
+		//clear buffers
+		for(int x=0; x<getHeight();x++)
+		{
+			for(int y=0; y<getWidth();y++)
+			{
+				BuilderCard b = organismBody[x][y];
+				if(b != null)
+				{
+					b.resetBuffers();
+				}
+			}
+		}
+		for(int x=0; x<getHeight();x++)
+		{
+			for(int y=0; y<getWidth();y++)
+			{
+				BuilderCard b = organismBody[x][y];
+				if(b!=null)
+				{
+					b.modifyOrganism(this, x, y);
+				}
+			}
+		}
 		totalRes=0;
 		for(int x=0; x<organismBody.length;x++)
 		{
 			for(int y=0; y<organismBody[0].length;y++)
 			{
 				if(organismBody[x][y]!=null)
-					totalRes+=organismBody[x][y].getRes();
+				{
+					if(organismBody[x][y].active())
+					{
+						totalRes+=1;
+					}
+					else
+					{
+						totalRes+=organismBody[x][y].getRes()+organismBody[x][y].getBufferRes();
+					}
+				}
 			}
 		}
 	}

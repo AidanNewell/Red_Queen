@@ -124,4 +124,11 @@ public abstract class BuilderCard extends Card{
 	}
 	
 	public abstract int getSpecialType();
+	
+	public void resetBuffers()
+	{
+		bufferRes =0;
+		bufferToxin =0;
+		bufferATP=0;
+	}
 }

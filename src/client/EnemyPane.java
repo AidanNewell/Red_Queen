@@ -186,7 +186,6 @@ public class EnemyPane extends JPanel{
 				if(construct.isOccupied(x,y) && (b.getATP() + b.getBufferATP() > 0 || b.getToxin() + b.getBufferToxin() > 0) && !b.active())
 				{
 					b.setActive();
-					construct.modifyOrgRes(-b.getRes()+b.getBufferRes());
 					AvailATP += (b.getATP() + b.getBufferATP());
 					AvailTox += (b.getToxin() + b.getBufferToxin());
 				}

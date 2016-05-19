@@ -70,14 +70,11 @@ public class CardButton extends JButton{
 					switch(c.getSpecialType())
 					{
 					case 0:
-						b.modifyBufferRes(-b.getRes());
 						referenceOrg.modifyOrgATP(b.getATP() + b.getBufferATP());
 						referenceOrg.modifyOrgTox(b.getToxin() + b.getBufferToxin());
 						setIcon(new ImageIcon(ImagePath.CYTO_BACK));
 						break;
 					case 2:
-						b.modifyBufferRes(-b.getRes());
-						referenceOrg.modifyOrgRes(-(b.getRes()+b.getBufferRes()));
 						referenceOrg.modifyOrgATP(b.getATP() + b.getBufferATP());
 						referenceOrg.modifyOrgTox(b.getToxin() + b.getBufferToxin());
 						setIcon(new ImageIcon(ImagePath.PETRI_BACK));
@@ -118,6 +115,7 @@ public class CardButton extends JButton{
 						GameScreen.updateResources();
 					}
 				}
+				GameScreen.refreshOrganisms();
 			}
 		});
 	}
