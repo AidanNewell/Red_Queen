@@ -25,7 +25,7 @@ public class EnemyPane extends JPanel{
 	private static final int SPACE_AVAILABLE = 600;
 	
 	private int index;
-	private int masterIndex=0;
+	private int masterIndex=-1;
 	private int AvailTox;
 	
 	private ArrayList<Organism> organisms;
@@ -147,7 +147,7 @@ public class EnemyPane extends JPanel{
 		AvailTox=0;
 		for(int x=0; x<3; x++)
 		{
-			if(organisms.size() == 0 || allOrgsFull() && x==0)
+			if((organisms.size() == 0 || allOrgsFull()) && x==0)
 			{
 				AIHand.addCard(CardLoader.getOrganismCard());
 			}
@@ -175,21 +175,25 @@ public class EnemyPane extends JPanel{
 					x--;
 				}
 			}
+			masterIndex++;
 		}
 		Organism construct = organisms.get(masterIndex);
 		//Activate all tiles
-		for(int x=0; x<construct.getHeight();x++)
+		for(Organism o :organisms)
 		{
-			for(int y=0; y<construct.getWidth(); y++)
+			for(int x=0; x<o.getHeight();x++)
 			{
-				BuilderCard b = construct.getCardAt(x,y);
-				if(b!=null)
-					b.activateCard();
-				if(construct.isOccupied(x,y) && (b.getATP() + b.getBufferATP() > 0 || b.getToxin() + b.getBufferToxin() > 0) && !b.active())
+				for(int y=0; y<o.getWidth(); y++)
 				{
-					b.setActive();
-					AvailATP += (b.getATP() + b.getBufferATP());
-					AvailTox += (b.getToxin() + b.getBufferToxin());
+					BuilderCard b = o.getCardAt(x,y);
+					if(b!=null)
+						b.activateCard();
+					if(o.isOccupied(x,y) && (b.getATP() + b.getBufferATP() > 0 || b.getToxin() + b.getBufferToxin() > 0) && !b.active())
+					{
+						b.setActive();
+						AvailATP += (b.getATP() + b.getBufferATP());
+						AvailTox += (b.getToxin() + b.getBufferToxin());
+					}
 				}
 			}
 		}

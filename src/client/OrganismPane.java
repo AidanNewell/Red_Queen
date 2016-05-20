@@ -106,62 +106,65 @@ public class OrganismPane extends JPanel{
 		add(upArrow);
 		add(downArrow);
 		add(done);
-		Organism construct = organisms.get(i);
-		vertSpace = SPACE_AVAILABLE / construct.getHeight();
-		horizSpace = SPACE_AVAILABLE / construct.getWidth();
-		for(int x=0; x<construct.getHeight();x++)
+		if(organisms.size() > 0)
 		{
-			for(int y=0; y<construct.getWidth();y++)
+			Organism construct = organisms.get(i);
+			vertSpace = SPACE_AVAILABLE / construct.getHeight();
+			horizSpace = SPACE_AVAILABLE / construct.getWidth();
+			for(int x=0; x<construct.getHeight();x++)
 			{
-				CardButton button = null;
-				BuilderCard bCard = construct.getCardAt(x,y);
-				if(bCard != null)
+				for(int y=0; y<construct.getWidth();y++)
 				{
-					if(bCard.active()){
-						if(bCard.getSpecialType() == Card.CYTOPLASM_CARD)
-						{
-							Image cardImg = ImagePath.CYTO_BACK.getScaledInstance(horizSpace,vertSpace,Image.SCALE_SMOOTH);
-							button = new CardButton(construct,bCard, new ImageIcon(cardImg),x,y);
-							button.setOpaque(false);
-							button.setContentAreaFilled(false);
-							button.setBorderPainted(false);
-							button.setFocusPainted(false);
-							button.establishActivateableSlot();
+					CardButton button = null;
+					BuilderCard bCard = construct.getCardAt(x,y);
+					if(bCard != null)
+					{
+						if(bCard.active()){
+							if(bCard.getSpecialType() == Card.CYTOPLASM_CARD)
+							{
+								Image cardImg = ImagePath.CYTO_BACK.getScaledInstance(horizSpace,vertSpace,Image.SCALE_SMOOTH);
+								button = new CardButton(construct,bCard, new ImageIcon(cardImg),x,y);
+								button.setOpaque(false);
+								button.setContentAreaFilled(false);
+								button.setBorderPainted(false);
+								button.setFocusPainted(false);
+								button.establishActivateableSlot();
+							}else{
+								Image cardImg = ImagePath.PETRI_BACK.getScaledInstance(horizSpace,vertSpace,Image.SCALE_SMOOTH);
+								button = new CardButton(construct,bCard, new ImageIcon(cardImg),x,y);
+								button.setOpaque(false);
+								button.setContentAreaFilled(false);
+								button.setBorderPainted(false);
+								button.setFocusPainted(false);
+								button.establishActivateableSlot();
+							}
 						}else{
-							Image cardImg = ImagePath.PETRI_BACK.getScaledInstance(horizSpace,vertSpace,Image.SCALE_SMOOTH);
-							button = new CardButton(construct,bCard, new ImageIcon(cardImg),x,y);
-							button.setOpaque(false);
-							button.setContentAreaFilled(false);
-							button.setBorderPainted(false);
-							button.setFocusPainted(false);
-							button.establishActivateableSlot();
+							try{
+								Image cardImg = bCard.getCardArt().getScaledInstance(horizSpace, vertSpace, Image.SCALE_SMOOTH);
+								button = new CardButton(construct,bCard, new ImageIcon(cardImg),x,y);
+								button.setOpaque(false);
+								button.setContentAreaFilled(false);
+								button.setBorderPainted(false);
+								button.setFocusPainted(false);
+								button.establishActivateableSlot();
+							}catch(Exception e){}
 						}
-					}else{
+					}
+					else
+					{
 						try{
-							Image cardImg = bCard.getCardArt().getScaledInstance(horizSpace, vertSpace, Image.SCALE_SMOOTH);
-							button = new CardButton(construct,bCard, new ImageIcon(cardImg),x,y);
+							Image cardImg = ImagePath.NULL_BUILD_SLOT.getScaledInstance(horizSpace, vertSpace, Image.SCALE_SMOOTH);
+							button = new CardButton(construct,null, new ImageIcon(cardImg),x,y);
 							button.setOpaque(false);
 							button.setContentAreaFilled(false);
-							button.setBorderPainted(false);
 							button.setFocusPainted(false);
-							button.establishActivateableSlot();
+							button.setBorderPainted(false);
+							button.establishFillableSlot();
 						}catch(Exception e){}
 					}
+					add(button);
+					button.setBounds(y*horizSpace,(x*vertSpace)+60,horizSpace,vertSpace);
 				}
-				else
-				{
-					try{
-						Image cardImg = ImagePath.NULL_BUILD_SLOT.getScaledInstance(horizSpace, vertSpace, Image.SCALE_SMOOTH);
-						button = new CardButton(construct,null, new ImageIcon(cardImg),x,y);
-						button.setOpaque(false);
-						button.setContentAreaFilled(false);
-						button.setFocusPainted(false);
-						button.setBorderPainted(false);
-						button.establishFillableSlot();
-					}catch(Exception e){}
-				}
-				add(button);
-				button.setBounds(y*horizSpace,(x*vertSpace)+60,horizSpace,vertSpace);
 			}
 		}
 		revalidate();
