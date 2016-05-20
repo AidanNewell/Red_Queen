@@ -81,6 +81,7 @@ public class CardButton extends JButton{
 						break;
 					}
 					GameScreen.updateResources();
+					GameScreen.refreshOrganisms();
 				}
 			}
 		});

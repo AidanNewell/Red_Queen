@@ -69,7 +69,7 @@ public class Organism {
 				{
 					if(organismBody[x][y].active())
 					{
-						totalRes+=1;
+						totalRes+=0;
 					}
 					else
 					{

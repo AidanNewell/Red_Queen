@@ -128,7 +128,6 @@ public class GameScreen extends JLayeredPane implements MouseListener
 		case DISCARD:
 			drawPiles.cardsRemaining = mainPlayer.getCardsToDraw();
 			AI.takeTurn();
-			AI.displayUpdate();
 			gameState = DRAW_CARDS;
 			add(drawPiles);
 			drawPiles.cardsRemaining = mainPlayer.getCardsToDraw();
@@ -139,6 +138,7 @@ public class GameScreen extends JLayeredPane implements MouseListener
 			mainPlayer.awakenAll();
 			mainPlayer.resetBuffers();
 			focusedOrganism.updateVars();
+			AI.displayUpdate();
 			updateResources();
 			revalidate();
 			repaint();
