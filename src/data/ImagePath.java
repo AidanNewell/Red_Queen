@@ -20,7 +20,8 @@ public class ImagePath
 		
 	public static Image CYTO_BACK, PETRI_BACK, ORG_BACK;
 	public static Image CYTOSOL_CARD, ECTOPLASM_CARD, CYTOSKELETON_CARD, LARGE_S_ORG_CARD, MED_S_ORG_CARD, SMALL_S_ORG_CARD;
-	public static Image CHLOROPLAST_CARD, HELPERT_CARD, KILLERT_CARD, LYMPH_CARD,MITO_CARD,PRIMARYMEM_CARD,VAC_CARD;
+	public static Image CHLOROPLAST_CARD, HELPERT_CARD, KILLERT_CARD, LYMPH_CARD,MITO_CARD,PRIMARYMEM_CARD,VAC_CARD,NEMA;
+	public static Image AUTOPHAGE;
 	public static Image NULL_BUILD_SLOT;
 	
 	public static Image DESTROY_VIRUS_ALL, TILE_DESTROYER, DRAW_3, DISCARD_ALL;
@@ -28,6 +29,8 @@ public class ImagePath
 	public static Image TOXIN_VIAL, ATP_VIAL;
 	
 	public static Image DONE;
+	
+	public static Image ERROR;
 	
     public static void init()
     {
@@ -57,6 +60,9 @@ public class ImagePath
     		TOXIN_VIAL = ImageIO.read(new File(path + "toxin.png"));
     		ATP_VIAL = ImageIO.read(new File(path + "theGreenOne.png"));
     		DONE = ImageIO.read(new File(path +"Done.png"));
+    		//NEMA = ImageIO.read(new File(path +"Nema.png"));
+    		//AUTOPHAGE = ImageIO.read(new File(path + "Autophage.png"));
+    		ERROR = ImageIO.read(new File(path+"NotFound.png"));
     	}catch(Exception e){e.printStackTrace(); System.exit(1);}
     	
     	scale();

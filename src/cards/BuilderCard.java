@@ -51,7 +51,7 @@ public abstract class BuilderCard extends Card{
 	}
 	
 	public void modifyOrganism(Organism o, int x, int y){
-		startCooldown();
+		//startCooldown();
 		
 		
 		
