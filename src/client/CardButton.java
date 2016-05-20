@@ -102,6 +102,7 @@ public class CardButton extends JButton{
 							referenceOrg.addCard(organismX, organismY, (BuilderCard)GameScreen.MOUSE.getCard());
 							GameScreen.MOUSE.setCardNull();
 							GameScreen.revalidateOrganism();
+							GameScreen.refreshOrganisms();
 						}
 						return;
 					}
