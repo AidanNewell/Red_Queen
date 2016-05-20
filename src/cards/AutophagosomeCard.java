@@ -7,7 +7,7 @@ import data.Organism;
 
 public class AutophagosomeCard extends BuilderCard{
 
-	public AutophagosomeCard(int toxin, int ATP, int res, int cost, int cooldown)
+	public AutophagosomeCard()
 	{
 		super(0,0,1,6,0);
 	}

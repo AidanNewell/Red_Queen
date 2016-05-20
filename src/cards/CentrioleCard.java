@@ -7,7 +7,7 @@ import data.Organism;
 
 public class CentrioleCard extends BuilderCard{
 
-	public CentrioleCard(int toxin, int ATP, int res, int cost, int cooldown)
+	public CentrioleCard()
 	{
 		super(0, 0, 1, 8, 0);
 	}

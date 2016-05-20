@@ -7,7 +7,7 @@ import data.Organism;
 
 public class NematocystCard extends BuilderCard{
 
-	public NematocystCard(int toxin, int ATP, int res, int cost, int cooldown)
+	public NematocystCard()
 	{
 		super(3, 0, 1, 3, 0);
 	}
