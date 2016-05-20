@@ -66,18 +66,33 @@ public class CardButton extends JButton{
 				if(GameScreen.MOUSE.getCard() == null && ! (((BuilderCard)c).active()))
 				{
 					BuilderCard b = (BuilderCard)c;
-					b.setActive();
+					int totATP=0;
+					int totTox=0;
+					totATP =b.getATP()+b.getBufferATP();
+					totTox=b.getToxin()+b.getBufferToxin();
 					switch(c.getSpecialType())
 					{
 					case 0:
-						referenceOrg.modifyOrgATP(b.getATP() + b.getBufferATP());
-						referenceOrg.modifyOrgTox(b.getToxin() + b.getBufferToxin());
-						setIcon(new ImageIcon(ImagePath.CYTO_BACK));
+						if(totATP>0)
+							referenceOrg.modifyOrgATP(b.getATP() + b.getBufferATP());
+						if(totTox>0)
+							referenceOrg.modifyOrgTox(b.getToxin() + b.getBufferToxin());
+						if(totATP >0|| totTox>0)
+						{
+							setIcon(new ImageIcon(ImagePath.CYTO_BACK));
+							b.setActive();
+						}
 						break;
 					case 2:
-						referenceOrg.modifyOrgATP(b.getATP() + b.getBufferATP());
-						referenceOrg.modifyOrgTox(b.getToxin() + b.getBufferToxin());
-						setIcon(new ImageIcon(ImagePath.PETRI_BACK));
+						if(totATP>0)
+							referenceOrg.modifyOrgATP(b.getATP() + b.getBufferATP());
+						if(totTox>0)
+							referenceOrg.modifyOrgTox(b.getToxin() + b.getBufferToxin());
+						if(totATP>0 || totTox>0)
+						{
+							setIcon(new ImageIcon(ImagePath.PETRI_BACK));
+							b.setActive();
+						}
 						break;
 					}
 					GameScreen.updateResources();
