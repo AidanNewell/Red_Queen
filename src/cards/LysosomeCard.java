@@ -29,7 +29,7 @@ public class LysosomeCard extends BuilderCard{
 						if(o.getCardAt(x+i,y+j).getATP()>0)
 						{
 							o.getCardAt(x+i, y+j).modifyBufferATP(-2);
-							o.getCardAt(x+i, y+j).modifyBufferToxin(2);
+							o.getCardAt(x+i, y+j).modifyBufferToxin(4);
 						}
 					}
 				}catch(Exception e){}
@@ -39,12 +39,12 @@ public class LysosomeCard extends BuilderCard{
 
 	public int getSpecialType()
 	{
-		return 0;
+		return Card.PETRI_DISH_CARD;
 	}
 
 	public Image getCardArt()
 	{
-		return ImagePath.ERROR;
+		return ImagePath.LYSO;
 	}
 
 }

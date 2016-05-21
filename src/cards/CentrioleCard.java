@@ -41,7 +41,7 @@ public class CentrioleCard extends BuilderCard{
 
 	public Image getCardArt()
 	{
-		return ImagePath.ERROR;
+		return ImagePath.CENTRIOLE;
 	}
 
 }

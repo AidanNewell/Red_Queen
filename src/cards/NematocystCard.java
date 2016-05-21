@@ -9,7 +9,7 @@ public class NematocystCard extends BuilderCard{
 
 	public NematocystCard()
 	{
-		super(3, 0, 1, 3, 0);
+		super(2, 0, 1, 3, 0);
 	}
 
 	public void killCard(Organism o, int x, int y)
@@ -26,8 +26,7 @@ public class NematocystCard extends BuilderCard{
 	
 	public Image getCardArt()
 	{
-		//return ImagePath.NEMA;
-		return ImagePath.ERROR;
+		return ImagePath.NEMA;
 	}
 
 }

@@ -40,7 +40,6 @@ public class AutophagosomeCard extends BuilderCard{
 
 	public Image getCardArt()
 	{
-		//return ImagePath.AUTOPHAGE;
-		return ImagePath.ERROR;
+		return ImagePath.AUTOPHAGE;
 	}
 }
