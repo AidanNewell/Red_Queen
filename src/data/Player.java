@@ -200,17 +200,7 @@ public class Player {
 		int res=0;
 		for(Organism o: organisms)
 		{
-			for(int x=0; x<o.getHeight();x++)
-			{
-				for(int y=0; y<o.getWidth();y++)
-				{
-					BuilderCard b = o.getCardAt(x,y);
-					if(b != null)
-					{
-						res+=b.getRes()+b.getBufferRes();
-					}
-				}
-			}
+			res+=o.getRes();
 		}
 		return res;
 	}

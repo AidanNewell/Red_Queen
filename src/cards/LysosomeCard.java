@@ -9,7 +9,7 @@ public class LysosomeCard extends BuilderCard{
 	
 	public LysosomeCard()
 	{
-		super(2,0,1,8,0);
+		super(2,0,0,8,0);
 	}
 
 	public void killCard(Organism o, int x, int y)

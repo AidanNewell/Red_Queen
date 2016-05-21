@@ -8,7 +8,7 @@ import data.Organism;
 public class VacuoleCard extends BuilderCard{
 
 	public VacuoleCard() {
-		super(0,0,2,1,0);
+		super(0,0,1,1,0);
 	}
 	public void modifyOrganism(Organism o, int x, int y) {
 		

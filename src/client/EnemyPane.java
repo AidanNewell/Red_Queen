@@ -145,6 +145,10 @@ public class EnemyPane extends JPanel{
 		boolean cytoPlayed = false;
 		int AvailATP=0;
 		AvailTox=0;
+		for(Organism o :organisms)
+		{
+			o.updateOrganism();
+		}
 		for(int x=0; x<3; x++)
 		{
 			if((organisms.size() == 0 || allOrgsFull()) && x==0)
@@ -248,15 +252,8 @@ public class EnemyPane extends JPanel{
 		int totalResistance =0;
 		for(Organism o:organisms)
 		{
-			for(int i=0; i<o.getHeight();i++)
-			{
-				for(int j=0; j<o.getWidth();j++)
-				{
-					BuilderCard b = o.getCardAt(i, j);
-					if(b != null)
-						totalResistance+=b.getRes()+b.getBufferRes();
-				}
-			}
+			o.updateOrganism();
+			totalResistance+=o.getRes();
 		}
 		x-= totalResistance;
 		if(x>=0)
