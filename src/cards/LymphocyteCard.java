@@ -8,7 +8,7 @@ import data.Organism;
 public class LymphocyteCard extends BuilderCard{
 
 	public LymphocyteCard() {
-		super(0, 0, 1, 5, 0);
+		super(0, 0, 1, 8, 0);
 	}
 	
 	public void modifyOrganism(Organism o, int x, int y) {

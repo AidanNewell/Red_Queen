@@ -9,7 +9,7 @@ public class CentrioleCard extends BuilderCard{
 
 	public CentrioleCard()
 	{
-		super(0, 0, 1, 8, 0);
+		super(0, 0, 0, 8, 0);
 	}
 	
 	public void modifyOrganism(Organism o, int x, int y)
