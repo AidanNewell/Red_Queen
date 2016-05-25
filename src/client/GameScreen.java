@@ -87,7 +87,7 @@ public class GameScreen extends JLayeredPane implements MouseListener
 		add(focusedOrganism);
 		focusedOrganism.setBounds(0,0,600,700);
 		add(resources);
-		resources.setBounds(screenWidth/2 -30,screenHeight/2,60,120);
+		resources.setBounds(screenWidth/2 -30,screenHeight/2-90,60,180);
 		drawPiles.setPreferredSize(new Dimension(screenWidth,screenHeight));
 		add(AI);
 		AI.setBounds(900,0,600,700);
@@ -139,6 +139,7 @@ public class GameScreen extends JLayeredPane implements MouseListener
 			mainPlayer.resetBuffers();
 			focusedOrganism.updateVars();
 			AI.displayUpdate();
+			refreshOrganisms();
 			updateResources();
 			revalidate();
 			repaint();
@@ -242,6 +243,7 @@ public class GameScreen extends JLayeredPane implements MouseListener
 	{
 		resources.updateATP(mainPlayer.getTotalATP());
 		resources.updateTox(mainPlayer.getTotalToxin());
+		resources.updateRes(mainPlayer.getTotalRes());
 	}
 	
 	public static void refreshOrganisms()

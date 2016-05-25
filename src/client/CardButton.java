@@ -95,8 +95,8 @@ public class CardButton extends JButton{
 						}
 						break;
 					}
-					GameScreen.updateResources();
 					GameScreen.refreshOrganisms();
+					GameScreen.updateResources();
 				}
 			}
 		});
@@ -119,20 +119,22 @@ public class CardButton extends JButton{
 							GameScreen.revalidateOrganism();
 							GameScreen.refreshOrganisms();
 						}
-						return;
+						
+					}else{
+						BuilderCard b = (BuilderCard)GameScreen.MOUSE.getCard();
+						if(GameScreen.getPlayer().getTotalATP() >= b.getCost())
+						{
+							referenceOrg.addCard(organismX, organismY, b);
+							b.modifyOrganism(referenceOrg,organismX,organismY);
+							GameScreen.MOUSE.setCardNull();
+							GameScreen.revalidateOrganism();
+							GameScreen.getPlayer().spendATP(b.getCost());
+							GameScreen.updateResources();
+						}
 					}
-					BuilderCard b = (BuilderCard)GameScreen.MOUSE.getCard();
-					if(GameScreen.getPlayer().getTotalATP() >= b.getCost())
-					{
-						referenceOrg.addCard(organismX, organismY, b);
-						b.modifyOrganism(referenceOrg,organismX,organismY);
-						GameScreen.MOUSE.setCardNull();
-						GameScreen.revalidateOrganism();
-						GameScreen.getPlayer().spendATP(b.getCost());
-						GameScreen.updateResources();
-					}
+					GameScreen.refreshOrganisms();
+					GameScreen.updateResources();
 				}
-				GameScreen.refreshOrganisms();
 			}
 		});
 	}

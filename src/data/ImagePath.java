@@ -26,7 +26,7 @@ public class ImagePath
 	
 	public static Image DESTROY_VIRUS_ALL, TILE_DESTROYER, DRAW_3, DISCARD_ALL;
 	
-	public static Image TOXIN_VIAL, ATP_VIAL;
+	public static Image TOXIN_VIAL, ATP_VIAL,SMALL_SHIELD;
 	
 	public static Image DONE;
 	
@@ -64,6 +64,7 @@ public class ImagePath
     		AUTOPHAGE = ImageIO.read(new File(path + "Autophage.png"));
     		LYSO = ImageIO.read(new File(path + "Lyso.png"));
     		CENTRIOLE = ImageIO.read(new File(path + "Centriole.png"));
+    		SMALL_SHIELD = ImageIO.read(new File(path + "shield.png"));
     		ERROR = ImageIO.read(new File(path+"NotFound.png"));
     	}catch(Exception e){e.printStackTrace(); System.exit(1);}
     	
@@ -83,5 +84,6 @@ public class ImagePath
     	DOWN_ARROW = DOWN_ARROW.getScaledInstance(240,40,Image.SCALE_SMOOTH);
     	TOXIN_VIAL = TOXIN_VIAL.getScaledInstance(40,40,Image.SCALE_SMOOTH);
     	ATP_VIAL = ATP_VIAL.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+    	SMALL_SHIELD = SMALL_SHIELD.getScaledInstance(40, 30, Image.SCALE_SMOOTH);
     }
 }
