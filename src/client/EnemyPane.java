@@ -258,7 +258,6 @@ public class EnemyPane extends JPanel{
 		x-= totalResistance;
 		if(x>=0)
 		{
-			System.out.println(x);
 			for(int a=0; a<x;a++)
 			{
 				if(allOrgsDead())
