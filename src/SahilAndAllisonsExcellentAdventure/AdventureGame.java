@@ -23,9 +23,9 @@ public class AdventureGame {
 	private AdventureMiddlePanel midPanel;
 	protected final int HUMAN_DRAW = 0;
 	protected final int HUMAN_PLAY = 1;
-	protected final int AI = 2;
+	protected final int AI = 2;//touch
 	protected final int OVER = 3;
-	private final String[] states = {"Draw a card", "Play a card", "Computer's turn", "Game is over goodbye"};
+	private final String[] states = {"Draw a card", "Play a card", "Computer's turn", "Game is over goodbye"}; 
 	private int gameState;
 	
 	
