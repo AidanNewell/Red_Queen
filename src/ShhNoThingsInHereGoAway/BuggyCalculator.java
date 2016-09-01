@@ -82,7 +82,9 @@ public class BuggyCalculator {
 		divide.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				entered = Double.parseDouble(enteringString);
+				enteringString = "";
+				Operation = DIVIDE;
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -94,7 +96,9 @@ public class BuggyCalculator {
 		multiply.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				entered = Double.parseDouble(enteringString);
+				enteringString = "";
+				Operation = MULTIPLY;
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -143,7 +147,9 @@ public class BuggyCalculator {
 		minus.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				entered = Double.parseDouble(enteringString);
+				enteringString = "";
+				Operation = MINUS;
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -192,7 +198,9 @@ public class BuggyCalculator {
 		plus.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				entered = Double.parseDouble(enteringString);
+				enteringString = "";
+				Operation = PLUS;
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -240,7 +248,23 @@ public class BuggyCalculator {
 		equals.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				switch(Operation)
+				{
+				case PLUS:
+					add();
+					break;
+				case MINUS:
+					subtract();
+					break;
+				case MULTIPLY:
+					multiply();
+					break;
+				case DIVIDE:
+					divide();
+					break;
+				default:
+					break;
+				}
 			}
 		});
 		c.fill = GridBagConstraints.VERTICAL;
@@ -332,12 +356,16 @@ public class BuggyCalculator {
 		if(x.equals("."))
 		{
 			if(singleDec)
-				System.exit(1);
+			{
+				System.err.println("Am dead");
+				System.exit(Integer.MIN_VALUE);
+			}
 			else
 				singleDec=true;
 		}
 		enteringString = enteringString + x;
 		display.setText(enteringString);
+		entering = Double.parseDouble(enteringString);
 	}
 }
 
