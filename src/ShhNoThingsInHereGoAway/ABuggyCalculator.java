@@ -1,5 +1,6 @@
 package ShhNoThingsInHereGoAway;
 
+
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.GridBagConstraints;
@@ -15,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 
-public class BuggyCalculator {
+public class ABuggyCalculator {
 
 	private static double entered;
 	private static double entering;
@@ -27,6 +28,7 @@ public class BuggyCalculator {
 	private static final int PLUS = 0, MINUS = 1, MULTIPLY = 2, DIVIDE = 3;
 	
 	private static boolean singleDec;
+	private static boolean cont; 
 	
 	private static int Operation;
 	
@@ -34,8 +36,8 @@ public class BuggyCalculator {
 		
 	public static void main(String [] args)
 	{
-		entered =0;
-		enteringString="";
+		entered = 0;
+		enteringString = "";
 		JFrame window = new JFrame("Calculator");
 		
 		JPanel pane = new JPanel(new GridBagLayout());	
@@ -57,7 +59,11 @@ public class BuggyCalculator {
 		clear.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				entered = 0;
+				entering = 0; 
+				enteringString = "";
+				cont = false; 
+				display.setText(" ");
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -70,7 +76,8 @@ public class BuggyCalculator {
 		clearE.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				entering = 0; 
+				enteringString = "";
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -78,11 +85,19 @@ public class BuggyCalculator {
 		c.gridy = 1;
 		pane.add(clearE, c);
 		
+		/*
+		* OPERATIONS: 
+		*/
+		
 		JButton divide = new JButton("÷");
 		divide.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-
+				if(!cont){
+					entered = Double.parseDouble(enteringString);
+				}
+				enteringString = "";
+				Operation = DIVIDE; 
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -94,7 +109,11 @@ public class BuggyCalculator {
 		multiply.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				if(!cont){
+					entered = Double.parseDouble(enteringString);
+				}
+				enteringString = "";
+				Operation = MULTIPLY;
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -102,14 +121,73 @@ public class BuggyCalculator {
 		c.gridy = 1;
 		pane.add(multiply, c);
 		
+		JButton minus = new JButton("-");
+		minus.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				if(!cont){
+					entered = Double.parseDouble(enteringString);
+				}
+				enteringString = "";
+				Operation = MINUS; 
+			}
+		});
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 3;
+		c.gridy = 2;
+		pane.add(minus, c);
+		
+		JButton plus = new JButton("+");
+		plus.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				if(!cont){
+					entered = Double.parseDouble(enteringString);
+				}
+				enteringString = "";
+				Operation = PLUS;
+			}
+		});
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 3;
+		c.gridy = 3;
+		pane.add(plus, c);
+		
+		JButton equals = new JButton("=");
+		equals.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				entering = Double.parseDouble(enteringString);
+				switch (Operation){
+					case PLUS: add();  
+						break;	
+					case MINUS: subtract();
+						break; 
+					case MULTIPLY: multiply();
+						break;
+					case DIVIDE: divide();
+						break;
+				}			
+				display.setText("" + entered);
+				cont = true; 
+				
+			}
+		});
+		c.fill = GridBagConstraints.VERTICAL;
+		c.gridheight = 2; 
+		c.gridx = 3;
+		c.gridy = 4;
+		pane.add(equals, c);
+		
 		JButton seven = new JButton("7");
 		seven.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				BuggyCalculator.addNumber("7");
+				ABuggyCalculator.addNumber("7");
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridheight = 1; 
 		c.gridwidth = 1; 
 		c.gridx = 0;
 		c.gridy = 2;
@@ -119,7 +197,7 @@ public class BuggyCalculator {
 		eight.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				BuggyCalculator.addNumber("8");
+				ABuggyCalculator.addNumber("8");
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -131,7 +209,7 @@ public class BuggyCalculator {
 		nine.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				BuggyCalculator.addNumber("9");
+				ABuggyCalculator.addNumber("9");
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -139,23 +217,13 @@ public class BuggyCalculator {
 		c.gridy = 2;
 		pane.add(nine, c);
 		
-		JButton minus = new JButton("-");
-		minus.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e)
-			{
-				
-			}
-		});
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = 3;
-		c.gridy = 2;
-		pane.add(minus, c);
+
 		
 		JButton four = new JButton("4");
 		four.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				BuggyCalculator.addNumber("4");
+				ABuggyCalculator.addNumber("4");
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -168,7 +236,7 @@ public class BuggyCalculator {
 		five.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				BuggyCalculator.addNumber("5");
+				ABuggyCalculator.addNumber("5");
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -180,7 +248,7 @@ public class BuggyCalculator {
 		six.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				BuggyCalculator.addNumber("6");
+				ABuggyCalculator.addNumber("6");
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -188,23 +256,13 @@ public class BuggyCalculator {
 		c.gridy = 3;
 		pane.add(six, c);
 		
-		JButton plus = new JButton("+");
-		plus.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e)
-			{
-				
-			}
-		});
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = 3;
-		c.gridy = 3;
-		pane.add(plus, c);
+
 		
 		JButton one = new JButton("1");
 		one.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				BuggyCalculator.addNumber("1");
+				ABuggyCalculator.addNumber("1");
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -216,7 +274,7 @@ public class BuggyCalculator {
 		two.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				BuggyCalculator.addNumber("2");
+				ABuggyCalculator.addNumber("2");
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -228,7 +286,7 @@ public class BuggyCalculator {
 		three.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				BuggyCalculator.addNumber("3");
+				ABuggyCalculator.addNumber("3");
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -236,30 +294,32 @@ public class BuggyCalculator {
 		c.gridy = 4;
 		pane.add(three, c);
 		
-		JButton equals = new JButton("=");
-		equals.addActionListener(new ActionListener(){
+		JButton plusMinus = new JButton ("+/-");
+		plusMinus.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
 				
 			}
 		});
-		c.fill = GridBagConstraints.VERTICAL;
-		c.gridheight = 2; 
-		c.gridx = 3;
-		c.gridy = 4;
-		pane.add(equals, c);
+		c.gridheight = 1; 
+		c.gridwidth = 1; 
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 5;
+		pane.add(plusMinus, c);
+		
 		
 		JButton zero = new JButton("0");
 		zero.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				BuggyCalculator.addNumber("0");
+				ABuggyCalculator.addNumber("0");
 			}
 		});
 		c.gridheight = 1; 
-		c.gridwidth = 2; 
+		c.gridwidth = 1; 
 		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = 0;
+		c.gridx = 1;
 		c.gridy = 5;
 		pane.add(zero, c);
 		
@@ -267,7 +327,7 @@ public class BuggyCalculator {
 		decimal.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				BuggyCalculator.addNumber(".");
+				ABuggyCalculator.addNumber(".");
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
