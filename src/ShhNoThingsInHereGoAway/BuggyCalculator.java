@@ -31,10 +31,13 @@ public class BuggyCalculator {
 	private static int Operation;
 	
 	private static JLabel display;
+	
+	private static boolean cleared;
 		
 	public static void main(String [] args)
 	{
 		entered =0;
+		cleared = true;
 		enteringString="";
 		JFrame window = new JFrame("Calculator");
 		
@@ -82,8 +85,10 @@ public class BuggyCalculator {
 		divide.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				entered = Double.parseDouble(enteringString);
+				if(cleared)
+					entered = Double.parseDouble(enteringString);
 				enteringString = "";
+				cleared = false;
 				Operation = DIVIDE;
 			}
 		});
@@ -96,8 +101,10 @@ public class BuggyCalculator {
 		multiply.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				entered = Double.parseDouble(enteringString);
+				if(cleared)
+					entered = Double.parseDouble(enteringString);
 				enteringString = "";
+				cleared = false;
 				Operation = MULTIPLY;
 			}
 		});
@@ -147,8 +154,10 @@ public class BuggyCalculator {
 		minus.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				entered = Double.parseDouble(enteringString);
+				if(cleared)
+					entered = Double.parseDouble(enteringString);
 				enteringString = "";
+				cleared = false;
 				Operation = MINUS;
 			}
 		});
@@ -198,8 +207,10 @@ public class BuggyCalculator {
 		plus.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				entered = Double.parseDouble(enteringString);
+				if(cleared)
+					entered = Double.parseDouble(enteringString);
 				enteringString = "";
+				cleared = false;
 				Operation = PLUS;
 			}
 		});
@@ -265,6 +276,7 @@ public class BuggyCalculator {
 				default:
 					break;
 				}
+				display.setText("" + entered);
 			}
 		});
 		c.fill = GridBagConstraints.VERTICAL;
@@ -353,15 +365,25 @@ public class BuggyCalculator {
 	
 	public static void addNumber(String x)
 	{
+		/**
+		 * THIS IS BUG #2
+		 * IT CAUSES THE PROGRAM TO 'CRASH' IF THE USER
+		 * ATTEMPTS TO PUT TWO DECIMAL POINTS IN A NUMBER
+		 * 
+		 * IT IS COMPLETELY INTENTIONAL
+		 * 
+		 * **/
 		if(x.equals("."))
 		{
 			if(singleDec)
 			{
-				System.err.println("Am dead");
+				System.err.println("Am ded");
 				System.exit(Integer.MIN_VALUE);
 			}
 			else
+			{
 				singleDec=true;
+			}
 		}
 		enteringString = enteringString + x;
 		display.setText(enteringString);
