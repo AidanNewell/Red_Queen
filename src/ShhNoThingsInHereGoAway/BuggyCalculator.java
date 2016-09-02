@@ -18,7 +18,6 @@ import javax.swing.JTextArea;
 public class BuggyCalculator {
 
 	private static double entered;
-	private static double entering;
 	
 	
 	//This makes it easier to add numbers to the end of the double
@@ -82,7 +81,8 @@ public class BuggyCalculator {
 		divide.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-
+				Operation = DIVIDE;
+				cacheEntering();
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -94,7 +94,8 @@ public class BuggyCalculator {
 		multiply.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				Operation = MULTIPLY;
+				cacheEntering();
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -143,7 +144,8 @@ public class BuggyCalculator {
 		minus.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				Operation = MINUS;
+				cacheEntering();
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -192,7 +194,8 @@ public class BuggyCalculator {
 		plus.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				Operation = PLUS;
+				cacheEntering();
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -240,7 +243,23 @@ public class BuggyCalculator {
 		equals.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				switch(Operation)
+				{
+				case PLUS:
+					add();
+					break;
+				case MINUS:
+					subtract();
+					break;
+				case MULTIPLY:
+					multiply();
+					break;
+				case DIVIDE:
+					divide();
+					break;
+				}
+				display.setText(enteringString);
+				cacheEntering();
 			}
 		});
 		c.fill = GridBagConstraints.VERTICAL;
@@ -286,14 +305,20 @@ public class BuggyCalculator {
 		display.setText(" ");
 	}
 	
+	public static void cacheEntering()
+	{
+		entered=Double.parseDouble(enteringString);
+		enteringString="";
+	}
+	
 	public static void add()
 	{
-		entered +=entering;
+		enteringString = ""+(entered + Double.parseDouble(enteringString));
 	}
 	
 	public static void subtract()
 	{
-		entered-=entering;
+		enteringString = ""+(entered  - Double.parseDouble(enteringString));
 	}
 	
 	public static void multiply()
@@ -306,12 +331,12 @@ public class BuggyCalculator {
 		 * IT IS COMPLETELY INTENTIONAL
 		 * 
 		 * **/
-		if(entered < 0 && entering <0)
+		if(entered < 0 && Double.parseDouble(enteringString) <0)
 		{
-			entered = -1 * entered * entering;
+			enteringString = ""+(-1 * entered * Double.parseDouble(enteringString));
 		}
 		else
-			entered = entered * entering;
+			enteringString = ""+(entered * Double.parseDouble(enteringString));
 	}
 	
 	public static void divide()
@@ -324,7 +349,7 @@ public class BuggyCalculator {
 		 * IT IS COMPLETELY INTENTIONAL
 		 * 
 		 * **/
-		entered = entering / entering;
+		enteringString = ""+(Double.parseDouble(enteringString) / Double.parseDouble(enteringString));
 	}
 	
 	public static void addNumber(String x)
