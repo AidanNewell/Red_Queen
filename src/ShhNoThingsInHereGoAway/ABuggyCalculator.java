@@ -29,6 +29,7 @@ public class ABuggyCalculator {
 	
 	private static boolean singleDec;
 	private static boolean cont; 
+	private static boolean hasOper;
 	
 	private static int Operation;
 	
@@ -38,6 +39,7 @@ public class ABuggyCalculator {
 	{
 		entered = 0;
 		enteringString = "";
+		hasOper = false;
 		JFrame window = new JFrame("Calculator");
 		
 		JPanel pane = new JPanel(new GridBagLayout());	
@@ -59,6 +61,7 @@ public class ABuggyCalculator {
 		clear.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
+				hasOper = false;
 				entered = 0;
 				entering = 0; 
 				enteringString = "";
@@ -93,11 +96,12 @@ public class ABuggyCalculator {
 		divide.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				if(!cont){
+				if(!cont && !hasOper){
 					entered = Double.parseDouble(enteringString);
 				}
 				enteringString = "";
 				Operation = DIVIDE; 
+				hasOper = true;
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -109,11 +113,12 @@ public class ABuggyCalculator {
 		multiply.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				if(!cont){
+				if(!cont && !hasOper){
 					entered = Double.parseDouble(enteringString);
 				}
 				enteringString = "";
 				Operation = MULTIPLY;
+				hasOper = true;
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -125,11 +130,12 @@ public class ABuggyCalculator {
 		minus.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				if(!cont){
+				if(!cont && !hasOper){
 					entered = Double.parseDouble(enteringString);
 				}
 				enteringString = "";
 				Operation = MINUS; 
+				hasOper = true;
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -141,11 +147,12 @@ public class ABuggyCalculator {
 		plus.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				if(!cont){
+				if(!cont && !hasOper){
 					entered = Double.parseDouble(enteringString);
 				}
 				enteringString = "";
 				Operation = PLUS;
+				hasOper = true;
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
