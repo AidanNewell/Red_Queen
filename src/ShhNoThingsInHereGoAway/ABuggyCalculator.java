@@ -1,6 +1,5 @@
 package ShhNoThingsInHereGoAway;
 
-
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.GridBagConstraints;
@@ -30,6 +29,8 @@ public class ABuggyCalculator {
 	private static boolean singleDec;
 	private static boolean cont; 
 	private static boolean hasOper;
+	private static boolean CEd;
+	private static boolean hasNum;
 	
 	private static int Operation;
 	
@@ -40,6 +41,7 @@ public class ABuggyCalculator {
 		entered = 0;
 		enteringString = "";
 		hasOper = false;
+		hasNum = false;
 		JFrame window = new JFrame("Calculator");
 		
 		JPanel pane = new JPanel(new GridBagLayout());	
@@ -62,6 +64,8 @@ public class ABuggyCalculator {
 			public void actionPerformed(ActionEvent e)
 			{
 				hasOper = false;
+				hasNum = false; 
+				CEd = false;
 				entered = 0;
 				entering = 0; 
 				enteringString = "";
@@ -79,8 +83,13 @@ public class ABuggyCalculator {
 		clearE.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				entering = 0; 
-				enteringString = "";
+				if(!CEd){
+					entering = 0; 
+					enteringString = "";
+					display.setText(" ");
+				}
+				CEd = true;
+				
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -164,19 +173,22 @@ public class ABuggyCalculator {
 		equals.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				entering = Double.parseDouble(enteringString);
-				switch (Operation){
-					case PLUS: add();  
-						break;	
-					case MINUS: subtract();
-						break; 
-					case MULTIPLY: multiply();
-						break;
-					case DIVIDE: divide();
-						break;
-				}			
-				display.setText("" + entered);
-				cont = true; 
+				if(hasNum){
+					CEd = false;
+					entering = Double.parseDouble(enteringString);
+					switch (Operation){
+						case PLUS: add();  
+							break;	
+						case MINUS: subtract();
+							break; 
+						case MULTIPLY: multiply();
+							break;
+						case DIVIDE: divide();
+							break;
+					}
+					display.setText("" + entered);
+					cont = true; 
+				}
 				
 			}
 		});
@@ -396,6 +408,7 @@ public class ABuggyCalculator {
 	
 	public static void addNumber(String x)
 	{
+		hasNum = true;
 		if(x.equals("."))
 		{
 			if(singleDec)
