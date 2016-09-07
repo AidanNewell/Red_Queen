@@ -1,5 +1,6 @@
 package ShhNoThingsInHereGoAway;
 
+
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.GridBagConstraints;
@@ -29,8 +30,6 @@ public class ABuggyCalculator {
 	private static boolean singleDec;
 	private static boolean cont; 
 	private static boolean hasOper;
-	private static boolean CEd;
-	private static boolean hasNum;
 	
 	private static int Operation;
 	
@@ -41,7 +40,6 @@ public class ABuggyCalculator {
 		entered = 0;
 		enteringString = "";
 		hasOper = false;
-		hasNum = false;
 		JFrame window = new JFrame("Calculator");
 		
 		JPanel pane = new JPanel(new GridBagLayout());	
@@ -64,8 +62,6 @@ public class ABuggyCalculator {
 			public void actionPerformed(ActionEvent e)
 			{
 				hasOper = false;
-				hasNum = false; 
-				CEd = false;
 				entered = 0;
 				entering = 0; 
 				enteringString = "";
@@ -83,13 +79,8 @@ public class ABuggyCalculator {
 		clearE.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				if(!CEd){
-					entering = 0; 
-					enteringString = "";
-					display.setText(" ");
-				}
-				CEd = true;
-				
+				entering = 0; 
+				enteringString = "";
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -173,22 +164,21 @@ public class ABuggyCalculator {
 		equals.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				if(hasNum){
-					CEd = false;
-					entering = Double.parseDouble(enteringString);
-					switch (Operation){
-						case PLUS: add();  
-							break;	
-						case MINUS: subtract();
-							break; 
-						case MULTIPLY: multiply();
-							break;
-						case DIVIDE: divide();
-							break;
-					}
-					display.setText("" + entered);
-					cont = true; 
-				}
+				switch (Operation){
+					case PLUS:
+						add();  
+						break;	
+					case MINUS:
+						subtract();
+						break; 
+					case MULTIPLY:
+						multiply();
+						break;
+					case DIVIDE: divide();
+						break;
+				}			
+				display.setText("" + entered);
+				cont = true; 
 				
 			}
 		});
@@ -408,11 +398,13 @@ public class ABuggyCalculator {
 	
 	public static void addNumber(String x)
 	{
-		hasNum = true;
 		if(x.equals("."))
 		{
 			if(singleDec)
+			{
+				System.err.println("#\n# EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x000084c1, pid=2756, tid=2348\n#\n# JRE version: 7.0_05-b06\n# Java VM: Java HotSpot(TM) Client VM (23.1-b03 mixed mode, sharing windows-x86 )\n# Problematic frame:\n# C 0x000084c1\n#\n# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows");
 				System.exit(1);
+			}
 			else
 				singleDec=true;
 		}

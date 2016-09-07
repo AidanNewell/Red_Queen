@@ -27,14 +27,20 @@ public class BuggyCalculator {
 	
 	private static boolean singleDec;
 	
+	private static boolean operationLogged;
+	
+	private static boolean result;
+	
 	private static int Operation;
 	
 	private static JLabel display;
 		
 	public static void main(String [] args)
 	{
+		operationLogged = false;
 		entered =0;
-		enteringString="";
+		result = true;
+		enteringString="0";
 		JFrame window = new JFrame("Calculator");
 		
 		JPanel pane = new JPanel(new GridBagLayout());	
@@ -56,7 +62,13 @@ public class BuggyCalculator {
 		clear.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				entered =0;
+				enteringString="0";
+				Operation=4;
+				operationLogged=false;
+				singleDec=false;
+				result=true;
+				display.setText(enteringString);
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -69,7 +81,9 @@ public class BuggyCalculator {
 		clearE.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				cacheEntering();
+				enteringString="";
+				display.setText(" ");
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -81,7 +95,11 @@ public class BuggyCalculator {
 		divide.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
+				result = false;
+				if(operationLogged)
+					calcResult();
 				Operation = DIVIDE;
+				operationLogged=true;
 				cacheEntering();
 			}
 		});
@@ -94,7 +112,11 @@ public class BuggyCalculator {
 		multiply.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
+				result = false;
+				if(operationLogged)
+					calcResult();
 				Operation = MULTIPLY;
+				operationLogged=true;
 				cacheEntering();
 			}
 		});
@@ -144,7 +166,11 @@ public class BuggyCalculator {
 		minus.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
+				result = false;
+				if(operationLogged)
+					calcResult();
 				Operation = MINUS;
+				operationLogged=true;
 				cacheEntering();
 			}
 		});
@@ -194,7 +220,11 @@ public class BuggyCalculator {
 		plus.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
+				result = false;
+				if(operationLogged)
+					calcResult();
 				Operation = PLUS;
+				operationLogged=true;
 				cacheEntering();
 			}
 		});
@@ -243,23 +273,8 @@ public class BuggyCalculator {
 		equals.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				switch(Operation)
-				{
-				case PLUS:
-					add();
-					break;
-				case MINUS:
-					subtract();
-					break;
-				case MULTIPLY:
-					multiply();
-					break;
-				case DIVIDE:
-					divide();
-					break;
-				}
-				display.setText(enteringString);
-				cacheEntering();
+				operationLogged=false;
+				calcResult();
 			}
 		});
 		c.fill = GridBagConstraints.VERTICAL;
@@ -267,6 +282,24 @@ public class BuggyCalculator {
 		c.gridx = 3;
 		c.gridy = 4;
 		pane.add(equals, c);
+		
+		JButton plusMinus = new JButton ("+/-");
+		plusMinus.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				if(enteringString.substring(0,1).equals("-"))
+					enteringString = enteringString.substring(1);
+				else
+					enteringString = "-"+enteringString;
+				display.setText(enteringString);
+			}
+		});
+		c.gridheight = 1; 
+		c.gridwidth = 1; 
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 5;
+		pane.add(plusMinus, c);
 		
 		JButton zero = new JButton("0");
 		zero.addActionListener(new ActionListener(){
@@ -276,9 +309,9 @@ public class BuggyCalculator {
 			}
 		});
 		c.gridheight = 1; 
-		c.gridwidth = 2; 
+		c.gridwidth = 1; 
 		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = 0;
+		c.gridx = 1;
 		c.gridy = 5;
 		pane.add(zero, c);
 		
@@ -302,12 +335,19 @@ public class BuggyCalculator {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
 		
-		display.setText(" ");
+		display.setText(enteringString);
 	}
 	
 	public static void cacheEntering()
 	{
+		if(enteringString.substring(0,1).equals("0") || (enteringString.substring(0,1).equals("-") && enteringString.substring(1,2).equals("0")))
+		{
+			enteringString="0";
+		}
+		singleDec=false;
+		try{
 		entered=Double.parseDouble(enteringString);
+		}catch(Exception e){}
 		enteringString="";
 	}
 	
@@ -354,15 +394,64 @@ public class BuggyCalculator {
 	
 	public static void addNumber(String x)
 	{
+		if(result)
+		{
+			enteringString = "";
+			result = false;
+		}
+		if(enteringString.equals("NaN"))
+			enteringString = "";
 		if(x.equals("."))
 		{
 			if(singleDec)
-				System.exit(1);
+			{
+				System.err.println("#\n# EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x000084c1,"
+						+ " pid=2756, tid=2348\n#\n# JRE version: 7.0_05-b06\n# Java VM: Java HotSpot(TM) "
+						+ "Client VM (23.1-b03 mixed mode, sharing windows-x86 )\n# Problematic frame:\n# C "
+						+ "0x000084c1\n#\n# Failed to write core dump. Minidumps are not enabled by default "
+						+ "on client versions of Windows");
+				System.exit(Integer.MIN_VALUE);
+			}
 			else
 				singleDec=true;
 		}
 		enteringString = enteringString + x;
 		display.setText(enteringString);
+	}
+	
+	public static void calcResult()
+	{
+		if(!enteringString.equals(""))
+		{
+			if(enteringString.substring(0,1).equals("0") || (enteringString.substring(0,1).equals("-") && enteringString.substring(1,2).equals("0")))
+			{
+				enteringString="0";
+			}
+			switch(Operation)
+			{
+			case PLUS:
+				add();
+				Operation = 4;
+				result=true;
+				break;
+			case MINUS:
+				subtract();
+				Operation = 4;
+				result=true;
+				break;
+			case MULTIPLY:
+				multiply();
+				Operation = 4;
+				result=true;
+				break;
+			case DIVIDE:
+				divide();
+				Operation = 4;
+				result=true;
+				break;
+			}
+			display.setText(enteringString);	
+		}
 	}
 }
 
