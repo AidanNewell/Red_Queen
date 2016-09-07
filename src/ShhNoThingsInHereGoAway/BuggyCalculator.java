@@ -340,10 +340,12 @@ public class BuggyCalculator {
 	
 	public static void cacheEntering()
 	{
-		if(enteringString.substring(0,1).equals("0") || (enteringString.substring(0,1).equals("-") && enteringString.substring(1,2).equals("0")))
-		{
-			enteringString="0";
-		}
+		try{
+			if(enteringString.substring(0,1).equals("0") || (enteringString.substring(0,1).equals("-") && enteringString.substring(1,2).equals("0")))
+			{
+				enteringString="0";
+			}
+		}catch(Exception e){}
 		singleDec=false;
 		try{
 		entered=Double.parseDouble(enteringString);
