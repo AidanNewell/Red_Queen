@@ -273,6 +273,7 @@ public class BuggyCalculator {
 		equals.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
+				singleDec=false;
 				operationLogged=false;
 				calcResult();
 			}
@@ -287,11 +288,14 @@ public class BuggyCalculator {
 		plusMinus.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				if(enteringString.substring(0,1).equals("-"))
-					enteringString = enteringString.substring(1);
-				else
-					enteringString = "-"+enteringString;
-				display.setText(enteringString);
+				if(enteringString != null)
+				{
+					if(enteringString.substring(0,1).equals("-"))
+						enteringString = enteringString.substring(1);
+					else
+						enteringString = "-"+enteringString;
+					display.setText(enteringString);
+				}
 			}
 		});
 		c.gridheight = 1; 
