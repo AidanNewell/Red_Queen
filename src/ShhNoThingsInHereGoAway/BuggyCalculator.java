@@ -345,6 +345,13 @@ public class BuggyCalculator {
 	
 	public static void cacheEntering()
 	{
+		/**
+		 * THIS IS BUG #2
+		 * WHEN THE FIRST CHARACTER IS 0, ENTERINGSTRING IS 0 
+		 * 
+		 * IT IS COMPLETELY INTENTIONAL
+		 * 
+		 * **/
 		try{
 			if(enteringString.substring(0,1).equals("0") || (enteringString.substring(0,1).equals("-") && enteringString.substring(1,2).equals("0")))
 			{
@@ -408,6 +415,14 @@ public class BuggyCalculator {
 		}
 		if(enteringString.equals("NaN"))
 			enteringString = "";
+		/**
+		 * THIS IS BUG #3
+		 * IT CAUSES THE PROGRAM TO CRASH WHEN TWO 
+		 * DECIMAL POINTS ARE ENTERED FOR ONE NUMBER
+		 * 
+		 * IT IS COMPLETELY INTENTIONAL
+		 * 
+		 * **/
 		if(x.equals("."))
 		{
 			if(singleDec)
