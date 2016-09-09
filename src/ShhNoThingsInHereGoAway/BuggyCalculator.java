@@ -81,7 +81,8 @@ public class BuggyCalculator {
 		clearE.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				cacheEntering();
+				//cacheEntering();
+				singleDec=false;
 				enteringString="";
 				display.setText(" ");
 			}
