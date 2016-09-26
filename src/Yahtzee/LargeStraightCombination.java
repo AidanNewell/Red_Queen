@@ -1,6 +1,6 @@
 package Yahtzee;
 
-public class SmallStraightCombination extends AbstractYahtzeeCombination{
+public class LargeStraightCombination extends AbstractYahtzeeCombination{
 
 	
 	public int score(int[] dice) {
@@ -10,19 +10,19 @@ public class SmallStraightCombination extends AbstractYahtzeeCombination{
 			if(!bogo.contains(""+dice[x]))
 				bogo += dice[x];
 		}
-		if(bogo.contains("1234") || bogo.contains("2345") || bogo.contains("3456"))
+		if(bogo.contains("12345") || bogo.contains("23456"))
 			return 30;
 		return 0;
 	}
 
 	
 	public String name() {
-		return "SmallStraightCombination";
+		return "LargeStraightCombination";
 	}
 
 	
 	public String description() {
-		return "Returns 30 if you have 4 sequential dice";
+		return "Gives 30 points if there are 5 consecutive dice, zero points otherwise";
 	}
 
 	
