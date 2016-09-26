@@ -11,7 +11,7 @@ public class AcesCombination extends AbstractYahtzeeCombination {
 		return score;
 	}
 	public String name(){
-		return "Aces Combination";
+		return "AcesCombination";
 	}
 	public String description(){
 		return "Adds up sum of all dice with the number 1";

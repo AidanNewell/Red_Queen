@@ -14,7 +14,7 @@ public class FoursCombination extends AbstractYahtzeeCombination{
 
 	@Override
 	public String name() {
-		return "Fours Combination";
+		return "FoursCombination";
 	}
 
 	@Override

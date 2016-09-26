@@ -13,7 +13,7 @@ public class FivesCombination extends AbstractYahtzeeCombination{
 
 	@Override
 	public String name() {
-		return "Fives Combination";
+		return "FivesCombination";
 	}
 
 	@Override
