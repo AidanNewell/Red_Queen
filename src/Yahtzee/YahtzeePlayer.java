@@ -3,11 +3,11 @@ package Yahtzee;
 public interface YahtzeePlayer {
 
 	
-	public String playerName();
+	public abstract String playerName();
 	
-	public void reroll(int [] dice, int rollNumber, PlayerRecord record, boolean[] reroll);
+	public abstract void reroll(int [] dice, int rollNumber, PlayerRecord record, boolean[] reroll);
 	
-	public int chooseCombination(int[] dice, PlayerRecord record);
+	public abstract int chooseCombination(int[] dice, PlayerRecord record);
 	
-	public void finalResults(int [] dice, PlayerRecord record);
+	public abstract void finalResults(int [] dice, PlayerRecord record);
 }

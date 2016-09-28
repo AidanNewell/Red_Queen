@@ -1,5 +1,6 @@
 package Yahtzee;
 
+
 public class PlayerRecord {
 
 	private int lowerSectionScore;
@@ -7,18 +8,27 @@ public class PlayerRecord {
 	
 	private AbstractYahtzeeCombination[] combinations;
 	
+	private int[] combinationScores;
+	
 	
 	PlayerRecord()
 	{
 		lowerSectionScore=0;
 		upperSectionScore=0;
-		combinations = AbstractYahtzeeCombination.allCombinations();
+		System.arraycopy(AbstractYahtzeeCombination.allCombinations(),0,combinations,0,AbstractYahtzeeCombination.allCombinations().length);
+		combinationScores = new int[combinations.length];
+		for(int x=0; x<combinationScores.length;x++)
+		{
+			combinationScores[x] = -1;
+		}
 	}
 	
 	PlayerRecord(PlayerRecord record)
 	{
 		lowerSectionScore = record.lowerSectionScore();
 		upperSectionScore = record.upperSectionScore();
+		System.arraycopy(record.rawCombinations(), 0, combinations,0,record.rawCombinations().length);
+		System.arraycopy(record.combinationScores(),0,combinationScores,0,record.combinationScores.length);
 	}
 	
 	public int lowerSectionScore()
@@ -31,9 +41,35 @@ public class PlayerRecord {
 		return upperSectionScore;
 	}
 	
+	public int[] combinationScores()
+	{
+		return combinationScores;
+	}
+	
+	public AbstractYahtzeeCombination[] rawCombinations()
+	{
+		return combinations;
+	}
+	
 	public AbstractYahtzeeCombination[] availableCombinations()
 	{
-		return null;
+		int combinationsRemaining=0;
+		for(int x=0; x<combinations.length;x++)
+		{
+			if(combinations[x] != null)
+				combinationsRemaining++;
+		}
+		AbstractYahtzeeCombination[] availableCombinations = new AbstractYahtzeeCombination[combinationsRemaining];
+		int index=0;
+		for(int x=0; x<combinations.length;x++)
+		{
+			if(combinations[x] != null)
+			{
+				availableCombinations[index] = combinations[x];
+				index++;
+			}
+		}
+		return availableCombinations;
 	}
 	
 	public void chooseCombination(int index, int score)
@@ -46,6 +82,8 @@ public class PlayerRecord {
 		{
 			lowerSectionScore+=score;
 		}
+		combinationScores[index] = score;
+		combinations[index] = null;
 	}
 	
 	public int totalScore()
@@ -60,24 +98,36 @@ public class PlayerRecord {
 	
 	public int upDown()
 	{
-		int tripleUpper = 0;
+		int possibleScore=0;
 		String[] upperNames = {"AcesCombination","TwosCombination","ThreesCombination",
 				"FoursCombination","FivesCombination","SixesCombination"};
-		boolean upperTaken = true;
 		for(int x=0; x<upperNames.length;x++)
 		{
-			upperTaken=true;
-			for(int y=0; y<combinations.length;y++)
+			if(combinationScore(upperNames[x]) != -1)
 			{
-				if(combinations[y].name().equals(upperNames[x]))
-					upperTaken=false;
-					
-			}
-			if(upperTaken)
-			{
-				tripleUpper += 3 * (x+1);
+				possibleScore += (combinationScore(upperNames[x]) - (3*(x+1)));
 			}
 		}
-		return upperSectionScore - tripleUpper;
+		return possibleScore;
+	}
+	
+	public int choiceNumber(String combinationName)
+	{
+		AbstractYahtzeeCombination[] availComb = availableCombinations();
+		for(int x=0; x< availComb.length; x++)
+		{
+			if(availComb[x].name().equals(combinationName))
+				return x;
+		}
+		return -1;
+	}
+	
+	public int combinationScore(String combinationName)
+	{
+		int index = AbstractYahtzeeCombination.combinationIndex(combinationName);
+		if(index == -1)
+			return -1;
+		else
+			return combinationScores[index];
 	}
 }
