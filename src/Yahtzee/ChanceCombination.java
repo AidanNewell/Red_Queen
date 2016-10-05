@@ -12,7 +12,7 @@ public class ChanceCombination extends AbstractYahtzeeCombination{
 
 	@Override
 	public String name() {
-		return "Change Combination";
+		return "ChanceCombination";
 	}
 
 	@Override

@@ -67,28 +67,28 @@ public class YahtzeePlayerFrame extends JFrame {
 		try {
 			switch (diceNum){
 			case 1: 
-				img = ImageIO.read(new File("/dice1Shade.png"));
-				img2 = ImageIO.read(new File("/dice1.png"));
+				img = ImageIO.read(new File("YahtzeeDice/dice1Shade.png"));
+				img2 = ImageIO.read(new File("YahtzeeDice/dice1.png"));
 				break; 
 			case 2: 
-				img = ImageIO.read(new File("/dice2Shade.png"));
-				img2 = ImageIO.read(new File("/dice2.png"));
+				img = ImageIO.read(new File("YahtzeeDice/dice2Shade.png"));
+				img2 = ImageIO.read(new File("YahtzeeDice/dice2.png"));
 				break; 
 			case 3: 
-				img = ImageIO.read(new File("/dice3Shade.png"));
-				img2 = ImageIO.read(new File("/dice3.png"));
+				img = ImageIO.read(new File("YahtzeeDice/dice3Shade.png"));
+				img2 = ImageIO.read(new File("YahtzeeDice/dice3.png"));
 				break; 
 			case 4: 
-				img = ImageIO.read(new File("/dice4Shade.png"));
-				img2 = ImageIO.read(new File("/dice4.png"));
+				img = ImageIO.read(new File("YahtzeeDice/dice4Shade.png"));
+				img2 = ImageIO.read(new File("YahtzeeDice/dice4.png"));
 				break; 
 			case 5: 
-				img = ImageIO.read(new File("/dice5Shade.png"));
-				img2 = ImageIO.read(new File("/dice5.png"));
+				img = ImageIO.read(new File("YahtzeeDice/dice5Shade.png"));
+				img2 = ImageIO.read(new File("YahtzeeDice/dice5.png"));
 				break; 
 			case 6: 
-				img = ImageIO.read(new File("/dice6Shade.png"));
-				img2 = ImageIO.read(new File("/dice6.png"));
+				img = ImageIO.read(new File("YahtzeeDice/dice6Shade.png"));
+				img2 = ImageIO.read(new File("YahtzeeDice/dice6.png"));
 				break; 
 			}
 		} catch (IOException e) {
