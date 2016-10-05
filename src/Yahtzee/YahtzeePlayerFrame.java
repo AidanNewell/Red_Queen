@@ -13,22 +13,55 @@ public class YahtzeePlayerFrame extends JFrame {
 	private JPanel contentPane;
 	private JPanel dicePane;
 	private JPanel comboPane;
+	private JButton[] diceButtons;
+	
 	YahtzeePlayerFrame(){
 		contentPane = new JPanel();
 		dicePane = new JPanel();
-		setDiceLayout();
+		diceButtons = new JButton[6];
+		for(int i = 0; i<6; i++){
+			diceButtons[i] = new JButton();
+		}
+		setDicePaneLayout(diceButtons);
 		comboPane = new JPanel();
+		setComboPaneLayout(comboPane);
 		
+		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.LINE_AXIS));
+		contentPane.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
+		contentPane.add(Box.createHorizontalGlue());
+		contentPane.add(Box.createRigidArea(new Dimension(10, 0)));
+		contentPane.add(comboPane);
 		contentPane.add(dicePane);
-		this.setContentPane(contentPane);
+		contentPane.setPreferredSize(new Dimension(500,500));
+
+		setContentPane(contentPane);
 		
-		this.pack();
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		pack();
+		setVisible(true);
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
-	private void setButton(GridBagConstraints c, int gridx, int gridy, int diceNum){
-		final JButton button = new JButton();
+	private void setDicePaneLayout(JButton[] buttons){
+		dicePane.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		setButton(buttons[0],c, 0, 0, 1);
+		setButton(buttons[1],c, 1, 0, 2);
+		setButton(buttons[2],c, 0, 1, 3);
+		setButton(buttons[3],c, 1, 1, 4);
+		setButton(buttons[4],c, 0, 2, 5);
+		setButton(buttons[5],c, 1, 2, 6);
+		
+		JButton button = new JButton("Reroll");
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 3;
+		c.gridwidth = 2; 
+		dicePane.add(button, c);
+
+	}
+	private void setButton(final JButton b, GridBagConstraints c, int gridx, int gridy, int diceNum){
 		Image img = null;
 		Image img2 = null;
 		try {
@@ -61,39 +94,72 @@ public class YahtzeePlayerFrame extends JFrame {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		Image resizedShade = img.getScaledInstance(95, 95,Image.SCALE_SMOOTH);
+		Image resizedShade = img.getScaledInstance(95,95,Image.SCALE_SMOOTH);
 		Image resizedReg = img2.getScaledInstance(95,95,Image.SCALE_SMOOTH);
 		final ImageIcon Shade = new ImageIcon(resizedShade);
 		final ImageIcon Reg = new ImageIcon(resizedReg);
-		button.setIcon(Shade);
-		button.addActionListener(new ActionListener() { 
+		b.setIcon(Shade);
+		b.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) { 
-				if(button.getIcon() == Shade){
-					button.setIcon(Reg);
+				if(b.getIcon() == Shade){
+					b.setIcon(Reg);
 				}
 				else{
-					button.setIcon(Shade);	
+					b.setIcon(Shade);	
 				}
 			} 
 		});
-		button.setPreferredSize(new Dimension(100,100));
+		b.setPreferredSize(new Dimension(100,100));
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = gridx;
 		c.gridy = gridy;
-		dicePane.add(button, c);
+		dicePane.add(b, c);
 	}
-	private void setDiceLayout(){
-		dicePane.setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
-		c.fill = GridBagConstraints.HORIZONTAL;
-		setButton(c, 0, 0, 1);
-		setButton(c, 1, 0, 2);
-		setButton(c, 0, 1, 3);
-		setButton(c, 1, 1, 4);
-		setButton(c, 0, 2, 5);
-		setButton(c, 1, 2, 6);
+	private void setComboPaneLayout(JPanel pane){
+		pane.setLayout(new BoxLayout(pane, BoxLayout.PAGE_AXIS));
+		pane.setBorder(BorderFactory.createEmptyBorder(20, 10, 10, 10));
+		
+		AbstractYahtzeeCombination [] combos = AbstractYahtzeeCombination.allCombinations();
+		JLabel upper = new JLabel("Upper Section");
+		upper.setAlignmentX(Component.CENTER_ALIGNMENT);
+		pane.add(upper);
+		for(int i = 0; i <combos.length; i++){
+			String comboString = combos[i].name();
+			JButton comboButton = new JButton(comboString);
+			comboButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+			pane.add(comboButton);	
+			if(i == 5){
+				pane.add(Box.createRigidArea(new Dimension(0,50)));
+				JLabel lower = new JLabel("Lower Section");
+				lower.setAlignmentX(Component.CENTER_ALIGNMENT);
+				pane.add(lower);
+			}
+		}
+	}
+	public void activateRerollButton(PlayerRecord record, int[] dice){
 
 	}
+	
+	public void activateAvailableCombinations (PlayerRecord record, int[] dice){
+		
+	}
+	
+	public void activateNewGameButton (PlayerRecord record, int[] dice){
+		
+	}
+	
+//	public boolean rerollButtonClicked(boolean[] reroll){
+//		
+//	}
+//	
+//	public int combinationChosen(){
+//		
+//	}
+//	
+//	public boolean newGameClicked(){
+//		
+//	}
+
 	public static void main (String args[]){
 		new YahtzeePlayerFrame();
 	}
