@@ -148,19 +148,16 @@ public class YahtzeePlayerFrame extends JFrame {
 		
 	}
 	
-//	public boolean rerollButtonClicked(boolean[] reroll){
-//		
-//	}
-//	
-//	public int combinationChosen(){
-//		
-//	}
-//	
-//	public boolean newGameClicked(){
-//		
-//	}
-
-	public static void main (String args[]){
-		new YahtzeePlayerFrame();
+	public boolean rerollButtonClicked(boolean[] reroll){
+		
 	}
+	
+	public int combinationChosen(){
+		
+	}
+	
+    public boolean newGameClicked(){
+		
+	}
+
 }
