@@ -108,7 +108,7 @@ public class PlayerRecord {
 				possibleScore += (combinationScore(upperNames[x]) - (3*(x+1)));
 			}
 		}
-		return possibleScore;
+		return upperSectionScore() - possibleScore;
 	}
 	
 	public int choiceNumber(String combinationName)
