@@ -8,13 +8,18 @@ public class YahtzeeGame {
 	}
 	public void playerRoll(YahtzeePlayer player, PlayerRecord record, int [] dice, int rollNumber){
 		PlayerRecord recordCopy = new PlayerRecord(record);
-		boolean[] all = {true,true,true,true,true};
-		boolean[] none = new boolean[5];
+		boolean[] rollBoolean = new boolean[5];
 		if(rollNumber == 0){
-			player.reroll(dice,rollNumber,recordCopy,all);
+			for(int x=0; x<dice.length;x++)
+				dice[x] = (int)(Math.random()*6);
 		}
 		else{
-			player.reroll(dice,rollNumber,recordCopy,none);
+			player.reroll(dice,rollNumber,recordCopy,rollBoolean);
+			for(int x=0; x<dice.length;x++)
+			{
+				if(rollBoolean[x])
+					dice[x] = (int)(Math.random()*6);
+			}
 		}
 		sortDice(dice);
 	}
@@ -37,11 +42,11 @@ public class YahtzeeGame {
 			dice[x] = (int)(Math.random()*6);
 		}
 		sortDice(dice);
-		for(int x=0; x<4;x++)
+		for(int x=0; x<3;x++)
 		{
 			playerRoll(player, record, dice, x);
 		}
-		playerChoose(player, record, null, 3);
+		playerChoose(player, record, dice, 3);
 	}
 	public int yahtzeeGame(YahtzeePlayer player){
 		PlayerRecord record = new PlayerRecord();

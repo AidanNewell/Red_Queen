@@ -15,6 +15,7 @@ public class PlayerRecord {
 	{
 		lowerSectionScore=0;
 		upperSectionScore=0;
+		combinations = new AbstractYahtzeeCombination[AbstractYahtzeeCombination.allCombinations().length];
 		System.arraycopy(AbstractYahtzeeCombination.allCombinations(),0,combinations,0,AbstractYahtzeeCombination.allCombinations().length);
 		combinationScores = new int[combinations.length];
 		for(int x=0; x<combinationScores.length;x++)
@@ -27,6 +28,8 @@ public class PlayerRecord {
 	{
 		lowerSectionScore = record.lowerSectionScore();
 		upperSectionScore = record.upperSectionScore();
+		combinations = new AbstractYahtzeeCombination[record.rawCombinations().length];
+		combinationScores = new int[combinations.length];
 		System.arraycopy(record.rawCombinations(), 0, combinations,0,record.rawCombinations().length);
 		System.arraycopy(record.combinationScores(),0,combinationScores,0,record.combinationScores.length);
 	}
@@ -74,7 +77,16 @@ public class PlayerRecord {
 	
 	public void chooseCombination(int index, int score)
 	{
-		if(combinations[index].upperSection())
+		String combName = availableCombinations()[index].name();
+		int combIndex=-1;
+		for(int x =0; x<combinations.length;x++)
+		{
+			if(combinations[x] != null && combinations[x].name().equals(combName))
+			{
+				combIndex = x;
+			}
+		}
+		if(combinations[combIndex].upperSection())
 		{
 			upperSectionScore+=score;
 		}
@@ -82,8 +94,8 @@ public class PlayerRecord {
 		{
 			lowerSectionScore+=score;
 		}
-		combinationScores[index] = score;
-		combinations[index] = null;
+		combinationScores[combIndex] = score;
+		combinations[combIndex] = null;
 	}
 	
 	public int totalScore()
