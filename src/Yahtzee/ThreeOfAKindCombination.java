@@ -5,7 +5,7 @@ public class ThreeOfAKindCombination extends AbstractYahtzeeCombination{
 	
 	public int score(int[] dice) {
 		int numDice=0;
-		for(int x=0; x< 6; x++)
+		for(int x=1; x< 7; x++)
 		{
 			for(int y=0; y<dice.length;y++)
 			{

@@ -11,14 +11,14 @@ public class YahtzeeGame {
 		boolean[] rollBoolean = new boolean[5];
 		if(rollNumber == 0){
 			for(int x=0; x<dice.length;x++)
-				dice[x] = (int)(Math.random()*6);
+				dice[x] =((int)(Math.random()*6)) + 1;
 		}
 		else{
 			player.reroll(dice,rollNumber,recordCopy,rollBoolean);
 			for(int x=0; x<dice.length;x++)
 			{
 				if(rollBoolean[x])
-					dice[x] = (int)(Math.random()*6);
+					dice[x] = ((int)(Math.random()*6)) + 1;
 			}
 		}
 		sortDice(dice);
@@ -39,7 +39,7 @@ public class YahtzeeGame {
 		int[] dice = new int[5];
 		for(int x=0; x<dice.length;x++)
 		{
-			dice[x] = (int)(Math.random()*6);
+			dice[x] = ((int)(Math.random()*6)) + 1;
 		}
 		sortDice(dice);
 		for(int x=0; x<3;x++)
@@ -53,6 +53,7 @@ public class YahtzeeGame {
 		for(int i = 0; i<13; i++){
 			yahtzeeTurn(player,record);
 		}
+		player.finalResults(null, record);
 		return record.totalScore();
 	}
 }

@@ -11,7 +11,7 @@ public class LargeStraightCombination extends AbstractYahtzeeCombination{
 				bogo += dice[x];
 		}
 		if(bogo.contains("12345") || bogo.contains("23456"))
-			return 30;
+			return 40;
 		return 0;
 	}
 

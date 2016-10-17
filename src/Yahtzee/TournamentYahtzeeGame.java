@@ -8,7 +8,7 @@ public class TournamentYahtzeeGame
 		double score=0;
 		boolean notBroken = true;
 		try{
-			score = YahtzeePlayerEvaluator.evaluatePlayer((AbstractComputerYahtzeePlayer)player,100000);
+			score = YahtzeePlayerEvaluator.evaluatePlayer((AbstractComputerYahtzeePlayer)player,3);
 		}catch(Exception e)
 		{
 			System.err.println("The Strategy has encountered a very bad problem. Here is a handy stack trace so you can fix it:\n\n");
@@ -19,7 +19,7 @@ public class TournamentYahtzeeGame
 		{
 			return score;
 		}
-		return Double.MIN_VALUE;
+		return -1;
 	}
 
 	public static void main(String [] args)
