@@ -54,12 +54,7 @@ public class YahtzeePlayerFrame extends JFrame {
 		reroll.setAlignmentX(Component.CENTER_ALIGNMENT);
 		reroll.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) { 
-				for(int i=0; i<diceButtons.length; i++){
-					if(diceButtons[i].isSelected()){
-						diceButtons[i].roll();
-						rerollClicked = true;
-					}	
-				}
+				rerollClicked = true;
 			} 
 		});
 		contentPane.add(reroll);
@@ -72,6 +67,7 @@ public class YahtzeePlayerFrame extends JFrame {
 		newGame.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) { 
 				newGameClicked = true;
+				
 			} 
 		});
 		contentPane.add(newGame);
@@ -218,16 +214,23 @@ public class YahtzeePlayerFrame extends JFrame {
 		}
 		return index;
 	}
-	
+	public boolean[] getRerollArray(){
+		boolean[] reroll = new boolean[5];
+		for(int i=0; i<diceButtons.length; i++){
+			reroll[i]=diceButtons[i].isSelected();
+		}
+		return reroll;
+	}
 	public boolean newGameClicked(){
 		return newGameClicked;
 	}
-    public static void main(String args[]){
-    	new YahtzeePlayerFrame();
-    }
-    
     public static void close()
     {
     	System.exit(0);
     }
+    public static void main(String args[]){
+    	new YahtzeePlayerFrame();
+    }
+    
+
 }

@@ -15,6 +15,8 @@ public class HumanYahtzeePlayer implements YahtzeePlayer{
 		playerName = scanner.next();
 		scanner.close();
 		frame = new YahtzeePlayerFrame();
+		YahtzeeGame game = new YahtzeeGame();
+		game.yahtzeeGame(this);
 	}
 	
 	public String playerName()
@@ -26,24 +28,21 @@ public class HumanYahtzeePlayer implements YahtzeePlayer{
 	public void reroll(int[] dice, int rollNumber, PlayerRecord record,
 			boolean[] reroll) {
 		frame.activateRerollButton(record, dice);
-		while(!frame.rerollButtonClicked(reroll)){}
-		for(int x=0; x<dice.length;x++)
-		{
-			if(reroll[x])
-				dice[x] = (int)(Math.random() * 6);
+		while(!frame.rerollButtonClicked(reroll)){
+			reroll = frame.getRerollArray();
 		}
 	}
 
-	@Override
 	public int chooseCombination(int[] dice, PlayerRecord record) {
-		// TODO Auto-generated method stub
-		return 0;
+		frame.activateAvailableCombinations(record,dice);
+		while(frame.combinationChosen()>=0)
+			return frame.combinationChosen();
+		return -1; 
 	}
 
-	@Override
 	public void finalResults(int[] dice, PlayerRecord record) {
-		// TODO Auto-generated method stub
-		
+		frame.activateNewGameButton(record,dice);
+		while(!frame.newGameClicked());
 	}
 	
 	public static void main(String [] args)
