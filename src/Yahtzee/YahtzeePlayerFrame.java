@@ -150,29 +150,26 @@ public class YahtzeePlayerFrame extends JFrame {
 		}
 
 		combos = record.availableCombinations();
-		
-		ArrayList <String> comboNames = new ArrayList<String>();
-		for(int i = 0; i<combos.length; i++){
-			comboNames.add(combos[i].name());
-		}
-		for(int i = 0; i<comboButtons.length; i++){
-			comboButtons[i].setEnabled(false);
-		}
-		for(int i =0;i<comboButtons.length;i++)
-		{
-			if(comboNames.contains(comboButtons[i].getText()));
-				setEnabled(true);
-		}
 		upperScore.setText("Score: " + record.upperSectionScore() + " Difference: " + record.upDown());
 		lowerScore.setText("Score: " + record.lowerSectionScore() + " Total Score: " + record.totalScore());
 	}
+	
 	public void activateRerollButton(PlayerRecord record, int[] dice){
+		for(int x=0; x<comboButtons.length;x++)
+		{
+			comboButtons[x].disable();
+		}
 		repaint(record,dice);
 		reroll.setEnabled(true);
 		rerollClicked = false;
 	}
 	
 	public void activateAvailableCombinations (PlayerRecord record, int[] dice){
+		for(int x=0; x<comboButtons.length;x++)
+		{
+			if(!(comboButtons[x].isUsed()))
+				comboButtons[x].enable();
+		}
 		repaint(record,dice);
 		comboClicked = false;
 	}
@@ -198,17 +195,23 @@ public class YahtzeePlayerFrame extends JFrame {
 		int index = -1; 
 		YahtzeeComboButton selectedButton = new YahtzeeComboButton("");
 		String clickedCombo;
-		for(YahtzeeComboButton b : comboButtons){
-			if(b.isSelected()){
+		for(int x=0; x< comboButtons.length;x++){
+			YahtzeeComboButton b = comboButtons[x];
+			if(b.isSelected())
+			{
 				comboClicked = true;
 				selectedButton = b;
+				b.nullify();
+				break;
 			}
 		}
 		if(comboClicked){
 			 clickedCombo = selectedButton.getName();
 			 for(int i = 0; i<combos.length; i++){
-				 if(clickedCombo.equals(combos[i])){
+				 if(clickedCombo.equals(combos[i].name()))
+				 {
 					 index = i;
+					break;
 				 }
 			 }
 		}
@@ -227,9 +230,6 @@ public class YahtzeePlayerFrame extends JFrame {
     public static void close()
     {
     	System.exit(0);
-    }
-    public static void main(String args[]){
-    	new YahtzeePlayerFrame();
     }
     
 

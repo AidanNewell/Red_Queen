@@ -117,7 +117,7 @@ public class PlayerRecord {
 		{
 			if(combinationScore(upperNames[x]) != -1)
 			{
-				possibleScore += (combinationScore(upperNames[x]) - (3*(x+1)));
+				possibleScore += 3*(x+1);
 			}
 		}
 		return upperSectionScore() - possibleScore;

@@ -28,16 +28,18 @@ public class HumanYahtzeePlayer implements YahtzeePlayer{
 	public void reroll(int[] dice, int rollNumber, PlayerRecord record,
 			boolean[] reroll) {
 		frame.activateRerollButton(record, dice);
-		while(!frame.rerollButtonClicked(reroll)){
-			reroll = frame.getRerollArray();
-		}
+		while(!frame.rerollButtonClicked(reroll)){}
+		reroll = (frame.getRerollArray());
 	}
 
 	public int chooseCombination(int[] dice, PlayerRecord record) {
 		frame.activateAvailableCombinations(record,dice);
-		while(frame.combinationChosen()>=0)
-			return frame.combinationChosen();
-		return -1; 
+		int chosenCombination = frame.combinationChosen();
+		while(!(chosenCombination>=0))
+		{
+			chosenCombination = frame.combinationChosen();
+		}
+		return chosenCombination;
 	}
 
 	public void finalResults(int[] dice, PlayerRecord record) {

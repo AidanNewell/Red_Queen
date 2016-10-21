@@ -83,6 +83,7 @@ public class YahtzeeDiceButton extends JButton implements ActionListener{
 		setIcon(reg.get(number));
 	}
 	public void set(int num, boolean select){
+		number = num-1;
 		if(select){
 			selected = true;
 			setIcon(reg.get(number));
