@@ -67,7 +67,9 @@ public class YahtzeePlayerFrame extends JFrame {
 		newGame.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) { 
 				newGameClicked = true;
-				
+				for(int i=0;i<comboButtons.length;i++){
+					comboButtons[i].reset();
+				}
 			} 
 		});
 		contentPane.add(newGame);

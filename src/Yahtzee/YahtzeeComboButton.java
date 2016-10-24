@@ -16,6 +16,14 @@ public class YahtzeeComboButton extends JButton implements ActionListener{
 		buttonEnabled = true;
 		addActionListener(this);
 	}
+	public void reset(){
+		selected = false;
+		buttonEnabled = true;
+		used = false;
+		setEnabled(true);
+		addActionListener(this);
+	}
+	
 	public String getName(){
 		return name;
 	}
