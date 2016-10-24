@@ -3,6 +3,9 @@ package Yahtzee;
 import java.util.Arrays;
 
 public class YahtzeeGame {
+	
+	private int[] dice;
+	
 	public void sortDice (int[] dice){
 		 Arrays.sort(dice);
 	}
@@ -36,7 +39,6 @@ public class YahtzeeGame {
 		record.chooseCombination(choice, combo.score(dice)); 
 	}
 	public void yahtzeeTurn(YahtzeePlayer player, PlayerRecord record){
-		int[] dice = new int[5];
 		for(int x=0; x<dice.length;x++)
 		{
 			dice[x] = ((int)(Math.random()*6)) + 1;
@@ -49,11 +51,12 @@ public class YahtzeeGame {
 		playerChoose(player, record, dice, 3);
 	}
 	public int yahtzeeGame(YahtzeePlayer player){
+		dice = new int[5];
 		PlayerRecord record = new PlayerRecord();
 		for(int i = 0; i<13; i++){
 			yahtzeeTurn(player,record);
 		}
-		player.finalResults(null, record);
+		player.finalResults(dice, record);
 		return record.totalScore();
 	}
 }

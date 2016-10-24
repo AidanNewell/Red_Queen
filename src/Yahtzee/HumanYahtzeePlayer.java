@@ -44,12 +44,19 @@ public class HumanYahtzeePlayer implements YahtzeePlayer{
 
 	public void finalResults(int[] dice, PlayerRecord record) {
 		frame.activateNewGameButton(record,dice);
-		while(!frame.newGameClicked());
+		while(!frame.newGameClicked()){}
+		newGame();
 	}
 	
 	public static void main(String [] args)
 	{
 		new HumanYahtzeePlayer();
+	}
+	
+	private void newGame()
+	{
+		YahtzeeGame game = new YahtzeeGame();
+		game.yahtzeeGame(this);
 	}
 
 }

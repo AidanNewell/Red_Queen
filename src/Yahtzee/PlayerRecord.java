@@ -100,7 +100,7 @@ public class PlayerRecord {
 	
 	public int totalScore()
 	{
-		if(upperSectionScore >= 63 && combinations.length == 0)
+		if(upperSectionScore >= 63)
 		{
 			return upperSectionScore + lowerSectionScore + 35;
 		}
