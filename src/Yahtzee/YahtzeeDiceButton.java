@@ -12,6 +12,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class YahtzeeDiceButton extends JButton implements ActionListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 84L;
+	/**
+	 * 
+	 */
 	private boolean selected;
 	private int number;
 	private ArrayList<ImageIcon> reg;

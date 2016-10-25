@@ -2,17 +2,17 @@ package Yahtzee;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 
 public class YahtzeePlayerFrame extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 84L;
+	/**
+	 * 
+	 */
 	private JPanel contentPane;
 	private JPanel dicePane;
 	private JPanel comboPane;
@@ -26,8 +26,6 @@ public class YahtzeePlayerFrame extends JFrame {
 	private JLabel lowerScore;
 	private boolean rerollClicked;
 	private boolean comboClicked;
-	private String clickedComboString;
-	private int comboInt;
 	private boolean newGameClicked;
 	
 	YahtzeePlayerFrame(){
@@ -38,7 +36,6 @@ public class YahtzeePlayerFrame extends JFrame {
 		setDicePaneLayout(diceButtons);
 
 		comboClicked = false;
-		clickedComboString = "";
 		comboButtons = new YahtzeeComboButton[numCombos];
 		comboPane = new JPanel();
 		setComboPaneLayout(comboPane,comboButtons);
@@ -83,15 +80,17 @@ public class YahtzeePlayerFrame extends JFrame {
 		    public void windowClosing(WindowEvent we)
 		    { 
 		    	JFrame frame = new JFrame();
-		    	JOptionPane option = new JOptionPane();
-		        int x = option.showConfirmDialog(frame,"Are you sure you want to exit?", "Exit", JOptionPane.YES_NO_OPTION);
+		        int x = JOptionPane.showConfirmDialog(frame,"Are you sure you want to exit?", "Exit", JOptionPane.YES_NO_OPTION);
 		        if(x == JOptionPane.YES_OPTION)
 		        {
 		        	YahtzeePlayerFrame.close();
 		        }
 		    }
 		});
-		
+		setLocationRelativeTo(null);
+		setTitle("Yahtzee");
+		setAlwaysOnTop(true);
+		setAlwaysOnTop(false);
 	}
 	private void setDicePaneLayout(JButton[] buttons){
 		dicePane.setLayout(new BoxLayout(dicePane, BoxLayout.LINE_AXIS));
@@ -227,7 +226,13 @@ public class YahtzeePlayerFrame extends JFrame {
 		return reroll;
 	}
 	public boolean newGameClicked(){
-		return newGameClicked;
+		if(newGameClicked)
+		{
+			newGameClicked =false;
+			newGame.setEnabled(false);
+			return true;
+		}
+		return false;
 	}
     public static void close()
     {

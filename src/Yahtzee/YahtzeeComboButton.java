@@ -6,6 +6,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 public class YahtzeeComboButton extends JButton implements ActionListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 84L;
+	/**
+	 * 
+	 */
 	private boolean selected,buttonEnabled,used;
 	private String name; 
 	YahtzeeComboButton(String comboName){
