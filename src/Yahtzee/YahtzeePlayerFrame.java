@@ -86,6 +86,7 @@ public class YahtzeePlayerFrame extends JFrame {
 				for(int i=0;i<comboButtons.length;i++){
 					comboButtons[i].reset();
 				}
+				newGame.setEnabled(false);
 			} 
 		});
 		contentPane.add(newGame);
@@ -299,7 +300,6 @@ public class YahtzeePlayerFrame extends JFrame {
 		if(newGameClicked)
 		{
 			newGameClicked =false;
-			newGame.setEnabled(false);
 			return true;
 		}
 		return false;
