@@ -2,6 +2,11 @@ package Yahtzee;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 
@@ -18,6 +23,8 @@ public class YahtzeePlayerFrame extends JFrame {
 	private JPanel comboPane;
 	private YahtzeeDiceButton[] diceButtons;
 	private JButton reroll;
+	private JLabel rerollCount;
+	private int rerollInt;
 	private JButton newGame;
 	private YahtzeeComboButton[] comboButtons;
 	private AbstractYahtzeeCombination[] combos;
@@ -27,12 +34,15 @@ public class YahtzeePlayerFrame extends JFrame {
 	private boolean rerollClicked;
 	private boolean comboClicked;
 	private boolean newGameClicked;
+	private static ArrayList<ImageIcon> reg;
+	private static ArrayList<ImageIcon> shaded;
 	
 	YahtzeePlayerFrame(){
 		numCombos = AbstractYahtzeeCombination.allCombinations().length;
 		contentPane = new JPanel();
 		dicePane = new JPanel();
 		
+
 		setDicePaneLayout(diceButtons);
 
 		comboClicked = false;
@@ -46,15 +56,24 @@ public class YahtzeePlayerFrame extends JFrame {
 		contentPane.add(dicePane);
 		contentPane.add(Box.createRigidArea(new Dimension(10, 10)));
 		
+		rerollInt = 2;
 		rerollClicked = false;
 		reroll = new JButton("Reroll");
 		reroll.setAlignmentX(Component.CENTER_ALIGNMENT);
 		reroll.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) { 
 				rerollClicked = true;
+				if(rerollInt>0)
+					rerollInt--; 
+				rerollCount.setText(rerollInt + " remaining");
+				if(rerollInt == 0)
+					rerollCount.setText("Select a combination");
 			} 
 		});
 		contentPane.add(reroll);
+		rerollCount = new JLabel(rerollInt + " remaining");
+		rerollCount.setAlignmentX(Component.CENTER_ALIGNMENT);
+		contentPane.add(rerollCount);
 		
 
 		contentPane.add(Box.createRigidArea(new Dimension(10, 10)));
@@ -93,6 +112,48 @@ public class YahtzeePlayerFrame extends JFrame {
 		setAlwaysOnTop(false);
 	}
 	private void setDicePaneLayout(JButton[] buttons){
+		reg = new ArrayList<ImageIcon>();
+		shaded = new ArrayList<ImageIcon>();
+		Image img = null;
+		Image img2 = null;
+		for(int i=1; i<7;i++){
+			try {
+				switch(i){
+					case 1: 
+						img = ImageIO.read(new File("YahtzeeDice/dice1Shade.png"));
+						img2 = ImageIO.read(new File("YahtzeeDice/dice1.png"));
+						break; 
+					case 2: 
+						img = ImageIO.read(new File("YahtzeeDice/dice2Shade.png"));
+						img2 = ImageIO.read(new File("YahtzeeDice/dice2.png"));
+						break; 
+					case 3: 
+						img = ImageIO.read(new File("YahtzeeDice/dice3Shade.png"));
+						img2 = ImageIO.read(new File("YahtzeeDice/dice3.png"));
+						break; 
+					case 4: 
+						img = ImageIO.read(new File("YahtzeeDice/dice4Shade.png"));
+						img2 = ImageIO.read(new File("YahtzeeDice/dice4.png"));
+						break; 
+					case 5: 
+						img = ImageIO.read(new File("YahtzeeDice/dice5Shade.png"));
+						img2 = ImageIO.read(new File("YahtzeeDice/dice5.png"));
+						break; 
+					case 6: 
+						img = ImageIO.read(new File("YahtzeeDice/dice6Shade.png"));
+						img2 = ImageIO.read(new File("YahtzeeDice/dice6.png"));
+						break; 
+				}
+			}catch (IOException e) {
+				e.printStackTrace();
+			}
+			Image resizedShade = img.getScaledInstance(95,95,Image.SCALE_SMOOTH);
+			Image resizedReg = img2.getScaledInstance(95,95,Image.SCALE_SMOOTH);
+			final ImageIcon Shade = new ImageIcon(resizedShade);
+			final ImageIcon Reg = new ImageIcon(resizedReg);
+			reg.add(Reg);
+			shaded.add(Shade);
+		}
 		dicePane.setLayout(new BoxLayout(dicePane, BoxLayout.LINE_AXIS));
 		diceButtons = new YahtzeeDiceButton[5];
 		for(int i = 0; i<5; i++){
@@ -100,6 +161,12 @@ public class YahtzeePlayerFrame extends JFrame {
 			diceButtons[i].setPreferredSize(new Dimension(100,100));
 			dicePane.add(diceButtons[i]);
 		}
+	}
+	public static ImageIcon getDiceImage(int index, boolean select){
+		if(select)
+			return reg.get(index);
+		else
+			return shaded.get(index);
 	}
 	private void setComboPaneLayout(JPanel pane,YahtzeeComboButton[] buttons){
 		JPanel upperPane = new JPanel();
@@ -156,6 +223,7 @@ public class YahtzeePlayerFrame extends JFrame {
 	}
 	
 	public void activateRerollButton(PlayerRecord record, int[] dice){
+
 		for(int x=0; x<comboButtons.length;x++)
 		{
 			comboButtons[x].disable();
@@ -200,6 +268,8 @@ public class YahtzeePlayerFrame extends JFrame {
 			YahtzeeComboButton b = comboButtons[x];
 			if(b.isSelected())
 			{
+				rerollInt = 2; 
+				rerollCount.setText(rerollInt + " remaining");
 				comboClicked = true;
 				selectedButton = b;
 				b.nullify();
