@@ -62,12 +62,10 @@ public class YahtzeeDiceButton extends JButton implements ActionListener{
 		if(selected){
 			selected = false;
 			setIcon(YahtzeePlayerFrame.getDiceImage(index,false));
-			System.out.println(selected);
 		}
 		else{
 			selected = true;
 			setIcon(YahtzeePlayerFrame.getDiceImage(index,true));
-			System.out.println(selected);
 		}
 	}
 }

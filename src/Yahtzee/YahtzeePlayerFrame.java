@@ -87,6 +87,7 @@ public class YahtzeePlayerFrame extends JFrame {
 					comboButtons[i].reset();
 				}
 				newGame.setEnabled(false);
+				reroll.setEnabled(true);
 			} 
 		});
 		contentPane.add(newGame);
@@ -246,6 +247,7 @@ public class YahtzeePlayerFrame extends JFrame {
 	
 	public void activateNewGameButton (PlayerRecord record, int[] dice){
 		repaint(record,dice);
+		reroll.setEnabled(false);
 		newGame.setEnabled(true);
 		newGameClicked = false;
 	}

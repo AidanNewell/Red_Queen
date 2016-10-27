@@ -13,6 +13,11 @@ public class HumanYahtzeePlayer implements YahtzeePlayer{
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Welcome to Yahtzee!\n\nPlease enter your name:\n");
 		playerName = scanner.next();
+		if(playerName.toLowerCase().equals("no"))
+		{
+			System.err.println("FATAL ERROR: USER THINKS THEY'RE FUNNY BUT THEY'RE NOT\nKILLING PROGRAM");
+			System.exit(0);
+		}
 		scanner.close();
 		frame = new YahtzeePlayerFrame();
 		YahtzeeGame game = new YahtzeeGame();
