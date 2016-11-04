@@ -23,10 +23,14 @@ public class YahtzeeDiceButton extends JButton implements ActionListener{
 	private int index;
 	private ArrayList<ImageIcon> reg;
 	private ArrayList<ImageIcon> shaded;
+	
+	private boolean enabled;
+	
 	YahtzeeDiceButton()
 	{
 		super();
 		selected = false;
+		enabled = true;
 		Image blankImg = null;
 		try {
 			blankImg = ImageIO.read(new File("YahtzeeDice/blank.png"));	
@@ -59,13 +63,26 @@ public class YahtzeeDiceButton extends JButton implements ActionListener{
 		}
 	}
 	public void actionPerformed(ActionEvent arg0) {
-		if(selected){
-			selected = false;
-			setIcon(YahtzeePlayerFrame.getDiceImage(index,false));
+		if(enabled)
+		{
+			if(selected){
+				selected = false;
+				setIcon(YahtzeePlayerFrame.getDiceImage(index,false));
+			}
+			else{
+				selected = true;
+				setIcon(YahtzeePlayerFrame.getDiceImage(index,true));
+			}
 		}
-		else{
-			selected = true;
-			setIcon(YahtzeePlayerFrame.getDiceImage(index,true));
-		}
+	}
+	
+	public void enableClicking()
+	{
+		enabled = true;
+	}
+	
+	public void disableClicking()
+	{
+		enabled=false;
 	}
 }

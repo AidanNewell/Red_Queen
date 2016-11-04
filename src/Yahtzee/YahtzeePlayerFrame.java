@@ -25,6 +25,7 @@ public class YahtzeePlayerFrame extends JFrame {
 	private JButton reroll;
 	private JLabel rerollCount;
 	private int rerollInt;
+	private int[] diceForCombinationScores;
 	private JButton newGame;
 	private YahtzeeComboButton[] comboButtons;
 	private AbstractYahtzeeCombination[] combos;
@@ -36,12 +37,12 @@ public class YahtzeePlayerFrame extends JFrame {
 	private boolean newGameClicked;
 	private static ArrayList<ImageIcon> reg;
 	private static ArrayList<ImageIcon> shaded;
-	
+
 	YahtzeePlayerFrame(){
 		numCombos = AbstractYahtzeeCombination.allCombinations().length;
 		contentPane = new JPanel();
 		dicePane = new JPanel();
-		
+
 
 		setDicePaneLayout(diceButtons);
 
@@ -49,19 +50,20 @@ public class YahtzeePlayerFrame extends JFrame {
 		comboButtons = new YahtzeeComboButton[numCombos];
 		comboPane = new JPanel();
 		setComboPaneLayout(comboPane,comboButtons);
-		
+
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
 		contentPane.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
 		contentPane.add(comboPane);
 		contentPane.add(dicePane);
 		contentPane.add(Box.createRigidArea(new Dimension(10, 10)));
-		
+
 		rerollInt = 2;
 		rerollClicked = false;
 		reroll = new JButton("Reroll");
 		reroll.setAlignmentX(Component.CENTER_ALIGNMENT);
 		reroll.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) { 
+				reroll.setEnabled(false);
 				rerollClicked = true;
 				if(rerollInt>0)
 					rerollInt--; 
@@ -74,7 +76,7 @@ public class YahtzeePlayerFrame extends JFrame {
 		rerollCount = new JLabel(rerollInt + " remaining");
 		rerollCount.setAlignmentX(Component.CENTER_ALIGNMENT);
 		contentPane.add(rerollCount);
-		
+
 
 		contentPane.add(Box.createRigidArea(new Dimension(10, 10)));
 		newGame = new JButton("New Game");
@@ -93,20 +95,20 @@ public class YahtzeePlayerFrame extends JFrame {
 		contentPane.add(newGame);
 
 		setContentPane(contentPane);
-		
+
 		pack();
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		addWindowListener(new WindowAdapter() {
-		    public void windowClosing(WindowEvent we)
-		    { 
-		    	JFrame frame = new JFrame();
-		        int x = JOptionPane.showConfirmDialog(frame,"Are you sure you want to exit?", "Exit", JOptionPane.YES_NO_OPTION);
-		        if(x == JOptionPane.YES_OPTION)
-		        {
-		        	YahtzeePlayerFrame.close();
-		        }
-		    }
+			public void windowClosing(WindowEvent we)
+			{ 
+				JFrame frame = new JFrame();
+				int x = JOptionPane.showConfirmDialog(frame,"Are you sure you want to exit?", "Exit", JOptionPane.YES_NO_OPTION);
+				if(x == JOptionPane.YES_OPTION)
+				{
+					YahtzeePlayerFrame.close();
+				}
+			}
 		});
 		setLocationRelativeTo(null);
 		setTitle("Yahtzee");
@@ -121,30 +123,30 @@ public class YahtzeePlayerFrame extends JFrame {
 		for(int i=1; i<7;i++){
 			try {
 				switch(i){
-					case 1: 
-						img = ImageIO.read(new File("YahtzeeDice/dice1Shade.png"));
-						img2 = ImageIO.read(new File("YahtzeeDice/dice1.png"));
-						break; 
-					case 2: 
-						img = ImageIO.read(new File("YahtzeeDice/dice2Shade.png"));
-						img2 = ImageIO.read(new File("YahtzeeDice/dice2.png"));
-						break; 
-					case 3: 
-						img = ImageIO.read(new File("YahtzeeDice/dice3Shade.png"));
-						img2 = ImageIO.read(new File("YahtzeeDice/dice3.png"));
-						break; 
-					case 4: 
-						img = ImageIO.read(new File("YahtzeeDice/dice4Shade.png"));
-						img2 = ImageIO.read(new File("YahtzeeDice/dice4.png"));
-						break; 
-					case 5: 
-						img = ImageIO.read(new File("YahtzeeDice/dice5Shade.png"));
-						img2 = ImageIO.read(new File("YahtzeeDice/dice5.png"));
-						break; 
-					case 6: 
-						img = ImageIO.read(new File("YahtzeeDice/dice6Shade.png"));
-						img2 = ImageIO.read(new File("YahtzeeDice/dice6.png"));
-						break; 
+				case 1: 
+					img = ImageIO.read(new File("YahtzeeDice/dice1Shade.png"));
+					img2 = ImageIO.read(new File("YahtzeeDice/dice1.png"));
+					break; 
+				case 2: 
+					img = ImageIO.read(new File("YahtzeeDice/dice2Shade.png"));
+					img2 = ImageIO.read(new File("YahtzeeDice/dice2.png"));
+					break; 
+				case 3: 
+					img = ImageIO.read(new File("YahtzeeDice/dice3Shade.png"));
+					img2 = ImageIO.read(new File("YahtzeeDice/dice3.png"));
+					break; 
+				case 4: 
+					img = ImageIO.read(new File("YahtzeeDice/dice4Shade.png"));
+					img2 = ImageIO.read(new File("YahtzeeDice/dice4.png"));
+					break; 
+				case 5: 
+					img = ImageIO.read(new File("YahtzeeDice/dice5Shade.png"));
+					img2 = ImageIO.read(new File("YahtzeeDice/dice5.png"));
+					break; 
+				case 6: 
+					img = ImageIO.read(new File("YahtzeeDice/dice6Shade.png"));
+					img2 = ImageIO.read(new File("YahtzeeDice/dice6.png"));
+					break; 
 				}
 			}catch (IOException e) {
 				e.printStackTrace();
@@ -188,7 +190,7 @@ public class YahtzeePlayerFrame extends JFrame {
 		upperScore = new JLabel("Upper Score: 0");
 		upperScore.setAlignmentX(Component.CENTER_ALIGNMENT);
 		upperPane.add(upperScore);	
-		
+
 		JPanel lowerPane = new JPanel();
 		lowerPane.setLayout(new BoxLayout(lowerPane, BoxLayout.PAGE_AXIS));
 		lowerPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -207,12 +209,12 @@ public class YahtzeePlayerFrame extends JFrame {
 		lowerPane.add(lowerScore);
 		pane.setLayout(new BoxLayout(pane,BoxLayout.LINE_AXIS));
 		upperPane.setBorder(BorderFactory.createEmptyBorder(20, 10, 10, 10));
-		
-		
+
+
 		pane.add(upperPane);
 		pane.add(Box.createRigidArea(new Dimension(40, 0)));
 		pane.add(lowerPane);
-		
+
 	}
 	private void repaint(PlayerRecord record, int[]dice){
 		for(int i = 0; i<dice.length;i++){
@@ -223,9 +225,12 @@ public class YahtzeePlayerFrame extends JFrame {
 		upperScore.setText("Score: " + record.upperSectionScore() + " Difference: " + record.upDown());
 		lowerScore.setText("Score: " + record.lowerSectionScore() + " Total Score: " + record.totalScore());
 	}
-	
-	public void activateRerollButton(PlayerRecord record, int[] dice){
 
+	public void activateRerollButton(PlayerRecord record, int[] dice){
+		for(int x=0; x<diceButtons.length;x++)
+		{
+			diceButtons[x].enableClicking();
+		}
 		for(int x=0; x<comboButtons.length;x++)
 		{
 			comboButtons[x].disable();
@@ -234,24 +239,29 @@ public class YahtzeePlayerFrame extends JFrame {
 		reroll.setEnabled(true);
 		rerollClicked = false;
 	}
-	
+
 	public void activateAvailableCombinations (PlayerRecord record, int[] dice){
+		for(int x=0; x<diceButtons.length;x++)
+		{
+			diceButtons[x].disableClicking();
+		}
 		for(int x=0; x<comboButtons.length;x++)
 		{
 			if(!(comboButtons[x].isUsed()))
 				comboButtons[x].enable();
 		}
+		diceForCombinationScores = dice;
 		repaint(record,dice);
 		comboClicked = false;
 	}
-	
+
 	public void activateNewGameButton (PlayerRecord record, int[] dice){
 		repaint(record,dice);
 		reroll.setEnabled(false);
 		newGame.setEnabled(true);
 		newGameClicked = false;
 	}
-	
+
 	public boolean rerollButtonClicked(boolean[] reroll){
 		if(rerollClicked){
 			for(int i=0;i<reroll.length;i++){
@@ -262,7 +272,7 @@ public class YahtzeePlayerFrame extends JFrame {
 		else
 			return false;
 	}
-	
+
 	public int combinationChosen(){
 		int index = -1; 
 		YahtzeeComboButton selectedButton = new YahtzeeComboButton("");
@@ -280,14 +290,14 @@ public class YahtzeePlayerFrame extends JFrame {
 			}
 		}
 		if(comboClicked){
-			 clickedCombo = selectedButton.getName();
-			 for(int i = 0; i<combos.length; i++){
-				 if(clickedCombo.equals(combos[i].name()))
-				 {
-					 index = i;
-					break;
-				 }
-			 }
+			clickedCombo = selectedButton.getName();
+			for(int i = 0; i<combos.length; i++){
+				if(clickedCombo.equals(combos[i].name()))
+				{
+					index = i;
+				}
+			}
+			combos[index].score(diceForCombinationScores);
 		}
 		return index;
 	}
@@ -306,10 +316,10 @@ public class YahtzeePlayerFrame extends JFrame {
 		}
 		return false;
 	}
-    public static void close()
-    {
-    	System.exit(0);
-    }
-    
+	public static void close()
+	{
+		System.exit(0);
+	}
+
 
 }

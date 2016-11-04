@@ -11,7 +11,7 @@ public class TournamentYahtzeeGame
 			score = YahtzeePlayerEvaluator.evaluatePlayer((AbstractComputerYahtzeePlayer)player,1);
 		}catch(Exception e)
 		{
-			System.err.println("The Strategy has encountered a very bad problem. Here is a handy stack trace so you can fix it:\n\n");
+			System.err.println("The Strategy has encountered an error that it  Here is a handy stack trace so you can fix it:\n\n");
 			e.printStackTrace();
 			notBroken = false;
 		}
