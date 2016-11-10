@@ -9,7 +9,8 @@ public class YahtzeePlayerEvaluator {
 		YahtzeeGame game = new YahtzeeGame();
 		for(int x=0; x<games;x++)
 		{
-			System.out.println("--------------------------");
+			if(x%(int)(games/20) == 0)
+				System.out.println((100*x/games) + "%");
 			totalScore += game.yahtzeeGame(player);
 		}
 		return (totalScore / games);

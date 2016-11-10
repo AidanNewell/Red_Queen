@@ -63,7 +63,6 @@ public class YahtzeePlayerFrame extends JFrame {
 		reroll.setAlignmentX(Component.CENTER_ALIGNMENT);
 		reroll.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) { 
-				reroll.setEnabled(false);
 				rerollClicked = true;
 				if(rerollInt>0)
 					rerollInt--; 
@@ -241,6 +240,7 @@ public class YahtzeePlayerFrame extends JFrame {
 	}
 
 	public void activateAvailableCombinations (PlayerRecord record, int[] dice){
+		reroll.setEnabled(false);
 		for(int x=0; x<diceButtons.length;x++)
 		{
 			diceButtons[x].disableClicking();
