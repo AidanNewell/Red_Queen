@@ -35,6 +35,9 @@ public class YahtzeePlayerFrame extends JFrame {
 	private boolean rerollClicked;
 	private boolean comboClicked;
 	private boolean newGameClicked;
+	private JLabel[] scoreLabels;
+	private JLabel recentScore, totalScore;
+	private int lastScore;
 	private static ArrayList<ImageIcon> reg;
 	private static ArrayList<ImageIcon> shaded;
 
@@ -42,18 +45,25 @@ public class YahtzeePlayerFrame extends JFrame {
 		numCombos = AbstractYahtzeeCombination.allCombinations().length;
 		contentPane = new JPanel();
 		dicePane = new JPanel();
-
+		lastScore =0;
 
 		setDicePaneLayout(diceButtons);
 
 		comboClicked = false;
 		comboButtons = new YahtzeeComboButton[numCombos];
+		scoreLabels = new JLabel[numCombos];
 		comboPane = new JPanel();
-		setComboPaneLayout(comboPane,comboButtons);
+		setComboPaneLayout(comboPane,comboButtons,scoreLabels);
 
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
 		contentPane.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
 		contentPane.add(comboPane);
+		recentScore.setAlignmentX(Component.CENTER_ALIGNMENT);
+		totalScore.setAlignmentX(Component.CENTER_ALIGNMENT);
+		recentScore.setText("Last Score: 0");
+		totalScore.setText("Total Score: 0");
+		contentPane.add(recentScore);
+		contentPane.add(totalScore);
 		contentPane.add(dicePane);
 		contentPane.add(Box.createRigidArea(new Dimension(10, 10)));
 
@@ -86,6 +96,7 @@ public class YahtzeePlayerFrame extends JFrame {
 				newGameClicked = true;
 				for(int i=0;i<comboButtons.length;i++){
 					comboButtons[i].reset();
+					scoreLabels[i].setText("     ");
 				}
 				newGame.setEnabled(false);
 				reroll.setEnabled(true);
@@ -171,48 +182,68 @@ public class YahtzeePlayerFrame extends JFrame {
 		else
 			return shaded.get(index);
 	}
-	private void setComboPaneLayout(JPanel pane,YahtzeeComboButton[] buttons){
-		JPanel upperPane = new JPanel();
-		upperPane.setLayout(new BoxLayout(upperPane, BoxLayout.PAGE_AXIS));
-		upperPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+	private void setComboPaneLayout(JPanel pane,YahtzeeComboButton[] buttons,JLabel[] scores){
+		JPanel upperMasterPane = new JPanel();
+		upperMasterPane.setLayout(new BoxLayout(upperMasterPane, BoxLayout.PAGE_AXIS));
+		upperMasterPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		AbstractYahtzeeCombination [] combos = AbstractYahtzeeCombination.allCombinations();
 		JLabel upper = new JLabel("Upper Section");
 		upper.setAlignmentX(Component.CENTER_ALIGNMENT);
-		upperPane.add(upper);
+		upperMasterPane.add(upper);
+		JPanel upperComboPane = new JPanel();
+		upperComboPane.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.BOTH;
 		for(int i = 0; i < 6; i++){
+			c.gridy = i;
+			c.gridx =0;
 			String comboString = combos[i].name();
 			YahtzeeComboButton comboButton = new YahtzeeComboButton(comboString);
 			buttons[i] = comboButton;
 			comboButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-			upperPane.add(comboButton);	
+			upperComboPane.add(comboButton,c);
+			scores[i] = new JLabel("     ");
+			c.gridx=1;
+			upperComboPane.add(scores[i],c);
 		}
+		upperMasterPane.add(upperComboPane);
 		upperScore = new JLabel("Upper Score: 0");
 		upperScore.setAlignmentX(Component.CENTER_ALIGNMENT);
-		upperPane.add(upperScore);	
+		upperMasterPane.add(upperScore);	
 
-		JPanel lowerPane = new JPanel();
-		lowerPane.setLayout(new BoxLayout(lowerPane, BoxLayout.PAGE_AXIS));
-		lowerPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		JPanel lowerMasterPane = new JPanel();
+		lowerMasterPane.setLayout(new BoxLayout(lowerMasterPane, BoxLayout.PAGE_AXIS));
+		lowerMasterPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		JLabel lower = new JLabel("Lower Section");
 		lower.setAlignmentX(Component.CENTER_ALIGNMENT);
-		lowerPane.add(lower);
+		lowerMasterPane.add(lower);
+		JPanel lowerComboPane = new JPanel();
+		lowerComboPane.setLayout(new GridBagLayout());
 		for(int i = 6; i < combos.length; i++){
+			c.gridy=i;
+			c.gridx=0;
 			String comboString = combos[i].name();
 			YahtzeeComboButton comboButton = new YahtzeeComboButton(comboString);
 			buttons[i] = comboButton;
 			comboButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-			lowerPane.add(comboButton);	
+			scores[i] = new JLabel("     ");
+			lowerComboPane.add(comboButton,c);
+			c.gridx=1;
+			lowerComboPane.add(scores[i],c);
 		}
+		lowerMasterPane.add(lowerComboPane);
 		lowerScore = new JLabel("Lower Score: 0");
 		lowerScore.setAlignmentX(Component.CENTER_ALIGNMENT);
-		lowerPane.add(lowerScore);
+		lowerMasterPane.add(lowerScore);
 		pane.setLayout(new BoxLayout(pane,BoxLayout.LINE_AXIS));
-		upperPane.setBorder(BorderFactory.createEmptyBorder(20, 10, 10, 10));
+		upperMasterPane.setBorder(BorderFactory.createEmptyBorder(20, 10, 10, 10));
 
 
-		pane.add(upperPane);
+		pane.add(upperMasterPane);
+		recentScore = new JLabel();
+		totalScore = new JLabel();
 		pane.add(Box.createRigidArea(new Dimension(40, 0)));
-		pane.add(lowerPane);
+		pane.add(lowerMasterPane);
 
 	}
 	private void repaint(PlayerRecord record, int[]dice){
@@ -221,8 +252,10 @@ public class YahtzeePlayerFrame extends JFrame {
 		}
 
 		combos = record.availableCombinations();
-		upperScore.setText("Score: " + record.upperSectionScore() + " Difference: " + record.upDown());
-		lowerScore.setText("Score: " + record.lowerSectionScore() + " Total Score: " + record.totalScore());
+		upperScore.setText("Score: " + record.upperSectionScore() + "   Difference: " + record.upDown());
+		lowerScore.setText("Score: " + record.lowerSectionScore());
+		recentScore.setText("Last Score: " + lastScore);
+		totalScore.setText("Total Score: " + record.totalScore());
 	}
 
 	public void activateRerollButton(PlayerRecord record, int[] dice){
@@ -297,7 +330,8 @@ public class YahtzeePlayerFrame extends JFrame {
 					index = i;
 				}
 			}
-			combos[index].score(diceForCombinationScores);
+			lastScore = combos[index].score(diceForCombinationScores);
+			scoreLabels[AbstractYahtzeeCombination.combinationIndex(combos[index].name())].setText("   "+lastScore);
 		}
 		return index;
 	}

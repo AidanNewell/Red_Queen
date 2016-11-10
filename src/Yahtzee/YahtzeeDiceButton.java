@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -21,8 +20,6 @@ public class YahtzeeDiceButton extends JButton implements ActionListener{
 	 */
 	private boolean selected;
 	private int index;
-	private ArrayList<ImageIcon> reg;
-	private ArrayList<ImageIcon> shaded;
 	
 	private boolean enabled;
 	
