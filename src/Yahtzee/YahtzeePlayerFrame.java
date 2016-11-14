@@ -38,14 +38,18 @@ public class YahtzeePlayerFrame extends JFrame {
 	private JLabel[] scoreLabels;
 	private JLabel recentScore, totalScore;
 	private int lastScore;
+	private boolean allUpperSectionChosen;
 	private static ArrayList<ImageIcon> reg;
 	private static ArrayList<ImageIcon> shaded;
+	private static int lastRecordedUpperScores;
+	private boolean bonusAwarded;
 
 	YahtzeePlayerFrame(){
 		numCombos = AbstractYahtzeeCombination.allCombinations().length;
 		contentPane = new JPanel();
 		dicePane = new JPanel();
 		lastScore =0;
+		lastRecordedUpperScores =0;
 
 		setDicePaneLayout(diceButtons);
 
@@ -98,8 +102,11 @@ public class YahtzeePlayerFrame extends JFrame {
 					comboButtons[i].reset();
 					scoreLabels[i].setText("     ");
 				}
+				allUpperSectionChosen = false;
+				lastScore = 0;
 				newGame.setEnabled(false);
 				reroll.setEnabled(true);
+				repaint();
 			} 
 		});
 		contentPane.add(newGame);
@@ -124,6 +131,7 @@ public class YahtzeePlayerFrame extends JFrame {
 		setTitle("Yahtzee");
 		setAlwaysOnTop(true);
 		setAlwaysOnTop(false);
+		setResizable(false);
 	}
 	private void setDicePaneLayout(JButton[] buttons){
 		reg = new ArrayList<ImageIcon>();
@@ -252,10 +260,21 @@ public class YahtzeePlayerFrame extends JFrame {
 		}
 
 		combos = record.availableCombinations();
-		upperScore.setText("Score: " + record.upperSectionScore() + "   Difference: " + record.upDown());
+		if(record.upperSectionScore() >= 63)
+		{
+			upperScore.setText("Score: " + record.upperSectionScore() + "   Bonus awarded");
+		}
+		else if(allUpperSectionChosen)
+		{	upperScore.setText("Score: " + record.upperSectionScore() + "   Bonus not awarded");
+		}
+		else
+		{
+			upperScore.setText("Score: " + record.upperSectionScore() + "   Difference: " + record.upDown());
+		}
 		lowerScore.setText("Score: " + record.lowerSectionScore());
 		recentScore.setText("Last Score: " + lastScore);
 		totalScore.setText("Total Score: " + record.totalScore());
+		lastRecordedUpperScores= record.upperSectionScore();
 	}
 
 	public void activateRerollButton(PlayerRecord record, int[] dice){
@@ -332,6 +351,11 @@ public class YahtzeePlayerFrame extends JFrame {
 			}
 			lastScore = combos[index].score(diceForCombinationScores);
 			scoreLabels[AbstractYahtzeeCombination.combinationIndex(combos[index].name())].setText("   "+lastScore);
+			if(combos[index].upperSection() && (lastRecordedUpperScores+lastScore) >= 63 && !bonusAwarded)
+			{
+				lastScore += 35;
+				bonusAwarded = true;
+			}
 		}
 		return index;
 	}
