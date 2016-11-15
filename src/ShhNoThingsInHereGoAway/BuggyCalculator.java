@@ -2,6 +2,7 @@ package ShhNoThingsInHereGoAway;
 
 import java.awt.Color;
 import java.awt.ComponentOrientation;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -12,52 +13,56 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
 
 public class BuggyCalculator {
 
 	private static double entered;
-	
-	
+
+
 	//This makes it easier to add numbers to the end of the double
 	private static String enteringString;
-	
+
 	private static final int PLUS = 0, MINUS = 1, MULTIPLY = 2, DIVIDE = 3;
-	
-	private static boolean singleDec;
-	
+
+	private static boolean singleDec, doubleDec, badEntered;
+
 	private static boolean operationLogged;
-	
+
 	private static boolean result;
-	
+
 	private static int Operation;
-	
+
 	private static JLabel display;
-		
+
 	public static void main(String [] args)
 	{
 		operationLogged = false;
 		entered =0;
 		result = true;
+		doubleDec = false;
+		badEntered = false;
 		enteringString="0";
 		JFrame window = new JFrame("Calculator");
-		
+
 		JPanel pane = new JPanel(new GridBagLayout());	
 		GridBagConstraints c = new GridBagConstraints();
-		
+
 		display = new JLabel();
 		display.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		display.setBackground(Color.WHITE);
 		display.setOpaque(true);
 		display.setText("");
+		display.setMinimumSize(new Dimension(215, 18));
+		display.setPreferredSize(new Dimension(215, 18));
+		display.setMaximumSize(new Dimension(215, 18));
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridwidth = 4;
 		c.gridx = 0;
 		c.gridy = 0;
 		c.insets = new Insets(10,10,7,7);
 		pane.add(display, c);
-		
+
 		JButton clear = new JButton("C");
 		clear.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
@@ -67,6 +72,8 @@ public class BuggyCalculator {
 				Operation=4;
 				operationLogged=false;
 				singleDec=false;
+				doubleDec = false;
+				badEntered = false;
 				result=true;
 				display.setText(enteringString);
 			}
@@ -76,12 +83,16 @@ public class BuggyCalculator {
 		c.gridx = 0;
 		c.gridy = 1;
 		pane.add(clear, c);
-		
+
 		JButton clearE = new JButton("CE");
 		clearE.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
 				//cacheEntering();
+				if(badEntered)
+					doubleDec = true;
+				else 
+					doubleDec = false;
 				singleDec=false;
 				enteringString="";
 				display.setText(" ");
@@ -91,7 +102,7 @@ public class BuggyCalculator {
 		c.gridx = 1;
 		c.gridy = 1;
 		pane.add(clearE, c);
-		
+
 		JButton divide = new JButton("÷");
 		divide.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
@@ -108,7 +119,7 @@ public class BuggyCalculator {
 		c.gridx = 2;
 		c.gridy = 1;
 		pane.add(divide, c);
-		
+
 		JButton multiply = new JButton("x");
 		multiply.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
@@ -125,7 +136,7 @@ public class BuggyCalculator {
 		c.gridx = 3;
 		c.gridy = 1;
 		pane.add(multiply, c);
-		
+
 		JButton seven = new JButton("7");
 		seven.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
@@ -138,7 +149,7 @@ public class BuggyCalculator {
 		c.gridx = 0;
 		c.gridy = 2;
 		pane.add(seven, c);
-		
+
 		JButton eight = new JButton("8");
 		eight.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
@@ -150,7 +161,7 @@ public class BuggyCalculator {
 		c.gridx = 1;
 		c.gridy = 2;
 		pane.add(eight, c);
-		
+
 		JButton nine = new JButton("9");
 		nine.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
@@ -162,7 +173,7 @@ public class BuggyCalculator {
 		c.gridx = 2;
 		c.gridy = 2;
 		pane.add(nine, c);
-		
+
 		JButton minus = new JButton("-");
 		minus.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
@@ -179,7 +190,7 @@ public class BuggyCalculator {
 		c.gridx = 3;
 		c.gridy = 2;
 		pane.add(minus, c);
-		
+
 		JButton four = new JButton("4");
 		four.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
@@ -192,7 +203,7 @@ public class BuggyCalculator {
 		c.gridx = 0;
 		c.gridy = 3;
 		pane.add(four, c);
-		
+
 		JButton five = new JButton("5");
 		five.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
@@ -204,7 +215,7 @@ public class BuggyCalculator {
 		c.gridx = 1;
 		c.gridy = 3;
 		pane.add(five, c);
-		
+
 		JButton six = new JButton("6");
 		six.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
@@ -216,7 +227,7 @@ public class BuggyCalculator {
 		c.gridx = 2;
 		c.gridy = 3;
 		pane.add(six, c);
-		
+
 		JButton plus = new JButton("+");
 		plus.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
@@ -233,7 +244,7 @@ public class BuggyCalculator {
 		c.gridx = 3;
 		c.gridy = 3;
 		pane.add(plus, c);
-		
+
 		JButton one = new JButton("1");
 		one.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
@@ -245,7 +256,7 @@ public class BuggyCalculator {
 		c.gridx = 0;
 		c.gridy = 4;
 		pane.add(one, c);
-		
+
 		JButton two = new JButton("2");
 		two.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
@@ -257,7 +268,7 @@ public class BuggyCalculator {
 		c.gridx = 1;
 		c.gridy = 4;
 		pane.add(two, c);
-		
+
 		JButton three = new JButton("3");
 		three.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
@@ -269,14 +280,19 @@ public class BuggyCalculator {
 		c.gridx = 2;
 		c.gridy = 4;
 		pane.add(three, c);
-		
+
 		JButton equals = new JButton("=");
 		equals.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
 				singleDec=false;
 				operationLogged=false;
-				calcResult();
+				if(!doubleDec)
+					calcResult();
+				else
+					System.exit(Integer.MIN_VALUE);
+				doubleDec = false;
+				badEntered = false;
 			}
 		});
 		c.fill = GridBagConstraints.VERTICAL;
@@ -284,12 +300,12 @@ public class BuggyCalculator {
 		c.gridx = 3;
 		c.gridy = 4;
 		pane.add(equals, c);
-		
+
 		JButton plusMinus = new JButton ("+/-");
 		plusMinus.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				if(enteringString != null)
+				if(!enteringString.equals(""))
 				{
 					if(enteringString.substring(0,1).equals("-"))
 						enteringString = enteringString.substring(1);
@@ -305,7 +321,7 @@ public class BuggyCalculator {
 		c.gridx = 0;
 		c.gridy = 5;
 		pane.add(plusMinus, c);
-		
+
 		JButton zero = new JButton("0");
 		zero.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
@@ -319,7 +335,7 @@ public class BuggyCalculator {
 		c.gridx = 1;
 		c.gridy = 5;
 		pane.add(zero, c);
-		
+
 		JButton decimal = new JButton(".");
 		decimal.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
@@ -332,17 +348,17 @@ public class BuggyCalculator {
 		c.gridx = 2;
 		c.gridy = 5;
 		pane.add(decimal, c);
-		
+
 		window.setContentPane(pane);
 		window.pack();
 		window.setLocationRelativeTo(null);
 		window.setResizable(false);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
-		
+
 		display.setText(enteringString);
 	}
-	
+
 	public static void cacheEntering()
 	{
 		try{
@@ -353,21 +369,23 @@ public class BuggyCalculator {
 		}catch(Exception e){}
 		singleDec=false;
 		try{
-		entered=Double.parseDouble(enteringString);
-		}catch(Exception e){}
+			entered=Double.parseDouble(enteringString);
+		}catch(Exception e){
+			badEntered = true;
+		}
 		enteringString="";
 	}
-	
+
 	public static void add()
 	{
 		enteringString = ""+(entered + Double.parseDouble(enteringString));
 	}
-	
+
 	public static void subtract()
 	{
 		enteringString = ""+(entered  - Double.parseDouble(enteringString));
 	}
-	
+
 	public static void multiply()
 	{
 		/**
@@ -385,7 +403,7 @@ public class BuggyCalculator {
 		else
 			enteringString = ""+(entered * Double.parseDouble(enteringString));
 	}
-	
+
 	public static void divide()
 	{
 		/**
@@ -398,34 +416,31 @@ public class BuggyCalculator {
 		 * **/
 		enteringString = ""+(Double.parseDouble(enteringString) / Double.parseDouble(enteringString));
 	}
-	
+
 	public static void addNumber(String x)
 	{
-		if(result)
-		{
-			enteringString = "";
-			result = false;
-		}
-		if(enteringString.equals("NaN"))
-			enteringString = "";
-		if(x.equals("."))
-		{
-			if(singleDec)
+		if(enteringString.length()<32){
+			if(result)
 			{
-				System.err.println("#\n# EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x000084c1,"
-						+ " pid=2756, tid=2348\n#\n# JRE version: 7.0_05-b06\n# Java VM: Java HotSpot(TM) "
-						+ "Client VM (23.1-b03 mixed mode, sharing windows-x86 )\n# Problematic frame:\n# C "
-						+ "0x000084c1\n#\n# Failed to write core dump. Minidumps are not enabled by default "
-						+ "on client versions of Windows");
-				System.exit(Integer.MIN_VALUE);
+				enteringString = "";
+				result = false;
 			}
-			else
-				singleDec=true;
+			if(enteringString.equals("NaN"))
+				enteringString = "";
+			if(x.equals("."))
+			{
+				if(singleDec)
+				{
+					doubleDec = true;
+				}
+				else
+					singleDec=true;
+			}
+			enteringString = enteringString + x;
+			display.setText(enteringString);
 		}
-		enteringString = enteringString + x;
-		display.setText(enteringString);
 	}
-	
+
 	public static void calcResult()
 	{
 		if(!enteringString.equals(""))
