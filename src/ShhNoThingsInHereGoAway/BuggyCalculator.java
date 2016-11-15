@@ -289,8 +289,10 @@ public class BuggyCalculator {
 		plusMinus.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				if(enteringString != null)
+				//It turns out that you have to do this. You can't just do String != null
+				if(!enteringString.equals(""))
 				{
+					System.out.println(enteringString);
 					if(enteringString.substring(0,1).equals("-"))
 						enteringString = enteringString.substring(1);
 					else
