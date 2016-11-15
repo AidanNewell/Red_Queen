@@ -8,7 +8,7 @@ public class TournamentYahtzeeGame
 		double score=0;
 		boolean notBroken = true;
 		try{
-			score = YahtzeePlayerEvaluator.evaluatePlayer((AbstractComputerYahtzeePlayer)player,1000000);
+			score = YahtzeePlayerEvaluator.evaluatePlayer((AbstractComputerYahtzeePlayer)player,10000);
 		}catch(Exception e)
 		{
 			System.err.println("The Strategy has encountered an error that it  Here is a handy stack trace so you can fix it:\n\n");

@@ -12,7 +12,7 @@ public class YahtzeeTestStrategy extends AbstractComputerYahtzeePlayer{
 	public void reroll(int[] dice, int rollNumber, PlayerRecord record,
 			boolean[] reroll){
 		//Always rerolls unless you have a yahtzee
-		if(!(record.combinationScore("YahtzeeCombination") == 50))
+		if((AbstractYahtzeeCombination.allCombinations()[AbstractYahtzeeCombination.combinationIndex("YahtzeeCombination")]).score(dice) != 50)
 		{
 			for(int x=0; x<reroll.length;x++)
 			{

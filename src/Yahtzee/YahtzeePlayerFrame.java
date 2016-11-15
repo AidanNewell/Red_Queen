@@ -82,7 +82,10 @@ public class YahtzeePlayerFrame extends JFrame {
 					rerollInt--; 
 				rerollCount.setText(rerollInt + " remaining");
 				if(rerollInt == 0)
+				{
 					rerollCount.setText("Select a combination");
+					reroll.setEnabled(false);
+				}
 			} 
 		});
 		contentPane.add(reroll);
@@ -103,7 +106,10 @@ public class YahtzeePlayerFrame extends JFrame {
 					scoreLabels[i].setText("     ");
 				}
 				allUpperSectionChosen = false;
-				lastScore = 0;
+				lastScore =0;
+				recentScore.setText("Last Score: 0");
+				rerollInt = 2; 
+				rerollCount.setText(rerollInt + " remaining");
 				newGame.setEnabled(false);
 				reroll.setEnabled(true);
 				repaint();
@@ -333,8 +339,12 @@ public class YahtzeePlayerFrame extends JFrame {
 			YahtzeeComboButton b = comboButtons[x];
 			if(b.isSelected())
 			{
-				rerollInt = 2; 
-				rerollCount.setText(rerollInt + " remaining");
+				//Update reroll display, unless there is only one combo left
+				if(combos.length > 1)
+				{
+					rerollInt = 2; 
+					rerollCount.setText(rerollInt + " remaining");
+				}
 				comboClicked = true;
 				selectedButton = b;
 				b.nullify();

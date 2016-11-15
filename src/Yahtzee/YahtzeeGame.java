@@ -26,6 +26,7 @@ public class YahtzeeGame {
 		}
 		sortDice(dice);
 	}
+	
 	public void playerChoose(YahtzeePlayer player, PlayerRecord record, int [] dice, int rollNumber){
 		PlayerRecord recordCopy = new PlayerRecord(record);
 		int choice = player.chooseCombination(dice,recordCopy);
@@ -38,6 +39,7 @@ public class YahtzeeGame {
 		combo = recordCopy.availableCombinations()[choice];
 		record.chooseCombination(choice, combo.score(dice)); 
 	}
+	
 	public void yahtzeeTurn(YahtzeePlayer player, PlayerRecord record){
 		for(int x=0; x<dice.length;x++)
 		{
