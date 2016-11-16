@@ -323,7 +323,6 @@ public class BuggyCalculator {
 		c.gridx = 0;
 		c.gridy = 5;
 		pane.add(plusMinus, c);
-
 		JButton zero = new JButton("0");
 		zero.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
