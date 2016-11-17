@@ -1,5 +1,5 @@
 package Yahtzee;
 
-public class Strategy {
-
+public abstract class Strategy {
+	
 }
