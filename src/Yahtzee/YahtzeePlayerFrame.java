@@ -308,6 +308,12 @@ public class YahtzeePlayerFrame extends JFrame {
 			if(!(comboButtons[x].isUsed()))
 				comboButtons[x].enable();
 		}
+		for(int x=0; x< combos.length;x++)
+		{
+			int index = AbstractYahtzeeCombination.combinationIndex(combos[x].name());
+			scoreLabels[index].setForeground(Color.RED);
+			scoreLabels[index].setText("   "+combos[x].score(dice));
+		}
 		diceForCombinationScores = dice;
 		repaint(record,dice);
 		comboClicked = false;
@@ -358,9 +364,16 @@ public class YahtzeePlayerFrame extends JFrame {
 				{
 					index = i;
 				}
+				else
+				{
+					int labelIndex = AbstractYahtzeeCombination.combinationIndex(combos[i].name());
+					scoreLabels[labelIndex].setText("");
+				}
 			}
 			lastScore = combos[index].score(diceForCombinationScores);
-			scoreLabels[AbstractYahtzeeCombination.combinationIndex(combos[index].name())].setText("   "+lastScore);
+			int labelIndex = AbstractYahtzeeCombination.combinationIndex(combos[index].name());
+			scoreLabels[labelIndex].setForeground(Color.BLACK);
+			scoreLabels[labelIndex].setText("   "+lastScore);
 			if(combos[index].upperSection() && (lastRecordedUpperScores+lastScore) >= 63 && !bonusAwarded)
 			{
 				lastScore += 35;
