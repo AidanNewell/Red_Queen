@@ -22,7 +22,7 @@ public class LargeStraightCombination extends AbstractYahtzeeCombination{
 
 	
 	public String description() {
-		return "Gives 30 points if there are 5 consecutive dice, zero points otherwise";
+		return "Gives 40 points if there are 5 consecutive dice, zero points otherwise";
 	}
 
 	
