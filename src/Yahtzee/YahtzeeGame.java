@@ -12,17 +12,14 @@ public class YahtzeeGame {
 	public void playerRoll(YahtzeePlayer player, PlayerRecord record, int [] dice, int rollNumber){
 		PlayerRecord recordCopy = new PlayerRecord(record);
 		boolean[] rollBoolean = new boolean[5];
-		if(rollNumber == 0){
-			for(int x=0; x<dice.length;x++)
-				dice[x] =((int)(Math.random()*6)) + 1;
-		}
-		else{
-			player.reroll(dice,rollNumber,recordCopy,rollBoolean);
-			for(int x=0; x<dice.length;x++)
-			{
-				if(rollBoolean[x])
-					dice[x] = ((int)(Math.random()*6)) + 1;
-			}
+		int[] referenceDice = new int[dice.length];
+		//You can't manually change the dice values to whatever you want now. Ha.
+		System.arraycopy(dice, 0, referenceDice, 0, dice.length);
+		player.reroll(referenceDice,rollNumber,recordCopy,rollBoolean);
+		for(int x=0; x<dice.length;x++)
+		{
+			if(rollBoolean[x])
+				dice[x] = ((int)(Math.random()*6)) + 1;
 		}
 		sortDice(dice);
 	}
@@ -41,12 +38,13 @@ public class YahtzeeGame {
 	}
 	
 	public void yahtzeeTurn(YahtzeePlayer player, PlayerRecord record){
+		//The initial roll
 		for(int x=0; x<dice.length;x++)
 		{
 			dice[x] = ((int)(Math.random()*6)) + 1;
 		}
 		sortDice(dice);
-		for(int x=0; x<3;x++)
+		for(int x=1; x<3;x++)
 		{
 			playerRoll(player, record, dice, x);
 		}
