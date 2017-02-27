@@ -1,6 +1,6 @@
 package Yahtzee;
 
-public class MostCommonDiceChooser implements DiceChooser{
+public class GreedyDiceChooser implements DiceChooser{
 	
 	public void reroll(int[] dice, int rollNumber, PlayerRecord record,
 			boolean[] reroll) {

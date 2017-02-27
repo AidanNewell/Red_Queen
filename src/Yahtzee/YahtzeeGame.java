@@ -31,7 +31,7 @@ public class YahtzeeGame {
 		AbstractYahtzeeCombination combo;
 		if(choice < 0)
 			choice = 0; 
-		if(choice > comboLength)
+		if(choice >= comboLength)
 			choice = comboLength - 1; 
 		combo = recordCopy.availableCombinations()[choice];
 		record.chooseCombination(choice, combo.score(dice)); 

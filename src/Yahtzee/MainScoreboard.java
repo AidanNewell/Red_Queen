@@ -11,7 +11,7 @@ public class MainScoreboard {
 		GamePlayer game = new YahtzeeGamePlayer();
 		
 //		2) Set up the strategy lists
-		Strategy[] stratList = {new YahtzeeTestStrategy(),new GreedyYahtzeeStrategy(), new BetterStrategyOne()};
+		Strategy[] stratList = {new YahtzeeTestStrategy(),new GreedyYahtzeeStrategy(), new BetterStrategyOne(), new BetterStrategyTwo(), new BetterStrategyThree()};
 		
 		window.setStrategies(stratList);
 //		3) Set the menu to be disenabled (Default value = false);
