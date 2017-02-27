@@ -2,10 +2,11 @@ package Yahtzee;
 
 public class CombChooser2 implements CombinationChooser {
 
-	@Override
 	public int chooseCombination(int[] dice, PlayerRecord record) {
-		// TODO Auto-generated method stub
-		return 0;
+		AbstractYahtzeeCombination[] available = record.availableCombinations();
+		for(int i=0;i<available.length;i++){
+			
+		}
 	}
 
 }
