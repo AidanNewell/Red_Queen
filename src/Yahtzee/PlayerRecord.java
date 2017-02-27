@@ -51,7 +51,7 @@ public class PlayerRecord {
 	
 	public AbstractYahtzeeCombination[] rawCombinations()
 	{
-		return combinations;
+		return combinations; 
 	}
 	
 	public AbstractYahtzeeCombination[] availableCombinations()

@@ -11,7 +11,7 @@ public class MainScoreboard {
 		GamePlayer game = new YahtzeeGamePlayer();
 		
 //		2) Set up the strategy lists
-		Strategy[] stratList = {new YahtzeeTestStrategy(),new GreedyYahtzeeStrategy()};
+		Strategy[] stratList = {new YahtzeeTestStrategy(),new GreedyYahtzeeStrategy(), new TestYahtzeeStrategy()};
 		
 		window.setStrategies(stratList);
 //		3) Set the menu to be disenabled (Default value = false);
@@ -22,7 +22,7 @@ public class MainScoreboard {
 		window.displayOption(Scorekeeper.average);		
 //		6) Set display for ascending order (true, false)
 		window.ascending(true);
-//		7) Set the time for the program to run (seconds, true/false)
+//		7) Set the time for the program to run (seconds, true/false)	
 		window.stoppingTime(1200, true);
 //		8) Move slowly for the first few minutes.
 		window.slowTime(5, true);

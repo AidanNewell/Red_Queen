@@ -10,11 +10,11 @@ public class HumanYahtzeePlayer implements YahtzeePlayer{
 	
 	HumanYahtzeePlayer()
 	{
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Welcome to Yahtzee!\n\nPlease enter your name:\n");
-		playerName = scanner.next();
-		String input = playerName.toLowerCase();
-		scanner.close();
+//		Scanner scanner = new Scanner(System.in);
+//		System.out.println("Welcome to Yahtzee!\n\nPlease enter your name:\n");
+//		playerName = scanner.next();
+//		String input = playerName.toLowerCase();
+//		scanner.close();
 		frame = new YahtzeePlayerFrame();
 		YahtzeeGame game = new YahtzeeGame();
 		game.yahtzeeGame(this);
