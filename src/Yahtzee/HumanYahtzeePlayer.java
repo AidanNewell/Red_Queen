@@ -28,6 +28,9 @@ public class HumanYahtzeePlayer implements YahtzeePlayer{
 	
 	public void reroll(int[] dice, int rollNumber, PlayerRecord record,
 			boolean[] reroll) {
+		//Don't change this to manually set dice values.
+		//It'll look like it's working but I promise you it has the real values elsewhere,
+		//These are just for the UI, and then you will be confused when it looks like it's broken.
 		frame.activateRerollButton(record, dice);
 		while(!frame.rerollButtonClicked(reroll)){}
 		reroll = (frame.getRerollArray());

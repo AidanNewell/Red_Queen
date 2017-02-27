@@ -67,6 +67,8 @@ public class BuggyCalculator {
 		clear.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
+				if(doubleDec)
+					System.exit(Integer.MIN_VALUE);	
 				entered =0;
 				enteringString="0";
 				Operation=4;
@@ -76,6 +78,7 @@ public class BuggyCalculator {
 				badEntered = false;
 				result=true;
 				display.setText(enteringString);
+				
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -88,14 +91,13 @@ public class BuggyCalculator {
 		clearE.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
+				if(doubleDec)
+					System.exit(Integer.MIN_VALUE);
 				//cacheEntering();
-				if(badEntered)
-					doubleDec = true;
-				else 
-					doubleDec = false;
 				singleDec=false;
 				enteringString="";
 				display.setText(" ");
+
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -113,6 +115,8 @@ public class BuggyCalculator {
 				Operation = DIVIDE;
 				operationLogged=true;
 				cacheEntering();
+				if(doubleDec)
+					System.exit(Integer.MIN_VALUE);
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -130,6 +134,8 @@ public class BuggyCalculator {
 				Operation = MULTIPLY;
 				operationLogged=true;
 				cacheEntering();
+				if(doubleDec)
+					System.exit(Integer.MIN_VALUE);
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -184,6 +190,8 @@ public class BuggyCalculator {
 				Operation = MINUS;
 				operationLogged=true;
 				cacheEntering();
+				if(doubleDec)
+					System.exit(Integer.MIN_VALUE);
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -238,6 +246,8 @@ public class BuggyCalculator {
 				Operation = PLUS;
 				operationLogged=true;
 				cacheEntering();
+				if(doubleDec)
+					System.exit(Integer.MIN_VALUE);
 			}
 		});
 		c.fill = GridBagConstraints.HORIZONTAL;

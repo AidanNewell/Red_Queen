@@ -49,7 +49,7 @@ public class PlayerRecord {
 		return combinationScores;
 	}
 	
-	public AbstractYahtzeeCombination[] rawCombinations()
+	private AbstractYahtzeeCombination[] rawCombinations()
 	{
 		return combinations; 
 	}

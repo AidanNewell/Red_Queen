@@ -12,12 +12,8 @@ public class TournamentYahtzeeGame
 			score = YahtzeePlayerEvaluator.evaluatePlayer((AbstractComputerYahtzeePlayer)player,100000);
 		}catch(Exception e)
 		{
-			System.err.println("The Strategy has encountered an uncaught exception that it  Here is a handy stack trace so you can fix it:\n\n");
+			System.err.println("The Strategy has encountered an uncaught exception. Here is a handy stack trace so you can fix it:\n\n");
 			e.printStackTrace();
-			System.out.println("I would suspect the exception is likely indexOutOfBounds, in which case you're probably trying to select combinations");
-			System.out.println("incorrectly, and you should look at that in the stack trace, or it's a nullPointer exception, in which case you likely have");
-			System.out.println("not actually initialized an array, or something weird is happening and you should check the stack trace.\n");
-			System.out.println("Seriously. The stack trace is your friend.");
 			notBroken = false;
 		}
 		if(notBroken)
