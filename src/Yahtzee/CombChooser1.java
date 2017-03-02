@@ -1,6 +1,6 @@
 package Yahtzee;
 
-public class TestCombinationChooser implements CombinationChooser{
+public class CombChooser1 implements CombinationChooser{
 	private AbstractYahtzeeCombination[] availableCombinations;
 	public int chooseCombination(int[] dice, PlayerRecord record)
 	{
