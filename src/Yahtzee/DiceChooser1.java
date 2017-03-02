@@ -52,19 +52,6 @@ public class DiceChooser1 implements DiceChooser {
 					reroll[x]=false;
 			}
 		}
-		//but also don't reroll if you have things
-		try{
-			if((all[AbstractYahtzeeCombination.combinationIndex("YahtzeeCombination")].score(dice)==50 && availability[11])||
-					(all[AbstractYahtzeeCombination.combinationIndex("FullHouseCombination")].score(dice)==25 && availability[8]) ||
-					(all[AbstractYahtzeeCombination.combinationIndex("LargeStraightCombination")].score(dice)== 40 && availability[10])||
-					(all[AbstractYahtzeeCombination.combinationIndex("SmallStraightCombination")].score(dice)== 30 && availability[9]))
-			{
-				for(int x=0; x<reroll.length;x++)
-				{
-					reroll[x]=false;
-				}
-			}
-		}catch(Exception e){}
 
 	}
 

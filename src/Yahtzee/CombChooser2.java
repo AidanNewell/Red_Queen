@@ -1,41 +1,46 @@
 package Yahtzee;
 
 public class CombChooser2 implements CombinationChooser {
+	private AbstractYahtzeeCombination[] availableCombinations;
+	public int chooseCombination(int[] dice, PlayerRecord record)
+	{
+		availableCombinations = record.availableCombinations();
+		int maxScore=0;
+		int indexOfMaxScore=-1;
+		int indexOfSecond = -1;
+		int chanceScore = 0;
+		for(int x=0; x<availableCombinations.length;x++)
+		{
+			int score = availableCombinations[x].score(dice);
+			if(score > maxScore)
+			{
+				indexOfSecond = indexOfMaxScore;
+				maxScore = score;
+				indexOfMaxScore = x;
+			}
+			String name = availableCombinations[x].name();
+			if(availableCombinations[x].name().equals("ChanceCombination")){
+				chanceScore = score;
+			}
 
-	public int chooseCombination(int[] dice, PlayerRecord record) {
-		AbstractYahtzeeCombination[] available = record.availableCombinations();
-		int CurrentScore = 0;
-		int maxScore = 0;
-		int maxIndex = 0;
-		int specialIndex = -1; 
-		for(int i=0;i<available.length;i++){
-			CurrentScore = available[i].score(dice);
-			if(CurrentScore> maxScore){
-				maxScore = available[i].score(dice);
-				maxIndex = i;
-			}
-			if((available[i].name().equals("FullHouseCombination") || available[i].name().equals("SmallStraightCombination") 
-				|| available[i].name().equals("LargeStraightCombination") || available[i].name().equals("YahtzeeCombination")) 
-				&& CurrentScore > 0){
-				specialIndex = i;
-			}
 		}
 		if(maxScore == 0)
 		{
-			if(available[available.length - 1].upperSection())
+			if(availableCombinations[availableCombinations.length - 1].upperSection())
 			{
 				return 0;
 			}
 			else
 			{
-				return available.length - 1;
+				return availableCombinations.length - 1;
 			}
 		}
 		else
 		{
-			if(specialIndex != -1)
-				return specialIndex;
-			return maxIndex;
+			if((chanceScore == maxScore && chanceScore<=22) && indexOfSecond!=-1) //only take chance if it's greater than 22
+				return indexOfSecond;
+			else
+				return indexOfMaxScore;
 		}
 	}
 
