@@ -14,9 +14,9 @@ public class CombChooser1 implements CombinationChooser{
 				maxScore = available[i].score(dice);
 				maxIndex = i;
 			}
-			if((available[i].name().equals("FullHouseCombination") || available[i].name().equals("SmallStraightCombination") 
-				|| available[i].name().equals("LargeStraightCombination") || available[i].name().equals("YahtzeeCombination")) 
-				&& CurrentScore > 0){
+			if(((available[i].name().equals("FullHouseCombination") && CurrentScore == 25 )|| (available[i].name().equals("SmallStraightCombination") 
+					&& CurrentScore == 30)|| (available[i].name().equals("LargeStraightCombination") && CurrentScore == 40))||
+					(available[i].name().equals("YahtzeeCombination") && CurrentScore == 50)){
 				specialIndex = i;
 			}
 		}

@@ -1,7 +1,6 @@
 package Yahtzee;
 
-public class DiceChooser1 implements DiceChooser {
-	
+public class DiceChooser3 implements DiceChooser{
 	public void reroll(int[] dice, int rollNumber, PlayerRecord record,
 			boolean[] reroll) {
 		AbstractYahtzeeCombination[] available = record.availableCombinations();
@@ -26,7 +25,7 @@ public class DiceChooser1 implements DiceChooser {
 		{
 			//This way if you have 3 sixes and 3 ones it'll keep the sixes ;)
 			if(diceNumbers[x] >= diceNumbers[highestAvailableIndex] && (availability[x] || availability[6] || 
-					availability[7]|| availability[11]|| availability[12]))
+					availability[7]|| availability[11]|| availability[12])) //only go for numbers if they're still available 
 				highestAvailableIndex=x;
 		}
 		for(int x=0; x<dice.length;x++)
@@ -36,7 +35,18 @@ public class DiceChooser1 implements DiceChooser {
 			else
 				reroll[x] = false;
 		}
-
+		//but also don't reroll if you have things
+		try{
+			if((all[AbstractYahtzeeCombination.combinationIndex("YahtzeeCombination")].score(dice)==50 && availability[11])||
+					(all[AbstractYahtzeeCombination.combinationIndex("FullHouseCombination")].score(dice)==25 && availability[8]) ||
+					(all[AbstractYahtzeeCombination.combinationIndex("LargeStraightCombination")].score(dice)== 40 && availability[10])||
+					(all[AbstractYahtzeeCombination.combinationIndex("SmallStraightCombination")].score(dice)== 30 && availability[9]))
+			{
+				for(int x=0; x<reroll.length;x++)
+				{
+					reroll[x]=false;
+				}
+			}
+		}catch(Exception e){}
 	}
-
 }
