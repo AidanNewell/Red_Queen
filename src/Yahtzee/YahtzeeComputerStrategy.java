@@ -6,16 +6,13 @@ public class YahtzeeComputerStrategy extends AbstractComputerYahtzeePlayer{
 	private DiceChooser dicePicker;
 	protected String author,playername;
 	
-	YahtzeeComputerStrategy(CombinationChooser cc, DiceChooser dp){
+	YahtzeeComputerStrategy(CombinationChooser cc, DiceChooser dc){
 		comboPicker = cc;
-		dicePicker = dp;
+		dicePicker = dc;
 		
 	}
 	
-	YahtzeeComputerStrategy()
-	{
-		
-	}
+	YahtzeeComputerStrategy(){}
 	
 	public void reroll(int[] dice, int rollNumber, PlayerRecord record,
 			boolean[] reroll) {

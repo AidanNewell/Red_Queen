@@ -4,7 +4,7 @@ public class BetterStrategyTwo extends YahtzeeComputerStrategy{
 	
 	BetterStrategyTwo()
 	{
-		super(new ModularPercentYieldComboChooser(), new GreedyDiceChooser());
+		super(new IntelligentComboPicker(), new GreedyDiceChooser());
 		author = "Glissinda the Good Witch";
 		playername = "badaboom";
 	}
