@@ -15,7 +15,7 @@ public class CombChooser3 implements CombinationChooser {
 		int[] scores = new int[13]; //0.1,1.2,2.3,3.4,4.5,5.6,6.3x,7.4x,8.full,9.small,10.large,11.yahtzee,12.chance 
 		int[] indexes = new int[13];
 		for(int i = 0;i<scores.length;i++){
-			
+			scores[i] = allCombos[i].score(dice);
 		}
 		for(int x=0; x<availableCombinations.length;x++)
 		{
