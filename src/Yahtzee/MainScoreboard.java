@@ -12,7 +12,7 @@ public class MainScoreboard {
 		
 //		2) Set up the strategy lists
 
-		Strategy[] stratList = {new YahtzeeTestStrategy(),new GreedyYahtzeeStrategy(), new BetterStrategyOne(), new BetterStrategyTwo(), new BetterStrategyThree(), new TestYahtzeeStrategy()};
+		Strategy[] stratList = {new YahtzeeTestStrategy(),new GreedyYahtzeeStrategy(), new BetterStrategyOne(), new BetterStrategyTwo(), new BetterStrategyThree(), new TestYahtzeeStrategy(), new BetterStrategyFour(), new BetterStrategyFive()};
 
 		
 		window.setStrategies(stratList);
