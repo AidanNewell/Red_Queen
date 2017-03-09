@@ -5,19 +5,19 @@ import java.util.Arrays;
 
 public class ExperimentalComboPicker implements CombinationChooser{
 
-	int[] totalScores = new int[] {5,5,8,11,11,13,18,17,1,1,1,1,19};
-	double[] averageScores = new double[] {5,5,8,11,11,13,18,17,1,1,1,1,19};
+	int[] totalScores = new int[] {5,5,8,11,11,13,18,17,1,1,1,1,22};
+	double[] averageScores = new double[] {5,5,8,11,11,13,18,17,1,1,1,1,22};
 	ArrayList<String> nullList;
 	long turns = 2;
-	
+
 	//Tells the computer to take 0s occassionally
 	public int chooseCombination(int[] dice, PlayerRecord record) {
 		if(AbstractComputerYahtzeePlayer.reinitialize(record))
 		{
 			nullList = new ArrayList<String>(Arrays.asList("YahtzeeCombination","LargeStraightCombination","FourOfAKindCombination","AcesCombination","TwosCombination","SmallStraightCombination","ThreeOfAKindCombination","FullHouseCombination","ThreesCombination","FoursCombination","FivesCombination","SixesCombination","ChanceCombination"));
-		}
+		}//1s,2s,3s,4s,5s,6s
 		AbstractYahtzeeCombination[] combinations = record.availableCombinations();
-		double highestYield = 0.2;
+		double highestYield = 0.20;
 		int indexOfHighestYield =-1;
 		int x=0;
 		for(AbstractYahtzeeCombination combo : combinations)
