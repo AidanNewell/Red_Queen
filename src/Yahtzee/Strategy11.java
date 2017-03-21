@@ -5,6 +5,6 @@ public class Strategy11 extends YahtzeeComputerStrategy{
 	{
 		super(new CombChooser1(),new DiceChooser1());
 		author = "Ling";
-		playername = "1/1";
+		playername = "Yossarian";
 	}
 }

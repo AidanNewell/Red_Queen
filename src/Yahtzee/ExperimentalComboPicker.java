@@ -14,7 +14,7 @@ public class ExperimentalComboPicker implements CombinationChooser{
 	public int chooseCombination(int[] dice, PlayerRecord record) {
 		if(AbstractComputerYahtzeePlayer.reinitialize(record))
 		{
-			nullList = new ArrayList<String>(Arrays.asList("YahtzeeCombination","LargeStraightCombination","FourOfAKindCombination","AcesCombination","TwosCombination","SmallStraightCombination","ThreeOfAKindCombination","FullHouseCombination","ThreesCombination","FoursCombination","FivesCombination","SixesCombination","ChanceCombination"));
+			nullList = new ArrayList<String>(Arrays.asList("YahtzeeCombination","LargeStraightCombination","FourOfAKindCombination","AcesCombination","TwosCombination","SmallStraightCombination","FullHouseCombination","ThreeOfAKindCombination","ThreesCombination","FoursCombination","FivesCombination","SixesCombination","ChanceCombination"));
 		}//1s,2s,3s,4s,5s,6s
 		AbstractYahtzeeCombination[] combinations = record.availableCombinations();
 		double highestYield = 0.20;

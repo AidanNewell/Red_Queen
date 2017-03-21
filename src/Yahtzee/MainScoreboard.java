@@ -16,7 +16,7 @@ public class MainScoreboard {
 		Strategy[] stratList = {new YahtzeeTestStrategy(),new GreedyYahtzeeStrategy(), new BetterStrategyOne(), 
 				new BetterStrategyTwo(), new BetterStrategyThree(), new BetterStrategyFour(), new BetterStrategyFive(), 
 				new Strategy11(), new Strategy12(), new Strategy21(), new Strategy22(), new Strategy23(), 
-				new MixAndMatchStrategy1(), new MixAndMatchStrategy2(), new Strategy24(), new MixAndMatchStrategy3()};
+				new MixAndMatchStrategy1(), new MixAndMatchStrategy2(), new Strategy24(), new MixAndMatchStrategy3(), new MixAndMatchStrategy4()};
 
 		
 		window.setStrategies(stratList);
@@ -31,7 +31,7 @@ public class MainScoreboard {
 //		7) Set the time for the program to run (seconds, true/false)	
 		window.stoppingTime(1200, true);
 //		8) Move slowly for the first few minutes.
-		window.slowTime(5, true);
+		window.slowTime(0, true);
 //		9) Set the score that determines when to stop (score, true/false)
 		window.stoppingScore(50, false);
 //		10) Set the font size

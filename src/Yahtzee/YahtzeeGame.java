@@ -27,13 +27,13 @@ public class YahtzeeGame {
 	public void playerChoose(YahtzeePlayer player, PlayerRecord record, int [] dice, int rollNumber){
 		PlayerRecord recordCopy = new PlayerRecord(record);
 		int choice = player.chooseCombination(dice,recordCopy);
-		int comboLength = recordCopy.availableCombinations().length;
+		int comboLength = record.availableCombinations().length;
 		AbstractYahtzeeCombination combo;
 		if(choice < 0)
 			choice = 0; 
 		if(choice >= comboLength)
 			choice = comboLength - 1; 
-		combo = recordCopy.availableCombinations()[choice];
+		combo = record.availableCombinations()[choice];
 		record.chooseCombination(choice, combo.score(dice)); 
 	}
 	
