@@ -1,6 +1,6 @@
 package Yahtzee;
 
-public class MixAndMatchStrategy3 extends YahtzeeComputerStrategy{
+public class MixAndMatchStrategy3 extends SuperLabAssistantStrategy{
 	
 	MixAndMatchStrategy3()
 	{

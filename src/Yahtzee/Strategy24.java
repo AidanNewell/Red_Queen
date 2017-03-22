@@ -1,6 +1,6 @@
 package Yahtzee;
 
-public class Strategy24 extends YahtzeeComputerStrategy {
+public class Strategy24 extends SuperLabAssistantStrategy {
 	Strategy24(){
 		super(new CombChooser2(), new DiceChooser4());
 		author = "Hohenheim";

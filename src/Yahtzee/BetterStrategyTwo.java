@@ -1,6 +1,6 @@
 package Yahtzee;
 
-public class BetterStrategyTwo extends YahtzeeComputerStrategy{
+public class BetterStrategyTwo extends SuperLabAssistantStrategy{
 	
 	BetterStrategyTwo()
 	{

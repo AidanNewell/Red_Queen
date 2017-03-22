@@ -307,6 +307,7 @@ public class Scorekeeper extends JFrame implements ActionListener{
 			out.close();
 		 }
 		 catch (Exception e){
+			e.printStackTrace();
 		 	System.out.println("Error during the actual writing to the file");
 		 }
 	}
